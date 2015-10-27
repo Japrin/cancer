@@ -1,0 +1,15 @@
+##gff-version 3
+##sequence-region P25054 1 2843
+P25054	UniProtKB	Coiled coil	1	61	.	.	.	Status=Potential	
+P25054	UniProtKB	Coiled coil	127	248	.	.	.	Status=Potential	
+P25054	UniProtKB	Repeat	453	495	.	.	.	Note=ARM 1	
+P25054	UniProtKB	Repeat	505	547	.	.	.	Note=ARM 2	
+P25054	UniProtKB	Repeat	548	591	.	.	.	Note=ARM 3	
+P25054	UniProtKB	Repeat	592	638	.	.	.	Note=ARM 4	
+P25054	UniProtKB	Repeat	639	683	.	.	.	Note=ARM 5	
+P25054	UniProtKB	Repeat	684	725	.	.	.	Note=ARM 6	
+P25054	UniProtKB	Repeat	726	767	.	.	.	Note=ARM 7	
+P25054	UniProtKB	Region	960	1337	.	.	.	Note=Responsible for down-regulation through a process mediated by direct ubiquitination	
+P25054	UniProtKB	Region	1866	1893	.	.	.	Note=Highly charged	
+P25054	UniProtKB	Motif	2803	2806	.	.	.	Note=Microtubule tip localization signal	
+P25054	UniProtKB	Motif	2841	2843	.	.	.	Note=PDZ-binding	

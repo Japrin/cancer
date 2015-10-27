@@ -1,0 +1,77 @@
+Mulitple.Myeloma	Multiple Myeloma
+GBM	GBM
+LUAD	Lung adenocarcinoma
+PRAD	Prostate Cancer
+COAD	Colorectal Cancer
+KIRC	RCC
+READ	Colorectal Cancer
+BRCA	Breast Cancer
+OV	Ovarian Cancer
+LAML	AML
+CESC	Cervical Cancer
+LUSC	Lung squamous
+BLCA	Bladder Cancer
+Chronic.Lymphocytic.Leukemia	CLL
+Sarcoma	Other Sarcoma
+Kidney.Cancer	RCC
+Breast.Cancer	Breast Cancer
+Mesothelioma	Mesothelioma
+Glioma	Glioma
+Neuroblastoma	Neuroblastoma
+Endometrial.Cancer	Endometrial Cancer
+Thyroid.Cancer	Thyroid Cancer
+Osteosarcoma	Other Sarcoma
+Ewing.Sarcoma	Other Sarcoma
+Pediatric.Acute.lymphoblastic.leukemia	ALL
+Lung.squamous	Lung squamous
+Myeloproliferative.Disorder	MPD
+Esophageal.adenocarcinoma	Esophageal adenocarcinoma
+Pleomorphic.Liposarcoma	Liposarcoma
+Gastric.Cancer	Gastric Cancer
+CLL	CLL
+Esophageal.squamous	Esophageal squamous
+Gastric	Gastric Cancer
+Brain.Cancer	GBM
+Cervical.Cancer	Cervical Cancer
+Lung.adenocarcinoma	Lung adenocarcinoma
+Colorectal	Colorectal Cancer
+Pediatric.GIST	GIST
+Lung.SCLC	Lung SCLC
+Lung.adenosquamous	Other NSCLC
+Lung	Other NSCLC
+Liver.Cancer	HCC
+Lung.Cancer	Other NSCLC
+Kidney.cancer	RCC
+Melanoma	Melanoma
+Prostate	Prostate Cancer
+Leiomyosarcoma	Other Sarcoma
+Acute.myelogenous.leukemia	AML
+Myxoid.Liposarcoma	Liposarcoma
+Ovarian.Cancer	Ovarian Cancer
+Ovarian	Ovarian Cancer
+Chronic.lymphocytic.leukemia	CLL
+Synovial.sarcoma	Other Sarcoma
+NSCLC	Other NSCLC
+Esophageal.Cancer	Esophageal adenocarcinoma
+Pancreatic.Cancer	Pancreatic Cancer
+Rhabdoid.Tumor	Other Sarcoma
+Lymphoma	Lymphoma
+Bladder.Cancer	Bladder Cancer
+Thyroid	Thyroid Cancer
+Breast	Breast Cancer
+Renal.Cancer	RCC
+Hepatocellular.Carcinoma	HCC
+Myelodysplasia	Myelodysplasia
+Medulloblastoma	Medulloblastoma
+Prostate.Cancer	Prostate Cancer
+Dedifferentiated.Liposarcoma	Liposarcoma
+Colon.Cancer	Colorectal Cancer
+Multiple.Myeloma	Multiple Myeloma
+Carcinoid	Carcinoid
+Stomach.Cancer	Gastric Cancer
+Rectum.Cancer	Colorectal Cancer
+Rhabdoid	Other Sarcoma
+MFH	MFH
+ccRCC	RCC
+Head.and.Neck.Cancer	Head and Neck Cancer
+GIST	GIST

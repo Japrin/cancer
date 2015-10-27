@@ -1,0 +1,1 @@
+/WPS/GR/zhengliangtao/02pipeline/novo.med.seq/cancer/stat/for_Khor/cal.cove.onTarget.pl -o /WPS/GR/zhengliangtao/02pipeline/novo.med.seq/cancer/stat/for_Khor/out /WPS/GR/zhengliangtao/02pipeline/novo.med.seq/cancer/stat/for_Khor/RS013001B.nodup.realn.bam /WPS/GR/zhengliangtao/02pipeline/novo.med.seq/cancer/stat/for_Khor/TR.bed

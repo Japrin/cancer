@@ -1,0 +1,7 @@
+##gff-version 3
+##sequence-region Q9HCJ5 1 1215
+Q9HCJ5	UniProtKB	Chain	1	1215	.	.	.	ID=PRO_0000223105;Note=Zinc finger SWIM domain-containing protein 6	
+Q9HCJ5	UniProtKB	Zinc finger	246	283	.	.	.	Note=SWIM-type	
+Q9HCJ5	UniProtKB	Compositional bias	19	154	.	.	.	Note=Gly-rich	
+Q9HCJ5	UniProtKB	Compositional bias	155	158	.	.	.	Note=Poly-Ser	
+Q9HCJ5	UniProtKB	Compositional bias	160	197	.	.	.	Note=Ala-rich	

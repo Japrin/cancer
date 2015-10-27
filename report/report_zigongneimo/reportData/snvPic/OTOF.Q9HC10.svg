@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+<svg height="780" width="4194" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<rect fill="white" height="780" width="4194" x="0" y="0" />
+	<radialGradient id="myRadialGradient1" r="65%">
+		<stop offset="5%" stop-color="red" />
+		<stop offset="95%" stop-color="darkred" />
+	</radialGradient>
+	<linearGradient gradientTransform="rotate(90)" id="myLinearGradient2" x1="0" x2="1" y1="0" y2="0">
+		<stop offset="5%" stop-color="dodgerblue" />
+		<stop offset="30%" stop-color="lightskyblue" />
+		<stop offset="50%" stop-color="lightskyblue" />
+		<stop offset="95%" stop-color="dodgerblue" />
+	</linearGradient>
+	<linearGradient gradientTransform="rotate(90)" id="myLinearGradient3" x1="0" x2="1" y1="0" y2="0">
+		<stop offset="5%" stop-color="mediumseagreen" />
+		<stop offset="30%" stop-color="palegreen" />
+		<stop offset="50%" stop-color="palegreen" />
+		<stop offset="95%" stop-color="mediumseagreen" />
+	</linearGradient>
+	<linearGradient gradientTransform="rotate(90)" id="myLinearGradient4" x1="0" x2="1" y1="0" y2="0">
+		<stop offset="5%" stop-color="hotpink" />
+		<stop offset="35%" stop-color="lightpink" />
+		<stop offset="50%" stop-color="lightpink" />
+		<stop offset="95%" stop-color="hotpink" />
+	</linearGradient>
+	<linearGradient gradientTransform="rotate(90)" id="myLinearGradientBlack2Grey" x1="0" x2="1" y1="0" y2="0">
+		<stop offset="5%" stop-color="grey" />
+		<stop offset="35%" stop-color="lightgrey" />
+		<stop offset="50%" stop-color="lightgrey" />
+		<stop offset="95%" stop-color="grey" />
+	</linearGradient>
+	<text fill="black" font-family="TimesNewRoman" font-size="22" x="100" y="70">OTOF(Q9HC10), 1997 aa</text>
+	<rect height="30" rx="5" ry="5" style="fill: url(#myLinearGradientBlack2Grey); stroke: black" width="3994" x="100" y="350" />
+	<text fill="black" font-family="TimesNewRoman" font-size="12" transform="translate(85,369) rotate(0)" x="0" y="0">N</text>
+	<text fill="black" font-family="TimesNewRoman" font-size="12" transform="translate(4098,369) rotate(0)" x="0" y="0">C</text>
+	<rect height="10" style="opacity: 0.8; fill: darkcyan; stroke: none" width="2" x="120" y="425" />
+	<rect height="10" style="opacity: 0.8; fill: darkseagreen; stroke: none" width="3926" x="100" y="450" />
+	<text fill="black" font-family="TimesNewRoman" font-size="10" text-anchor="middle" transform="translate(2063,448) rotate(0)" x="0" y="0">Topological domain: Cytoplasmic;status=Potential</text>
+	<rect height="10" style="opacity: 0.8; fill: darkseagreen; stroke: none" width="196" x="580" y="470" />
+	<text fill="black" font-family="TimesNewRoman" font-size="10" text-anchor="middle" transform="translate(678,468) rotate(0)" x="0" y="0">Domain: C2 1</text>
+	<rect height="10" style="opacity: 0.8; fill: darkseagreen; stroke: none" width="222" x="906" y="490" />
+	<text fill="black" font-family="TimesNewRoman" font-size="10" text-anchor="middle" transform="translate(1017,488) rotate(0)" x="0" y="0">Domain: C2 2</text>
+	<rect height="10" style="opacity: 0.8; fill: darkseagreen; stroke: none" width="60" x="1682" y="510" />
+	<text fill="black" font-family="TimesNewRoman" font-size="10" text-anchor="middle" transform="translate(1712,508) rotate(0)" x="0" y="0">Coiled coil: </text>
+	<rect height="10" style="opacity: 0.8; fill: darkseagreen; stroke: none" width="212" x="1992" y="530" />
+	<text fill="black" font-family="TimesNewRoman" font-size="10" text-anchor="middle" transform="translate(2098,528) rotate(0)" x="0" y="0">Domain: C2 3</text>
+	<rect height="10" style="opacity: 0.8; fill: darkseagreen; stroke: none" width="16" x="2704" y="550" />
+	<text fill="black" font-family="TimesNewRoman" font-size="10" text-anchor="middle" transform="translate(2712,548) rotate(0)" x="0" y="0">Compositional bias: Poly-Lys</text>
+	<rect height="10" style="opacity: 0.8; fill: darkseagreen; stroke: none" width="14" x="2726" y="570" />
+	<text fill="black" font-family="TimesNewRoman" font-size="10" text-anchor="middle" transform="translate(2733,568) rotate(0)" x="0" y="0">Compositional bias: Poly-Glu</text>
+	<rect height="10" style="opacity: 0.8; fill: darkseagreen; stroke: none" width="198" x="3056" y="590" />
+	<text fill="black" font-family="TimesNewRoman" font-size="10" text-anchor="middle" transform="translate(3155,588) rotate(0)" x="0" y="0">Domain: C2 4</text>
+	<rect height="10" style="opacity: 0.8; fill: darkseagreen; stroke: none" width="42" x="4026" y="610" />
+	<text fill="black" font-family="TimesNewRoman" font-size="10" text-anchor="middle" transform="translate(4047,608) rotate(0)" x="0" y="0">Transmembrane: Helical;;status=Potential</text>
+	<rect height="10" style="opacity: 0.8; fill: darkseagreen; stroke: none" width="38" x="4028" y="630" />
+	<text fill="black" font-family="TimesNewRoman" font-size="10" text-anchor="middle" transform="translate(4047,628) rotate(0)" x="0" y="0">Compositional bias: Poly-Leu</text>
+	<rect height="10" style="opacity: 0.8; fill: darkseagreen; stroke: none" width="26" x="4068" y="650" />
+	<text fill="black" font-family="TimesNewRoman" font-size="10" text-anchor="middle" transform="translate(4081,648) rotate(0)" x="0" y="0">Topological domain: Extracellular;status=Potential</text>
+	<path d="M 0,0 L -5,-15 5,-15 Z" style="fill: darkred" transform="translate(765,350) scale(1,1)" />
+	<text fill="black" font-family="TimesNewRoman" font-size="12" transform="translate(771,335) rotate(0)" x="0" y="0">L333L</text>
+	<rect fill="none" height="100" stroke="black" stroke-width="1.5" width="225" x="3869" y="50" />
+	<rect fill="url(#myLinearGradient2)" height="30" rx="5" ry="5" width="30" x="3874" y="55" />
+	<text fill="black" font-family="TimesNewRoman" font-size="12" x="3906" y="75">Helix</text>
+	<rect fill="url(#myLinearGradient3)" height="30" rx="5" ry="5" width="30" x="3936" y="55" />
+	<text fill="black" font-family="TimesNewRoman" font-size="12" x="3968" y="75">Beta strand</text>
+	<rect fill="url(#myLinearGradient4)" height="30" rx="5" ry="5" width="30" x="4035" y="55" />
+	<text fill="black" font-family="TimesNewRoman" font-size="12" x="4067" y="75">Turn</text>
+	<rect fill="darkorange" height="30" stroke="none" width="10" x="3874" y="90" />
+	<text fill="black" font-family="TimesNewRoman" font-size="12" x="3886" y="110">sites</text>
+	<rect fill="darkcyan" height="30" stroke="none" width="10" x="3918" y="90" />
+	<text fill="black" font-family="TimesNewRoman" font-size="12" x="3930" y="110">aa_mod</text>
+	<rect fill="darkseagreen" height="30" stroke="none" width="10" x="3971" y="90" />
+	<text fill="black" font-family="TimesNewRoman" font-size="12" x="3984" y="110">region</text>
+	<path d="M 0,0 L -5,-15 5,-15 Z" style="fill: darkred" transform="translate(3879,142) scale(1,1)" />
+	<text fill="black" font-family="TimesNewRoman" font-size="12" x="3886" y="137">sample(s)</text>
+	<path d="M 0,0 L -5,-15 5,-15 Z" style="fill: lightgrey" transform="translate(3946,142) scale(1,1)" />
+	<text fill="black" font-family="TimesNewRoman" font-size="12" x="3953" y="137">COSMIC</text>
+	<!-- 
+	Generated using the Perl SVG Module V2.52
+	by Ronan Oger
+	Info: http://www.roitsystems.com/
+ -->
+</svg>

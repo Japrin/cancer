@@ -1,0 +1,1403 @@
+P04637	UniProtKB	Alternative sequence	1	39	.	.	.	ID=VSP_040832;Note=In isoform 4%2C isoform 5 and isoform 6.	
+P04637	UniProtKB	Alternative sequence	1	132	.	.	.	ID=VSP_040833;Note=In isoform 7%2C isoform 8 and isoform 9.	
+P04637	UniProtKB	Chain	1	393	.	.	.	ID=PRO_0000185703;Note=Cellular tumor antigen p53	
+P04637	UniProtKB	Natural variant	5	5	.	.	.	ID=VAR_044543;Note=In a sporadic cancer%3B somatic mutation%3B abolishes strongly phosphorylation.	
+P04637	UniProtKB	Natural variant	6	6	.	.	.	ID=VAR_044544;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	7	7	.	.	.	ID=VAR_005851;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	8	8	.	.	.	ID=VAR_044545;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	10	10	.	.	.	ID=VAR_044546;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	11	11	.	.	.	ID=VAR_044547;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	11	11	.	.	.	ID=VAR_044548;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Mutagenesis	15	15	.	.	.	Note=Loss of interaction with PPP2R5C%2C PPP2CA AND PPP2R1A.	
+P04637	UniProtKB	Natural variant	15	15	.	.	.	ID=VAR_044549;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	16	16	.	.	.	ID=VAR_044550;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	17	17	.	.	.	ID=VAR_044551;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Mutagenesis	18	18	.	.	.	Note=No effect on interaction with MDM2 and increase in protein levels after DNA damage.	
+P04637	UniProtKB	Mutagenesis	20	20	.	.	.	Note=Abolishes phosphorylation site. Abolishes increase in protein levels after DNA damage.	
+P04637	UniProtKB	Mutagenesis	20	20	.	.	.	Note=Constitutively increased TP53 protein levels.	
+P04637	UniProtKB	Mutagenesis	22	23	.	.	.	Note=Loss of interaction with MDM2%2C leading to constitutively increased TP53 protein levels.	
+P04637	UniProtKB	Natural variant	24	24	.	.	.	ID=VAR_044552;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	28	28	.	.	.	ID=VAR_044553;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	29	30	.	.	.	ID=VAR_047158;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	31	31	.	.	.	ID=VAR_044554;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	33	33	.	.	.	ID=VAR_044555;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	34	34	.	.	.	ID=VAR_044556;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	35	35	.	.	.	ID=VAR_005852;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	36	36	.	.	.	ID=VAR_044557;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Mutagenesis	37	37	.	.	.	Note=Abolihes phosphorylation by MAPKAPK5.	
+P04637	UniProtKB	Natural variant	37	37	.	.	.	ID=VAR_044558;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	37	37	.	.	.	ID=VAR_044559;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	39	39	.	.	.	ID=VAR_044560;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	39	39	.	.	.	ID=VAR_044561;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	42	42	.	.	.	ID=VAR_044562;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	43	43	.	.	.	ID=VAR_005853;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	44	44	.	.	.	ID=VAR_044563;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	44	44	.	.	.	ID=VAR_044564;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	44	44	.	.	.	ID=VAR_044565;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	45	45	.	.	.	ID=VAR_044566;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Mutagenesis	46	46	.	.	.	Note=Abolishes phosphorylation by DYRK2 and HIPK2 and acetylation of K-382 by CREBBP.	
+P04637	UniProtKB	Mutagenesis	46	46	.	.	.	Note=Alters interaction with WWOX.	
+P04637	UniProtKB	Natural variant	46	46	.	.	.	ID=VAR_044567;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	46	46	.	.	.	ID=VAR_044568;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	47	47	.	.	.	ID=VAR_014632	
+P04637	UniProtKB	Natural variant	47	47	.	.	.	ID=VAR_044569;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	48	48	.	.	.	ID=VAR_044570;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	49	49	.	.	.	ID=VAR_044571;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	49	49	.	.	.	ID=VAR_044572;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	49	49	.	.	.	ID=VAR_044573;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	52	52	.	.	.	ID=VAR_044574;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	53	53	.	.	.	ID=VAR_005854;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	53	53	.	.	.	ID=VAR_044575;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	54	54	.	.	.	ID=VAR_044576;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	54	54	.	.	.	ID=VAR_044577;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Mutagenesis	55	55	.	.	.	Note=Blocks phosphorylation by TAF1.	
+P04637	UniProtKB	Natural variant	56	56	.	.	.	ID=VAR_044578;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	56	56	.	.	.	ID=VAR_044579;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	58	58	.	.	.	ID=VAR_044580;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	58	58	.	.	.	ID=VAR_044581;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	59	59	.	.	.	ID=VAR_044582;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	59	59	.	.	.	ID=VAR_044583;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	59	59	.	.	.	ID=VAR_045783;Note=In a sporadic cancer%3B somatic mutation%3B requires 2 nucleotide substitutions.	
+P04637	UniProtKB	Natural variant	60	60	.	.	.	ID=VAR_005855;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	60	60	.	.	.	ID=VAR_044584;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	60	60	.	.	.	ID=VAR_044585;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	61	61	.	.	.	ID=VAR_044586;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	61	61	.	.	.	ID=VAR_044587;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	62	62	.	.	.	ID=VAR_044588;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	63	63	.	.	.	ID=VAR_044589;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	63	63	.	.	.	ID=VAR_044590;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	65	65	.	.	.	ID=VAR_044591;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	66	66	.	.	.	ID=VAR_044592;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	66	66	.	.	.	ID=VAR_044593;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	67	67	.	.	.	ID=VAR_044594;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	67	67	.	.	.	ID=VAR_044595;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	67	67	.	.	.	ID=VAR_044596;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	68	68	.	.	.	ID=VAR_044597;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	68	68	.	.	.	ID=VAR_044598;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	69	69	.	.	.	ID=VAR_044599;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	69	69	.	.	.	ID=VAR_044600;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	69	69	.	.	.	ID=VAR_044601;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	69	69	.	.	.	ID=VAR_044602;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	70	70	.	.	.	ID=VAR_044603;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	71	71	.	.	.	ID=VAR_044604;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	72	72	.	.	.	ID=VAR_005856	
+P04637	UniProtKB	Natural variant	72	72	.	.	.	ID=VAR_045784;Note=In sporadic cancers%3B somatic mutation%3B requires 2 nucleotide substitutions.	
+P04637	UniProtKB	Natural variant	72	72	.	.	.	ID=VAR_045785;Note=In sporadic cancers%3B somatic mutation%3B requires 2 nucleotide substitutions.	
+P04637	UniProtKB	Natural variant	72	72	.	.	.	ID=VAR_045786;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	72	72	.	.	.	ID=VAR_045787;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	73	73	.	.	.	ID=VAR_044605;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	73	73	.	.	.	ID=VAR_044606;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	73	73	.	.	.	ID=VAR_044607;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	74	74	.	.	.	ID=VAR_044608;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	75	75	.	.	.	ID=VAR_044609;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	75	75	.	.	.	ID=VAR_044610;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	75	75	.	.	.	ID=VAR_044611;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	76	76	.	.	.	ID=VAR_044612;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	76	76	.	.	.	ID=VAR_044613;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	77	77	.	.	.	ID=VAR_044614;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	78	78	.	.	.	ID=VAR_044615;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	79	79	.	.	.	ID=VAR_005857;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	79	79	.	.	.	ID=VAR_044616;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	79	79	.	.	.	ID=VAR_044617;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	80	80	.	.	.	ID=VAR_044618;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	80	80	.	.	.	ID=VAR_044619;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	81	81	.	.	.	ID=VAR_044620;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	82	82	.	.	.	ID=VAR_044621;Note=In LFS%3B germline mutation and in sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	82	82	.	.	.	ID=VAR_044622;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	83	83	.	.	.	ID=VAR_044623;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	83	83	.	.	.	ID=VAR_044624;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	84	84	.	.	.	ID=VAR_044625;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	84	84	.	.	.	ID=VAR_044626;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	85	85	.	.	.	ID=VAR_044627;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	85	85	.	.	.	ID=VAR_044628;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	86	86	.	.	.	ID=VAR_044629;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	87	87	.	.	.	ID=VAR_005858;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	88	88	.	.	.	ID=VAR_044630;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	88	88	.	.	.	ID=VAR_044631;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	89	89	.	.	.	ID=VAR_044632;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	89	89	.	.	.	ID=VAR_044633;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	90	90	.	.	.	ID=VAR_044634;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	90	90	.	.	.	ID=VAR_044635;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	91	91	.	.	.	ID=VAR_044636;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	92	92	.	.	.	ID=VAR_044637;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	92	92	.	.	.	ID=VAR_044638;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	92	92	.	.	.	ID=VAR_044639;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	93	93	.	.	.	ID=VAR_044640;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	93	93	.	.	.	ID=VAR_044641;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	94	94	.	.	.	ID=VAR_005859;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	94	94	.	.	.	ID=VAR_044642;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	95	95	.	.	.	ID=VAR_044643;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	95	95	.	.	.	ID=VAR_044644;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	96	96	.	.	.	ID=VAR_044645;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	96	96	.	.	.	ID=VAR_044646;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	96	96	.	.	.	ID=VAR_044647;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	97	97	.	.	.	ID=VAR_044648;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	97	97	.	.	.	ID=VAR_044649;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	97	97	.	.	.	ID=VAR_044650;Note=In familial cancer not matching LFS%3B germline mutation and in a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	98	98	.	.	.	ID=VAR_044651;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	98	98	.	.	.	ID=VAR_044652;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	99	99	.	.	.	ID=VAR_044653;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	99	99	.	.	.	ID=VAR_044654;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	100	100	.	.	.	ID=VAR_044655;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	101	101	.	.	.	ID=VAR_044656;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	101	101	.	.	.	ID=VAR_044657;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	102	102	.	.	.	ID=VAR_044658;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	104	104	.	.	.	ID=VAR_044659;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	104	104	.	.	.	ID=VAR_044660;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	105	105	.	.	.	ID=VAR_044661;Note=In LFS%3B germline mutation and in sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	105	105	.	.	.	ID=VAR_044662;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	105	105	.	.	.	ID=VAR_044663;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	105	105	.	.	.	ID=VAR_044664;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	105	105	.	.	.	ID=VAR_044665;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	106	106	.	.	.	ID=VAR_044666;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	106	106	.	.	.	ID=VAR_044667;Note=In a familial cancer not matching LFS%3B germline mutation and in sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	107	107	.	.	.	ID=VAR_044668;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	107	107	.	.	.	ID=VAR_044669;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	107	107	.	.	.	ID=VAR_044670;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	108	108	.	.	.	ID=VAR_044671;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	108	108	.	.	.	ID=VAR_044672;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	109	109	.	.	.	ID=VAR_044673;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	109	109	.	.	.	ID=VAR_044674;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	109	109	.	.	.	ID=VAR_044675;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	110	110	.	.	.	ID=VAR_005860;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	110	110	.	.	.	ID=VAR_005861;Note=In a familial cancer not matching LFS%3B germline mutation and in sporadic cancers%3B somatic mutation%3B does not induce SNAI1 degradation.	
+P04637	UniProtKB	Natural variant	110	110	.	.	.	ID=VAR_005862;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	110	110	.	.	.	ID=VAR_044676;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	110	110	.	.	.	ID=VAR_044677;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	110	110	.	.	.	ID=VAR_044678;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	111	111	.	.	.	ID=VAR_044679;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	111	111	.	.	.	ID=VAR_044680;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	111	111	.	.	.	ID=VAR_044681;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	111	111	.	.	.	ID=VAR_044682;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	112	112	.	.	.	ID=VAR_044683;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	112	112	.	.	.	ID=VAR_044684;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	113	113	.	.	.	ID=VAR_005863;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	113	113	.	.	.	ID=VAR_033033;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	113	113	.	.	.	ID=VAR_044685;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	113	113	.	.	.	ID=VAR_044686;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	113	113	.	.	.	ID=VAR_044687;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	113	113	.	.	.	ID=VAR_045788;Note=In a sporadic cancer%3B somatic mutation%3B requires 2 nucleotide substitutions.	
+P04637	UniProtKB	Natural variant	115	115	.	.	.	ID=VAR_044688;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	116	116	.	.	.	ID=VAR_044689;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	116	116	.	.	.	ID=VAR_044690;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	116	116	.	.	.	ID=VAR_044691;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	117	117	.	.	.	ID=VAR_044692;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	117	117	.	.	.	ID=VAR_044693;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	118	118	.	.	.	ID=VAR_044694;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	118	118	.	.	.	ID=VAR_044695;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	118	118	.	.	.	ID=VAR_044696;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	119	119	.	.	.	ID=VAR_044697;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	119	119	.	.	.	ID=VAR_044698;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	120	120	.	.	.	ID=VAR_044699;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	120	120	.	.	.	ID=VAR_044700;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	120	120	.	.	.	ID=VAR_044701;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	120	120	.	.	.	ID=VAR_044702;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Site	120	120	.	.	.	Note=Interaction with DNA	
+P04637	UniProtKB	Natural variant	121	121	.	.	.	ID=VAR_044703;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	122	122	.	.	.	ID=VAR_044704;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	123	123	.	.	.	ID=VAR_044705;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	123	123	.	.	.	ID=VAR_044706;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	124	124	.	.	.	ID=VAR_044707;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	124	124	.	.	.	ID=VAR_044708;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	124	124	.	.	.	ID=VAR_044709;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	124	124	.	.	.	ID=VAR_044710;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	124	124	.	.	.	ID=VAR_044711;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	125	125	.	.	.	ID=VAR_005864;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	125	125	.	.	.	ID=VAR_044712;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	125	125	.	.	.	ID=VAR_044713;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	125	125	.	.	.	ID=VAR_044714;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	125	125	.	.	.	ID=VAR_044715;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	126	126	.	.	.	ID=VAR_005865;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	126	126	.	.	.	ID=VAR_005866;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	126	126	.	.	.	ID=VAR_044716;Note=In a familial cancer not matching LFS%3B germline mutation and in sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	126	126	.	.	.	ID=VAR_044717;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	126	126	.	.	.	ID=VAR_044718;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	126	126	.	.	.	ID=VAR_044719;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	126	126	.	.	.	ID=VAR_045789;Note=In a sporadic cancer%3B somatic mutation%3B requires 2 nucleotide substitutions.	
+P04637	UniProtKB	Natural variant	127	127	.	.	.	ID=VAR_005867;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	127	127	.	.	.	ID=VAR_044720;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	127	127	.	.	.	ID=VAR_044721;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	127	127	.	.	.	ID=VAR_044722;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	127	127	.	.	.	ID=VAR_044723;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	128	128	.	.	.	ID=VAR_005868;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	128	128	.	.	.	ID=VAR_044724;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	128	128	.	.	.	ID=VAR_044725;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	128	128	.	.	.	ID=VAR_044726;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	129	129	.	.	.	ID=VAR_005869;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	129	129	.	.	.	ID=VAR_044727;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	129	129	.	.	.	ID=VAR_044728;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	129	129	.	.	.	ID=VAR_044729;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	130	130	.	.	.	ID=VAR_005870;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	130	130	.	.	.	ID=VAR_044730;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	130	130	.	.	.	ID=VAR_044731;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	130	130	.	.	.	ID=VAR_044732;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	130	130	.	.	.	ID=VAR_044733;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	130	130	.	.	.	ID=VAR_044734;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	131	131	.	.	.	ID=VAR_005871;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	131	131	.	.	.	ID=VAR_005872;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	131	131	.	.	.	ID=VAR_044735;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	131	131	.	.	.	ID=VAR_044736;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	131	131	.	.	.	ID=VAR_044737;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	131	131	.	.	.	ID=VAR_044738;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	131	131	.	.	.	ID=VAR_044739;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	132	132	.	.	.	ID=VAR_005873;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	132	132	.	.	.	ID=VAR_005874;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	132	132	.	.	.	ID=VAR_044740;Note=In LFS%3B germline mutation and in sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	132	132	.	.	.	ID=VAR_044741;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	132	132	.	.	.	ID=VAR_044742;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	132	132	.	.	.	ID=VAR_044743;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	132	132	.	.	.	ID=VAR_045790;Note=In a sporadic cancer%3B somatic mutation%3B requires 2 nucleotide substitutions.	
+P04637	UniProtKB	Natural variant	132	132	.	.	.	ID=VAR_045791;Note=In a sporadic cancer%3B somatic mutation%3B requires 2 nucleotide substitutions.	
+P04637	UniProtKB	Natural variant	132	133	.	.	.	ID=VAR_047159;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	133	133	.	.	.	ID=VAR_005875;Note=In LFS%3B germline mutation and in sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	133	133	.	.	.	ID=VAR_044744;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	133	133	.	.	.	ID=VAR_044745;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	133	133	.	.	.	ID=VAR_044746;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	133	133	.	.	.	ID=VAR_044747;Note=In LFS%3B germline mutation and in sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	133	133	.	.	.	ID=VAR_044748;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	134	134	.	.	.	ID=VAR_036504;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	134	134	.	.	.	ID=VAR_044749;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	134	134	.	.	.	ID=VAR_044750;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	134	134	.	.	.	ID=VAR_044751;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	134	134	.	.	.	ID=VAR_044752;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	135	135	.	.	.	ID=VAR_005876;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	135	135	.	.	.	ID=VAR_005877;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	135	135	.	.	.	ID=VAR_044753;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	135	135	.	.	.	ID=VAR_044754;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	135	135	.	.	.	ID=VAR_044755;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	135	135	.	.	.	ID=VAR_044756;Note=In sporadic cancers%3B somatic mutation%3B decreased E6-mediated binding to E6-AP.	
+P04637	UniProtKB	Natural variant	135	135	.	.	.	ID=VAR_045792;Note=In a sporadic cancer%3B somatic mutation%3B requires 2 nucleotide substitutions.	
+P04637	UniProtKB	Natural variant	136	136	.	.	.	ID=VAR_005878;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	136	136	.	.	.	ID=VAR_005879;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	136	136	.	.	.	ID=VAR_044757;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	136	136	.	.	.	ID=VAR_044758;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	136	136	.	.	.	ID=VAR_044759;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	137	137	.	.	.	ID=VAR_005880;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	137	137	.	.	.	ID=VAR_044760;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	137	137	.	.	.	ID=VAR_044761;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	137	137	.	.	.	ID=VAR_044762;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	138	138	.	.	.	ID=VAR_005881;Note=In LFS%3B germline mutation and in sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	138	138	.	.	.	ID=VAR_033034;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	138	138	.	.	.	ID=VAR_044763;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	138	138	.	.	.	ID=VAR_044764;Note=In LFS%3B germline mutation.	
+P04637	UniProtKB	Natural variant	138	138	.	.	.	ID=VAR_044765;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	139	139	.	.	.	ID=VAR_005882;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	139	139	.	.	.	ID=VAR_044766;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	139	139	.	.	.	ID=VAR_044767;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	139	139	.	.	.	ID=VAR_044768;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	139	139	.	.	.	ID=VAR_044769;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	140	140	.	.	.	ID=VAR_044770;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	140	140	.	.	.	ID=VAR_044771;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	140	140	.	.	.	ID=VAR_044772;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	140	140	.	.	.	ID=VAR_044773;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	140	140	.	.	.	ID=VAR_044774;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	141	141	.	.	.	ID=VAR_005884;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	141	141	.	.	.	ID=VAR_005885;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	141	141	.	.	.	ID=VAR_005886;Note=In LFS%3B germline mutation and in sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	141	141	.	.	.	ID=VAR_044775;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	141	141	.	.	.	ID=VAR_044776;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	141	141	.	.	.	ID=VAR_044777;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	141	141	.	.	.	ID=VAR_045793;Note=In a sporadic cancer%3B somatic mutation%3B requires 2 nucleotide substitutions.	
+P04637	UniProtKB	Natural variant	142	142	.	.	.	ID=VAR_044778;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	142	142	.	.	.	ID=VAR_044779;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	142	142	.	.	.	ID=VAR_044780;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	142	142	.	.	.	ID=VAR_044781;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	142	142	.	.	.	ID=VAR_044782;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	142	142	.	.	.	ID=VAR_044783;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	142	142	.	.	.	ID=VAR_045794;Note=In sporadic cancers%3B somatic mutation%3B requires 2 nucleotide substitutions.	
+P04637	UniProtKB	Natural variant	143	143	.	.	.	ID=VAR_005887;Note=In sporadic cancers%3B somatic mutation%3B strong DNA binding ability at 32.5 degrees Celsius%3B strong reduction of transcriptional activity at 37.5 degrees Celsius.	
+P04637	UniProtKB	Natural variant	143	143	.	.	.	ID=VAR_044784;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	143	143	.	.	.	ID=VAR_044785;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	143	143	.	.	.	ID=VAR_044786;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	143	143	.	.	.	ID=VAR_044787;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	144	144	.	.	.	ID=VAR_005888;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	144	144	.	.	.	ID=VAR_044788;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	144	144	.	.	.	ID=VAR_044789;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	144	144	.	.	.	ID=VAR_044790;Note=In LFS%3B germline mutation and in sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	144	144	.	.	.	ID=VAR_044791;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	145	145	.	.	.	ID=VAR_005889;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	145	145	.	.	.	ID=VAR_005890;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	145	145	.	.	.	ID=VAR_044792;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	145	145	.	.	.	ID=VAR_044793;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	145	145	.	.	.	ID=VAR_044794;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	146	146	.	.	.	ID=VAR_044795;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	146	146	.	.	.	ID=VAR_044796;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	146	146	.	.	.	ID=VAR_044797;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	146	146	.	.	.	ID=VAR_044798;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	146	146	.	.	.	ID=VAR_044799;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	147	147	.	.	.	ID=VAR_005891;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	147	147	.	.	.	ID=VAR_005892;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	147	147	.	.	.	ID=VAR_044800;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	147	147	.	.	.	ID=VAR_044801;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	147	147	.	.	.	ID=VAR_044802;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	147	147	.	.	.	ID=VAR_044803;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	148	148	.	.	.	ID=VAR_044804;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	148	148	.	.	.	ID=VAR_044805;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	148	148	.	.	.	ID=VAR_044806;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	148	148	.	.	.	ID=VAR_044807;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	148	148	.	.	.	ID=VAR_044808;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	148	148	.	.	.	ID=VAR_044809;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	149	149	.	.	.	ID=VAR_005893;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	149	149	.	.	.	ID=VAR_044810;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	149	149	.	.	.	ID=VAR_044811;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	150	150	.	.	.	ID=VAR_044812;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	150	150	.	.	.	ID=VAR_044813;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	150	150	.	.	.	ID=VAR_044814;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	150	150	.	.	.	ID=VAR_044815;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	150	150	.	.	.	ID=VAR_044816;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	150	150	.	.	.	ID=VAR_044817;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	151	151	.	.	.	ID=VAR_005894;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	151	151	.	.	.	ID=VAR_005895;Note=In LFS%3B germline mutation and in sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	151	151	.	.	.	ID=VAR_005896;Note=In LFS%3B germline mutation and in sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	151	151	.	.	.	ID=VAR_044818;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	151	151	.	.	.	ID=VAR_044819;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	151	151	.	.	.	ID=VAR_044820;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	152	152	.	.	.	ID=VAR_005897;Note=In LFS%3B germline mutation and in sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	152	152	.	.	.	ID=VAR_005898;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	152	152	.	.	.	ID=VAR_044821;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	152	152	.	.	.	ID=VAR_044822;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	152	152	.	.	.	ID=VAR_044823;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	152	152	.	.	.	ID=VAR_044824;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	153	153	.	.	.	ID=VAR_005899;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	153	153	.	.	.	ID=VAR_044825;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	153	153	.	.	.	ID=VAR_044826;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	153	153	.	.	.	ID=VAR_044827;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	153	153	.	.	.	ID=VAR_044828;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	153	153	.	.	.	ID=VAR_044829;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	153	153	.	.	.	ID=VAR_045795;Note=In a sporadic cancer%3B somatic mutation%3B requires 2 nucleotide substitutions.	
+P04637	UniProtKB	Natural variant	154	154	.	.	.	ID=VAR_005900;Note=In a brain tumor with no family history%3B germline mutation and in sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	154	154	.	.	.	ID=VAR_044830;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	154	154	.	.	.	ID=VAR_044831;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	154	154	.	.	.	ID=VAR_044832;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	154	154	.	.	.	ID=VAR_044833;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	154	154	.	.	.	ID=VAR_045796;Note=In sporadic cancers%3B somatic mutation%3B requires 2 nucleotide substitutions.	
+P04637	UniProtKB	Natural variant	155	155	.	.	.	ID=VAR_005901;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	155	155	.	.	.	ID=VAR_044834;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	155	155	.	.	.	ID=VAR_044835;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	155	155	.	.	.	ID=VAR_044836;Note=In LFS%3B germline mutation and in sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	155	155	.	.	.	ID=VAR_044837;Note=In sporadic cancers%3B somatic mutation%3B does not induce SNAI1 degradation.	
+P04637	UniProtKB	Natural variant	155	155	.	.	.	ID=VAR_044838;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	156	156	.	.	.	ID=VAR_005902;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	156	156	.	.	.	ID=VAR_044839;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	156	156	.	.	.	ID=VAR_044840;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	156	156	.	.	.	ID=VAR_044841;Note=In LFS%3B germline mutation and in sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	156	156	.	.	.	ID=VAR_044842;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	156	156	.	.	.	ID=VAR_044843;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	157	157	.	.	.	ID=VAR_005903;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	157	157	.	.	.	ID=VAR_005904;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	157	157	.	.	.	ID=VAR_012977;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	157	157	.	.	.	ID=VAR_044844;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	157	157	.	.	.	ID=VAR_044845;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	157	157	.	.	.	ID=VAR_044846;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	158	158	.	.	.	ID=VAR_005905;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	158	158	.	.	.	ID=VAR_005906;Note=In LFS%3B germline mutation and in sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	158	158	.	.	.	ID=VAR_005907;Note=In LFS%3B germline mutation and in sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	158	158	.	.	.	ID=VAR_044847;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	158	158	.	.	.	ID=VAR_044848;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	158	158	.	.	.	ID=VAR_044849;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	158	158	.	.	.	ID=VAR_044850;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	158	158	.	.	.	ID=VAR_045797;Note=In a sporadic cancer%3B somatic mutation%3B requires 2 nucleotide substitutions.	
+P04637	UniProtKB	Natural variant	158	158	.	.	.	ID=VAR_045798;Note=In a sporadic cancer%3B somatic mutation%3B requires 2 nucleotide substitutions.	
+P04637	UniProtKB	Natural variant	159	159	.	.	.	ID=VAR_044851;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	159	159	.	.	.	ID=VAR_044852;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	159	159	.	.	.	ID=VAR_044853;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	159	159	.	.	.	ID=VAR_044854;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	159	159	.	.	.	ID=VAR_044855;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	159	159	.	.	.	ID=VAR_044856;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	159	159	.	.	.	ID=VAR_045799;Note=In a sporadic cancer%3B somatic mutation%3B requires 2 nucleotide substitutions.	
+P04637	UniProtKB	Natural variant	160	160	.	.	.	ID=VAR_005908;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	160	160	.	.	.	ID=VAR_044857;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	160	160	.	.	.	ID=VAR_044858;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	160	160	.	.	.	ID=VAR_044859;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	160	161	.	.	.	ID=VAR_047160;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	160	161	.	.	.	ID=VAR_047161;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	160	161	.	.	.	ID=VAR_047162;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	161	161	.	.	.	ID=VAR_005909;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	161	161	.	.	.	ID=VAR_044860;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	161	161	.	.	.	ID=VAR_044861;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	161	161	.	.	.	ID=VAR_044862;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	161	161	.	.	.	ID=VAR_044863;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	161	161	.	.	.	ID=VAR_044864;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	161	161	.	.	.	ID=VAR_045800;Note=In a sporadic cancer%3B somatic mutation%3B requires 2 nucleotide substitutions.	
+P04637	UniProtKB	Natural variant	162	162	.	.	.	ID=VAR_005910;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	162	162	.	.	.	ID=VAR_005911;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	162	162	.	.	.	ID=VAR_044865;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	162	162	.	.	.	ID=VAR_044866;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	162	162	.	.	.	ID=VAR_044867;Note=In a breast cancer with no family history%3B germline mutation and in sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	162	162	.	.	.	ID=VAR_044868;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	163	163	.	.	.	ID=VAR_005912;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	163	163	.	.	.	ID=VAR_033035;Note=In LFS%3B germline mutation and in sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	163	163	.	.	.	ID=VAR_044869;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	163	163	.	.	.	ID=VAR_044870;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	163	163	.	.	.	ID=VAR_044871;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	163	163	.	.	.	ID=VAR_044872;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	164	164	.	.	.	ID=VAR_005913;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	164	164	.	.	.	ID=VAR_005914;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	164	164	.	.	.	ID=VAR_044873;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	164	164	.	.	.	ID=VAR_044874;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	164	164	.	.	.	ID=VAR_044875;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	164	164	.	.	.	ID=VAR_044876;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	165	165	.	.	.	ID=VAR_005915;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	165	165	.	.	.	ID=VAR_005916;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	165	165	.	.	.	ID=VAR_044877;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	165	165	.	.	.	ID=VAR_044878;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	165	165	.	.	.	ID=VAR_044879;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	166	166	.	.	.	ID=VAR_005917;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	166	166	.	.	.	ID=VAR_044880;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	166	166	.	.	.	ID=VAR_044881;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	166	166	.	.	.	ID=VAR_044882;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	166	166	.	.	.	ID=VAR_044883;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	167	167	.	.	.	ID=VAR_044884;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	167	167	.	.	.	ID=VAR_044885;Note=In LFS%3B germline mutation and in a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	167	167	.	.	.	ID=VAR_044886;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	167	167	.	.	.	ID=VAR_044887;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	167	168	.	.	.	ID=VAR_047163;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	167	168	.	.	.	ID=VAR_047164;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	168	168	.	.	.	ID=VAR_005918;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	168	168	.	.	.	ID=VAR_044888;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	168	168	.	.	.	ID=VAR_044889;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	168	168	.	.	.	ID=VAR_044890;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	168	168	.	.	.	ID=VAR_044891;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	168	168	.	.	.	ID=VAR_044892;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	168	168	.	.	.	ID=VAR_044893;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	168	168	.	.	.	ID=VAR_045801;Note=In a sporadic cancer%3B somatic mutation%3B requires 2 nucleotide substitutions.	
+P04637	UniProtKB	Natural variant	168	169	.	.	.	ID=VAR_047165;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	169	169	.	.	.	ID=VAR_005919;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	169	169	.	.	.	ID=VAR_005920;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	169	169	.	.	.	ID=VAR_044894;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	169	169	.	.	.	ID=VAR_044895;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	169	170	.	.	.	ID=VAR_047166;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	170	170	.	.	.	ID=VAR_005921;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	170	170	.	.	.	ID=VAR_005922;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	170	170	.	.	.	ID=VAR_044896;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	170	170	.	.	.	ID=VAR_044897;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	170	170	.	.	.	ID=VAR_044898;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	171	171	.	.	.	ID=VAR_044899;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	171	171	.	.	.	ID=VAR_044900;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	171	171	.	.	.	ID=VAR_044901;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	171	171	.	.	.	ID=VAR_044902;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	171	171	.	.	.	ID=VAR_044903;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	171	171	.	.	.	ID=VAR_044904;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	172	172	.	.	.	ID=VAR_005923;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	172	172	.	.	.	ID=VAR_044905;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	172	172	.	.	.	ID=VAR_044906;Note=In LFS%3B germline mutation and in sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	172	172	.	.	.	ID=VAR_044907;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	172	172	.	.	.	ID=VAR_044908;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	173	173	.	.	.	ID=VAR_005924;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	173	173	.	.	.	ID=VAR_005925;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	173	173	.	.	.	ID=VAR_005926;Note=In LFS%3B germline mutation and in sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	173	173	.	.	.	ID=VAR_044909;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	173	173	.	.	.	ID=VAR_044910;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	173	173	.	.	.	ID=VAR_045802;Note=In a sporadic cancer%3B somatic mutation%3B requires 2 nucleotide substitutions.	
+P04637	UniProtKB	Natural variant	174	174	.	.	.	ID=VAR_005927;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	174	174	.	.	.	ID=VAR_044911;Note=In LFS%3B germline mutation and in a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	174	174	.	.	.	ID=VAR_044912;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	174	174	.	.	.	ID=VAR_044913;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	174	174	.	.	.	ID=VAR_044914;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	174	174	.	.	.	ID=VAR_044915;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	175	175	.	.	.	ID=VAR_005928;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	175	175	.	.	.	ID=VAR_005929;Note=In LFS%3B germline mutation and in sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	175	175	.	.	.	ID=VAR_005930;Note=In LFS%3B germline mutation and in sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	175	175	.	.	.	ID=VAR_005931;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	175	175	.	.	.	ID=VAR_005932;Note=In LFS%3B germline mutation and in sporadic cancers%3B somatic mutation%3B does not induce SNAI1 degradation.	
+P04637	UniProtKB	Natural variant	175	175	.	.	.	ID=VAR_044916;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	175	175	.	.	.	ID=VAR_044917;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	176	176	.	.	.	ID=VAR_005933;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	176	176	.	.	.	ID=VAR_005934;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	176	176	.	.	.	ID=VAR_044918;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	176	176	.	.	.	ID=VAR_044919;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	176	176	.	.	.	ID=VAR_044920;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	176	176	.	.	.	ID=VAR_044921;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	176	177	.	.	.	ID=VAR_047167;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	177	177	.	.	.	ID=VAR_005935;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	177	177	.	.	.	ID=VAR_036505;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	177	177	.	.	.	ID=VAR_044922;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	177	177	.	.	.	ID=VAR_044923;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	177	177	.	.	.	ID=VAR_044924;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	177	177	.	.	.	ID=VAR_044925;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	177	177	.	.	.	ID=VAR_045803;Note=In sporadic cancers%3B somatic mutation%3B requires 2 nucleotide substitutions.	
+P04637	UniProtKB	Natural variant	177	177	.	.	.	ID=VAR_045804;Note=In a sporadic cancer%3B somatic mutation%3B requires 2 nucleotide substitutions.	
+P04637	UniProtKB	Natural variant	178	178	.	.	.	ID=VAR_005936;Note=In a Burkitt lymphoma.	
+P04637	UniProtKB	Natural variant	178	178	.	.	.	ID=VAR_044926;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	178	178	.	.	.	ID=VAR_044927;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	178	178	.	.	.	ID=VAR_044928;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	178	178	.	.	.	ID=VAR_044929;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	178	178	.	.	.	ID=VAR_044930;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	178	178	.	.	.	ID=VAR_044931;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	178	178	.	.	.	ID=VAR_044932;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	178	179	.	.	.	ID=VAR_047168;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	179	179	.	.	.	ID=VAR_044933;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	179	179	.	.	.	ID=VAR_044934;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	179	179	.	.	.	ID=VAR_044935;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	179	179	.	.	.	ID=VAR_044936;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	179	179	.	.	.	ID=VAR_044937;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	179	179	.	.	.	ID=VAR_044938;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	179	179	.	.	.	ID=VAR_044939;Note=In LFS%3B germline mutation and in sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	180	180	.	.	.	ID=VAR_044940;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	180	180	.	.	.	ID=VAR_044941;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	180	180	.	.	.	ID=VAR_044942;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	180	180	.	.	.	ID=VAR_044943;Note=In LFS%3B germline mutation and in sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	180	180	.	.	.	ID=VAR_044944;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	180	180	.	.	.	ID=VAR_044945;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	181	181	.	.	.	ID=VAR_005937;Note=In a familial cancer not matching LFS%3B germline mutation and in sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	181	181	.	.	.	ID=VAR_044946;Note=In LFS%3B germline mutation and in sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	181	181	.	.	.	ID=VAR_044947;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	181	181	.	.	.	ID=VAR_044948;Note=In LFS%3B germline mutation and in sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	181	181	.	.	.	ID=VAR_044949;Note=In a familial cancer not matching LFS%3B germline mutation and in sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	181	181	.	.	.	ID=VAR_044950;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	182	182	.	.	.	ID=VAR_005938;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	182	182	.	.	.	ID=VAR_044951;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	182	182	.	.	.	ID=VAR_044952;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Mutagenesis	183	183	.	.	.	Note=Abolishes strongly phosphorylation.	
+P04637	UniProtKB	Mutagenesis	183	183	.	.	.	Note=Inhibits slightly its transcriptional activity.	
+P04637	UniProtKB	Natural variant	183	183	.	.	.	ID=VAR_044953;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	183	183	.	.	.	ID=VAR_044954;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	184	184	.	.	.	ID=VAR_005939;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	184	184	.	.	.	ID=VAR_044955;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	184	184	.	.	.	ID=VAR_044956;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	184	184	.	.	.	ID=VAR_044957;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	184	184	.	.	.	ID=VAR_047169;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	185	185	.	.	.	ID=VAR_044958;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	185	185	.	.	.	ID=VAR_044959;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	185	185	.	.	.	ID=VAR_044960;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	185	185	.	.	.	ID=VAR_044961;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	185	185	.	.	.	ID=VAR_044962;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	185	185	.	.	.	ID=VAR_044963;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	186	186	.	.	.	ID=VAR_005940;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	186	186	.	.	.	ID=VAR_044964;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	186	186	.	.	.	ID=VAR_044965;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	186	186	.	.	.	ID=VAR_044966;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	186	186	.	.	.	ID=VAR_044967;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	186	186	.	.	.	ID=VAR_044968;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	187	187	.	.	.	ID=VAR_005941;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	187	187	.	.	.	ID=VAR_005942;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	187	187	.	.	.	ID=VAR_044969;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	187	187	.	.	.	ID=VAR_044970;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	187	187	.	.	.	ID=VAR_044971;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	187	187	.	.	.	ID=VAR_045805;Note=In a sporadic cancer%3B somatic mutation%3B requires 2 nucleotide substitutions.	
+P04637	UniProtKB	Natural variant	188	188	.	.	.	ID=VAR_044972;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	188	188	.	.	.	ID=VAR_044973;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	189	189	.	.	.	ID=VAR_005943;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	189	189	.	.	.	ID=VAR_044974;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	189	189	.	.	.	ID=VAR_044975;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	189	189	.	.	.	ID=VAR_044976;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	189	189	.	.	.	ID=VAR_044977;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	189	189	.	.	.	ID=VAR_044978;Note=In a familial cancer not matching LFS%3B germline mutation and in sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	190	190	.	.	.	ID=VAR_005944;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	190	190	.	.	.	ID=VAR_044979;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	190	190	.	.	.	ID=VAR_044980;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	190	190	.	.	.	ID=VAR_044981;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	190	190	.	.	.	ID=VAR_044982;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	190	190	.	.	.	ID=VAR_044983;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	191	191	.	.	.	ID=VAR_005945;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	191	191	.	.	.	ID=VAR_044984;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	191	191	.	.	.	ID=VAR_044985;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	191	191	.	.	.	ID=VAR_044986;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	191	191	.	.	.	ID=VAR_044987;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	192	192	.	.	.	ID=VAR_005946;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	192	192	.	.	.	ID=VAR_044988;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	192	192	.	.	.	ID=VAR_044989;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	192	192	.	.	.	ID=VAR_044990;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	192	192	.	.	.	ID=VAR_044991;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	192	193	.	.	.	ID=VAR_047170;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	192	193	.	.	.	ID=VAR_047171;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	193	193	.	.	.	ID=VAR_005947;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	193	193	.	.	.	ID=VAR_005948;Note=In LFS%3B germline mutation and in sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	193	193	.	.	.	ID=VAR_044992;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	193	193	.	.	.	ID=VAR_044993;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	193	193	.	.	.	ID=VAR_044994;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	193	193	.	.	.	ID=VAR_044995;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	193	193	.	.	.	ID=VAR_044996;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	194	194	.	.	.	ID=VAR_005949;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	194	194	.	.	.	ID=VAR_005950;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	194	194	.	.	.	ID=VAR_044997;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	194	194	.	.	.	ID=VAR_044998;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	194	194	.	.	.	ID=VAR_044999;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	194	194	.	.	.	ID=VAR_045000;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	195	195	.	.	.	ID=VAR_005951;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	195	195	.	.	.	ID=VAR_045001;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	195	195	.	.	.	ID=VAR_045002;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	195	195	.	.	.	ID=VAR_045003;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	195	195	.	.	.	ID=VAR_045004;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	195	195	.	.	.	ID=VAR_045806;Note=In a sporadic cancer%3B somatic mutation%3B requires 2 nucleotide substitutions.	
+P04637	UniProtKB	Natural variant	195	195	.	.	.	ID=VAR_047172;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	196	196	.	.	.	ID=VAR_045005;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	196	196	.	.	.	ID=VAR_045006;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	196	196	.	.	.	ID=VAR_045007;Note=In LFS%3B germline mutation and in sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	196	196	.	.	.	ID=VAR_045008;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	196	196	.	.	.	ID=VAR_045009;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	197	197	.	.	.	ID=VAR_045010;Note=In a familial cancer not matching LFS%3B germline mutation and in sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	197	197	.	.	.	ID=VAR_045011;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	197	197	.	.	.	ID=VAR_045012;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	197	197	.	.	.	ID=VAR_045013;Note=In LFS%3B germline mutation and in sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	198	198	.	.	.	ID=VAR_005952;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	198	198	.	.	.	ID=VAR_045014;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	198	198	.	.	.	ID=VAR_045015;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	198	198	.	.	.	ID=VAR_045016;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	198	198	.	.	.	ID=VAR_045017;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	199	199	.	.	.	ID=VAR_045018;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	199	199	.	.	.	ID=VAR_045019;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	199	199	.	.	.	ID=VAR_045020;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	199	199	.	.	.	ID=VAR_045021;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	200	200	.	.	.	ID=VAR_045022;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	200	200	.	.	.	ID=VAR_045023;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	200	200	.	.	.	ID=VAR_045024;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	200	200	.	.	.	ID=VAR_045025;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	200	200	.	.	.	ID=VAR_045026;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	200	200	.	.	.	ID=VAR_045807;Note=In a sporadic cancer%3B somatic mutation%3B requires 2 nucleotide substitutions.	
+P04637	UniProtKB	Natural variant	201	201	.	.	.	ID=VAR_045027;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	201	201	.	.	.	ID=VAR_045028;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	201	201	.	.	.	ID=VAR_045029;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	201	202	.	.	.	ID=VAR_047173;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	202	202	.	.	.	ID=VAR_045030;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	202	202	.	.	.	ID=VAR_045031;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	202	202	.	.	.	ID=VAR_045032;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	202	202	.	.	.	ID=VAR_045033;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	202	202	.	.	.	ID=VAR_045034;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	202	202	.	.	.	ID=VAR_045035;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	203	203	.	.	.	ID=VAR_045036;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	203	203	.	.	.	ID=VAR_045037;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	203	203	.	.	.	ID=VAR_045038;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	203	203	.	.	.	ID=VAR_045039;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	203	203	.	.	.	ID=VAR_045808;Note=In a sporadic cancer%3B somatic mutation%3B requires 2 nucleotide substitutions.	
+P04637	UniProtKB	Natural variant	203	204	.	.	.	ID=VAR_047174;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	204	204	.	.	.	ID=VAR_045040;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	204	204	.	.	.	ID=VAR_045041;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	204	204	.	.	.	ID=VAR_045042;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	204	204	.	.	.	ID=VAR_045043;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	204	204	.	.	.	ID=VAR_045044;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	204	204	.	.	.	ID=VAR_045045;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	205	205	.	.	.	ID=VAR_005953;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	205	205	.	.	.	ID=VAR_005954;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	205	205	.	.	.	ID=VAR_045046;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	205	205	.	.	.	ID=VAR_045047;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	205	205	.	.	.	ID=VAR_045048;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	205	205	.	.	.	ID=VAR_047175;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	206	206	.	.	.	ID=VAR_045049;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	206	206	.	.	.	ID=VAR_045050;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	207	207	.	.	.	ID=VAR_045051;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	207	207	.	.	.	ID=VAR_045052;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	207	207	.	.	.	ID=VAR_045053;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	207	207	.	.	.	ID=VAR_045054;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	207	207	.	.	.	ID=VAR_045055;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	207	207	.	.	.	ID=VAR_045056;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	207	208	.	.	.	ID=VAR_047176;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	208	208	.	.	.	ID=VAR_045057;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	208	208	.	.	.	ID=VAR_045058;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	208	208	.	.	.	ID=VAR_045059;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	208	208	.	.	.	ID=VAR_045060;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	208	208	.	.	.	ID=VAR_045061;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	208	208	.	.	.	ID=VAR_045062;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	208	208	.	.	.	ID=VAR_045809;Note=In a sporadic cancer%3B somatic mutation%3B requires 2 nucleotide substitutions.	
+P04637	UniProtKB	Natural variant	209	209	.	.	.	ID=VAR_045063;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	209	209	.	.	.	ID=VAR_045064;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	209	209	.	.	.	ID=VAR_045065;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	209	209	.	.	.	ID=VAR_045066;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	210	210	.	.	.	ID=VAR_045067;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	210	210	.	.	.	ID=VAR_045068;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	210	210	.	.	.	ID=VAR_045069;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	210	210	.	.	.	ID=VAR_045070;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	210	210	.	.	.	ID=VAR_045071;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	210	210	.	.	.	ID=VAR_045072;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	210	210	.	.	.	ID=VAR_045073;Note=In a familial cancer not matching LFS%3B germline mutation.	
+P04637	UniProtKB	Natural variant	211	211	.	.	.	ID=VAR_045074;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	211	211	.	.	.	ID=VAR_045075;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	211	211	.	.	.	ID=VAR_045076;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	211	211	.	.	.	ID=VAR_045077;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	211	211	.	.	.	ID=VAR_045078;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	212	212	.	.	.	ID=VAR_045079;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	212	212	.	.	.	ID=VAR_045080;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	212	212	.	.	.	ID=VAR_045081;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	212	212	.	.	.	ID=VAR_045082;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	212	212	.	.	.	ID=VAR_045083;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	213	213	.	.	.	ID=VAR_005955;Note=In LFS%3B germline mutation and in sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	213	213	.	.	.	ID=VAR_036506;Note=In LFS%3B germline mutation and in sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	213	213	.	.	.	ID=VAR_045084;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	213	213	.	.	.	ID=VAR_045085;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	213	213	.	.	.	ID=VAR_045086;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	214	214	.	.	.	ID=VAR_045087;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	214	214	.	.	.	ID=VAR_045088;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	214	214	.	.	.	ID=VAR_045089;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	214	214	.	.	.	ID=VAR_045090;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	214	214	.	.	.	ID=VAR_047177;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	215	215	.	.	.	ID=VAR_045091;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	215	215	.	.	.	ID=VAR_045092;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	215	215	.	.	.	ID=VAR_045093;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	215	215	.	.	.	ID=VAR_045094;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	215	215	.	.	.	ID=VAR_045095;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	215	215	.	.	.	ID=VAR_045096;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	215	215	.	.	.	ID=VAR_045810;Note=In sporadic cancers%3B somatic mutation%3B requires 2 nucleotide substitutions.	
+P04637	UniProtKB	Natural variant	216	216	.	.	.	ID=VAR_005956;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	216	216	.	.	.	ID=VAR_045097;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	216	216	.	.	.	ID=VAR_045098;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	216	216	.	.	.	ID=VAR_045099;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	216	216	.	.	.	ID=VAR_045100;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	216	216	.	.	.	ID=VAR_045811;Note=In a sporadic cancer%3B somatic mutation%3B requires 2 nucleotide substitutions.	
+P04637	UniProtKB	Natural variant	217	217	.	.	.	ID=VAR_045101;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	217	217	.	.	.	ID=VAR_045102;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	217	217	.	.	.	ID=VAR_045103;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	217	217	.	.	.	ID=VAR_045104;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	217	217	.	.	.	ID=VAR_045105;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	217	217	.	.	.	ID=VAR_047178	
+P04637	UniProtKB	Natural variant	218	218	.	.	.	ID=VAR_045106;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	218	218	.	.	.	ID=VAR_045107;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	218	218	.	.	.	ID=VAR_045108;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	218	218	.	.	.	ID=VAR_045109;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	218	218	.	.	.	ID=VAR_045110;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	219	219	.	.	.	ID=VAR_045111;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	219	219	.	.	.	ID=VAR_045112;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	219	219	.	.	.	ID=VAR_045113;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	219	219	.	.	.	ID=VAR_045114;Note=In a familial cancer not matching LFS%3B germline mutation and in sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	219	219	.	.	.	ID=VAR_045115;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	219	219	.	.	.	ID=VAR_045812;Note=In a sporadic cancer%3B somatic mutation%3B requires 2 nucleotide substitutions.	
+P04637	UniProtKB	Natural variant	220	220	.	.	.	ID=VAR_005957;Note=In LFS%3B germline mutation and in sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	220	220	.	.	.	ID=VAR_005958;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	220	220	.	.	.	ID=VAR_005959;Note=In a brain tumor with no family history%3B germline mutation and in sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	220	220	.	.	.	ID=VAR_045116;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	220	220	.	.	.	ID=VAR_045117;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	220	220	.	.	.	ID=VAR_045118;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	221	221	.	.	.	ID=VAR_045119;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	221	221	.	.	.	ID=VAR_045120;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	221	221	.	.	.	ID=VAR_045121;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	221	221	.	.	.	ID=VAR_045122;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	221	221	.	.	.	ID=VAR_045123;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	222	222	.	.	.	ID=VAR_045124;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	222	222	.	.	.	ID=VAR_045125;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	222	222	.	.	.	ID=VAR_045126;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	222	222	.	.	.	ID=VAR_045127;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	222	222	.	.	.	ID=VAR_045128;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	222	222	.	.	.	ID=VAR_045129;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	223	223	.	.	.	ID=VAR_045130;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	223	223	.	.	.	ID=VAR_045131;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	223	223	.	.	.	ID=VAR_045132;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	223	223	.	.	.	ID=VAR_045133;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	223	223	.	.	.	ID=VAR_045134;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	223	223	.	.	.	ID=VAR_047179;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	224	224	.	.	.	ID=VAR_045135;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	224	224	.	.	.	ID=VAR_045136;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	224	224	.	.	.	ID=VAR_045137;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	224	224	.	.	.	ID=VAR_045138;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	225	225	.	.	.	ID=VAR_045139;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	225	225	.	.	.	ID=VAR_045140;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	225	225	.	.	.	ID=VAR_045141;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	225	225	.	.	.	ID=VAR_045142;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	225	225	.	.	.	ID=VAR_045143;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	225	225	.	.	.	ID=VAR_045144;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	226	226	.	.	.	ID=VAR_045145;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	226	226	.	.	.	ID=VAR_045146;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	226	226	.	.	.	ID=VAR_045147;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	226	226	.	.	.	ID=VAR_045844;Note=In a sporadic cancer%3B somatic mutation%3B requires 2 nucleotide substitutions.	
+P04637	UniProtKB	Natural variant	226	226	.	.	.	ID=VAR_047180;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	227	227	.	.	.	ID=VAR_045148;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	227	227	.	.	.	ID=VAR_045149;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	227	227	.	.	.	ID=VAR_045150;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	227	227	.	.	.	ID=VAR_045151;Note=In LFS%3B germline mutation and in a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	228	228	.	.	.	ID=VAR_005960;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	228	228	.	.	.	ID=VAR_045152;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	228	228	.	.	.	ID=VAR_045153;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	228	228	.	.	.	ID=VAR_045154;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	228	228	.	.	.	ID=VAR_045155;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	228	228	.	.	.	ID=VAR_045156;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	228	228	.	.	.	ID=VAR_045157;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	228	228	.	.	.	ID=VAR_045845;Note=In a sporadic cancer%3B somatic mutation%3B requires 2 nucleotide substitutions.	
+P04637	UniProtKB	Natural variant	229	229	.	.	.	ID=VAR_045158;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	229	229	.	.	.	ID=VAR_045159;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	229	229	.	.	.	ID=VAR_045160;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	229	229	.	.	.	ID=VAR_045161;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	229	229	.	.	.	ID=VAR_045846;Note=In a sporadic cancer%3B somatic mutation%3B requires 2 nucleotide substitutions.	
+P04637	UniProtKB	Natural variant	230	230	.	.	.	ID=VAR_005961;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	230	230	.	.	.	ID=VAR_045162;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	230	230	.	.	.	ID=VAR_045163;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	230	230	.	.	.	ID=VAR_045164;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	230	230	.	.	.	ID=VAR_045165;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	231	231	.	.	.	ID=VAR_045166;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	231	231	.	.	.	ID=VAR_045167;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	231	231	.	.	.	ID=VAR_045168;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	231	231	.	.	.	ID=VAR_045169;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	232	232	.	.	.	ID=VAR_005962;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	232	232	.	.	.	ID=VAR_045170;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	232	232	.	.	.	ID=VAR_045171;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	232	232	.	.	.	ID=VAR_045172;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	232	232	.	.	.	ID=VAR_045173;Note=In sporadic cancers%3B somatic mutation%3B does not induce SNAI1 degradation.	
+P04637	UniProtKB	Natural variant	232	232	.	.	.	ID=VAR_045174;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	233	233	.	.	.	ID=VAR_045175;Note=In LFS%3B germline mutation and in a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	233	233	.	.	.	ID=VAR_045176;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	233	233	.	.	.	ID=VAR_045177;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	233	233	.	.	.	ID=VAR_045178;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	233	233	.	.	.	ID=VAR_045179;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	233	233	.	.	.	ID=VAR_047181;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	234	234	.	.	.	ID=VAR_005963;Note=In LFS%3B germline mutation and in sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	234	234	.	.	.	ID=VAR_005964;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	234	234	.	.	.	ID=VAR_045180;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	234	234	.	.	.	ID=VAR_045181;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	234	234	.	.	.	ID=VAR_045182;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	234	234	.	.	.	ID=VAR_045183;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	234	234	.	.	.	ID=VAR_045847;Note=In a sporadic cancer%3B somatic mutation%3B requires 2 nucleotide substitutions.	
+P04637	UniProtKB	Natural variant	234	234	.	.	.	ID=VAR_045848;Note=In a sporadic cancer%3B somatic mutation%3B requires 2 nucleotide substitutions.	
+P04637	UniProtKB	Natural variant	235	235	.	.	.	ID=VAR_045184;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	235	235	.	.	.	ID=VAR_045185;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	235	235	.	.	.	ID=VAR_045186;Note=In LFS%3B germline mutation and in sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	235	235	.	.	.	ID=VAR_045187;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	235	235	.	.	.	ID=VAR_045188;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	235	235	.	.	.	ID=VAR_045849;Note=In a sporadic cancer%3B somatic mutation%3B requires 2 nucleotide substitutions.	
+P04637	UniProtKB	Natural variant	235	235	.	.	.	ID=VAR_047182;Note=In an adrenocortical carcinoma with no family history%3B germline mutation and in sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	236	236	.	.	.	ID=VAR_045189;Note=In LFS%3B germline mutation and in sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	236	236	.	.	.	ID=VAR_045190;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	236	236	.	.	.	ID=VAR_045191;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	236	236	.	.	.	ID=VAR_045192;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	236	236	.	.	.	ID=VAR_045193;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	236	236	.	.	.	ID=VAR_045194;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	237	237	.	.	.	ID=VAR_005965;Note=In LFS%3B germline mutation and in sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	237	237	.	.	.	ID=VAR_045195;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	237	237	.	.	.	ID=VAR_045196;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	237	237	.	.	.	ID=VAR_045197;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	237	237	.	.	.	ID=VAR_045198;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	237	237	.	.	.	ID=VAR_045199;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	238	238	.	.	.	ID=VAR_005966;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	238	238	.	.	.	ID=VAR_005967;Note=In a familial cancer not matching LFS%3B germline mutation and in sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	238	238	.	.	.	ID=VAR_045200;Note=In LFS%3B germline mutation and in sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	238	238	.	.	.	ID=VAR_045201;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	238	238	.	.	.	ID=VAR_045202;Note=In LFS%3B germline mutation and in sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	238	238	.	.	.	ID=VAR_045203;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	238	238	.	.	.	ID=VAR_045850;Note=In a sporadic cancer%3B somatic mutation%3B requires 2 nucleotide substitutions.	
+P04637	UniProtKB	Natural variant	239	239	.	.	.	ID=VAR_045204;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	239	239	.	.	.	ID=VAR_045205;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	239	239	.	.	.	ID=VAR_045206;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	239	239	.	.	.	ID=VAR_045207;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	239	239	.	.	.	ID=VAR_045208;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	239	239	.	.	.	ID=VAR_045209;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	239	239	.	.	.	ID=VAR_045210;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	240	240	.	.	.	ID=VAR_005968;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	240	240	.	.	.	ID=VAR_045211;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	240	240	.	.	.	ID=VAR_045212;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	240	240	.	.	.	ID=VAR_045213;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	240	240	.	.	.	ID=VAR_045214;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	240	240	.	.	.	ID=VAR_045215;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	240	240	.	.	.	ID=VAR_045216;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	241	241	.	.	.	ID=VAR_005969;Note=In LFS%3B germline mutation and in sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	241	241	.	.	.	ID=VAR_033036;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	241	241	.	.	.	ID=VAR_045217;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	241	241	.	.	.	ID=VAR_045218;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	241	241	.	.	.	ID=VAR_045219;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	241	241	.	.	.	ID=VAR_047183;Note=In LFS%3B germline mutation and in sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	242	242	.	.	.	ID=VAR_005970;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	242	242	.	.	.	ID=VAR_045220;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	242	242	.	.	.	ID=VAR_045221;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	242	242	.	.	.	ID=VAR_045222;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	242	242	.	.	.	ID=VAR_045223;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	242	242	.	.	.	ID=VAR_045224;Note=In a familial cancer not matching LFS%3B germline mutation and in sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	243	243	.	.	.	ID=VAR_045225;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	243	243	.	.	.	ID=VAR_045226;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	243	243	.	.	.	ID=VAR_045227;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	243	243	.	.	.	ID=VAR_045228;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	243	243	.	.	.	ID=VAR_045229;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	243	243	.	.	.	ID=VAR_045230;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	243	244	.	.	.	ID=VAR_047184;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	243	244	.	.	.	ID=VAR_047185;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	244	244	.	.	.	ID=VAR_045231;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	244	244	.	.	.	ID=VAR_045232;Note=In LFS%3B germline mutation and in sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	244	244	.	.	.	ID=VAR_045233;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	244	244	.	.	.	ID=VAR_045234;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	244	244	.	.	.	ID=VAR_045235;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	244	244	.	.	.	ID=VAR_045236;Note=In LFS%3B germline mutation and in sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	244	244	.	.	.	ID=VAR_047186;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	245	245	.	.	.	ID=VAR_005971;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	245	245	.	.	.	ID=VAR_005972;Note=In LFS%3B germline mutation and in sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	245	245	.	.	.	ID=VAR_005973;Note=In LFS%3B germline mutation and in sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	245	245	.	.	.	ID=VAR_005974;Note=In LFS%3B germline mutation and in sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	245	245	.	.	.	ID=VAR_005975;Note=In LFS%3B germline mutation and in sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	245	245	.	.	.	ID=VAR_045237;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	245	245	.	.	.	ID=VAR_045238;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	245	245	.	.	.	ID=VAR_045851;Note=In sporadic cancers%3B somatic mutation%3B requires 2 nucleotide substitutions.	
+P04637	UniProtKB	Natural variant	245	245	.	.	.	ID=VAR_045852;Note=In a sporadic cancer%3B somatic mutation%3B requires 2 nucleotide substitutions.	
+P04637	UniProtKB	Natural variant	245	245	.	.	.	ID=VAR_045853;Note=In sporadic cancers%3B somatic mutation%3B requires 2 nucleotide substitutions.	
+P04637	UniProtKB	Natural variant	245	245	.	.	.	ID=VAR_045854;Note=In sporadic cancers%3B somatic mutation%3B requires 2 nucleotide substitutions.	
+P04637	UniProtKB	Natural variant	246	246	.	.	.	ID=VAR_005976;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	246	246	.	.	.	ID=VAR_005977;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	246	246	.	.	.	ID=VAR_005978;Note=In LFS%3B germline mutation and in sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	246	246	.	.	.	ID=VAR_044020;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	246	246	.	.	.	ID=VAR_045239;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	246	246	.	.	.	ID=VAR_045240;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	247	247	.	.	.	ID=VAR_005980;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	247	247	.	.	.	ID=VAR_045241;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	247	247	.	.	.	ID=VAR_045242;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	247	247	.	.	.	ID=VAR_045243;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	247	247	.	.	.	ID=VAR_045244;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	247	247	.	.	.	ID=VAR_045855;Note=In a sporadic cancer%3B somatic mutation%3B requires 2 nucleotide substitutions.	
+P04637	UniProtKB	Natural variant	247	247	.	.	.	ID=VAR_047189;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	247	248	.	.	.	ID=VAR_047187;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	247	248	.	.	.	ID=VAR_047188;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Mutagenesis	248	248	.	.	.	Note=Does not induce SNAI1 degradation.	
+P04637	UniProtKB	Natural variant	248	248	.	.	.	ID=VAR_005981;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	248	248	.	.	.	ID=VAR_005982;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	248	248	.	.	.	ID=VAR_005983;Note=In LFS%3B germline mutation and in sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	248	248	.	.	.	ID=VAR_005984;Note=In LFS%3B germline mutation and in sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	248	248	.	.	.	ID=VAR_045245;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	248	248	.	.	.	ID=VAR_045246;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	249	249	.	.	.	ID=VAR_005985;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	249	249	.	.	.	ID=VAR_005986;Note=In sporadic cancers%3B somatic mutation%3B does not induce SNAI1 degradation.	
+P04637	UniProtKB	Natural variant	249	249	.	.	.	ID=VAR_033037;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	249	249	.	.	.	ID=VAR_045247;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	249	249	.	.	.	ID=VAR_045248;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	249	249	.	.	.	ID=VAR_045249;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	249	249	.	.	.	ID=VAR_045250;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	249	249	.	.	.	ID=VAR_045856;Note=In a sporadic cancer%3B somatic mutation%3B requires 2 nucleotide substitutions.	
+P04637	UniProtKB	Natural variant	249	250	.	.	.	ID=VAR_047190;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	249	250	.	.	.	ID=VAR_047191;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	250	250	.	.	.	ID=VAR_045251;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	250	250	.	.	.	ID=VAR_045252;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	250	250	.	.	.	ID=VAR_045253;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	250	250	.	.	.	ID=VAR_045254;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	250	250	.	.	.	ID=VAR_045255;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	250	250	.	.	.	ID=VAR_045857;Note=In sporadic cancers%3B somatic mutation%3B requires 2 nucleotide substitutions.	
+P04637	UniProtKB	Natural variant	250	250	.	.	.	ID=VAR_045858;Note=In sporadic cancers%3B somatic mutation%3B requires 2 nucleotide substitutions.	
+P04637	UniProtKB	Natural variant	250	250	.	.	.	ID=VAR_047192;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	251	251	.	.	.	ID=VAR_005987;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	251	251	.	.	.	ID=VAR_033038;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	251	251	.	.	.	ID=VAR_045256;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	251	251	.	.	.	ID=VAR_045257;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	251	251	.	.	.	ID=VAR_045258;Note=In LFS%3B germline mutation.	
+P04637	UniProtKB	Natural variant	251	251	.	.	.	ID=VAR_045259;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	251	251	.	.	.	ID=VAR_045260;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	252	252	.	.	.	ID=VAR_005988;Note=In LFS%3B germline mutation and in sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	252	252	.	.	.	ID=VAR_045261;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	252	252	.	.	.	ID=VAR_045262;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	252	252	.	.	.	ID=VAR_045263;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	252	252	.	.	.	ID=VAR_045264;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	253	253	.	.	.	ID=VAR_045265;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	253	253	.	.	.	ID=VAR_045266;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	253	253	.	.	.	ID=VAR_045267;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	253	253	.	.	.	ID=VAR_045268;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	253	253	.	.	.	ID=VAR_047193;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	254	254	.	.	.	ID=VAR_017908;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	254	254	.	.	.	ID=VAR_017909;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	254	254	.	.	.	ID=VAR_045269;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	254	254	.	.	.	ID=VAR_045270;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	254	254	.	.	.	ID=VAR_045271;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	254	254	.	.	.	ID=VAR_045272;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	254	254	.	.	.	ID=VAR_045273;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	254	254	.	.	.	ID=VAR_045859;Note=In sporadic cancers%3B somatic mutation%3B requires 2 nucleotide substitutions.	
+P04637	UniProtKB	Natural variant	255	255	.	.	.	ID=VAR_045274;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	255	255	.	.	.	ID=VAR_045275;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	255	255	.	.	.	ID=VAR_045276;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	255	255	.	.	.	ID=VAR_045277;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	255	255	.	.	.	ID=VAR_045278;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	255	255	.	.	.	ID=VAR_045279;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	256	256	.	.	.	ID=VAR_045280;Note=In a brain tumor with no family history%3B germline mutation and in sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	256	256	.	.	.	ID=VAR_045281;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	256	256	.	.	.	ID=VAR_045282;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	256	256	.	.	.	ID=VAR_045283;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	257	257	.	.	.	ID=VAR_005989;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	257	257	.	.	.	ID=VAR_045284;Note=In LFS%3B germline mutation and in sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	257	257	.	.	.	ID=VAR_045285;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	257	257	.	.	.	ID=VAR_045286;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	258	258	.	.	.	ID=VAR_005990;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	258	258	.	.	.	ID=VAR_005991;Note=In LFS%3B germline mutation and in sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	258	258	.	.	.	ID=VAR_045287;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	258	258	.	.	.	ID=VAR_045288;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	258	258	.	.	.	ID=VAR_045289;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	258	258	.	.	.	ID=VAR_045290;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	258	258	.	.	.	ID=VAR_045860;Note=In a sporadic cancer%3B somatic mutation%3B requires 2 nucleotide substitutions.	
+P04637	UniProtKB	Natural variant	259	259	.	.	.	ID=VAR_033039;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	259	259	.	.	.	ID=VAR_045291;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	259	259	.	.	.	ID=VAR_045292;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	259	259	.	.	.	ID=VAR_045293;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	259	259	.	.	.	ID=VAR_045294;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	259	259	.	.	.	ID=VAR_045295;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	259	259	.	.	.	ID=VAR_045861;Note=In a sporadic cancer%3B somatic mutation%3B requires 2 nucleotide substitutions.	
+P04637	UniProtKB	Natural variant	259	259	.	.	.	ID=VAR_045862;Note=In a sporadic cancer%3B somatic mutation%3B requires 2 nucleotide substitutions.	
+P04637	UniProtKB	Natural variant	259	259	.	.	.	ID=VAR_047194;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	260	260	.	.	.	ID=VAR_045296;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	260	260	.	.	.	ID=VAR_045297;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	260	260	.	.	.	ID=VAR_045298;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	260	260	.	.	.	ID=VAR_045299;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	260	260	.	.	.	ID=VAR_045300;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	260	260	.	.	.	ID=VAR_045301;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	261	261	.	.	.	ID=VAR_045302;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	261	261	.	.	.	ID=VAR_045303;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	261	261	.	.	.	ID=VAR_045304;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	261	261	.	.	.	ID=VAR_045305;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	261	261	.	.	.	ID=VAR_045306;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	262	262	.	.	.	ID=VAR_045307;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	262	262	.	.	.	ID=VAR_045308;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	262	262	.	.	.	ID=VAR_045309;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	262	262	.	.	.	ID=VAR_045863;Note=In a sporadic cancer%3B somatic mutation%3B requires 2 nucleotide substitutions.	
+P04637	UniProtKB	Natural variant	262	262	.	.	.	ID=VAR_047196;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	262	263	.	.	.	ID=VAR_047195;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	263	263	.	.	.	ID=VAR_045310;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	263	263	.	.	.	ID=VAR_045311;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	263	263	.	.	.	ID=VAR_045312;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	263	263	.	.	.	ID=VAR_045313;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	263	263	.	.	.	ID=VAR_045314;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	264	264	.	.	.	ID=VAR_045315;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	264	264	.	.	.	ID=VAR_045316;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	264	264	.	.	.	ID=VAR_045317;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	264	264	.	.	.	ID=VAR_045318;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	264	264	.	.	.	ID=VAR_045319;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	265	265	.	.	.	ID=VAR_045320;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	265	265	.	.	.	ID=VAR_045321;Note=In LFS%3B germline mutation and in sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	265	265	.	.	.	ID=VAR_045322;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	265	265	.	.	.	ID=VAR_047197;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	266	266	.	.	.	ID=VAR_045323;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	266	266	.	.	.	ID=VAR_045324;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	266	266	.	.	.	ID=VAR_045325;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	266	266	.	.	.	ID=VAR_045326;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	267	267	.	.	.	ID=VAR_036507;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	267	267	.	.	.	ID=VAR_045327;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	267	267	.	.	.	ID=VAR_045328;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	267	267	.	.	.	ID=VAR_045329;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	267	267	.	.	.	ID=VAR_045330;Note=In LFS%3B germline mutation and in sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	268	268	.	.	.	ID=VAR_045331;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	268	268	.	.	.	ID=VAR_045332;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	268	268	.	.	.	ID=VAR_045333;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	268	268	.	.	.	ID=VAR_045334;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	268	268	.	.	.	ID=VAR_045335;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	268	268	.	.	.	ID=VAR_045864;Note=In a sporadic cancer%3B somatic mutation%3B requires 2 nucleotide substitutions.	
+P04637	UniProtKB	Mutagenesis	269	269	.	.	.	Note=Abolishes phosphorylation.	
+P04637	UniProtKB	Mutagenesis	269	269	.	.	.	Note=Inhibits strongly its transcriptional activity.	
+P04637	UniProtKB	Natural variant	269	269	.	.	.	ID=VAR_045336;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	269	269	.	.	.	ID=VAR_045337;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	269	269	.	.	.	ID=VAR_045338;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	269	269	.	.	.	ID=VAR_045339;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	269	269	.	.	.	ID=VAR_045340;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	269	269	.	.	.	ID=VAR_047198;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	270	270	.	.	.	ID=VAR_045341;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	270	270	.	.	.	ID=VAR_045342;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	270	270	.	.	.	ID=VAR_045343;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	270	270	.	.	.	ID=VAR_045344;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	270	270	.	.	.	ID=VAR_045345;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	270	270	.	.	.	ID=VAR_045346;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	271	271	.	.	.	ID=VAR_036508;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	271	271	.	.	.	ID=VAR_045347;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	271	271	.	.	.	ID=VAR_045348;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	271	271	.	.	.	ID=VAR_045349;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	271	271	.	.	.	ID=VAR_045350;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	271	271	.	.	.	ID=VAR_045865;Note=In a sporadic cancer%3B somatic mutation%3B requires 2 nucleotide substitutions.	
+P04637	UniProtKB	Natural variant	271	271	.	.	.	ID=VAR_045866;Note=In a sporadic cancer%3B somatic mutation%3B requires 2 nucleotide substitutions.	
+P04637	UniProtKB	Natural variant	271	271	.	.	.	ID=VAR_047199;Note=In an osteosarcoma with no family history%3B germline mutation and in sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	272	272	.	.	.	ID=VAR_005992;Note=In LFS%3B germline mutation and in sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	272	272	.	.	.	ID=VAR_045351;Note=In a familial cancer not matching LFS%3B germline mutation and in sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	272	272	.	.	.	ID=VAR_045352;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	272	272	.	.	.	ID=VAR_045353;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	272	272	.	.	.	ID=VAR_045354;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	273	273	.	.	.	ID=VAR_005993;Note=In LFS%3B germline mutation and in sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	273	273	.	.	.	ID=VAR_005994;Note=In LFS%3B germline mutation and in sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	273	273	.	.	.	ID=VAR_005995;Note=In LFS%3B germline mutation and in sporadic cancers%3B somatic mutation%3B abolishes sequence-specific DNA binding%3B does not induce SNAI1 degradation.	
+P04637	UniProtKB	Natural variant	273	273	.	.	.	ID=VAR_036509;Note=In LFS%3B germline mutation and in sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	273	273	.	.	.	ID=VAR_045355;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	273	273	.	.	.	ID=VAR_045356;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	273	273	.	.	.	ID=VAR_045357;Note=In a familial cancer not matching LFS%3B germline mutation and in sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	273	273	.	.	.	ID=VAR_045867;Note=In a sporadic cancer%3B somatic mutation%3B requires 2 nucleotide substitutions.	
+P04637	UniProtKB	Natural variant	273	273	.	.	.	ID=VAR_045868;Note=In a sporadic cancer%3B somatic mutation%3B requires 2 nucleotide substitutions.	
+P04637	UniProtKB	Natural variant	274	274	.	.	.	ID=VAR_005997;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	274	274	.	.	.	ID=VAR_045358;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	274	274	.	.	.	ID=VAR_045359;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	274	274	.	.	.	ID=VAR_045360;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	274	274	.	.	.	ID=VAR_045361;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	274	274	.	.	.	ID=VAR_047200;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	275	275	.	.	.	ID=VAR_005998;Note=In LFS%3B germline mutation and in sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	275	275	.	.	.	ID=VAR_005999;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	275	275	.	.	.	ID=VAR_045362;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	275	275	.	.	.	ID=VAR_045363;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	275	275	.	.	.	ID=VAR_045364;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	275	275	.	.	.	ID=VAR_045365;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	276	276	.	.	.	ID=VAR_045366;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	276	276	.	.	.	ID=VAR_045367;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	276	276	.	.	.	ID=VAR_045368;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	276	276	.	.	.	ID=VAR_045369;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	276	276	.	.	.	ID=VAR_045370;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	276	276	.	.	.	ID=VAR_045371;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	277	277	.	.	.	ID=VAR_006000;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	277	277	.	.	.	ID=VAR_045372;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	277	277	.	.	.	ID=VAR_045373;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	277	277	.	.	.	ID=VAR_045374;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	277	277	.	.	.	ID=VAR_045375;Note=In an osteosarcoma with no family history%3B germline mutation and in sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	277	277	.	.	.	ID=VAR_047201;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	278	278	.	.	.	ID=VAR_006001;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	278	278	.	.	.	ID=VAR_006002;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	278	278	.	.	.	ID=VAR_006003;Note=In LFS%3B germline mutation and in sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	278	278	.	.	.	ID=VAR_006004;Note=In LFS%3B germline mutation and in sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	278	278	.	.	.	ID=VAR_006005;Note=In LFS%3B germline mutation and in sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	278	278	.	.	.	ID=VAR_045376;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	278	278	.	.	.	ID=VAR_045869;Note=In sporadic cancers%3B somatic mutation%3B requires 2 nucleotide substitutions.	
+P04637	UniProtKB	Natural variant	279	279	.	.	.	ID=VAR_006006;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	279	279	.	.	.	ID=VAR_045377;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	279	279	.	.	.	ID=VAR_045378;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	279	279	.	.	.	ID=VAR_045379;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	280	280	.	.	.	ID=VAR_006007;Note=In a familial cancer not matching LFS%3B germline mutation and in sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	280	280	.	.	.	ID=VAR_006008;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	280	280	.	.	.	ID=VAR_006009;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	280	280	.	.	.	ID=VAR_045380;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	280	280	.	.	.	ID=VAR_045381;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	280	280	.	.	.	ID=VAR_045382;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	281	281	.	.	.	ID=VAR_006010;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	281	281	.	.	.	ID=VAR_006011;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	281	281	.	.	.	ID=VAR_006012;Note=In a brain tumor with no family history%3B germline mutation and in sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	281	281	.	.	.	ID=VAR_006013;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	281	281	.	.	.	ID=VAR_006014;Note=In a familial cancer not matching LFS%3B germline mutation and in sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	281	281	.	.	.	ID=VAR_045383;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	281	281	.	.	.	ID=VAR_045870;Note=In a sporadic cancer%3B somatic mutation%3B requires 2 nucleotide substitutions.	
+P04637	UniProtKB	Natural variant	281	281	.	.	.	ID=VAR_047202;Note=In LFS%3B germline mutation and in sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	281	282	.	.	.	ID=VAR_047203;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	282	282	.	.	.	ID=VAR_006015;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	282	282	.	.	.	ID=VAR_006016;Note=In LFS%3B germline mutation and in sporadic cancers%3B somatic mutation%3B does not induce SNAI1 degradation.	
+P04637	UniProtKB	Natural variant	282	282	.	.	.	ID=VAR_045384;Note=In LFS%3B germline mutation and in sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	282	282	.	.	.	ID=VAR_045385;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	282	282	.	.	.	ID=VAR_045386;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	282	282	.	.	.	ID=VAR_045387;Note=In a familial cancer not matching LFS%3B germline mutation and in sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	283	283	.	.	.	ID=VAR_006017;Note=In LFS%3B germline mutation and in sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	283	283	.	.	.	ID=VAR_006018;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	283	283	.	.	.	ID=VAR_006019;Note=In a brain tumor with no family history%3B germline mutation and in sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	283	283	.	.	.	ID=VAR_006020;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	283	283	.	.	.	ID=VAR_045388;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	283	283	.	.	.	ID=VAR_045389;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Mutagenesis	284	284	.	.	.	Note=Inhibits strongly its transcriptional activity.	
+P04637	UniProtKB	Natural variant	284	284	.	.	.	ID=VAR_006021;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	284	284	.	.	.	ID=VAR_006022;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	284	284	.	.	.	ID=VAR_045390;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	284	284	.	.	.	ID=VAR_045391;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	285	285	.	.	.	ID=VAR_006023;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	285	285	.	.	.	ID=VAR_006024;Note=In LFS%3B germline mutation and in sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	285	285	.	.	.	ID=VAR_006025;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	285	285	.	.	.	ID=VAR_045392;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	285	285	.	.	.	ID=VAR_045393;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	285	285	.	.	.	ID=VAR_045394;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	286	286	.	.	.	ID=VAR_006026;Note=In LFS%3B germline mutation and in sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	286	286	.	.	.	ID=VAR_006027;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	286	286	.	.	.	ID=VAR_006028;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	286	286	.	.	.	ID=VAR_006029;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	286	286	.	.	.	ID=VAR_006030;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	286	286	.	.	.	ID=VAR_045395;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	286	286	.	.	.	ID=VAR_045871;Note=In a sporadic cancer%3B somatic mutation%3B requires 2 nucleotide substitutions.	
+P04637	UniProtKB	Natural variant	287	287	.	.	.	ID=VAR_045396;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	287	287	.	.	.	ID=VAR_045397;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	287	287	.	.	.	ID=VAR_045398;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	287	287	.	.	.	ID=VAR_045399;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	287	287	.	.	.	ID=VAR_047204;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	288	288	.	.	.	ID=VAR_045400;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	288	288	.	.	.	ID=VAR_045401;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	288	288	.	.	.	ID=VAR_045402;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	288	288	.	.	.	ID=VAR_045403;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	288	288	.	.	.	ID=VAR_045404;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	289	289	.	.	.	ID=VAR_045405;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	289	289	.	.	.	ID=VAR_045406;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	289	289	.	.	.	ID=VAR_045407;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	289	289	.	.	.	ID=VAR_045408;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	289	289	.	.	.	ID=VAR_045409;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	290	290	.	.	.	ID=VAR_045410;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	290	290	.	.	.	ID=VAR_045411;Note=In LFS%3B germline mutation and in sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	290	290	.	.	.	ID=VAR_045412;Note=In LFS%3B germline mutation and in sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	291	291	.	.	.	ID=VAR_045413;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	291	291	.	.	.	ID=VAR_045414;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	291	291	.	.	.	ID=VAR_045415;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	291	291	.	.	.	ID=VAR_045416;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	291	291	.	.	.	ID=VAR_045417;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	291	291	.	.	.	ID=VAR_047205;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Mutagenesis	291	292	.	.	.	Note=Abolishes polyubiquitination by MKRN1.	
+P04637	UniProtKB	Natural variant	292	292	.	.	.	ID=VAR_015819;Note=In LFS%3B germline mutation and in a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	292	292	.	.	.	ID=VAR_045418;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	292	292	.	.	.	ID=VAR_045419;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	292	292	.	.	.	ID=VAR_045420;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	292	292	.	.	.	ID=VAR_045421;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	292	292	.	.	.	ID=VAR_045422;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	292	292	.	.	.	ID=VAR_045872;Note=In a sporadic cancer%3B somatic mutation%3B requires 2 nucleotide substitutions.	
+P04637	UniProtKB	Natural variant	293	293	.	.	.	ID=VAR_045423;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	293	293	.	.	.	ID=VAR_045424;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	293	293	.	.	.	ID=VAR_045425;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	293	293	.	.	.	ID=VAR_045426;Note=In a brain tumor with no family history%3B germline mutation and in sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	294	294	.	.	.	ID=VAR_045427;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	294	294	.	.	.	ID=VAR_045428;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	294	294	.	.	.	ID=VAR_045429;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	294	294	.	.	.	ID=VAR_045430;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	294	294	.	.	.	ID=VAR_045431;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	294	294	.	.	.	ID=VAR_047206;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	295	295	.	.	.	ID=VAR_045432;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	295	295	.	.	.	ID=VAR_045433;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	295	295	.	.	.	ID=VAR_045434;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	295	295	.	.	.	ID=VAR_045435;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	296	296	.	.	.	ID=VAR_006031;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	296	296	.	.	.	ID=VAR_045436;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	296	296	.	.	.	ID=VAR_045437;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	296	296	.	.	.	ID=VAR_045438;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	296	296	.	.	.	ID=VAR_045439;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	296	296	.	.	.	ID=VAR_045440;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	296	296	.	.	.	ID=VAR_045873;Note=In sporadic cancers%3B somatic mutation%3B requires 2 nucleotide substitutions.	
+P04637	UniProtKB	Natural variant	296	296	.	.	.	ID=VAR_047207;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	297	297	.	.	.	ID=VAR_045441;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	297	297	.	.	.	ID=VAR_045442;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	297	297	.	.	.	ID=VAR_045443;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	297	297	.	.	.	ID=VAR_045444;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	297	297	.	.	.	ID=VAR_045445;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	298	298	.	.	.	ID=VAR_045446;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	298	298	.	.	.	ID=VAR_045447;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	298	298	.	.	.	ID=VAR_045448;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	298	298	.	.	.	ID=VAR_045449;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	298	298	.	.	.	ID=VAR_045450;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	299	299	.	.	.	ID=VAR_045451;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	299	299	.	.	.	ID=VAR_045452;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	299	299	.	.	.	ID=VAR_045453;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	299	299	.	.	.	ID=VAR_045454;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	300	300	.	.	.	ID=VAR_006032;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	300	300	.	.	.	ID=VAR_045455;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	300	300	.	.	.	ID=VAR_045456;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	300	300	.	.	.	ID=VAR_045457;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	301	301	.	.	.	ID=VAR_006033;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	301	301	.	.	.	ID=VAR_045458;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	301	301	.	.	.	ID=VAR_045459;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	301	301	.	.	.	ID=VAR_045460;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	301	301	.	.	.	ID=VAR_047208;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	302	302	.	.	.	ID=VAR_006034;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	302	302	.	.	.	ID=VAR_006035;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	302	302	.	.	.	ID=VAR_045461;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	302	302	.	.	.	ID=VAR_045462;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	303	303	.	.	.	ID=VAR_045463;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	303	303	.	.	.	ID=VAR_045464;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	303	303	.	.	.	ID=VAR_045465;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	303	303	.	.	.	ID=VAR_045466;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	304	304	.	.	.	ID=VAR_045467;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	304	304	.	.	.	ID=VAR_045468;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	304	304	.	.	.	ID=VAR_045469;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	304	304	.	.	.	ID=VAR_047209;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	305	305	.	.	.	ID=VAR_045470;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	305	305	.	.	.	ID=VAR_045471;Note=In a familial cancer not matching LFS%3B germline mutation and in sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	305	305	.	.	.	ID=VAR_045472;Note=In sporadic cancers%3B somatic mutation%3B loss of nuclear localization.	
+P04637	UniProtKB	Natural variant	305	305	.	.	.	ID=VAR_045473;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	305	305	.	.	.	ID=VAR_045474;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	306	306	.	.	.	ID=VAR_006036;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	306	306	.	.	.	ID=VAR_045475;Note=In LFS%3B germline mutation and in a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	307	307	.	.	.	ID=VAR_006037;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	307	307	.	.	.	ID=VAR_045476;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	307	307	.	.	.	ID=VAR_045477;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	308	308	.	.	.	ID=VAR_045478;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	308	308	.	.	.	ID=VAR_045479;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	309	309	.	.	.	ID=VAR_006038;Note=In LFS%3B germline mutation and in sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	309	309	.	.	.	ID=VAR_045480;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	310	310	.	.	.	ID=VAR_045481;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	310	310	.	.	.	ID=VAR_045482;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	311	311	.	.	.	ID=VAR_045483;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	311	311	.	.	.	ID=VAR_045484;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	311	311	.	.	.	ID=VAR_045485;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	311	311	.	.	.	ID=VAR_045486;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	312	312	.	.	.	ID=VAR_045487;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	312	312	.	.	.	ID=VAR_045488;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	313	313	.	.	.	ID=VAR_045489;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	313	313	.	.	.	ID=VAR_045490;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	313	313	.	.	.	ID=VAR_045491;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	313	313	.	.	.	ID=VAR_045492;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	314	314	.	.	.	ID=VAR_045493;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	315	315	.	.	.	ID=VAR_045494;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	315	315	.	.	.	ID=VAR_045495;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	315	315	.	.	.	ID=VAR_045496;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	316	316	.	.	.	ID=VAR_045497;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	316	316	.	.	.	ID=VAR_045498;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	317	317	.	.	.	ID=VAR_045499;Note=In a kidney cancer with no family history%3B germline mutation and in a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	317	317	.	.	.	ID=VAR_045500;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	317	317	.	.	.	ID=VAR_045501;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	317	317	.	.	.	ID=VAR_045502;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	317	317	.	.	.	ID=VAR_047210;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	318	318	.	.	.	ID=VAR_045503;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Mutagenesis	319	319	.	.	.	Note=Loss of nuclear localization%3B when associated with A-320 and A-321.	
+P04637	UniProtKB	Natural variant	319	319	.	.	.	ID=VAR_045504;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	319	319	.	.	.	ID=VAR_045505;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	319	319	.	.	.	ID=VAR_045506;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Mutagenesis	320	320	.	.	.	Note=Loss of nuclear localization%3B when associated with A-319 and A-321.	
+P04637	UniProtKB	Natural variant	320	320	.	.	.	ID=VAR_045507;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Mutagenesis	321	321	.	.	.	Note=Loss of nuclear localization%3B when associated with A-319 and A-320.	
+P04637	UniProtKB	Natural variant	321	321	.	.	.	ID=VAR_045508;Note=In kidney cancer%3B germline mutation.	
+P04637	UniProtKB	Natural variant	321	321	.	.	.	ID=VAR_045509;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	322	322	.	.	.	ID=VAR_045510;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	322	322	.	.	.	ID=VAR_045511;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	323	323	.	.	.	ID=VAR_045512;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	323	323	.	.	.	ID=VAR_045513;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	323	323	.	.	.	ID=VAR_045514;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	323	323	.	.	.	ID=VAR_045874;Note=In a sporadic cancer%3B somatic mutation%3B requires 2 nucleotide substitutions.	
+P04637	UniProtKB	Natural variant	323	323	.	.	.	ID=VAR_047211;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	324	324	.	.	.	ID=VAR_045515;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	324	324	.	.	.	ID=VAR_045516;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	324	324	.	.	.	ID=VAR_045875;Note=In a sporadic cancer%3B somatic mutation%3B requires 2 nucleotide substitutions.	
+P04637	UniProtKB	Natural variant	325	325	.	.	.	ID=VAR_006039;Note=In LFS%3B germline mutation.	
+P04637	UniProtKB	Natural variant	325	325	.	.	.	ID=VAR_045517;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	325	325	.	.	.	ID=VAR_045518;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	326	326	.	.	.	ID=VAR_045519;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	327	327	.	.	.	ID=VAR_045520;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	327	327	.	.	.	ID=VAR_045521;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	328	328	.	.	.	ID=VAR_045522;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	328	328	.	.	.	ID=VAR_045523;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	328	328	.	.	.	ID=VAR_045524;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	329	329	.	.	.	ID=VAR_045525;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	329	329	.	.	.	ID=VAR_045526;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	330	330	.	.	.	ID=VAR_045527;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	330	330	.	.	.	ID=VAR_045528;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	330	330	.	.	.	ID=VAR_047212;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	331	331	.	.	.	ID=VAR_045529;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	331	331	.	.	.	ID=VAR_045530;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	331	331	.	.	.	ID=VAR_045531;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	332	332	.	.	.	ID=VAR_045532;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Alternative sequence	332	341	.	.	.	ID=VSP_006535;Note=In isoform 2%2C isoform 5 and isoform 8.	
+P04637	UniProtKB	Alternative sequence	332	346	.	.	.	ID=VSP_040560;Note=In isoform 3%2C isoform 6 and isoform 9.	
+P04637	UniProtKB	Natural variant	334	334	.	.	.	ID=VAR_006040;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	334	334	.	.	.	ID=VAR_045533;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	335	335	.	.	.	ID=VAR_045534;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	335	335	.	.	.	ID=VAR_045535;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	335	335	.	.	.	ID=VAR_045536;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	337	337	.	.	.	ID=VAR_006041;Note=In LFS%3B germline mutation and in sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	337	337	.	.	.	ID=VAR_035016;Note=In LFS%3B germline mutation and in sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	337	337	.	.	.	ID=VAR_045537;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	337	337	.	.	.	ID=VAR_045538;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	338	338	.	.	.	ID=VAR_045539;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	338	338	.	.	.	ID=VAR_045540;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	339	339	.	.	.	ID=VAR_022316;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	339	339	.	.	.	ID=VAR_045541;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	341	341	.	.	.	ID=VAR_045542;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	342	342	.	.	.	ID=VAR_045543;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	342	342	.	.	.	ID=VAR_045544;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	342	342	.	.	.	ID=VAR_047213;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Alternative sequence	342	393	.	.	.	ID=VSP_006536;Note=In isoform 2%2C isoform 5 and isoform 8.	
+P04637	UniProtKB	Natural variant	343	343	.	.	.	ID=VAR_045545;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	344	344	.	.	.	ID=VAR_045546;Note=In LFS%3B germline mutation and in a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	344	344	.	.	.	ID=VAR_045547;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	346	346	.	.	.	ID=VAR_045548;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	347	347	.	.	.	ID=VAR_045549;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	347	347	.	.	.	ID=VAR_045550;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Alternative sequence	347	393	.	.	.	ID=VSP_040561;Note=In isoform 3%2C isoform 6 and isoform 9.	
+P04637	UniProtKB	Natural variant	348	348	.	.	.	ID=VAR_045551;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	348	348	.	.	.	ID=VAR_045552;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	349	349	.	.	.	ID=VAR_045553;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	352	352	.	.	.	ID=VAR_045554;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	353	353	.	.	.	ID=VAR_045555;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	354	354	.	.	.	ID=VAR_045556;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	354	354	.	.	.	ID=VAR_045557;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	354	354	.	.	.	ID=VAR_047214;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	356	356	.	.	.	ID=VAR_045558;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	356	356	.	.	.	ID=VAR_045559;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	358	358	.	.	.	ID=VAR_045560;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	358	358	.	.	.	ID=VAR_045561;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Mutagenesis	359	359	.	.	.	Note=Abolishes binding to USP7.	
+P04637	UniProtKB	Natural variant	360	360	.	.	.	ID=VAR_045562	
+P04637	UniProtKB	Natural variant	360	360	.	.	.	ID=VAR_045563;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Mutagenesis	361	361	.	.	.	Note=Abolishes binding to USP7.	
+P04637	UniProtKB	Mutagenesis	362	362	.	.	.	Note=Abolishes binding to USP7.	
+P04637	UniProtKB	Natural variant	363	363	.	.	.	ID=VAR_045564;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	364	364	.	.	.	ID=VAR_045565;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	364	364	.	.	.	ID=VAR_045566;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	364	364	.	.	.	ID=VAR_045567;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	365	365	.	.	.	ID=VAR_045568;Note=In a familial cancer not matching LFS%3B germline mutation and in a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	365	365	.	.	.	ID=VAR_047215;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	366	366	.	.	.	ID=VAR_022317;Note=In a familial cancer not matching LFS%3B germline mutation and in sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Mutagenesis	370	370	.	.	.	Note=Induces a decrease in methylation by SMYD2.	
+P04637	UniProtKB	Natural variant	370	370	.	.	.	ID=VAR_045569;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Mutagenesis	372	372	.	.	.	Note=Induces a decrease in protein stabilization.	
+P04637	UniProtKB	Mutagenesis	373	373	.	.	.	Note=Abolishes dimethylation by EHMT1 and EHMT2.	
+P04637	UniProtKB	Natural variant	376	376	.	.	.	ID=VAR_045570;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	376	376	.	.	.	ID=VAR_045571;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	379	379	.	.	.	ID=VAR_045572;Note=In sporadic cancers%3B somatic mutation.	
+P04637	UniProtKB	Mutagenesis	382	382	.	.	.	Note=Abolishes acetylation by CREBBP.	
+P04637	UniProtKB	Mutagenesis	382	382	.	.	.	Note=Abolishes monomethylation by SETD8.	
+P04637	UniProtKB	Mutagenesis	383	383	.	.	.	Note=Abolishes S-315 phosphorylation by CDK2/cyclin A.	
+P04637	UniProtKB	Mutagenesis	385	385	.	.	.	Note=Reduced SUMO1 conjugation.	
+P04637	UniProtKB	Natural variant	385	385	.	.	.	ID=VAR_045573;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Mutagenesis	386	386	.	.	.	Note=Abolishes SUMO1 conjugation%2C in vitro and in vivo.	
+P04637	UniProtKB	Mutagenesis	387	387	.	.	.	Note=No effect SUMO1 conjugation.	
+P04637	UniProtKB	Mutagenesis	388	388	.	.	.	Note=Abolishes SUMO1 conjugation.	
+P04637	UniProtKB	Natural variant	389	389	.	.	.	ID=VAR_045574;Note=In a sporadic cancer%3B somatic mutation.	
+P04637	UniProtKB	Natural variant	392	392	.	.	.	ID=VAR_045575;Note=In a sporadic cancer%3B somatic mutation.	

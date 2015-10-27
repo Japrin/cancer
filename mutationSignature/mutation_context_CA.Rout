@@ -1,0 +1,39 @@
+
+R version 2.15.1 (2012-06-22) -- "Roasted Marshmallows"
+Copyright (C) 2012 The R Foundation for Statistical Computing
+ISBN 3-900051-07-0
+Platform: x86_64-unknown-linux-gnu (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+[Previously saved workspace restored]
+
+> library(RColorBrewer)
+> setwd("test.out")
+> a<-read.table("mutation_context_CA.txt",header=T,sep="\t",row.names=1,check.names=F)
+> a.matrix=as.matrix(a)
+> n<-sum(a.matrix[,1])
+> b.matrix<-a.matrix/n
+> png("mutation_context_CA.png",width=800,height=600)
+> par(mar=c(5,5,4,4)+0.1,xpd=T)
+> barplot(b.matrix,col=brewer.pal(4,"Set1"),border=FALSE,space=c(0),xlab="Postion with respect to mutated base",ylab="Percentage of bases",main="mutation context of C>A",cex.axis=1.5,cex.lab=1.5,cex.main=1.5,cex.names=1.5)
+> legend("right",legend=row.names(b.matrix),bty="n",horiz=F,fill=brewer.pal(4,"Set1"),inset=c(-0.09,0),cex=2)
+> dev.off()
+null device 
+          1 
+> 
+> proc.time()
+   user  system elapsed 
+  0.217   0.036   0.416 

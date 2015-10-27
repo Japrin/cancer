@@ -1,0 +1,270 @@
+﻿@ONLINE{pharmgkb,
+   title = {PharmGKB},
+   url={http://www.pharmgkb.org/index.jsp}
+
+}
+
+@ONLINE{picard,
+   title = {Picard},
+   url={http://sourceforge.net/projects/picard}
+
+}
+
+@ONLINE{ucsc,
+   title = {UCSC},
+   url={http://hgdownload.cse.ucsc.edu/downloads.html}
+
+}
+
+@article{cnvnator,
+   author = {Abyzov, A. and Urban, A. E. and Snyder, M. and Gerstein, M.},
+   title = {CNVnator: an approach to discover, genotype, and characterize typical and atypical CNVs from family and population genome sequencing},
+   journal = {Genome Res},
+   volume = {21},
+   number = {6},
+   pages = {974-84},
+   abstract = {Copy number variation (CNV) in the genome is a complex phenomenon, and not completely understood. We have developed a method, CNVnator, for CNV discovery and genotyping from read-depth (RD) analysis of personal genome sequencing. Our method is based on combining the established mean-shift approach with additional refinements (multiple-bandwidth partitioning and GC correction) to broaden the range of discovered CNVs. We calibrated CNVnator using the extensive validation performed by the 1000 Genomes Project. Because of this, we could use CNVnator for CNV discovery and genotyping in a population and characterization of atypical CNVs, such as de novo and multi-allelic events. Overall, for CNVs accessible by RD, CNVnator has high sensitivity (86%-96%), low false-discovery rate (3%-20%), high genotyping accuracy (93%-95%), and high resolution in breakpoint discovery (<200 bp in 90% of cases with high sequencing coverage). Furthermore, CNVnator is complementary in a straightforward way to split-read and read-pair approaches: It misses CNVs created by retrotransposable elements, but more than half of the validated CNVs that it identifies are not detected by split-read or read-pair. By genotyping CNVs in the CEPH, Yoruba, and Chinese-Japanese populations, we estimated that at least 11% of all CNV loci involve complex, multi-allelic events, a considerably higher estimate than reported earlier. Moreover, among these events, we observed cases with allele distribution strongly deviating from Hardy-Weinberg equilibrium, possibly implying selection on certain complex loci. Finally, by combining discovery and genotyping, we identified six potential de novo CNVs in two family trios.},
+   keywords = {*Algorithms
+Base Composition
+DNA Copy Number Variations/*genetics
+Ethnic Groups/genetics
+Genome, Human/*genetics
+Genotype
+Humans
+Metagenomics/*methods
+Sensitivity and Specificity
+Sequence Analysis, DNA/*methods
+*Software},
+   year = {2011}
+}
+
+@article{freec,
+   author = {Boeva, V. and Zinovyev, A. and Bleakley, K. and Vert, J. P. and Janoueix-Lerosey, I. and Delattre, O. and Barillot, E.},
+   title = {Control-free calling of copy number alterations in deep-sequencing data using GC-content normalization},
+   journal = {Bioinformatics},
+   volume = {27},
+   number = {2},
+   pages = {268-9},
+   abstract = {SUMMARY: We present a tool for control-free copy number alteration (CNA) detection using deep-sequencing data, particularly useful for cancer studies. The tool deals with two frequent problems in the analysis of cancer deep-sequencing data: absence of control sample and possible polyploidy of cancer cells. FREEC (control-FREE Copy number caller) automatically normalizes and segments copy number profiles (CNPs) and calls CNAs. If ploidy is known, FREEC assigns absolute copy number to each predicted CNA. To normalize raw CNPs, the user can provide a control dataset if available; otherwise GC content is used. We demonstrate that for Illumina single-end, mate-pair or paired-end sequencing, GC-contentr normalization provides smooth profiles that can be further segmented and analyzed in order to predict CNAs. AVAILABILITY: Source code and sample data are available at http://bioinfo-out.curie.fr/projects/freec/.},
+   keywords = {Algorithms
+Base Composition
+Cell Line, Tumor
+Cytosine/analysis
+*DNA Copy Number Variations
+Genomics/*methods
+Guanine/analysis
+High-Throughput Nucleotide Sequencing
+Humans
+Neoplasms/*genetics
+*Software},
+   year = {2011}
+}
+
+@article{breakdancer,
+   author = {Chen, K. and Wallis, J. W. and McLellan, M. D. and Larson, D. E. and Kalicki, J. M. and Pohl, C. S. and McGrath, S. D. and Wendl, M. C. and Zhang, Q. and Locke, D. P. and Shi, X. and Fulton, R. S. and Ley, T. J. and Wilson, R. K. and Ding, L. and Mardis, E. R.},
+   title = {BreakDancer: an algorithm for high-resolution mapping of genomic structural variation},
+   journal = {Nat Methods},
+   volume = {6},
+   number = {9},
+   pages = {677-81},
+   abstract = {Detection and characterization of genomic structural variation are important for understanding the landscape of genetic variation in human populations and in complex diseases such as cancer. Recent studies demonstrate the feasibility of detecting structural variation using next-generation, short-insert, paired-end sequencing reads. However, the utility of these reads is not entirely clear, nor are the analysis methods with which accurate detection can be achieved. The algorithm BreakDancer predicts a wide variety of structural variants including insertion-deletions (indels), inversions and translocations. We examined BreakDancer's performance in simulation, in comparison with other methods and in analyses of a sample from an individual with acute myeloid leukemia and of samples from the 1,000 Genomes trio individuals. BreakDancer sensitively and accurately detected indels ranging from 10 base pairs to 1 megabase pair that are difficult to detect via a single conventional approach.},
+   keywords = {Algorithms
+Base Sequence
+Computer Simulation
+DNA/*genetics
+*Genetic Variation
+Genome, Human
+Genomics/*methods
+Humans
+Leukemia, Myeloid, Acute/genetics
+Sequence Analysis, DNA/*methods},
+   year = {2009}
+}
+
+@article{gatk,
+   author = {DePristo, M. A. and Banks, E. and Poplin, R. and Garimella, K. V. and Maguire, J. R. and Hartl, C. and Philippakis, A. A. and del Angel, G. and Rivas, M. A. and Hanna, M. and McKenna, A. and Fennell, T. J. and Kernytsky, A. M. and Sivachenko, A. Y. and Cibulskis, K. and Gabriel, S. B. and Altshuler, D. and Daly, M. J.},
+   title = {A framework for variation discovery and genotyping using next-generation DNA sequencing data},
+   journal = {Nat Genet},
+   volume = {43},
+   number = {5},
+   pages = {491-8},
+   abstract = {Recent advances in sequencing technology make it possible to comprehensively catalog genetic variation in population samples, creating a foundation for understanding human disease, ancestry and evolution. The amounts of raw data produced are prodigious, and many computational steps are required to translate this output into high-quality variant calls. We present a unified analytic framework to discover and genotype variation among multiple samples simultaneously that achieves sensitive and specific results across five sequencing technologies and three distinct, canonical experimental designs. Our process includes (i) initial read mapping; (ii) local realignment around indels; (iii) base quality score recalibration; (iv) SNP discovery and genotyping to find all potential variants; and (v) machine learning to separate true segregating variation from machine artifacts common to next-generation sequencing technologies. We here discuss the application of these tools, instantiated in the Genome Analysis Toolkit, to deep whole-genome, whole-exome capture and multi-sample low-pass ( approximately 4x) 1000 Genomes Project datasets.},
+   keywords = {Data Interpretation, Statistical
+Databases, Nucleic Acid
+Exons
+*Genetic Variation
+Genetics, Population/methods/statistics & numerical data
+Genome, Human
+*Genotype
+Humans
+Polymorphism, Single Nucleotide
+Sequence Alignment/methods/statistics & numerical data
+Sequence Analysis, DNA/*methods/statistics & numerical data
+Software},
+   year = {2011}
+}
+
+@article{cosmic,
+   author = {Forbes, S. A. and Bhamra, G. and Bamford, S. and Dawson, E. and Kok, C. and Clements, J. and Menzies, A. and Teague, J. W. and Futreal, P. A. and Stratton, M. R.},
+   title = {The Catalogue of Somatic Mutations in Cancer (COSMIC)},
+   journal = {Curr Protoc Hum Genet},
+   volume = {Chapter 10},
+   pages = {Unit 10 11},
+   abstract = {COSMIC is currently the most comprehensive global resource for information on somatic mutations in human cancer, combining curation of the scientific literature with tumor resequencing data from the Cancer Genome Project at the Sanger Institute, U.K. Almost 4800 genes and 250000 tumors have been examined, resulting in over 50000 mutations available for investigation. This information can be accessed in a number of ways, the most convenient being the Web-based system which allows detailed data mining, presenting the results in easily interpretable formats. This unit describes the graphical system in detail, elaborating an example walkthrough and the many ways that the resulting information can be thoroughly investigated by combining data, respecializing the query, or viewing the results in different ways. Alternate protocols overview the available precompiled data files available for download.},
+   keywords = {Catalogs as Topic
+Computer Graphics
+*Databases, Genetic
+Genetics, Medical
+Humans
+Internet
+*Mutation
+Neoplasms/classification/genetics
+Oncogenes
+Phenotype},
+   year = {2008}
+}
+
+@article{varscan,
+   author = {Koboldt, D. C. and Zhang, Q. and Larson, D. E. and Shen, D. and McLellan, M. D. and Lin, L. and Miller, C. A. and Mardis, E. R. and Ding, L. and Wilson, R. K.},
+   title = {VarScan 2: Somatic mutation and copy number alteration discovery in cancer by exome sequencing},
+   journal = {Genome Res},
+   volume = {22},
+   number = {3},
+   pages = {568-76},
+   abstract = {Cancer is a disease driven by genetic variation and mutation. Exome sequencing can be utilized for discovering these variants and mutations across hundreds of tumors. Here we present an analysis tool, VarScan 2, for the detection of somatic mutations and copy number alterations (CNAs) in exome data from tumor-normal pairs. Unlike most current approaches, our algorithm reads data from both samples simultaneously; a heuristic and statistical algorithm detects sequence variants and classifies them by somatic status (germline, somatic, or LOH); while a comparison of normalized read depth delineates relative copy number changes. We apply these methods to the analysis of exome sequence data from 151 high-grade ovarian tumors characterized as part of the Cancer Genome Atlas (TCGA). We validated some 7790 somatic coding mutations, achieving 93% sensitivity and 85% precision for single nucleotide variant (SNV) detection. Exome-based CNA analysis identified 29 large-scale alterations and 619 focal events per tumor on average. As in our previous analysis of these data, we observed frequent amplification of oncogenes (e.g., CCNE1, MYC) and deletion of tumor suppressors (NF1, PTEN, and CDKN2A). We searched for additional recurrent focal CNAs using the correlation matrix diagonal segmentation (CMDS) algorithm, which identified 424 significant events affecting 582 genes. Taken together, our results demonstrate the robust performance of VarScan 2 for somatic mutation and CNA detection and shed new light on the landscape of genetic alterations in ovarian cancer.},
+   year = {2012}
+}
+
+@article{bwa,
+   author = {Li, H. and Durbin, R.},
+   title = {Fast and accurate short read alignment with Burrows-Wheeler transform},
+   journal = {Bioinformatics},
+   volume = {25},
+   number = {14},
+   pages = {1754-60},
+   abstract = {MOTIVATION: The enormous amount of short reads generated by the new DNA sequencing technologies call for the development of fast and accurate read alignment programs. A first generation of hash table-based methods has been developed, including MAQ, which is accurate, feature rich and fast enough to align short reads from a single individual. However, MAQ does not support gapped alignment for single-end reads, which makes it unsuitable for alignment of longer reads where indels may occur frequently. The speed of MAQ is also a concern when the alignment is scaled up to the resequencing of hundreds of individuals. RESULTS: We implemented Burrows-Wheeler Alignment tool (BWA), a new read alignment package that is based on backward search with Burrows-Wheeler Transform (BWT), to efficiently align short sequencing reads against a large reference sequence such as the human genome, allowing mismatches and gaps. BWA supports both base space reads, e.g. from Illumina sequencing machines, and color space reads from AB SOLiD machines. Evaluations on both simulated and real data suggest that BWA is approximately 10-20x faster than MAQ, while achieving similar accuracy. In addition, BWA outputs alignment in the new standard SAM (Sequence Alignment/Map) format. Variant calling and other downstream analyses after the alignment can be achieved with the open source SAMtools software package. AVAILABILITY: http://maq.sourceforge.net.},
+   keywords = {*Algorithms
+Genomics/*methods
+Sequence Alignment/*methods
+Sequence Analysis, DNA/methods
+*Software},
+   year = {2009}
+}
+
+@article{sam,
+   author = {Li, H. and Handsaker, B. and Wysoker, A. and Fennell, T. and Ruan, J. and Homer, N. and Marth, G. and Abecasis, G. and Durbin, R.},
+   title = {The Sequence Alignment/Map format and SAMtools},
+   journal = {Bioinformatics},
+   volume = {25},
+   number = {16},
+   pages = {2078-9},
+   abstract = {SUMMARY: The Sequence Alignment/Map (SAM) format is a generic alignment format for storing read alignments against reference sequences, supporting short and long reads (up to 128 Mbp) produced by different sequencing platforms. It is flexible in style, compact in size, efficient in random access and is the format in which alignments from the 1000 Genomes Project are released. SAMtools implements various utilities for post-processing alignments in the SAM format, such as indexing, variant caller and alignment viewer, and thus provides universal tools for processing read alignments. AVAILABILITY: http://samtools.sourceforge.net.},
+   keywords = {Algorithms
+Base Sequence
+Computational Biology/*methods
+Genome
+Genomics
+Molecular Sequence Data
+Sequence Alignment/*methods
+Sequence Analysis, DNA/*methods
+*Software},
+   year = {2009}
+}
+
+@article{pindel,
+   author = {Ye, K. and Schulz, M. H. and Long, Q. and Apweiler, R. and Ning, Z.},
+   title = {Pindel: a pattern growth approach to detect break points of large deletions and medium sized insertions from paired-end short reads},
+   journal = {Bioinformatics},
+   volume = {25},
+   number = {21},
+   pages = {2865-71},
+   year = {2009}
+}
+
+@article{1000g,
+   author = {Abecasis, G. R. and Auton, A. and Brooks, L. D. and DePristo, M. A. and Durbin, R. M. and Handsaker, R. E. and Kang, H. M. and Marth, G. T. and McVean, G. A.},
+   title = {An integrated map of genetic variation from 1,092 human genomes},
+   journal = {Nature},
+   volume = {491},
+   number = {7422},
+   pages = {56-65},
+   abstract = {By characterizing the geographic and functional spectrum of human genetic variation, the 1000 Genomes Project aims to build a resource to help to understand the genetic contribution to disease. Here we describe the genomes of 1,092 individuals from 14 populations, constructed using a combination of low-coverage whole-genome and exome sequencing. By developing methods to integrate information across several algorithms and diverse data sources, we provide a validated haplotype map of 38 million single nucleotide polymorphisms, 1.4 million short insertions and deletions, and more than 14,000 larger deletions. We show that individuals from different populations carry different profiles of rare and common variants, and that low-frequency variants show substantial geographic differentiation, which is further increased by the action of purifying selection. We show that evolutionary conservation and coding consequence are key determinants of the strength of purifying selection, that rare-variant load varies substantially across biological pathways, and that each individual contains hundreds of rare non-coding variants at conserved sites, such as motif-disrupting changes in transcription-factor-binding sites. This resource, which captures up to 98% of accessible single nucleotide polymorphisms at a frequency of 1% in related populations, enables analysis of common and low-frequency variants in individuals from diverse, including admixed, populations.},
+   year = {2012}
+}
+
+@article{polyphen2,
+   author = {Adzhubei, I. A. and Schmidt, S. and Peshkin, L. and Ramensky, V. E. and Gerasimova, A. and Bork, P. and Kondrashov, A. S. and Sunyaev, S. R.},
+   title = {A method and server for predicting damaging missense mutations},
+   journal = {Nat Methods},
+   volume = {7},
+   number = {4},
+   pages = {248-9},
+   keywords = {*Data Interpretation, Statistical
+Genetic Variation
+Humans
+*Models, Genetic
+*Mutation, Missense
+Software},
+   year = {2010}
+}
+
+@article{gerp,
+   author = {Davydov, E. V. and Goode, D. L. and Sirota, M. and Cooper, G. M. and Sidow, A. and Batzoglou, S.},
+   title = {Identifying a high fraction of the human genome to be under selective constraint using GERP++},
+   journal = {PLoS Comput Biol},
+   volume = {6},
+   number = {12},
+   pages = {e1001025},
+   abstract = {Computational efforts to identify functional elements within genomes leverage comparative sequence information by looking for regions that exhibit evidence of selective constraint. One way of detecting constrained elements is to follow a bottom-up approach by computing constraint scores for individual positions of a multiple alignment and then defining constrained elements as segments of contiguous, highly scoring nucleotide positions. Here we present GERP++, a new tool that uses maximum likelihood evolutionary rate estimation for position-specific scoring and, in contrast to previous bottom-up methods, a novel dynamic programming approach to subsequently define constrained elements. GERP++ evaluates a richer set of candidate element breakpoints and ranks them based on statistical significance, eliminating the need for biased heuristic extension techniques. Using GERP++ we identify over 1.3 million constrained elements spanning over 7% of the human genome. We predict a higher fraction than earlier estimates largely due to the annotation of longer constrained elements, which improves one to one correspondence between predicted elements with known functional sequences. GERP++ is an efficient and effective tool to provide both nucleotide- and element-level constraint scores within deep multiple sequence alignments.},
+   keywords = {Algorithms
+Animals
+Genome, Human/*genetics
+Genomics/*methods
+Humans
+Mammals/genetics
+Models, Genetic
+Phylogeny
+Sequence Alignment/*methods
+Sequence Analysis, DNA
+*Software
+User-Computer Interface},
+   year = {2010}
+}
+
+@article{gwas,
+   author = {Hindorff, L. A. and Sethupathy, P. and Junkins, H. A. and Ramos, E. M. and Mehta, J. P. and Collins, F. S. and Manolio, T. A.},
+   title = {Potential etiologic and functional implications of genome-wide association loci for human diseases and traits},
+   journal = {Proc Natl Acad Sci U S A},
+   volume = {106},
+   number = {23},
+   pages = {9362-7},
+   abstract = {We have developed an online catalog of SNP-trait associations from published genome-wide association studies for use in investigating genomic characteristics of trait/disease-associated SNPs (TASs). Reported TASs were common [median risk allele frequency 36%, interquartile range (IQR) 21%-53%] and were associated with modest effect sizes [median odds ratio (OR) 1.33, IQR 1.20-1.61]. Among 20 genomic annotation sets, reported TASs were significantly overrepresented only in nonsynonymous sites [OR = 3.9 (2.2-7.0), p = 3.5 x 10(-7)] and 5kb-promoter regions [OR = 2.3 (1.5-3.6), p = 3 x 10(-4)] compared to SNPs randomly selected from genotyping arrays. Although 88% of TASs were intronic (45%) or intergenic (43%), TASs were not overrepresented in introns and were significantly depleted in intergenic regions [OR = 0.44 (0.34-0.58), p = 2.0 x 10(-9)]. Only slightly more TASs than expected by chance were predicted to be in regions under positive selection [OR = 1.3 (0.8-2.1), p = 0.2]. This new online resource, together with bioinformatic predictions of the underlying functionality at trait/disease-associated loci, is well-suited to guide future investigations of the role of common variants in complex disease etiology.},
+   keywords = {Disease/genetics
+*Genetic Predisposition to Disease
+*Genome-Wide Association Study
+Humans
+Polymorphism, Genetic
+*Polymorphism, Single Nucleotide},
+   year = {2009}
+}
+
+@article{sift,
+   author = {Kumar, P. and Henikoff, S. and Ng, P. C.},
+   title = {Predicting the effects of coding non-synonymous variants on protein function using the SIFT algorithm},
+   journal = {Nat Protoc},
+   volume = {4},
+   number = {7},
+   pages = {1073-81},
+   abstract = {The effect of genetic mutation on phenotype is of significant interest in genetics. The type of genetic mutation that causes a single amino acid substitution (AAS) in a protein sequence is called a non-synonymous single nucleotide polymorphism (nsSNP). An nsSNP could potentially affect the function of the protein, subsequently altering the carrier's phenotype. This protocol describes the use of the 'Sorting Tolerant From Intolerant' (SIFT) algorithm in predicting whether an AAS affects protein function. To assess the effect of a substitution, SIFT assumes that important positions in a protein sequence have been conserved throughout evolution and therefore substitutions at these positions may affect protein function. Thus, by using sequence homology, SIFT predicts the effects of all possible substitutions at each position in the protein sequence. The protocol typically takes 5-20 min, depending on the input. SIFT is available as an online tool (http://sift.jcvi.org).},
+   keywords = {*Algorithms
+Amino Acid Sequence
+*Amino Acid Substitution
+Computer Simulation
+Internet
+Molecular Sequence Data
+Phenotype
+Proteins/*genetics/physiology
+*Software},
+   year = {2009}
+}
+

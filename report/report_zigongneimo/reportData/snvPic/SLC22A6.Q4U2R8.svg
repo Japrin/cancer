@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+<svg height="1040" width="1326" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<rect fill="white" height="1040" width="1326" x="0" y="0" />
+	<radialGradient id="myRadialGradient1" r="65%">
+		<stop offset="5%" stop-color="red" />
+		<stop offset="95%" stop-color="darkred" />
+	</radialGradient>
+	<linearGradient gradientTransform="rotate(90)" id="myLinearGradient2" x1="0" x2="1" y1="0" y2="0">
+		<stop offset="5%" stop-color="dodgerblue" />
+		<stop offset="30%" stop-color="lightskyblue" />
+		<stop offset="50%" stop-color="lightskyblue" />
+		<stop offset="95%" stop-color="dodgerblue" />
+	</linearGradient>
+	<linearGradient gradientTransform="rotate(90)" id="myLinearGradient3" x1="0" x2="1" y1="0" y2="0">
+		<stop offset="5%" stop-color="mediumseagreen" />
+		<stop offset="30%" stop-color="palegreen" />
+		<stop offset="50%" stop-color="palegreen" />
+		<stop offset="95%" stop-color="mediumseagreen" />
+	</linearGradient>
+	<linearGradient gradientTransform="rotate(90)" id="myLinearGradient4" x1="0" x2="1" y1="0" y2="0">
+		<stop offset="5%" stop-color="hotpink" />
+		<stop offset="35%" stop-color="lightpink" />
+		<stop offset="50%" stop-color="lightpink" />
+		<stop offset="95%" stop-color="hotpink" />
+	</linearGradient>
+	<linearGradient gradientTransform="rotate(90)" id="myLinearGradientBlack2Grey" x1="0" x2="1" y1="0" y2="0">
+		<stop offset="5%" stop-color="grey" />
+		<stop offset="35%" stop-color="lightgrey" />
+		<stop offset="50%" stop-color="lightgrey" />
+		<stop offset="95%" stop-color="grey" />
+	</linearGradient>
+	<text fill="black" font-family="TimesNewRoman" font-size="22" x="100" y="70">SLC22A6(Q4U2R8), 563 aa</text>
+	<rect height="30" rx="5" ry="5" style="fill: url(#myLinearGradientBlack2Grey); stroke: black" width="1126" x="100" y="350" />
+	<text fill="black" font-family="TimesNewRoman" font-size="12" transform="translate(85,369) rotate(0)" x="0" y="0">N</text>
+	<text fill="black" font-family="TimesNewRoman" font-size="12" transform="translate(1230,369) rotate(0)" x="0" y="0">C</text>
+	<rect height="10" style="opacity: 0.8; fill: darkcyan; stroke: none" width="2" x="176" y="425" />
+	<rect height="10" style="opacity: 0.8; fill: darkcyan; stroke: none" width="2" x="210" y="425" />
+	<rect height="10" style="opacity: 0.8; fill: darkcyan; stroke: none" width="2" x="282" y="425" />
+	<rect height="10" style="opacity: 0.8; fill: darkcyan; stroke: none" width="2" x="292" y="425" />
+	<rect height="10" style="opacity: 0.8; fill: darkcyan; stroke: none" width="2" x="324" y="425" />
+	<rect height="10" style="opacity: 0.8; fill: darkorange; stroke: none" width="2" x="558" y="405" />
+	<rect height="10" style="opacity: 0.8; fill: darkorange; stroke: none" width="2" x="974" y="405" />
+	<rect height="10" style="opacity: 0.8; fill: darkseagreen; stroke: none" width="18" x="100" y="450" />
+	<text fill="black" font-family="TimesNewRoman" font-size="10" text-anchor="middle" transform="translate(109,448) rotate(0)" x="0" y="0">Topological domain: Cytoplasmic;status=Potential</text>
+	<rect height="10" style="opacity: 0.8; fill: darkseagreen; stroke: none" width="42" x="118" y="470" />
+	<text fill="black" font-family="TimesNewRoman" font-size="10" text-anchor="middle" transform="translate(139,468) rotate(0)" x="0" y="0">Transmembrane: Helical;;status=Potential</text>
+	<rect height="10" style="opacity: 0.8; fill: darkseagreen; stroke: none" width="210" x="160" y="490" />
+	<text fill="black" font-family="TimesNewRoman" font-size="10" text-anchor="middle" transform="translate(265,488) rotate(0)" x="0" y="0">Topological domain: Extracellular;status=Potential</text>
+	<rect height="10" style="opacity: 0.8; fill: darkseagreen; stroke: none" width="42" x="370" y="510" />
+	<text fill="black" font-family="TimesNewRoman" font-size="10" text-anchor="middle" transform="translate(391,508) rotate(0)" x="0" y="0">Transmembrane: Helical;;status=Potential</text>
+	<rect height="10" style="opacity: 0.8; fill: darkseagreen; stroke: none" width="16" x="412" y="530" />
+	<text fill="black" font-family="TimesNewRoman" font-size="10" text-anchor="middle" transform="translate(420,528) rotate(0)" x="0" y="0">Topological domain: Cytoplasmic;status=Potential</text>
+	<rect height="10" style="opacity: 0.8; fill: darkseagreen; stroke: none" width="46" x="428" y="550" />
+	<text fill="black" font-family="TimesNewRoman" font-size="10" text-anchor="middle" transform="translate(451,548) rotate(0)" x="0" y="0">Transmembrane: Helical;;status=Potential</text>
+	<rect height="10" style="opacity: 0.8; fill: darkseagreen; stroke: none" width="6" x="474" y="570" />
+	<text fill="black" font-family="TimesNewRoman" font-size="10" text-anchor="middle" transform="translate(477,568) rotate(0)" x="0" y="0">Topological domain: Extracellular;status=Potential</text>
+	<rect height="10" style="opacity: 0.8; fill: darkseagreen; stroke: none" width="46" x="480" y="590" />
+	<text fill="black" font-family="TimesNewRoman" font-size="10" text-anchor="middle" transform="translate(503,588) rotate(0)" x="0" y="0">Transmembrane: Helical;;status=Potential</text>
+	<rect height="10" style="opacity: 0.8; fill: darkseagreen; stroke: none" width="22" x="526" y="610" />
+	<text fill="black" font-family="TimesNewRoman" font-size="10" text-anchor="middle" transform="translate(537,608) rotate(0)" x="0" y="0">Topological domain: Cytoplasmic;status=Potential</text>
+	<rect height="10" style="opacity: 0.8; fill: darkseagreen; stroke: none" width="42" x="548" y="630" />
+	<text fill="black" font-family="TimesNewRoman" font-size="10" text-anchor="middle" transform="translate(569,628) rotate(0)" x="0" y="0">Transmembrane: Helical;;status=Potential</text>
+	<rect height="10" style="opacity: 0.8; fill: darkseagreen; stroke: none" width="6" x="590" y="650" />
+	<text fill="black" font-family="TimesNewRoman" font-size="10" text-anchor="middle" transform="translate(593,648) rotate(0)" x="0" y="0">Topological domain: Extracellular;status=Potential</text>
+	<rect height="10" style="opacity: 0.8; fill: darkseagreen; stroke: none" width="42" x="596" y="670" />
+	<text fill="black" font-family="TimesNewRoman" font-size="10" text-anchor="middle" transform="translate(617,668) rotate(0)" x="0" y="0">Transmembrane: Helical;;status=Potential</text>
+	<rect height="10" style="opacity: 0.8; fill: darkseagreen; stroke: none" width="136" x="638" y="690" />
+	<text fill="black" font-family="TimesNewRoman" font-size="10" text-anchor="middle" transform="translate(706,688) rotate(0)" x="0" y="0">Topological domain: Cytoplasmic;status=Potential</text>
+	<rect height="10" style="opacity: 0.8; fill: darkseagreen; stroke: none" width="42" x="774" y="710" />
+	<text fill="black" font-family="TimesNewRoman" font-size="10" text-anchor="middle" transform="translate(795,708) rotate(0)" x="0" y="0">Transmembrane: Helical;;status=Potential</text>
+	<rect height="10" style="opacity: 0.8; fill: darkseagreen; stroke: none" width="20" x="816" y="730" />
+	<text fill="black" font-family="TimesNewRoman" font-size="10" text-anchor="middle" transform="translate(826,728) rotate(0)" x="0" y="0">Topological domain: Extracellular;status=Potential</text>
+	<rect height="10" style="opacity: 0.8; fill: darkseagreen; stroke: none" width="42" x="836" y="750" />
+	<text fill="black" font-family="TimesNewRoman" font-size="10" text-anchor="middle" transform="translate(857,748) rotate(0)" x="0" y="0">Transmembrane: Helical;;status=Potential</text>
+	<rect height="10" style="opacity: 0.8; fill: darkseagreen; stroke: none" width="12" x="878" y="770" />
+	<text fill="black" font-family="TimesNewRoman" font-size="10" text-anchor="middle" transform="translate(884,768) rotate(0)" x="0" y="0">Topological domain: Cytoplasmic;status=Potential</text>
+	<rect height="10" style="opacity: 0.8; fill: darkseagreen; stroke: none" width="42" x="890" y="790" />
+	<text fill="black" font-family="TimesNewRoman" font-size="10" text-anchor="middle" transform="translate(911,788) rotate(0)" x="0" y="0">Transmembrane: Helical;;status=Potential</text>
+	<rect height="10" style="opacity: 0.8; fill: darkseagreen; stroke: none" width="18" x="932" y="810" />
+	<text fill="black" font-family="TimesNewRoman" font-size="10" text-anchor="middle" transform="translate(941,808) rotate(0)" x="0" y="0">Topological domain: Extracellular;status=Potential</text>
+	<rect height="10" style="opacity: 0.8; fill: darkseagreen; stroke: none" width="42" x="950" y="830" />
+	<text fill="black" font-family="TimesNewRoman" font-size="10" text-anchor="middle" transform="translate(971,828) rotate(0)" x="0" y="0">Transmembrane: Helical;;status=Potential</text>
+	<rect height="10" style="opacity: 0.8; fill: darkseagreen; stroke: none" width="18" x="992" y="850" />
+	<text fill="black" font-family="TimesNewRoman" font-size="10" text-anchor="middle" transform="translate(1001,848) rotate(0)" x="0" y="0">Topological domain: Cytoplasmic;status=Potential</text>
+	<rect height="10" style="opacity: 0.8; fill: darkseagreen; stroke: none" width="40" x="1010" y="870" />
+	<text fill="black" font-family="TimesNewRoman" font-size="10" text-anchor="middle" transform="translate(1030,868) rotate(0)" x="0" y="0">Transmembrane: Helical;;status=Potential</text>
+	<rect height="10" style="opacity: 0.8; fill: darkseagreen; stroke: none" width="18" x="1050" y="890" />
+	<text fill="black" font-family="TimesNewRoman" font-size="10" text-anchor="middle" transform="translate(1059,888) rotate(0)" x="0" y="0">Topological domain: Extracellular;status=Potential</text>
+	<rect height="10" style="opacity: 0.8; fill: darkseagreen; stroke: none" width="42" x="1068" y="910" />
+	<text fill="black" font-family="TimesNewRoman" font-size="10" text-anchor="middle" transform="translate(1089,908) rotate(0)" x="0" y="0">Transmembrane: Helical;;status=Potential</text>
+	<rect height="10" style="opacity: 0.8; fill: darkseagreen; stroke: none" width="116" x="1110" y="930" />
+	<text fill="black" font-family="TimesNewRoman" font-size="10" text-anchor="middle" transform="translate(1168,928) rotate(0)" x="0" y="0">Topological domain: Cytoplasmic;status=Potential</text>
+	<path d="M 0,0 L -5,-15 5,-15 Z" style="fill: darkred" transform="translate(115,350) scale(1,1)" />
+	<text fill="black" font-family="TimesNewRoman" font-size="12" transform="translate(121,335) rotate(0)" x="0" y="0">Q8K</text>
+	<rect fill="none" height="100" stroke="black" stroke-width="1.5" width="225" x="1001" y="50" />
+	<rect fill="url(#myLinearGradient2)" height="30" rx="5" ry="5" width="30" x="1006" y="55" />
+	<text fill="black" font-family="TimesNewRoman" font-size="12" x="1038" y="75">Helix</text>
+	<rect fill="url(#myLinearGradient3)" height="30" rx="5" ry="5" width="30" x="1068" y="55" />
+	<text fill="black" font-family="TimesNewRoman" font-size="12" x="1100" y="75">Beta strand</text>
+	<rect fill="url(#myLinearGradient4)" height="30" rx="5" ry="5" width="30" x="1167" y="55" />
+	<text fill="black" font-family="TimesNewRoman" font-size="12" x="1199" y="75">Turn</text>
+	<rect fill="darkorange" height="30" stroke="none" width="10" x="1006" y="90" />
+	<text fill="black" font-family="TimesNewRoman" font-size="12" x="1018" y="110">sites</text>
+	<rect fill="darkcyan" height="30" stroke="none" width="10" x="1050" y="90" />
+	<text fill="black" font-family="TimesNewRoman" font-size="12" x="1062" y="110">aa_mod</text>
+	<rect fill="darkseagreen" height="30" stroke="none" width="10" x="1103" y="90" />
+	<text fill="black" font-family="TimesNewRoman" font-size="12" x="1116" y="110">region</text>
+	<path d="M 0,0 L -5,-15 5,-15 Z" style="fill: darkred" transform="translate(1011,142) scale(1,1)" />
+	<text fill="black" font-family="TimesNewRoman" font-size="12" x="1018" y="137">sample(s)</text>
+	<path d="M 0,0 L -5,-15 5,-15 Z" style="fill: lightgrey" transform="translate(1078,142) scale(1,1)" />
+	<text fill="black" font-family="TimesNewRoman" font-size="12" x="1085" y="137">COSMIC</text>
+	<!-- 
+	Generated using the Perl SVG Module V2.52
+	by Ronan Oger
+	Info: http://www.roitsystems.com/
+ -->
+</svg>

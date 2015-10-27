@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+<svg height="1460" width="8114" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<rect fill="white" height="1460" width="8114" x="0" y="0" />
+	<radialGradient id="myRadialGradient1" r="65%">
+		<stop offset="5%" stop-color="red" />
+		<stop offset="95%" stop-color="darkred" />
+	</radialGradient>
+	<linearGradient gradientTransform="rotate(90)" id="myLinearGradient2" x1="0" x2="1" y1="0" y2="0">
+		<stop offset="5%" stop-color="dodgerblue" />
+		<stop offset="30%" stop-color="lightskyblue" />
+		<stop offset="50%" stop-color="lightskyblue" />
+		<stop offset="95%" stop-color="dodgerblue" />
+	</linearGradient>
+	<linearGradient gradientTransform="rotate(90)" id="myLinearGradient3" x1="0" x2="1" y1="0" y2="0">
+		<stop offset="5%" stop-color="mediumseagreen" />
+		<stop offset="30%" stop-color="palegreen" />
+		<stop offset="50%" stop-color="palegreen" />
+		<stop offset="95%" stop-color="mediumseagreen" />
+	</linearGradient>
+	<linearGradient gradientTransform="rotate(90)" id="myLinearGradient4" x1="0" x2="1" y1="0" y2="0">
+		<stop offset="5%" stop-color="hotpink" />
+		<stop offset="35%" stop-color="lightpink" />
+		<stop offset="50%" stop-color="lightpink" />
+		<stop offset="95%" stop-color="hotpink" />
+	</linearGradient>
+	<linearGradient gradientTransform="rotate(90)" id="myLinearGradientBlack2Grey" x1="0" x2="1" y1="0" y2="0">
+		<stop offset="5%" stop-color="grey" />
+		<stop offset="35%" stop-color="lightgrey" />
+		<stop offset="50%" stop-color="lightgrey" />
+		<stop offset="95%" stop-color="grey" />
+	</linearGradient>
+	<text fill="black" font-family="TimesNewRoman" font-size="22" x="100" y="70">ANK2(Q01484), 3957 aa</text>
+	<rect height="30" rx="5" ry="5" style="fill: url(#myLinearGradientBlack2Grey); stroke: black" width="7914" x="100" y="350" />
+	<text fill="black" font-family="TimesNewRoman" font-size="12" transform="translate(85,369) rotate(0)" x="0" y="0">N</text>
+	<text fill="black" font-family="TimesNewRoman" font-size="12" transform="translate(8018,369) rotate(0)" x="0" y="0">C</text>
+	<rect height="30" rx="3" ry="3" style="opacity: 0.8; fill: url(#myLinearGradient3)" width="12" x="2036" y="350" />
+	<rect height="30" rx="3" ry="3" style="opacity: 0.8; fill: url(#myLinearGradient3)" width="8" x="2056" y="350" />
+	<rect height="30" rx="3" ry="3" style="opacity: 0.8; fill: url(#myLinearGradient3)" width="6" x="2066" y="350" />
+	<rect height="30" rx="3" ry="3" style="opacity: 0.8; fill: url(#myLinearGradient3)" width="8" x="2078" y="350" />
+	<rect height="30" rx="3" ry="3" style="opacity: 0.8; fill: url(#myLinearGradient3)" width="16" x="2102" y="350" />
+	<rect height="30" rx="3" ry="3" style="opacity: 0.8; fill: url(#myLinearGradient3)" width="8" x="2148" y="350" />
+	<rect height="30" rx="3" ry="3" style="opacity: 0.8; fill: url(#myLinearGradient3)" width="10" x="2160" y="350" />
+	<rect height="30" rx="3" ry="3" style="opacity: 0.8; fill: url(#myLinearGradient3)" width="20" x="2244" y="350" />
+	<rect height="30" rx="3" ry="3" style="opacity: 0.8; fill: url(#myLinearGradient4)" width="8" x="2274" y="350" />
+	<rect height="30" rx="3" ry="3" style="opacity: 0.8; fill: url(#myLinearGradient3)" width="24" x="2282" y="350" />
+	<rect height="30" rx="3" ry="3" style="opacity: 0.8; fill: url(#myLinearGradient2)" width="14" x="2360" y="350" />
+	<rect height="30" rx="3" ry="3" style="opacity: 0.8; fill: url(#myLinearGradient3)" width="16" x="2376" y="350" />
+	<rect height="30" rx="3" ry="3" style="opacity: 0.8; fill: url(#myLinearGradient3)" width="18" x="2396" y="350" />
+	<rect height="30" rx="3" ry="3" style="opacity: 0.8; fill: url(#myLinearGradient3)" width="14" x="2416" y="350" />
+	<rect height="30" rx="3" ry="3" style="opacity: 0.8; fill: url(#myLinearGradient3)" width="10" x="2434" y="350" />
+	<rect height="30" rx="3" ry="3" style="opacity: 0.8; fill: url(#myLinearGradient3)" width="6" x="2446" y="350" />
+	<rect height="30" rx="3" ry="3" style="opacity: 0.8; fill: url(#myLinearGradient3)" width="8" x="2458" y="350" />
+	<rect height="30" rx="3" ry="3" style="opacity: 0.8; fill: url(#myLinearGradient3)" width="16" x="2482" y="350" />
+	<rect height="30" rx="3" ry="3" style="opacity: 0.8; fill: url(#myLinearGradient2)" width="16" x="2504" y="350" />
+	<rect height="30" rx="3" ry="3" style="opacity: 0.8; fill: url(#myLinearGradient3)" width="8" x="2524" y="350" />
+	<rect height="30" rx="3" ry="3" style="opacity: 0.8; fill: url(#myLinearGradient3)" width="16" x="2536" y="350" />
+	<rect height="30" rx="3" ry="3" style="opacity: 0.8; fill: url(#myLinearGradient3)" width="22" x="2554" y="350" />
+	<rect height="30" rx="3" ry="3" style="opacity: 0.8; fill: url(#myLinearGradient3)" width="12" x="2614" y="350" />
+	<rect height="30" rx="3" ry="3" style="opacity: 0.8; fill: url(#myLinearGradient2)" width="6" x="2652" y="350" />
+	<rect height="30" rx="3" ry="3" style="opacity: 0.8; fill: url(#myLinearGradient3)" width="6" x="2664" y="350" />
+	<rect height="30" rx="3" ry="3" style="opacity: 0.8; fill: url(#myLinearGradient3)" width="16" x="2674" y="350" />
+	<rect height="30" rx="3" ry="3" style="opacity: 0.8; fill: url(#myLinearGradient3)" width="16" x="2694" y="350" />
+	<rect height="30" rx="3" ry="3" style="opacity: 0.8; fill: url(#myLinearGradient2)" width="6" x="2712" y="350" />
+	<rect height="30" rx="3" ry="3" style="opacity: 0.8; fill: url(#myLinearGradient2)" width="24" x="2718" y="350" />
+	<rect height="30" rx="3" ry="3" style="opacity: 0.8; fill: url(#myLinearGradient3)" width="22" x="2748" y="350" />
+	<rect height="30" rx="3" ry="3" style="opacity: 0.8; fill: url(#myLinearGradient3)" width="24" x="2774" y="350" />
+	<rect height="30" rx="3" ry="3" style="opacity: 0.8; fill: url(#myLinearGradient2)" width="6" x="2812" y="350" />
+	<rect height="30" rx="3" ry="3" style="opacity: 0.8; fill: url(#myLinearGradient3)" width="10" x="2828" y="350" />
+	<rect height="30" rx="3" ry="3" style="opacity: 0.8; fill: url(#myLinearGradient3)" width="8" x="2844" y="350" />
+	<rect height="30" rx="3" ry="3" style="opacity: 0.8; fill: url(#myLinearGradient3)" width="24" x="2858" y="350" />
+	<rect height="30" rx="3" ry="3" style="opacity: 0.8; fill: url(#myLinearGradient3)" width="8" x="2896" y="350" />
+	<rect height="30" rx="3" ry="3" style="opacity: 0.8; fill: url(#myLinearGradient3)" width="18" x="2918" y="350" />
+	<rect height="30" rx="3" ry="3" style="opacity: 0.8; fill: url(#myLinearGradient3)" width="18" x="2946" y="350" />
+	<rect height="30" rx="3" ry="3" style="opacity: 0.8; fill: url(#myLinearGradient3)" width="14" x="2988" y="350" />
+	<rect height="30" rx="3" ry="3" style="opacity: 0.8; fill: url(#myLinearGradient2)" width="20" x="7240" y="350" />
+	<rect height="30" rx="3" ry="3" style="opacity: 0.8; fill: url(#myLinearGradient2)" width="16" x="7264" y="350" />
+	<rect height="30" rx="3" ry="3" style="opacity: 0.8; fill: url(#myLinearGradient2)" width="20" x="7288" y="350" />
+	<rect height="30" rx="3" ry="3" style="opacity: 0.8; fill: url(#myLinearGradient2)" width="32" x="7316" y="350" />
+	<rect height="30" rx="3" ry="3" style="opacity: 0.8; fill: url(#myLinearGradient2)" width="6" x="7348" y="350" />
+	<rect height="30" rx="3" ry="3" style="opacity: 0.8; fill: url(#myLinearGradient2)" width="20" x="7358" y="350" />
+	<rect height="30" rx="3" ry="3" style="opacity: 0.8; fill: url(#myLinearGradient2)" width="8" x="7384" y="350" />
+	<rect height="10" style="opacity: 0.8; fill: darkcyan; stroke: none" width="2" x="160" y="425" />
+	<rect height="10" style="opacity: 0.8; fill: darkcyan; stroke: none" width="2" x="166" y="425" />
+	<rect height="10" style="opacity: 0.8; fill: darkcyan; stroke: none" width="2" x="854" y="425" />
+	<rect height="10" style="opacity: 0.8; fill: darkcyan; stroke: none" width="2" x="1160" y="425" />
+	<rect height="10" style="opacity: 0.8; fill: darkcyan; stroke: none" width="2" x="1790" y="425" />
+	<rect height="10" style="opacity: 0.8; fill: darkcyan; stroke: none" width="2" x="1894" y="425" />
+	<rect height="10" style="opacity: 0.8; fill: darkcyan; stroke: none" width="2" x="2862" y="425" />
+	<rect height="10" style="opacity: 0.8; fill: darkcyan; stroke: none" width="2" x="3020" y="425" />
+	<rect height="10" style="opacity: 0.8; fill: darkcyan; stroke: none" width="2" x="6284" y="425" />
+	<rect height="10" style="opacity: 0.8; fill: darkcyan; stroke: none" width="2" x="6644" y="425" />
+	<rect height="10" style="opacity: 0.8; fill: darkcyan; stroke: none" width="2" x="6822" y="425" />
+	<rect height="10" style="opacity: 0.8; fill: darkcyan; stroke: none" width="2" x="6878" y="425" />
+	<rect height="10" style="opacity: 0.8; fill: darkcyan; stroke: none" width="2" x="6916" y="425" />
+	<rect height="10" style="opacity: 0.8; fill: darkcyan; stroke: none" width="2" x="6918" y="425" />
+	<rect height="10" style="opacity: 0.8; fill: darkcyan; stroke: none" width="2" x="7568" y="425" />
+	<rect height="10" style="opacity: 0.8; fill: darkcyan; stroke: none" width="2" x="7650" y="425" />
+	<rect height="10" style="opacity: 0.8; fill: darkcyan; stroke: none" width="2" x="7702" y="425" />
+	<rect height="10" style="opacity: 0.8; fill: darkcyan; stroke: none" width="2" x="7704" y="425" />
+	<rect height="10" style="opacity: 0.8; fill: darkcyan; stroke: none" width="2" x="7744" y="425" />
+	<rect height="10" style="opacity: 0.8; fill: darkcyan; stroke: none" width="2" x="7786" y="425" />
+	<rect height="10" style="opacity: 0.8; fill: darkseagreen; stroke: none" width="66" x="158" y="450" />
+	<text fill="black" font-family="TimesNewRoman" font-size="10" text-anchor="middle" transform="translate(191,448) rotate(0)" x="0" y="0">Repeat: ANK 1</text>
+	<rect height="10" style="opacity: 0.8; fill: darkseagreen; stroke: none" width="60" x="224" y="470" />
+	<text fill="black" font-family="TimesNewRoman" font-size="10" text-anchor="middle" transform="translate(254,468) rotate(0)" x="0" y="0">Repeat: ANK 2</text>
+	<rect height="10" style="opacity: 0.8; fill: darkseagreen; stroke: none" width="60" x="290" y="490" />
+	<text fill="black" font-family="TimesNewRoman" font-size="10" text-anchor="middle" transform="translate(320,488) rotate(0)" x="0" y="0">Repeat: ANK 3</text>
+	<rect height="10" style="opacity: 0.8; fill: darkseagreen; stroke: none" width="60" x="356" y="510" />
+	<text fill="black" font-family="TimesNewRoman" font-size="10" text-anchor="middle" transform="translate(386,508) rotate(0)" x="0" y="0">Repeat: ANK 4</text>
+	<rect height="10" style="opacity: 0.8; fill: darkseagreen; stroke: none" width="60" x="422" y="530" />
+	<text fill="black" font-family="TimesNewRoman" font-size="10" text-anchor="middle" transform="translate(452,528) rotate(0)" x="0" y="0">Repeat: ANK 5</text>
+	<rect height="10" style="opacity: 0.8; fill: darkseagreen; stroke: none" width="56" x="484" y="550" />
+	<text fill="black" font-family="TimesNewRoman" font-size="10" text-anchor="middle" transform="translate(512,548) rotate(0)" x="0" y="0">Repeat: ANK 6</text>
+	<rect height="10" style="opacity: 0.8; fill: darkseagreen; stroke: none" width="60" x="562" y="570" />
+	<text fill="black" font-family="TimesNewRoman" font-size="10" text-anchor="middle" transform="translate(592,568) rotate(0)" x="0" y="0">Repeat: ANK 7</text>
+	<rect height="10" style="opacity: 0.8; fill: darkseagreen; stroke: none" width="60" x="628" y="590" />
+	<text fill="black" font-family="TimesNewRoman" font-size="10" text-anchor="middle" transform="translate(658,588) rotate(0)" x="0" y="0">Repeat: ANK 8</text>
+	<rect height="10" style="opacity: 0.8; fill: darkseagreen; stroke: none" width="60" x="694" y="610" />
+	<text fill="black" font-family="TimesNewRoman" font-size="10" text-anchor="middle" transform="translate(724,608) rotate(0)" x="0" y="0">Repeat: ANK 9</text>
+	<rect height="10" style="opacity: 0.8; fill: darkseagreen; stroke: none" width="60" x="760" y="630" />
+	<text fill="black" font-family="TimesNewRoman" font-size="10" text-anchor="middle" transform="translate(790,628) rotate(0)" x="0" y="0">Repeat: ANK 10</text>
+	<rect height="10" style="opacity: 0.8; fill: darkseagreen; stroke: none" width="60" x="826" y="650" />
+	<text fill="black" font-family="TimesNewRoman" font-size="10" text-anchor="middle" transform="translate(856,648) rotate(0)" x="0" y="0">Repeat: ANK 11</text>
+	<rect height="10" style="opacity: 0.8; fill: darkseagreen; stroke: none" width="60" x="892" y="670" />
+	<text fill="black" font-family="TimesNewRoman" font-size="10" text-anchor="middle" transform="translate(922,668) rotate(0)" x="0" y="0">Repeat: ANK 12</text>
+	<rect height="10" style="opacity: 0.8; fill: darkseagreen; stroke: none" width="60" x="958" y="690" />
+	<text fill="black" font-family="TimesNewRoman" font-size="10" text-anchor="middle" transform="translate(988,688) rotate(0)" x="0" y="0">Repeat: ANK 13</text>
+	<rect height="10" style="opacity: 0.8; fill: darkseagreen; stroke: none" width="60" x="1024" y="710" />
+	<text fill="black" font-family="TimesNewRoman" font-size="10" text-anchor="middle" transform="translate(1054,708) rotate(0)" x="0" y="0">Repeat: ANK 14</text>
+	<rect height="10" style="opacity: 0.8; fill: darkseagreen; stroke: none" width="60" x="1090" y="730" />
+	<text fill="black" font-family="TimesNewRoman" font-size="10" text-anchor="middle" transform="translate(1120,728) rotate(0)" x="0" y="0">Repeat: ANK 15</text>
+	<rect height="10" style="opacity: 0.8; fill: darkseagreen; stroke: none" width="60" x="1156" y="750" />
+	<text fill="black" font-family="TimesNewRoman" font-size="10" text-anchor="middle" transform="translate(1186,748) rotate(0)" x="0" y="0">Repeat: ANK 16</text>
+	<rect height="10" style="opacity: 0.8; fill: darkseagreen; stroke: none" width="60" x="1222" y="770" />
+	<text fill="black" font-family="TimesNewRoman" font-size="10" text-anchor="middle" transform="translate(1252,768) rotate(0)" x="0" y="0">Repeat: ANK 17</text>
+	<rect height="10" style="opacity: 0.8; fill: darkseagreen; stroke: none" width="60" x="1288" y="790" />
+	<text fill="black" font-family="TimesNewRoman" font-size="10" text-anchor="middle" transform="translate(1318,788) rotate(0)" x="0" y="0">Repeat: ANK 18</text>
+	<rect height="10" style="opacity: 0.8; fill: darkseagreen; stroke: none" width="60" x="1354" y="810" />
+	<text fill="black" font-family="TimesNewRoman" font-size="10" text-anchor="middle" transform="translate(1384,808) rotate(0)" x="0" y="0">Repeat: ANK 19</text>
+	<rect height="10" style="opacity: 0.8; fill: darkseagreen; stroke: none" width="60" x="1420" y="830" />
+	<text fill="black" font-family="TimesNewRoman" font-size="10" text-anchor="middle" transform="translate(1450,828) rotate(0)" x="0" y="0">Repeat: ANK 20</text>
+	<rect height="10" style="opacity: 0.8; fill: darkseagreen; stroke: none" width="60" x="1486" y="850" />
+	<text fill="black" font-family="TimesNewRoman" font-size="10" text-anchor="middle" transform="translate(1516,848) rotate(0)" x="0" y="0">Repeat: ANK 21</text>
+	<rect height="10" style="opacity: 0.8; fill: darkseagreen; stroke: none" width="60" x="1552" y="870" />
+	<text fill="black" font-family="TimesNewRoman" font-size="10" text-anchor="middle" transform="translate(1582,868) rotate(0)" x="0" y="0">Repeat: ANK 22</text>
+	<rect height="10" style="opacity: 0.8; fill: darkseagreen; stroke: none" width="60" x="1618" y="890" />
+	<text fill="black" font-family="TimesNewRoman" font-size="10" text-anchor="middle" transform="translate(1648,888) rotate(0)" x="0" y="0">Repeat: ANK 23</text>
+	<rect height="10" style="opacity: 0.8; fill: darkseagreen; stroke: none" width="60" x="1684" y="910" />
+	<text fill="black" font-family="TimesNewRoman" font-size="10" text-anchor="middle" transform="translate(1714,908) rotate(0)" x="0" y="0">Repeat: ANK 24</text>
+	<rect height="10" style="opacity: 0.8; fill: darkseagreen; stroke: none" width="318" x="2030" y="930" />
+	<text fill="black" font-family="TimesNewRoman" font-size="10" text-anchor="middle" transform="translate(2189,928) rotate(0)" x="0" y="0">Domain: ZU5 1</text>
+	<rect height="10" style="opacity: 0.8; fill: darkseagreen; stroke: none" width="320" x="2030" y="950" />
+	<text fill="black" font-family="TimesNewRoman" font-size="10" text-anchor="middle" transform="translate(2190,948) rotate(0)" x="0" y="0">Region: Interaction with SPTBN1</text>
+	<rect height="10" style="opacity: 0.8; fill: darkseagreen; stroke: none" width="328" x="2348" y="970" />
+	<text fill="black" font-family="TimesNewRoman" font-size="10" text-anchor="middle" transform="translate(2512,968) rotate(0)" x="0" y="0">Domain: ZU5 2</text>
+	<rect height="10" style="opacity: 0.8; fill: darkseagreen; stroke: none" width="270" x="2676" y="990" />
+	<text fill="black" font-family="TimesNewRoman" font-size="10" text-anchor="middle" transform="translate(2811,988) rotate(0)" x="0" y="0">Region: UPA domain</text>
+	<rect height="10" style="opacity: 0.8; fill: darkseagreen; stroke: none" width="172" x="2998" y="1010" />
+	<text fill="black" font-family="TimesNewRoman" font-size="10" text-anchor="middle" transform="translate(3084,1008) rotate(0)" x="0" y="0">Domain: Death 1</text>
+	<rect height="10" style="opacity: 0.8; fill: darkseagreen; stroke: none" width="24" x="3710" y="1030" />
+	<text fill="black" font-family="TimesNewRoman" font-size="10" text-anchor="middle" transform="translate(3722,1028) rotate(0)" x="0" y="0">Repeat: Repeat A</text>
+	<rect height="10" style="opacity: 0.8; fill: darkseagreen; stroke: none" width="356" x="3710" y="1050" />
+	<text fill="black" font-family="TimesNewRoman" font-size="10" text-anchor="middle" transform="translate(3888,1048) rotate(0)" x="0" y="0">Region: Repeat-rich region</text>
+	<rect height="10" style="opacity: 0.8; fill: darkseagreen; stroke: none" width="24" x="3734" y="1070" />
+	<text fill="black" font-family="TimesNewRoman" font-size="10" text-anchor="middle" transform="translate(3746,1068) rotate(0)" x="0" y="0">Repeat: Repeat A</text>
+	<rect height="10" style="opacity: 0.8; fill: darkseagreen; stroke: none" width="24" x="3758" y="1090" />
+	<text fill="black" font-family="TimesNewRoman" font-size="10" text-anchor="middle" transform="translate(3770,1088) rotate(0)" x="0" y="0">Repeat: Repeat A</text>
+	<rect height="10" style="opacity: 0.8; fill: darkseagreen; stroke: none" width="24" x="3782" y="1110" />
+	<text fill="black" font-family="TimesNewRoman" font-size="10" text-anchor="middle" transform="translate(3794,1108) rotate(0)" x="0" y="0">Repeat: Repeat A</text>
+	<rect height="10" style="opacity: 0.8; fill: darkseagreen; stroke: none" width="24" x="3806" y="1130" />
+	<text fill="black" font-family="TimesNewRoman" font-size="10" text-anchor="middle" transform="translate(3818,1128) rotate(0)" x="0" y="0">Repeat: Repeat A</text>
+	<rect height="10" style="opacity: 0.8; fill: darkseagreen; stroke: none" width="24" x="3830" y="1150" />
+	<text fill="black" font-family="TimesNewRoman" font-size="10" text-anchor="middle" transform="translate(3842,1148) rotate(0)" x="0" y="0">Repeat: Repeat A</text>
+	<rect height="10" style="opacity: 0.8; fill: darkseagreen; stroke: none" width="24" x="3854" y="1170" />
+	<text fill="black" font-family="TimesNewRoman" font-size="10" text-anchor="middle" transform="translate(3866,1168) rotate(0)" x="0" y="0">Repeat: Repeat A</text>
+	<rect height="10" style="opacity: 0.8; fill: darkseagreen; stroke: none" width="22" x="3878" y="1190" />
+	<text fill="black" font-family="TimesNewRoman" font-size="10" text-anchor="middle" transform="translate(3889,1188) rotate(0)" x="0" y="0">Repeat: Repeat A; approximate</text>
+	<rect height="10" style="opacity: 0.8; fill: darkseagreen; stroke: none" width="24" x="3900" y="1210" />
+	<text fill="black" font-family="TimesNewRoman" font-size="10" text-anchor="middle" transform="translate(3912,1208) rotate(0)" x="0" y="0">Repeat: Repeat A</text>
+	<rect height="10" style="opacity: 0.8; fill: darkseagreen; stroke: none" width="24" x="3924" y="1230" />
+	<text fill="black" font-family="TimesNewRoman" font-size="10" text-anchor="middle" transform="translate(3936,1228) rotate(0)" x="0" y="0">Repeat: Repeat A</text>
+	<rect height="10" style="opacity: 0.8; fill: darkseagreen; stroke: none" width="22" x="3948" y="1250" />
+	<text fill="black" font-family="TimesNewRoman" font-size="10" text-anchor="middle" transform="translate(3959,1248) rotate(0)" x="0" y="0">Repeat: Repeat A; approximate</text>
+	<rect height="10" style="opacity: 0.8; fill: darkseagreen; stroke: none" width="24" x="3970" y="1270" />
+	<text fill="black" font-family="TimesNewRoman" font-size="10" text-anchor="middle" transform="translate(3982,1268) rotate(0)" x="0" y="0">Repeat: Repeat A</text>
+	<rect height="10" style="opacity: 0.8; fill: darkseagreen; stroke: none" width="24" x="3994" y="1290" />
+	<text fill="black" font-family="TimesNewRoman" font-size="10" text-anchor="middle" transform="translate(4006,1288) rotate(0)" x="0" y="0">Repeat: Repeat A</text>
+	<rect height="10" style="opacity: 0.8; fill: darkseagreen; stroke: none" width="24" x="4018" y="1310" />
+	<text fill="black" font-family="TimesNewRoman" font-size="10" text-anchor="middle" transform="translate(4030,1308) rotate(0)" x="0" y="0">Repeat: Repeat A</text>
+	<rect height="10" style="opacity: 0.8; fill: darkseagreen; stroke: none" width="24" x="4042" y="1330" />
+	<text fill="black" font-family="TimesNewRoman" font-size="10" text-anchor="middle" transform="translate(4054,1328) rotate(0)" x="0" y="0">Repeat: Repeat A</text>
+	<rect height="10" style="opacity: 0.8; fill: darkseagreen; stroke: none" width="170" x="7236" y="1350" />
+	<text fill="black" font-family="TimesNewRoman" font-size="10" text-anchor="middle" transform="translate(7321,1348) rotate(0)" x="0" y="0">Domain: Death 2</text>
+	<path d="M 0,0 L -5,-15 5,-15 Z" style="fill: darkred" transform="translate(7209,350) scale(1,1)" />
+	<text fill="black" font-family="TimesNewRoman" font-size="12" transform="translate(7215,335) rotate(0)" x="0" y="0">G3555S</text>
+	<rect fill="none" height="100" stroke="black" stroke-width="1.5" width="225" x="7789" y="50" />
+	<rect fill="url(#myLinearGradient2)" height="30" rx="5" ry="5" width="30" x="7794" y="55" />
+	<text fill="black" font-family="TimesNewRoman" font-size="12" x="7826" y="75">Helix</text>
+	<rect fill="url(#myLinearGradient3)" height="30" rx="5" ry="5" width="30" x="7856" y="55" />
+	<text fill="black" font-family="TimesNewRoman" font-size="12" x="7888" y="75">Beta strand</text>
+	<rect fill="url(#myLinearGradient4)" height="30" rx="5" ry="5" width="30" x="7955" y="55" />
+	<text fill="black" font-family="TimesNewRoman" font-size="12" x="7987" y="75">Turn</text>
+	<rect fill="darkorange" height="30" stroke="none" width="10" x="7794" y="90" />
+	<text fill="black" font-family="TimesNewRoman" font-size="12" x="7806" y="110">sites</text>
+	<rect fill="darkcyan" height="30" stroke="none" width="10" x="7838" y="90" />
+	<text fill="black" font-family="TimesNewRoman" font-size="12" x="7850" y="110">aa_mod</text>
+	<rect fill="darkseagreen" height="30" stroke="none" width="10" x="7891" y="90" />
+	<text fill="black" font-family="TimesNewRoman" font-size="12" x="7904" y="110">region</text>
+	<path d="M 0,0 L -5,-15 5,-15 Z" style="fill: darkred" transform="translate(7799,142) scale(1,1)" />
+	<text fill="black" font-family="TimesNewRoman" font-size="12" x="7806" y="137">sample(s)</text>
+	<path d="M 0,0 L -5,-15 5,-15 Z" style="fill: lightgrey" transform="translate(7866,142) scale(1,1)" />
+	<text fill="black" font-family="TimesNewRoman" font-size="12" x="7873" y="137">COSMIC</text>
+	<!-- 
+	Generated using the Perl SVG Module V2.52
+	by Ronan Oger
+	Info: http://www.roitsystems.com/
+ -->
+</svg>

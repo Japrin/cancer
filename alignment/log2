@@ -1,0 +1,262 @@
+---------------------------------------------------------------------------------
+The Genome Analysis Toolkit (GATK) v2.0-34-g6d0be9b, Compiled 2012/08/02 19:41:02
+Copyright (c) 2010 The Broad Institute
+For support and documentation go to http://www.broadinstitute.org/gatk
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+usage: java -jar GenomeAnalysisTKLite.jar -T <analysis_type> [-args <arg_file>] [-I <input_file>] [-rbs <read_buffer_size>] 
+       [-et <phone_home>] [-K <gatk_key>] [-rf <read_filter>] [-L <intervals>] [-XL <excludeIntervals>] [-isr 
+       <interval_set_rule>] [-im <interval_merging>] [-ip <interval_padding>] [-R <reference_sequence>] [-ndrs] [-dt 
+       <downsampling_type>] [-dfrac <downsample_to_fraction>] [-dcov <downsample_to_coverage>] [-baq <baq>] [-baqGOP 
+       <baqGapOpenPenalty>] [-PF <performanceLog>] [-OQ] [-BQSR <BQSR>] [-DIQ] [-EOQ] [-preserveQ <preserve_qscores_less_than>] 
+       [-DBQ <defaultBaseQualities>] [-S <validation_strictness>] [-U <unsafe>] [-nt <num_threads>] [-bfh 
+       <num_bam_file_handles>] [-rgbl <read_group_black_list>] [-ped <pedigree>] [-pedString <pedigreeString>] 
+       [-pedValidationType <pedigreeValidationType>] [-repairVCFHeader <repairVCFHeader>] [-l <logging_level>] [-log 
+       <log_to_file>] [-h]
+
+ -T,--analysis_type <analysis_type>                                     Type of analysis to run
+ -args,--arg_file <arg_file>                                            Reads arguments from the specified file
+ -I,--input_file <input_file>                                           SAM or BAM file(s)
+ -rbs,--read_buffer_size <read_buffer_size>                             Number of reads per SAM file to buffer in memory
+ -et,--phone_home <phone_home>                                          What kind of GATK run report should we generate? 
+                                                                        STANDARD is the default, can be NO_ET so nothing 
+                                                                        is posted to the run repository. Please see 
+                                                                        broadinstitute.org/gsa/wiki/index.php/Phone_home 
+                                                                        for details. (NO_ET|STANDARD|STDOUT)
+ -K,--gatk_key <gatk_key>                                               GATK Key file. Required if running with -et 
+                                                                        NO_ET. Please see 
+                                                                        broadinstitute.org/gsa/wiki/index.php/Phone_home 
+                                                                        for details.
+ -rf,--read_filter <read_filter>                                        Specify filtration criteria to apply to each 
+                                                                        read individually
+ -L,--intervals <intervals>                                             One or more genomic intervals over which to 
+                                                                        operate. Can be explicitly specified on the 
+                                                                        command line or in a file (including a rod file)
+ -XL,--excludeIntervals <excludeIntervals>                              One or more genomic intervals to exclude from 
+                                                                        processing. Can be explicitly specified on the 
+                                                                        command line or in a file (including a rod file)
+ -isr,--interval_set_rule <interval_set_rule>                           Indicates the set merging approach the interval 
+                                                                        parser should use to combine the various -L or 
+                                                                        -XL inputs (UNION|INTERSECTION)
+ -im,--interval_merging <interval_merging>                              Indicates the interval merging rule we should 
+                                                                        use for abutting intervals (ALL|
+                                                                        OVERLAPPING_ONLY)
+ -ip,--interval_padding <interval_padding>                              Indicates how many basepairs of padding to 
+                                                                        include around each of the intervals specified 
+                                                                        with the -L/--intervals argument
+ -R,--reference_sequence <reference_sequence>                           Reference sequence file
+ -ndrs,--nonDeterministicRandomSeed                                     Makes the GATK behave non deterministically, 
+                                                                        that is, the random numbers generated will be 
+                                                                        different in every run
+ -dt,--downsampling_type <downsampling_type>                            Type of reads downsampling to employ at a given 
+                                                                        locus.  Reads will be selected randomly to be 
+                                                                        removed from the pile based on the method 
+                                                                        described here (NONE|ALL_READS|BY_SAMPLE)
+ -dfrac,--downsample_to_fraction <downsample_to_fraction>               Fraction [0.0-1.0] of reads to downsample to
+ -dcov,--downsample_to_coverage <downsample_to_coverage>                Coverage [integer] to downsample to at any given 
+                                                                        locus; note that downsampled reads are randomly 
+                                                                        selected from all possible reads at a locus
+ -baq,--baq <baq>                                                       Type of BAQ calculation to apply in the engine 
+                                                                        (OFF|CALCULATE_AS_NECESSARY|RECALCULATE)
+ -baqGOP,--baqGapOpenPenalty <baqGapOpenPenalty>                        BAQ gap open penalty (Phred Scaled).  Default 
+                                                                        value is 40.  30 is perhaps better for whole 
+                                                                        genome call sets
+ -PF,--performanceLog <performanceLog>                                  If provided, a GATK runtime performance log will 
+                                                                        be written to this file
+ -OQ,--useOriginalQualities                                             If set, use the original base quality scores 
+                                                                        from the OQ tag when present instead of the 
+                                                                        standard scores
+ -BQSR,--BQSR <BQSR>                                                    The input covariates table file which enables 
+                                                                        on-the-fly base quality score recalibration
+ -DIQ,--disable_indel_quals                                             If true, disables printing of base insertion and 
+                                                                        base deletion tags (with -BQSR)
+ -EOQ,--emit_original_quals                                             If true, enables printing of the OQ tag with the 
+                                                                        original base qualities (with -BQSR)
+ -preserveQ,--preserve_qscores_less_than <preserve_qscores_less_than>   Bases with quality scores less than this 
+                                                                        threshold won't be recalibrated (with -BQSR)
+ -DBQ,--defaultBaseQualities <defaultBaseQualities>                     If reads are missing some or all base quality 
+                                                                        scores, this value will be used for all base 
+                                                                        quality scores
+ -S,--validation_strictness <validation_strictness>                     How strict should we be with validation (STRICT|
+                                                                        LENIENT|SILENT)
+ -U,--unsafe <unsafe>                                                   If set, enables unsafe operations: nothing will 
+                                                                        be checked at runtime.  For expert users only 
+                                                                        who know what they are doing.  We do not support 
+                                                                        usage of this argument. (ALLOW_UNINDEXED_BAM|
+                                                                        ALLOW_UNSET_BAM_SORT_ORDER|
+                                                                        NO_READ_ORDER_VERIFICATION|
+                                                                        ALLOW_SEQ_DICT_INCOMPATIBILITY|
+                                                                        LENIENT_VCF_PROCESSING|ALL)
+ -nt,--num_threads <num_threads>                                        How many threads should be allocated to running 
+                                                                        this analysis.
+ -bfh,--num_bam_file_handles <num_bam_file_handles>                     The total number of BAM file handles to keep 
+                                                                        open simultaneously
+ -rgbl,--read_group_black_list <read_group_black_list>                  Filters out read groups matching <TAG>:<STRING> 
+                                                                        or a .txt file containing the filter strings one 
+                                                                        per line.
+ -ped,--pedigree <pedigree>                                             Pedigree files for samples
+ -pedString,--pedigreeString <pedigreeString>                           Pedigree string for samples
+ -pedValidationType,--pedigreeValidationType <pedigreeValidationType>   How strict should we be in validating the 
+                                                                        pedigree information? (STRICT|SILENT)
+ -repairVCFHeader,--repairVCFHeader <repairVCFHeader>                   If provided, whenever we read a VCF file we will 
+                                                                        use the header in this file to repair the header 
+                                                                        of the input VCF files
+ -l,--logging_level <logging_level>                                     Set the minimum level of logging, i.e. setting 
+                                                                        INFO get's you INFO up to FATAL, setting ERROR 
+                                                                        gets you ERROR and FATAL level logging.
+ -log,--log_to_file <log_to_file>                                       Set the logging location
+ -h,--help                                                              Generate this help message
+
+ alignment                       Analyses used to validate the correctness and performance the BWA Java bindings.
+   Align                         Aligns reads to a given reference using Heng Li's BWA aligner, presenting the resulting 
+                                 alignments in SAM or BAM format.
+   AlignmentValidation           Validates consistency of the aligner interface by taking reads already aligned by BWA 
+                                 in a BAM file, stripping them of their alignment data, realigning them, and making sure 
+                                 one of the best resulting realignments matches the original alignment from the input 
+                                 file.
+   CountBestAlignments           Counts the number of best alignments as presented by BWA and outputs a histogram of 
+                                 number of placements vs.
+                                 
+ annotator                       
+   VariantAnnotator              Annotates variant calls with context information.
+                                 
+ beagle                          
+   BeagleOutputToVCF             Takes files produced by Beagle imputation engine and creates a vcf with modified 
+                                 annotations.
+   ProduceBeagleInput            Converts the input VCF into a format accepted by the Beagle imputation/analysis 
+                                 program.
+   VariantsToBeagleUnphased      Produces an input file to Beagle imputation engine, listing unphased, hard-called 
+                                 genotypes for a single sample in input variant file.
+                                 
+ bqsr                            
+   BaseRecalibrator              First pass of the base quality score recalibration -- Generates recalibration table 
+                                 based on various user-specified covariates (such as reported quality score, cycle, and 
+                                 dinucleotide).
+                                 
+ coverage                        
+   CallableLoci                  Emits a data file containing information about callable, uncallable, poorly mapped, and 
+                                 other parts of the genome <p/>
+   CompareCallableLoci           Test routine for new VariantContext object
+   DepthOfCoverage               Toolbox for assessing sequence coverage by a wide array of metrics, partitioned by 
+                                 sample, read group, or library
+   GCContentByInterval           Walks along reference and calculates the GC content for each interval.
+                                 
+ diagnostics                     
+   ErrorRatePerCycle             Computes the read error rate per position in read (in the original 5'->3' orientation 
+                                 that the read had coming off the machine)  Emits a GATKReport containing readgroup, 
+                                 cycle, mismatches, counts, qual, and error rate for each read group in the input BAMs 
+                                 FOR ONLY THE FIRST OF PAIR READS.
+   ReadGroupProperties           Emits a GATKReport containing read group, sample, library, platform, center, sequencing 
+                                 data, paired end status, simple read type name (e.g.
+   ReadLengthDistribution        Outputs the read lengths of all the reads in a file.
+                                 
+ diffengine                      
+   DiffObjects                   A generic engine for comparing tree-structured objects
+                                 
+ examples                        
+   CoverageBySample              Computes the coverage per sample for every position (use with -L argument!).
+   GATKPaperGenotyper            A simple Bayesian genotyper, that outputs a text based call format.
+                                 
+ fasta                           
+   FastaAlternateReferenceMaker  Generates an alternative reference sequence over the specified interval.
+   FastaReferenceMaker           Renders a new reference in FASTA format consisting of only those loci provided in the 
+                                 input data set.
+   FastaStats                    Calculates basic statistics about the reference sequence itself
+                                 
+ filters                         
+   VariantFiltration             Filters variant calls using a number of user-selectable, parameterizable criteria.
+                                 
+ genotyper                       
+   UnifiedGenotyper              A variant caller which unifies the approaches of several disparate callers -- Works for 
+                                 single-sample and multi-sample data.
+                                 
+ indels                          
+   IndelRealigner                Performs local realignment of reads based on misalignments due to the presence of 
+                                 indels.
+   LeftAlignIndels               Left-aligns indels from reads in a bam file.
+   RealignerTargetCreator        Emits intervals for the Local Indel Realigner to target for realignment.
+   SomaticIndelDetector          Tool for calling indels in Tumor-Normal paired sample mode; this tool supports 
+                                 single-sample mode as well, but this latter functionality is now superceded by 
+                                 UnifiedGenotyper.
+                                 
+ phasing                         
+   PhaseByTransmission           Computes the most likely genotype combination and phases trios and parent/child pairs
+   ReadBackedPhasing             Walks along all variant ROD loci, caching a user-defined window of VariantContext 
+                                 sites, and then finishes phasing them when they go out of range (using upstream and 
+                                 downstream reads).
+                                 
+ qc                              
+   CountBases                    Walks over the input data set, calculating the number of bases seen for diagnostic 
+                                 purposes.
+   CountIntervals                Counts the number of contiguous regions the walker traverses over.
+   CountLoci                     Walks over the input data set, calculating the total number of covered loci for 
+                                 diagnostic purposes.
+   CountMales                    Walks over the input data set, calculating the number of reads seen from male samples 
+                                 for diagnostic purposes.
+   CountReadEvents               Walks over the input data set, counting the number of read events (from the CIGAR 
+                                 operator)
+   CountReads                    Walks over the input data set, calculating the number of reads seen for diagnostic 
+                                 purposes.
+   CountRODs                     Prints out counts of the number of reference ordered data objects encountered.
+   CountRODsByRef                Prints out counts of the number of reference ordered data objects encountered.
+   CountTerminusEvent            Walks over the input data set, counting the number of reads ending in 
+                                 insertions/deletions or soft-clips
+   QCRef                         Quality control for the reference fasta
+   ReadClippingStats             Walks over the input reads, printing out statistics about the read length, number of 
+                                 clipping events, and length of the clipping to the output stream.
+   ValidatingPileup              At every locus in the input set, compares the pileup data (reference base, aligned base 
+                                 from each overlapping read, and quality score) to the reference pileup data generated 
+                                 by samtools.
+                                 
+ targets                         
+   DiagnoseTargets               Analyzes coverage distribution and validates read mates for a given interval and 
+                                 sample.
+   FindCoveredIntervals          
+                                 
+ validation                      
+   GenotypeAndValidate           Genotypes a dataset and validates the calls of another dataset using the Unified 
+                                 Genotyper.
+   ValidationAmplicons           Creates FASTA sequences for use in Seqenom or PCR utilities for site amplification and 
+                                 subsequent validation
+                                 
+ validationsiteselector          
+   ValidationSiteSelector        Randomly selects VCF records according to specified options.
+                                 
+ varianteval                     
+   VariantEval                   General-purpose tool for variant evaluation (% in dbSNP, genotype concordance, Ti/Tv 
+                                 ratios, and a lot more)
+                                 
+ variantrecalibration            
+   ApplyRecalibration            Applies cuts to the input vcf file (by adding filter lines) to achieve the desired 
+                                 novel truth sensitivity levels which were specified during VariantRecalibration
+   VariantRecalibrator           Create a Gaussian mixture model by looking at the annotations values over a high 
+                                 quality subset of the input call set and then evaluate all input variants.
+                                 
+ variantutils                    
+   CombineVariants               Combines VCF records from different sources.
+   FilterLiftedVariants          Filters a lifted-over VCF file for ref bases that have been changed.
+   LeftAlignVariants             Left-aligns indels from a variants file.
+   LiftoverVariants              Lifts a VCF file over from one build to another.
+   RandomlySplitVariants         Takes a VCF file, randomly splits variants into two different sets, and outputs 2 new 
+                                 VCFs with the results.
+   SelectHeaders                 Selects headers from a VCF source.
+   SelectVariants                Selects variants from a VCF source.
+   ValidateVariants              Strictly validates a variants file.
+   VariantsToBinaryPed           Yet another VCF to Ped converter.
+   VariantsToTable               Emits specific fields from a VCF file to a tab-deliminated table
+   VariantsToVCF                 Converts variants from other file formats to VCF format.
+   VariantValidationAssessor     Annotates a validation (from Sequenom for example) VCF with QC metrics (HW-equilibrium, 
+                                 % failed probes)
+                                 
+ walkers                         Runs the desired analysis on the smallest meaningful subset of the dataset.
+   ClipReads                     This tool provides simple, powerful read clipping capabilities to remove low quality 
+                                 strings of bases, sections of reads, and reads containing user-provided sequences.
+   FlagStat                      A reimplementation of the 'samtools flagstat' subcommand in the GATK.
+   Pileup                        Prints the alignment in the pileup format.
+   PrintReads                    Renders, in SAM/BAM format, all reads from the input data set in the order in which 
+                                 they appear in the input file.
+   PrintRODs                     Prints out all of the RODs in the input data set.
+   SplitSamFile                  Divides the input data set into separate BAM files, one for each sample in the input 
+                                 data set.
+                                 
+

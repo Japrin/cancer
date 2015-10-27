@@ -1,0 +1,10 @@
+somatic sv	Inversion	Translocation	Deletion
+cds	1	0	0
+splicing	0	0	0
+utr5	0	0	0
+utr3	0	2	2
+intron	2	7	131
+upstream	0	1	0
+downstream	0	0	2
+ncRNA	4	2	10
+intergenic	7	28	224

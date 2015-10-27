@@ -1,0 +1,1466 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   height="500"
+   width="650"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.47 r22583"
+   sodipodi:docname="fig2a_v6.svg"
+   inkscape:export-filename="/home/japrin/BGICluster/Gastric/MUC17/fig2a_v6.png"
+   inkscape:export-xdpi="110.77"
+   inkscape:export-ydpi="110.77">
+  <metadata
+     id="metadata418">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs416">
+    <marker
+       inkscape:stockid="Arrow2Mend"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="Arrow2Mend"
+       style="overflow:visible;">
+      <path
+         id="path4028"
+         style="font-size:12.0;fill-rule:evenodd;stroke-width:0.62500000;stroke-linejoin:round;"
+         d="M 8.7185878,4.0337352 L -2.2072895,0.016013256 L 8.7185884,-4.0017078 C 6.9730900,-1.6296469 6.9831476,1.6157441 8.7185878,4.0337352 z "
+         transform="scale(0.6) rotate(180) translate(0,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow2Mstart"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="Arrow2Mstart"
+       style="overflow:visible">
+      <path
+         id="path4025"
+         style="font-size:12.0;fill-rule:evenodd;stroke-width:0.62500000;stroke-linejoin:round"
+         d="M 8.7185878,4.0337352 L -2.2072895,0.016013256 L 8.7185884,-4.0017078 C 6.9730900,-1.6296469 6.9831476,1.6157441 8.7185878,4.0337352 z "
+         transform="scale(0.6) translate(0,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Mend"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="Arrow1Mend"
+       style="overflow:visible;">
+      <path
+         id="path4010"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1.0pt;marker-start:none;"
+         transform="scale(0.4) rotate(180) translate(10,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Mstart"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="Arrow1Mstart"
+       style="overflow:visible">
+      <path
+         id="path4007"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1.0pt;marker-start:none"
+         transform="scale(0.4) translate(10,0)" />
+    </marker>
+    <inkscape:perspective
+       sodipodi:type="inkscape:persp3d"
+       inkscape:vp_x="0 : 250 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_z="650 : 250 : 1"
+       inkscape:persp3d-origin="325 : 166.66667 : 1"
+       id="perspective420" />
+  </defs>
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1366"
+     inkscape:window-height="717"
+     id="namedview414"
+     showgrid="false"
+     inkscape:zoom="2.6700352"
+     inkscape:cx="518.9974"
+     inkscape:cy="250"
+     inkscape:window-x="0"
+     inkscape:window-y="24"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg2" />
+  <rect
+     fill="white"
+     height="500"
+     width="650"
+     x="0"
+     y="0"
+     id="rect4"
+     inkscape:export-xdpi="110.77"
+     inkscape:export-ydpi="110.77" />
+  <marker
+     id="arrow"
+     markerHeight="6"
+     markerUnits="strokeWidth"
+     markerWidth="8"
+     orient="auto"
+     refX="0"
+     refY="5"
+     viewBox="0 0 10 10">
+    <path
+       d="M 0 0 L 15 5 L 0 10 z"
+       id="path7" />
+  </marker>
+  <marker
+     id="arrow2"
+     markerHeight="6"
+     markerUnits="strokeWidth"
+     markerWidth="8"
+     orient="auto"
+     refX="0"
+     refY="5"
+     transform="rotate(180)"
+     viewBox="0 0 10 10">
+    <path
+       d="M 15 0 L 0 5 L 15 10 z"
+       id="path10" />
+  </marker>
+  <radialGradient
+     id="myRadialGradient1"
+     r="65%">
+    <stop
+       offset="5%"
+       stop-color="red"
+       id="stop13" />
+    <stop
+       offset="95%"
+       stop-color="darkred"
+       id="stop15" />
+  </radialGradient>
+  <linearGradient
+     gradientTransform="rotate(90)"
+     id="myLinearGradient2"
+     x1="0"
+     x2="1"
+     y1="0"
+     y2="0">
+    <stop
+       offset="5%"
+       stop-color="blue"
+       id="stop18" />
+    <stop
+       offset="50%"
+       stop-color="lightskyblue"
+       id="stop20" />
+    <stop
+       offset="95%"
+       stop-color="blue"
+       id="stop22" />
+  </linearGradient>
+  <linearGradient
+     gradientTransform="rotate(90)"
+     id="myLinearGradient3"
+     x1="0"
+     x2="1"
+     y1="0"
+     y2="0">
+    <stop
+       offset="5%"
+       stop-color="green"
+       id="stop25" />
+    <stop
+       offset="50%"
+       stop-color="lightgreen"
+       id="stop27" />
+    <stop
+       offset="95%"
+       stop-color="green"
+       id="stop29" />
+  </linearGradient>
+  <linearGradient
+     gradientTransform="rotate(90)"
+     id="myLinearGradient4"
+     x1="0"
+     x2="1"
+     y1="0"
+     y2="0">
+    <stop
+       offset="5%"
+       stop-color="deeppink"
+       id="stop32" />
+    <stop
+       offset="50%"
+       stop-color="lightpink"
+       id="stop34" />
+    <stop
+       offset="95%"
+       stop-color="deeppink"
+       id="stop36" />
+  </linearGradient>
+  <rect
+     height="30"
+     rx="3"
+     ry="3"
+     style="fill: url(#myLinearGradient2); stroke: black"
+     width="14.5"
+     x="20"
+     y="200"
+     id="rect38" />
+  <rect
+     height="30"
+     style="fill: url(#myLinearGradient2); stroke: black"
+     width="15.9"
+     x="32.5"
+     y="200"
+     id="rect40" />
+  <rect
+     height="30"
+     style="fill: rgb(97,199,199); stroke: black"
+     width="354.3"
+     x="48.4"
+     y="200"
+     id="rect42" />
+  <rect
+     height="30"
+     style="fill: url(#myLinearGradient2); stroke: black"
+     width="40.3"
+     x="402.7"
+     y="200"
+     id="rect44" />
+  <ellipse
+     cx="453"
+     cy="215"
+     rx="10"
+     ry="15"
+     style="fill: url(#myRadialGradient1); stroke: black"
+     id="ellipse46" />
+  <rect
+     height="30"
+     style="fill: url(#myLinearGradient2); stroke: black"
+     width="5.5"
+     x="463"
+     y="200"
+     id="rect48" />
+  <rect
+     height="30"
+     style="fill: rgb(97,199,199); stroke: black"
+     width="57.5"
+     x="468.5"
+     y="200"
+     id="rect50" />
+  <rect
+     height="30"
+     style="fill: url(#myLinearGradient2); stroke: black"
+     width="14.5"
+     x="526"
+     y="200"
+     id="rect52" />
+  <ellipse
+     cx="550.5"
+     cy="215"
+     rx="10"
+     ry="15"
+     style="fill: url(#myRadialGradient1); stroke: black"
+     id="ellipse54" />
+  <rect
+     height="30"
+     style="fill: url(#myLinearGradient2); stroke: black"
+     width="14"
+     x="560.5"
+     y="200"
+     id="rect56" />
+  <rect
+     height="30"
+     rx="3"
+     ry="3"
+     style="fill: url(#myLinearGradient2); stroke: black"
+     width="41.5"
+     x="583"
+     y="200"
+     id="rect60" />
+  <rect
+     height="30"
+     style="fill: rgb(97,199,199); stroke: black"
+     width="10.5"
+     x="574.5"
+     y="200"
+     id="rect58"
+     inkscape:export-xdpi="110.77"
+     inkscape:export-ydpi="110.77" />
+  <text
+     fill="black"
+     font-family="TimesNewRoman"
+     font-size="10"
+     stroke-width="1.5"
+     text-anchor="middle"
+     transform="translate(453,220)"
+     x="0"
+     y="0"
+     id="text62">EGF</text>
+  <text
+     fill="black"
+     font-family="TimesNewRoman"
+     font-size="10"
+     stroke-width="1.5"
+     text-anchor="middle"
+     transform="translate(550,220)"
+     x="0"
+     y="0"
+     id="text64">EGF</text>
+  <text
+     fill="black"
+     font-family="TimesNewRoman"
+     font-size="14"
+     stroke-width="1.5"
+     text-anchor="middle"
+     transform="translate(580,170)"
+     x="0"
+     y="0"
+     id="text66">TM</text>
+  <line
+     style="stroke:#000000;marker-end:url(#arrow)"
+     x1="580"
+     x2="580"
+     y1="171"
+     y2="186"
+     id="line68" />
+  <text
+     fill="black"
+     font-family="TimesNewRoman"
+     font-size="14"
+     stroke-width="1.5"
+     text-anchor="middle"
+     transform="translate(603,220)"
+     x="0"
+     y="0"
+     id="text70">Cyt</text>
+  <text
+     fill="black"
+     font-family="TimesNewRoman"
+     font-size="14"
+     stroke-width="1.5"
+     text-anchor="middle"
+     transform="translate(270,220)"
+     x="0"
+     y="0"
+     id="text72">TR</text>
+  <text
+     fill="black"
+     font-family="TimesNewRoman"
+     font-size="14"
+     stroke-width="1.5"
+     text-anchor="middle"
+     transform="translate(498,220)"
+     x="0"
+     y="0"
+     id="text74">SEA</text>
+  <line
+     style="stroke:black;marker-end:url(#Arrow2Mend);marker-start:url(#Arrow2Mstart)"
+     x1="20"
+     x2="48.4"
+     y1="460"
+     y2="460"
+     id="line76" />
+  <text
+     fill="black"
+     font-family="TimesNewRoman"
+     font-size="12"
+     text-anchor="middle"
+     x="36.2"
+     y="473"
+     id="text78">184aa</text>
+  <line
+     style="stroke:black;marker-end:url(#Arrow2Mend);marker-start:url(#Arrow2Mstart)"
+     x1="48.4"
+     x2="402.7"
+     y1="460"
+     y2="460"
+     id="line80" />
+  <text
+     fill="black"
+     font-family="TimesNewRoman"
+     font-size="12"
+     text-anchor="middle"
+     x="225.55"
+     y="473"
+     id="text82">3543aa</text>
+  <line
+     style="stroke:black;marker-end:url(#Arrow2Mend);marker-start:url(#Arrow2Mstart)"
+     x1="402.7"
+     x2="443"
+     y1="460"
+     y2="460"
+     id="line84" />
+  <text
+     fill="black"
+     font-family="TimesNewRoman"
+     font-size="12"
+     text-anchor="middle"
+     x="422.85"
+     y="473"
+     id="text86">403aa</text>
+  <line
+     style="stroke:black;marker-end:url(#Arrow2Mend);marker-start:url(#Arrow2Mstart)"
+     x1="443"
+     x2="624.5"
+     y1="460"
+     y2="460"
+     id="line88" />
+  <text
+     fill="black"
+     font-family="TimesNewRoman"
+     font-size="12"
+     text-anchor="middle"
+     x="533.75"
+     y="473"
+     id="text90">363aa</text>
+  <line
+     style="stroke:black;marker-end:url(#Arrow2Mend);marker-start:url(#Arrow2Mstart)"
+     x1="585"
+     x2="624.5"
+     y1="240"
+     y2="240"
+     id="line92" />
+  <text
+     fill="black"
+     font-family="TimesNewRoman"
+     font-size="12"
+     text-anchor="middle"
+     x="604.75"
+     y="253"
+     id="text94">79aa</text>
+  <line
+     style="stroke: black"
+     x1="35.6"
+     x2="35.6"
+     y1="230"
+     y2="250"
+     id="line96" />
+  <line
+     style="stroke: black"
+     x1="44.3"
+     x2="44.3"
+     y1="230"
+     y2="250"
+     id="line98" />
+  <line
+     style="stroke: black"
+     x1="72.6"
+     x2="72.6"
+     y1="230"
+     y2="250"
+     id="line100" />
+  <line
+     style="stroke: black"
+     x1="121.9"
+     x2="121.9"
+     y1="230"
+     y2="250"
+     id="line102" />
+  <line
+     style="stroke: black"
+     x1="127.7"
+     x2="127.7"
+     y1="230"
+     y2="250"
+     id="line104" />
+  <line
+     style="stroke: black"
+     x1="130.5"
+     x2="130.5"
+     y1="230"
+     y2="250"
+     id="line106" />
+  <line
+     style="stroke: black"
+     x1="145.8"
+     x2="145.8"
+     y1="230"
+     y2="250"
+     id="line108" />
+  <line
+     style="stroke: black"
+     x1="155.5"
+     x2="155.5"
+     y1="230"
+     y2="250"
+     id="line110" />
+  <line
+     style="stroke: black"
+     x1="185.6"
+     x2="185.6"
+     y1="230"
+     y2="250"
+     id="line112" />
+  <line
+     style="stroke: black"
+     x1="185.8"
+     x2="185.8"
+     y1="230"
+     y2="250"
+     id="line114" />
+  <line
+     style="stroke: black"
+     x1="200"
+     x2="200"
+     y1="230"
+     y2="250"
+     id="line116" />
+  <line
+     style="stroke: black"
+     x1="203.4"
+     x2="203.4"
+     y1="230"
+     y2="250"
+     id="line118" />
+  <line
+     style="stroke: black"
+     x1="215"
+     x2="215"
+     y1="230"
+     y2="250"
+     id="line120" />
+  <line
+     style="stroke: black"
+     x1="215.2"
+     x2="215.2"
+     y1="230"
+     y2="250"
+     id="line122" />
+  <line
+     style="stroke: black"
+     x1="215.4"
+     x2="215.4"
+     y1="230"
+     y2="250"
+     id="line124" />
+  <line
+     style="stroke: black"
+     x1="217.1"
+     x2="217.1"
+     y1="230"
+     y2="250"
+     id="line126" />
+  <line
+     style="stroke: black"
+     x1="255.1"
+     x2="255.1"
+     y1="230"
+     y2="250"
+     id="line128" />
+  <line
+     style="stroke: black"
+     x1="265.1"
+     x2="265.1"
+     y1="230"
+     y2="250"
+     id="line130" />
+  <line
+     style="stroke: black"
+     x1="268.3"
+     x2="268.3"
+     y1="230"
+     y2="250"
+     id="line132" />
+  <line
+     style="stroke: black"
+     x1="277.4"
+     x2="277.4"
+     y1="230"
+     y2="250"
+     id="line134" />
+  <line
+     style="stroke: black"
+     x1="308.4"
+     x2="308.4"
+     y1="230"
+     y2="250"
+     id="line136" />
+  <line
+     style="stroke: black"
+     x1="335.5"
+     x2="335.5"
+     y1="230"
+     y2="250"
+     id="line138" />
+  <line
+     style="stroke: black"
+     x1="396.4"
+     x2="396.4"
+     y1="230"
+     y2="250"
+     id="line140" />
+  <line
+     style="stroke: black"
+     x1="423.1"
+     x2="423.1"
+     y1="230"
+     y2="250"
+     id="line142" />
+  <text
+     fill="black"
+     font-family="TimesNewRoman"
+     font-size="12"
+     transform="translate(41,440) rotate(-90)"
+     x="0"
+     y="0"
+     id="text144">*57K</text>
+  <path
+     d="M 35.6 250 L 36 270 L 36 380 "
+     style="fill: none; stroke: black; marker-end: url(#arrow)"
+     id="path146" />
+  <circle
+     cx="36"
+     cy="280"
+     r="3"
+     style="fill: red"
+     id="circle148" />
+  <text
+     fill="black"
+     font-family="TimesNewRoman"
+     font-size="12"
+     transform="translate(60,440) rotate(-90)"
+     x="0"
+     y="0"
+     id="text150">G144D</text>
+  <path
+     d="M 44.3 250 L 55 270 L 55 380 "
+     style="fill: none; stroke: black; marker-end: url(#arrow)"
+     id="path152" />
+  <circle
+     cx="55"
+     cy="280"
+     r="3"
+     style="fill: red"
+     id="circle154" />
+  <circle
+     cx="55"
+     cy="287"
+     r="3"
+     style="fill: red"
+     id="circle156" />
+  <text
+     fill="black"
+     font-family="TimesNewRoman"
+     font-size="12"
+     transform="translate(79,440) rotate(-90)"
+     x="0"
+     y="0"
+     id="text158">A427T</text>
+  <path
+     d="M 72.6 250 L 74 270 L 74 380 "
+     style="fill: none; stroke: black; marker-end: url(#arrow)"
+     id="path160" />
+  <circle
+     cx="74"
+     cy="280"
+     r="3"
+     style="fill: red"
+     id="circle162" />
+  <circle
+     cx="74"
+     cy="287"
+     r="3"
+     style="fill: red"
+     id="circle164" />
+  <circle
+     cx="74"
+     cy="294"
+     r="3"
+     style="fill: red"
+     id="circle166" />
+  <circle
+     cx="74"
+     cy="301"
+     r="3"
+     style="fill: red"
+     id="circle168" />
+  <circle
+     cx="74"
+     cy="308"
+     r="3"
+     style="fill: red"
+     id="circle170" />
+  <circle
+     cx="74"
+     cy="315"
+     r="3"
+     style="fill: red"
+     id="circle172" />
+  <circle
+     cx="74"
+     cy="322"
+     r="3"
+     style="fill: red"
+     id="circle174" />
+  <circle
+     cx="74"
+     cy="329"
+     r="3"
+     style="fill: red"
+     id="circle176" />
+  <circle
+     cx="74"
+     cy="336"
+     r="3"
+     style="fill: red"
+     id="circle178" />
+  <text
+     fill="black"
+     font-family="TimesNewRoman"
+     font-size="12"
+     transform="translate(98,440) rotate(-90)"
+     x="0"
+     y="0"
+     id="text180">G920R</text>
+  <path
+     d="M 121.9 250 L 93 270 L 93 380 "
+     style="fill: none; stroke: black; marker-end: url(#arrow)"
+     id="path182" />
+  <circle
+     cx="93"
+     cy="280"
+     r="3"
+     style="fill: red"
+     id="circle184" />
+  <text
+     fill="black"
+     font-family="TimesNewRoman"
+     font-size="12"
+     transform="translate(117,440) rotate(-90)"
+     x="0"
+     y="0"
+     id="text186">P978L</text>
+  <path
+     d="M 127.7 250 L 112 270 L 112 380 "
+     style="fill: none; stroke: black; marker-end: url(#arrow)"
+     id="path188" />
+  <circle
+     cx="112"
+     cy="280"
+     r="3"
+     style="fill: red"
+     id="circle190" />
+  <text
+     fill="black"
+     font-family="TimesNewRoman"
+     font-size="12"
+     transform="translate(136,440) rotate(-90)"
+     x="0"
+     y="0"
+     id="text192">T1006I</text>
+  <path
+     d="M 130.5 250 L 131 270 L 131 380 "
+     style="fill: none; stroke: black; marker-end: url(#arrow)"
+     id="path194" />
+  <circle
+     cx="131"
+     cy="280"
+     r="3"
+     style="fill: red"
+     id="circle196" />
+  <text
+     fill="black"
+     font-family="TimesNewRoman"
+     font-size="12"
+     transform="translate(155,440) rotate(-90)"
+     x="0"
+     y="0"
+     id="text198">T1159I</text>
+  <path
+     d="M 145.8 250 L 150 270 L 150 380 "
+     style="fill: none; stroke: black; marker-end: url(#arrow)"
+     id="path200" />
+  <circle
+     cx="150"
+     cy="280"
+     r="3"
+     style="fill: red"
+     id="circle202" />
+  <circle
+     cx="150"
+     cy="287"
+     r="3"
+     style="fill: red"
+     id="circle204" />
+  <path
+     d="M -0.951,-0.309 L  0.951,-0.309 -0.588, 0.809 0.000,-1.000 0.588, 0.809 Z"
+     style="fill: green"
+     transform="translate(150,448) scale(6,6)"
+     id="path206" />
+  <text
+     fill="black"
+     font-family="TimesNewRoman"
+     font-size="12"
+     transform="translate(174,440) rotate(-90)"
+     x="0"
+     y="0"
+     id="text208">T1256I</text>
+  <path
+     d="M 155.5 250 L 169 270 L 169 380 "
+     style="fill: none; stroke: black; marker-end: url(#arrow)"
+     id="path210" />
+  <circle
+     cx="169"
+     cy="280"
+     r="3"
+     style="fill: red"
+     id="circle212" />
+  <path
+     d="M -0.951,-0.309 L  0.951,-0.309 -0.588, 0.809 0.000,-1.000 0.588, 0.809 Z"
+     style="fill: green"
+     transform="translate(169,448) scale(6,6)"
+     id="path214" />
+  <text
+     fill="black"
+     font-family="TimesNewRoman"
+     font-size="12"
+     transform="translate(193,440) rotate(-90)"
+     x="0"
+     y="0"
+     id="text216">T1557A</text>
+  <path
+     d="M 185.6 250 L 188 270 L 188 380 "
+     style="fill: none; stroke: black; marker-end: url(#arrow)"
+     id="path218" />
+  <circle
+     cx="188"
+     cy="280"
+     r="3"
+     style="fill: red"
+     id="circle220" />
+  <circle
+     cx="188"
+     cy="287"
+     r="3"
+     style="fill: red"
+     id="circle222" />
+  <circle
+     cx="188"
+     cy="294"
+     r="3"
+     style="fill: red"
+     id="circle224" />
+  <path
+     d="M -0.951,-0.309 L  0.951,-0.309 -0.588, 0.809 0.000,-1.000 0.588, 0.809 Z"
+     style="fill: green"
+     transform="translate(188,448) scale(6,6)"
+     id="path226" />
+  <text
+     fill="black"
+     font-family="TimesNewRoman"
+     font-size="12"
+     transform="translate(212,440) rotate(-90)"
+     x="0"
+     y="0"
+     id="text228">D1559D</text>
+  <path
+     d="M 185.8 250 L 207 270 L 207 380 "
+     style="fill: none; stroke: black; marker-end: url(#arrow)"
+     id="path230" />
+  <circle
+     cx="207"
+     cy="280"
+     r="3"
+     style="fill: mediumslateblue"
+     id="circle232" />
+  <text
+     fill="black"
+     font-family="TimesNewRoman"
+     font-size="12"
+     transform="translate(231,440) rotate(-90)"
+     x="0"
+     y="0"
+     id="text234">P1701P</text>
+  <path
+     d="M 200 250 L 226 270 L 226 380 "
+     style="fill: none; stroke: black; marker-end: url(#arrow)"
+     id="path236" />
+  <circle
+     cx="226"
+     cy="280"
+     r="3"
+     style="fill: mediumslateblue"
+     id="circle238" />
+  <circle
+     cx="226"
+     cy="287"
+     r="3"
+     style="fill: mediumslateblue"
+     id="circle240" />
+  <text
+     fill="black"
+     font-family="TimesNewRoman"
+     font-size="12"
+     transform="translate(250,440) rotate(-90)"
+     x="0"
+     y="0"
+     id="text242">E1735E</text>
+  <path
+     d="M 203.4 250 L 245 270 L 245 380 "
+     style="fill: none; stroke: black; marker-end: url(#arrow)"
+     id="path244" />
+  <circle
+     cx="245"
+     cy="280"
+     r="3"
+     style="fill: mediumslateblue"
+     id="circle246" />
+  <circle
+     cx="245"
+     cy="287"
+     r="3"
+     style="fill: mediumslateblue"
+     id="circle248" />
+  <circle
+     cx="245"
+     cy="294"
+     r="3"
+     style="fill: mediumslateblue"
+     id="circle250" />
+  <circle
+     cx="245"
+     cy="301"
+     r="3"
+     style="fill: mediumslateblue"
+     id="circle252" />
+  <circle
+     cx="245"
+     cy="308"
+     r="3"
+     style="fill: mediumslateblue"
+     id="circle254" />
+  <circle
+     cx="245"
+     cy="315"
+     r="3"
+     style="fill: mediumslateblue"
+     id="circle256" />
+  <circle
+     cx="245"
+     cy="322"
+     r="3"
+     style="fill: mediumslateblue"
+     id="circle258" />
+  <circle
+     cx="245"
+     cy="329"
+     r="3"
+     style="fill: mediumslateblue"
+     id="circle260" />
+  <circle
+     cx="245"
+     cy="336"
+     r="3"
+     style="fill: mediumslateblue"
+     id="circle262" />
+  <text
+     fill="black"
+     font-family="TimesNewRoman"
+     font-size="12"
+     transform="translate(269,440) rotate(-90)"
+     x="0"
+     y="0"
+     id="text264">P1851T</text>
+  <path
+     d="M 215 250 L 264 270 L 264 380 "
+     style="fill: none; stroke: black; marker-end: url(#arrow)"
+     id="path266" />
+  <circle
+     cx="264"
+     cy="280"
+     r="3"
+     style="fill: red"
+     id="circle268" />
+  <text
+     fill="black"
+     font-family="TimesNewRoman"
+     font-size="12"
+     transform="translate(288,440) rotate(-90)"
+     x="0"
+     y="0"
+     id="text270">E1853D</text>
+  <path
+     d="M 215.2 250 L 283 270 L 283 380 "
+     style="fill: none; stroke: black; marker-end: url(#arrow)"
+     id="path272" />
+  <circle
+     cx="283"
+     cy="280"
+     r="3"
+     style="fill: red"
+     id="circle274" />
+  <text
+     fill="black"
+     font-family="TimesNewRoman"
+     font-size="12"
+     transform="translate(307,440) rotate(-90)"
+     x="0"
+     y="0"
+     id="text276">T1855S</text>
+  <path
+     d="M 215.4 250 L 302 270 L 302 380 "
+     style="fill: none; stroke: black; marker-end: url(#arrow)"
+     id="path278" />
+  <circle
+     cx="302"
+     cy="280"
+     r="3"
+     style="fill: red"
+     id="circle280" />
+  <path
+     d="M -0.951,-0.309 L  0.951,-0.309 -0.588, 0.809 0.000,-1.000 0.588, 0.809 Z"
+     style="fill: green"
+     transform="translate(302,448) scale(6,6)"
+     id="path282" />
+  <text
+     fill="black"
+     font-family="TimesNewRoman"
+     font-size="12"
+     transform="translate(326,440) rotate(-90)"
+     x="0"
+     y="0"
+     id="text284">I1872M</text>
+  <path
+     d="M 217.1 250 L 321 270 L 321 380 "
+     style="fill: none; stroke: black; marker-end: url(#arrow)"
+     id="path286" />
+  <circle
+     cx="321"
+     cy="280"
+     r="3"
+     style="fill: red"
+     id="circle288" />
+  <text
+     fill="black"
+     font-family="TimesNewRoman"
+     font-size="12"
+     transform="translate(345,440) rotate(-90)"
+     x="0"
+     y="0"
+     id="text290">T2252T</text>
+  <path
+     d="M 255.1 250 L 340 270 L 340 380 "
+     style="fill: none; stroke: black; marker-end: url(#arrow)"
+     id="path292" />
+  <circle
+     cx="340"
+     cy="280"
+     r="3"
+     style="fill: mediumslateblue"
+     id="circle294" />
+  <text
+     fill="black"
+     font-family="TimesNewRoman"
+     font-size="12"
+     transform="translate(364,440) rotate(-90)"
+     x="0"
+     y="0"
+     id="text296">S2352G</text>
+  <path
+     d="M 265.1 250 L 359 270 L 359 380 "
+     style="fill: none; stroke: black; marker-end: url(#arrow)"
+     id="path298" />
+  <circle
+     cx="359"
+     cy="280"
+     r="3"
+     style="fill: red"
+     id="circle300" />
+  <text
+     fill="black"
+     font-family="TimesNewRoman"
+     font-size="12"
+     transform="translate(383,440) rotate(-90)"
+     x="0"
+     y="0"
+     id="text302">D2384N</text>
+  <path
+     d="M 268.3 250 L 378 270 L 378 380 "
+     style="fill: none; stroke: black; marker-end: url(#arrow)"
+     id="path304" />
+  <circle
+     cx="378"
+     cy="280"
+     r="3"
+     style="fill: red"
+     id="circle306" />
+  <text
+     fill="black"
+     font-family="TimesNewRoman"
+     font-size="12"
+     transform="translate(402,440) rotate(-90)"
+     x="0"
+     y="0"
+     id="text308">T2475T</text>
+  <path
+     d="M 277.4 250 L 397 270 L 397 380 "
+     style="fill: none; stroke: black; marker-end: url(#arrow)"
+     id="path310" />
+  <circle
+     cx="397"
+     cy="280"
+     r="3"
+     style="fill: mediumslateblue"
+     id="circle312" />
+  <text
+     fill="black"
+     font-family="TimesNewRoman"
+     font-size="12"
+     transform="translate(421,440) rotate(-90)"
+     x="0"
+     y="0"
+     id="text314">S2785A</text>
+  <path
+     d="M 308.4 250 L 416 270 L 416 380 "
+     style="fill: none; stroke: black; marker-end: url(#arrow)"
+     id="path316" />
+  <circle
+     cx="416"
+     cy="280"
+     r="3"
+     style="fill: red"
+     id="circle318" />
+  <text
+     fill="black"
+     font-family="TimesNewRoman"
+     font-size="12"
+     transform="translate(440,440) rotate(-90)"
+     x="0"
+     y="0"
+     id="text320">T3056M</text>
+  <path
+     d="M 335.5 250 L 435 270 L 435 380 "
+     style="fill: none; stroke: black; marker-end: url(#arrow)"
+     id="path322" />
+  <circle
+     cx="435"
+     cy="280"
+     r="3"
+     style="fill: red"
+     id="circle324" />
+  <circle
+     cx="435"
+     cy="287"
+     r="3"
+     style="fill: red"
+     id="circle326" />
+  <circle
+     cx="435"
+     cy="294"
+     r="3"
+     style="fill: red"
+     id="circle328" />
+  <text
+     fill="black"
+     font-family="TimesNewRoman"
+     font-size="12"
+     transform="translate(459,440) rotate(-90)"
+     x="0"
+     y="0"
+     id="text330">P3665L</text>
+  <path
+     d="M 396.4 250 L 454 270 L 454 380 "
+     style="fill: none; stroke: black; marker-end: url(#arrow)"
+     id="path332" />
+  <circle
+     cx="454"
+     cy="280"
+     r="3"
+     style="fill: red"
+     id="circle334" />
+  <text
+     fill="black"
+     font-family="TimesNewRoman"
+     font-size="12"
+     transform="translate(478,440) rotate(-90)"
+     x="0"
+     y="0"
+     id="text336">G3932R</text>
+  <path
+     d="M 423.1 250 L 473 270 L 473 380 "
+     style="fill: none; stroke: black; marker-end: url(#arrow)"
+     id="path338" />
+  <circle
+     cx="473"
+     cy="280"
+     r="3"
+     style="fill: red"
+     id="circle340" />
+  <circle
+     cx="473"
+     cy="287"
+     r="3"
+     style="fill: red"
+     id="circle342" />
+  <line
+     marker-end="url(#arrow)"
+     style="stroke: black"
+     x1="44.3"
+     x2="44.3"
+     y1="200"
+     y2="100"
+     id="line344" />
+  <circle
+     cx="44.3"
+     cy="180"
+     r="3"
+     style="fill: red"
+     id="circle346" />
+  <text
+     fill="black"
+     font-family="TimesNewRoman"
+     font-size="12"
+     transform="translate(47.3,88) rotate(-90)"
+     x="0"
+     y="0"
+     id="text348">G144D</text>
+  <line
+     marker-end="url(#arrow)"
+     style="stroke: black"
+     x1="72.6"
+     x2="72.6"
+     y1="200"
+     y2="100"
+     id="line350" />
+  <circle
+     cx="72.6"
+     cy="180"
+     r="3"
+     style="fill: red"
+     id="circle352" />
+  <circle
+     cx="72.6"
+     cy="173"
+     r="3"
+     style="fill: red"
+     id="circle354" />
+  <text
+     fill="black"
+     font-family="TimesNewRoman"
+     font-size="12"
+     transform="translate(75.6,88) rotate(-90)"
+     x="0"
+     y="0"
+     id="text356">A427T</text>
+  <line
+     marker-end="url(#arrow)"
+     style="stroke: black"
+     x1="185.6"
+     x2="185.6"
+     y1="200"
+     y2="100"
+     id="line358" />
+  <circle
+     cx="185.6"
+     cy="180"
+     r="3"
+     style="fill: red"
+     id="circle360" />
+  <circle
+     cx="185.6"
+     cy="173"
+     r="3"
+     style="fill: red"
+     id="circle362" />
+  <path
+     d="M -0.951,-0.309 L  0.951,-0.309 -0.588, 0.809 0.000,-1.000 0.588, 0.809 Z"
+     style="fill: green"
+     transform="translate(185.6,34) scale(6,6)"
+     id="path364" />
+  <text
+     fill="black"
+     font-family="TimesNewRoman"
+     font-size="12"
+     transform="translate(188.6,88) rotate(-90)"
+     x="0"
+     y="0"
+     id="text366">T1557A</text>
+  <line
+     marker-end="url(#arrow)"
+     style="stroke: black"
+     x1="203.4"
+     x2="203.4"
+     y1="200"
+     y2="100"
+     id="line368" />
+  <circle
+     cx="203.4"
+     cy="180"
+     r="3"
+     style="fill: mediumslateblue"
+     id="circle370" />
+  <text
+     fill="black"
+     font-family="TimesNewRoman"
+     font-size="12"
+     transform="translate(206.4,88) rotate(-90)"
+     x="0"
+     y="0"
+     id="text372">E1735E</text>
+  <line
+     marker-end="url(#arrow)"
+     style="stroke: black"
+     x1="255.1"
+     x2="255.1"
+     y1="200"
+     y2="100"
+     id="line374" />
+  <circle
+     cx="255.1"
+     cy="180"
+     r="3"
+     style="fill: mediumslateblue"
+     id="circle376" />
+  <text
+     fill="black"
+     font-family="TimesNewRoman"
+     font-size="12"
+     transform="translate(258.1,88) rotate(-90)"
+     x="0"
+     y="0"
+     id="text378">T2252T</text>
+  <line
+     marker-end="url(#arrow)"
+     style="stroke: black"
+     x1="265.1"
+     x2="265.1"
+     y1="200"
+     y2="100"
+     id="line380" />
+  <circle
+     cx="265.1"
+     cy="180"
+     r="3"
+     style="fill: red"
+     id="circle382" />
+  <text
+     fill="black"
+     font-family="TimesNewRoman"
+     font-size="12"
+     transform="translate(268.1,88) rotate(-90)"
+     x="0"
+     y="0"
+     id="text384">S2352G</text>
+  <line
+     marker-end="url(#arrow)"
+     style="stroke: black"
+     x1="308.4"
+     x2="308.4"
+     y1="200"
+     y2="100"
+     id="line386" />
+  <circle
+     cx="308.4"
+     cy="180"
+     r="3"
+     style="fill: red"
+     id="circle388" />
+  <circle
+     cx="308.4"
+     cy="173"
+     r="3"
+     style="fill: red"
+     id="circle390" />
+  <text
+     fill="black"
+     font-family="TimesNewRoman"
+     font-size="12"
+     transform="translate(311.4,88) rotate(-90)"
+     x="0"
+     y="0"
+     id="text392">S2785A</text>
+  <line
+     marker-end="url(#arrow)"
+     style="stroke: black"
+     x1="423.1"
+     x2="423.1"
+     y1="200"
+     y2="100"
+     id="line394" />
+  <circle
+     cx="423.1"
+     cy="180"
+     r="3"
+     style="fill: red"
+     id="circle396" />
+  <text
+     fill="black"
+     font-family="TimesNewRoman"
+     font-size="12"
+     transform="translate(426.1,88) rotate(-90)"
+     x="0"
+     y="0"
+     id="text398">G3932R</text>
+  <rect
+     height="60"
+     style="fill: white; stroke: black; stroke-width: 1.5"
+     width="150"
+     x="470"
+     y="30"
+     id="rect400" />
+  <circle
+     cx="485"
+     cy="41"
+     r="3"
+     style="fill: red"
+     id="circle402" />
+  <text
+     fill="black"
+     font-family="TimesNewRoman"
+     font-size="12"
+     x="500"
+     y="44"
+     id="text404">missense</text>
+  <circle
+     cx="485"
+     cy="56"
+     r="3"
+     style="fill: mediumslateblue"
+     id="circle406" />
+  <text
+     fill="black"
+     font-family="TimesNewRoman"
+     font-size="12"
+     x="500"
+     y="59"
+     id="text408">synonymous</text>
+  <path
+     d="M -0.951,-0.309 L  0.951,-0.309 -0.588, 0.809 0.000,-1.000 0.588, 0.809 Z"
+     style="fill: green"
+     transform="translate(485,71) scale(6,6)"
+     id="path410" />
+  <text
+     fill="black"
+     font-family="TimesNewRoman"
+     font-size="12"
+     x="500"
+     y="74"
+     id="text412">glycosylation site</text>
+  <!-- 
+	Generated using the Perl SVG Module V2.50
+	by Ronan Oger
+	Info: http://www.roitsystems.com/
+ -->
+</svg>

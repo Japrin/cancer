@@ -1,0 +1,49 @@
+
+R version 2.15.1 (2012-06-22) -- "Roasted Marshmallows"
+Copyright (C) 2012 The R Foundation for Statistical Computing
+ISBN 3-900051-07-0
+Platform: x86_64-unknown-linux-gnu (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+[Previously saved workspace restored]
+
+> require(plotrix)
+Loading required package: plotrix
+> mybarplot <- function (x, ...) 
++ { 
++ 	ya<-(floor(max(x)/5))*6
++ 	at<-barplot(x,col=c("darkred","skyblue"),space=c(0,0.1),beside=T,ylab="Number of mutations",axisnames=F,main="Strand bias of Mutation",cex.axis=1.5,cex.lab=1.5,cex.main=1.5,ylim=c(0,ya),...) 
++ 	at<-apply(at,2,mean)
++ 	staxlab(1,at,colnames(x),srt=45,cex=1.3)	
++ 	legend("top",legend=c("Transcribed","Untranscribed"),bty="n",horiz=T,fill=c("darkred","skyblue"),cex=2)
++ }
+> setwd("./")
+> a<-read.table("strandbias_spectrum.txt",header=T,sep="	",row.names=1,check.names=F)
+> a.matrix=as.matrix(a)
+> a.matrix
+   T>G T>C T>A C>A C>T C>G
+T   16  29  21  25 110  33
+UT  12  37  18  38 106  36
+> png("Strandbias_spectrum.png",width=800,height=600)
+> par(mar=c(5,5,4,2)+0.1,xpd=F)
+> mybarplot(a.matrix)
+> dev.off()
+null device 
+          1 
+> 
+> proc.time()
+   user  system elapsed 
+  0.221   0.028   0.255 

@@ -1,0 +1,34 @@
+##fileformat=VCFv4.1
+##source=SomaticIndelDetector
+##FORMAT=<ID=AD,Number=.,Type=Integer,Description="# of reads supporting consensus indel/reference at the site">
+##FORMAT=<ID=DP,Number=1,Type=Integer,Description="Total coverage at the site">
+##FORMAT=<ID=GT,Number=1,Type=String,Description="Genotype">
+##FORMAT=<ID=MM,Number=.,Type=Float,Description="Average # of mismatches per consensus indel-supporting read/per reference-supporting read">
+##FORMAT=<ID=MQS,Number=.,Type=Float,Description="Average mapping qualities of consensus indel-supporting reads/reference-supporting reads">
+##FORMAT=<ID=NQSBQ,Number=.,Type=Float,Description="Within NQS window: average quality of bases from consensus indel-supporting reads/from reference-supporting reads">
+##FORMAT=<ID=NQSMM,Number=.,Type=Float,Description="Within NQS window: fraction of mismatching bases in consensus indel-supporting reads/in reference-supporting reads">
+##FORMAT=<ID=REnd,Number=.,Type=Integer,Description="Median/mad of indel offsets from the ends of the reads">
+##FORMAT=<ID=RStart,Number=.,Type=Integer,Description="Median/mad of indel offsets from the starts of the reads">
+##FORMAT=<ID=SC,Number=.,Type=Integer,Description="Strandness: counts of forward-/reverse-aligned indel-supporting reads / forward-/reverse-aligned reference supporting reads">
+##INFO=<ID=SOMATIC,Number=0,Type=Flag,Description="Somatic event">
+##INFO=<ID=cosmic61,Number=.,Type=String,Description="">
+##INFO=<ID=Func,Number=.,Type=String,Description="Genome functional element(exonic,splicing,intergenic,intronic,ncRNA,upstream,downstream,UTR3,UTR5)">
+##INFO=<ID=Gene,Number=.,Type=String,Description="Gene name">
+##INFO=<ID=ExonicFunc,Number=1,Type=String,Description="exonic variant functoin(frameshift insertion, frameshift deletion, frameshift block substitution, stopgain, stoploss, nonframeshift insertion, nonframeshift deletion, nonframeshift block substitution, missense, synonymous, unknown)">
+##INFO=<ID=1000g2012apr_ALL,Number=1,Type=Float,Description="variant frequency in the 1000G population">
+##INFO=<ID=ESP6500si_ALL,Number=1,Type=Float,Description="variant frequency in the ESP6500 population">
+##INFO=<ID=AAChange,Number=.,Type=String,Description="Amino acid change">
+##INFO=<ID=Conserved,Number=1,Type=String,Description="Conserved score of the location region, range from 0 to 1000.(LOD socre of the conserved region is also present)">
+##INFO=<ID=SegDup,Number=1,Type=String,Description="when variant locate in segmental duplications, this score represent sequence identity between two duplicate genome segement">
+##INFO=<ID=AVSIFT,Number=1,Type=Float,Description="SIFT score">
+##INFO=<ID=LJB_SIFT,Number=1,Type=Float,Description="LJB SIFT score">
+##INFO=<ID=LJB_SIFT_Pred,Number=1,Type=String,Description="LJB SIFT prediction">
+##INFO=<ID=LJB_PolyPhen2,Number=1,Type=Float,Description="PolyPhen2 score">
+##INFO=<ID=LJB_PolyPhen2_Pred,Number=1,Type=String,Description="LJB PolyPhen2 prediction">
+##INFO=<ID=LJB_PhyloP,Number=1,Type=Float,Description="PhyloP score">
+##INFO=<ID=LJB_PhyloP_Pred,Number=1,Type=String,Description="LJB PhyloP prediction">
+##INFO=<ID=LJB_MutationTaster,Number=1,Type=Float,Description="MutationTaster score">
+##INFO=<ID=LJB_MutationTaster_Pred,Number=1,Type=String,Description="LJB mutationTaster prediction">
+##INFO=<ID=LJB_LRT,Number=1,Type=Float,Description="LRT score">
+##INFO=<ID=LJB_LRT_Pred,Number=1,Type=String,Description="LJB LRT prediction">
+##INFO=<ID=LJB_GERP++,Number=1,Type=Float,Description="LJB GERP++">

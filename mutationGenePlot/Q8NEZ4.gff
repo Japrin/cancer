@@ -1,0 +1,93 @@
+##gff-version 3
+##sequence-region Q8NEZ4 1 4911
+Q8NEZ4	UniProtKB	Chain	1	4911	.	.	.	ID=PRO_0000124879;Note=Histone-lysine N-methyltransferase 2C	
+Q8NEZ4	UniProtKB	Domain	4545	4605	.	.	.	Note=FYR N-terminal	
+Q8NEZ4	UniProtKB	Domain	4606	4691	.	.	.	Note=FYR C-terminal	
+Q8NEZ4	UniProtKB	Domain	4771	4887	.	.	.	Note=SET	
+Q8NEZ4	UniProtKB	Domain	4895	4911	.	.	.	Note=Post-SET	
+Q8NEZ4	UniProtKB	DNA binding	34	46	.	.	.	Note=A.T hook	
+Q8NEZ4	UniProtKB	Zinc finger	341	391	.	.	.	Note=PHD-type 1	
+Q8NEZ4	UniProtKB	Zinc finger	344	389	.	.	.	Note=RING-type	
+Q8NEZ4	UniProtKB	Zinc finger	388	438	.	.	.	Note=PHD-type 2	
+Q8NEZ4	UniProtKB	Zinc finger	436	489	.	.	.	Note=DHHC-type	
+Q8NEZ4	UniProtKB	Zinc finger	464	520	.	.	.	Note=PHD-type 3	
+Q8NEZ4	UniProtKB	Zinc finger	957	1010	.	.	.	Note=PHD-type 4	
+Q8NEZ4	UniProtKB	Zinc finger	1007	1057	.	.	.	Note=PHD-type 5	
+Q8NEZ4	UniProtKB	Zinc finger	1084	1139	.	.	.	Note=PHD-type 6	
+Q8NEZ4	UniProtKB	Region	4848	4849	.	.	.	Note=S-adenosyl-L-methionine binding;status=By similarity	
+Q8NEZ4	UniProtKB	Coiled coil	92	112	.	.	.	status=Potential	
+Q8NEZ4	UniProtKB	Coiled coil	644	672	.	.	.	status=Potential	
+Q8NEZ4	UniProtKB	Coiled coil	1338	1366	.	.	.	status=Potential	
+Q8NEZ4	UniProtKB	Coiled coil	1754	1787	.	.	.	status=Potential	
+Q8NEZ4	UniProtKB	Coiled coil	3054	3081	.	.	.	status=Potential	
+Q8NEZ4	UniProtKB	Coiled coil	3173	3272	.	.	.	status=Potential	
+Q8NEZ4	UniProtKB	Coiled coil	3391	3433	.	.	.	status=Potential	
+Q8NEZ4	UniProtKB	Compositional bias	1719	1796	.	.	.	Note=Gln-rich	
+Q8NEZ4	UniProtKB	Compositional bias	1834	2281	.	.	.	Note=Pro-rich	
+Q8NEZ4	UniProtKB	Compositional bias	2412	2630	.	.	.	Note=Pro-rich	
+Q8NEZ4	UniProtKB	Compositional bias	2690	2786	.	.	.	Note=Asp-rich	
+Q8NEZ4	UniProtKB	Compositional bias	3012	3509	.	.	.	Note=Gln-rich	
+Q8NEZ4	UniProtKB	Compositional bias	3277	3381	.	.	.	Note=Pro-rich	
+Q8NEZ4	UniProtKB	Metal binding	4851	4851	.	.	.	Note=Zinc;status=By similarity	
+Q8NEZ4	UniProtKB	Metal binding	4899	4899	.	.	.	Note=Zinc;status=By similarity	
+Q8NEZ4	UniProtKB	Metal binding	4901	4901	.	.	.	Note=Zinc;status=By similarity	
+Q8NEZ4	UniProtKB	Metal binding	4906	4906	.	.	.	Note=Zinc;status=By similarity	
+Q8NEZ4	UniProtKB	Binding site	4825	4825	.	.	.	Note=S-adenosyl-L-methionine;status=By similarity	
+Q8NEZ4	UniProtKB	Modified residue	46	46	.	.	.	Note=Phosphoserine	
+Q8NEZ4	UniProtKB	Modified residue	89	89	.	.	.	Note=Phosphoserine	
+Q8NEZ4	UniProtKB	Modified residue	758	758	.	.	.	Note=N6-acetyllysine	
+Q8NEZ4	UniProtKB	Modified residue	1301	1301	.	.	.	Note=Phosphoserine	
+Q8NEZ4	UniProtKB	Modified residue	1508	1508	.	.	.	Note=N6-acetyllysine	
+Q8NEZ4	UniProtKB	Modified residue	1772	1772	.	.	.	Note=N6-acetyllysine	
+Q8NEZ4	UniProtKB	Modified residue	2009	2009	.	.	.	Note=N6-acetyllysine	
+Q8NEZ4	UniProtKB	Modified residue	2802	2802	.	.	.	Note=N6-acetyllysine	
+Q8NEZ4	UniProtKB	Modified residue	2809	2809	.	.	.	Note=N6-acetyllysine	
+Q8NEZ4	UniProtKB	Modified residue	2832	2832	.	.	.	Note=N6-acetyllysine	
+Q8NEZ4	UniProtKB	Modified residue	3714	3714	.	.	.	Note=N6-acetyllysine	
+Q8NEZ4	UniProtKB	Alternative sequence	1	939	.	.	.	ID=VSP_008561;Note=In isoform 2.	
+Q8NEZ4	UniProtKB	Alternative sequence	3890	3890	.	.	.	ID=VSP_008562;Note=In isoform 2 and isoform 3.	
+Q8NEZ4	UniProtKB	Alternative sequence	4721	4724	.	.	.	ID=VSP_036223;Note=In isoform 2.	
+Q8NEZ4	UniProtKB	Natural variant	291	291	.	.	.	ID=VAR_061911;Dbxref=dbSNP:rs56850341	
+Q8NEZ4	UniProtKB	Natural variant	316	316	.	.	.	ID=VAR_061912;Dbxref=dbSNP:rs10454320	
+Q8NEZ4	UniProtKB	Natural variant	347	347	.	.	.	ID=VAR_036311;Note=In a colorectal cancer sample%3B somatic mutation.	
+Q8NEZ4	UniProtKB	Natural variant	400	400	.	.	.	ID=VAR_036312;Note=In a colorectal cancer sample%3B somatic mutation.	
+Q8NEZ4	UniProtKB	Natural variant	478	478	.	.	.	ID=VAR_036313;Note=In a colorectal cancer sample%3B somatic mutation.	
+Q8NEZ4	UniProtKB	Natural variant	526	526	.	.	.	ID=VAR_057360;Dbxref=dbSNP:rs3735156	
+Q8NEZ4	UniProtKB	Natural variant	823	823	.	.	.	ID=VAR_017118;Dbxref=dbSNP:rs2838171	
+Q8NEZ4	UniProtKB	Natural variant	823	823	.	.	.	ID=VAR_017117;Dbxref=dbSNP:rs2838171	
+Q8NEZ4	UniProtKB	Natural variant	1836	1836	.	.	.	ID=VAR_057361;Dbxref=dbSNP:rs11771635	
+Q8NEZ4	UniProtKB	Natural variant	2008	2008	.	.	.	ID=VAR_057362;Dbxref=dbSNP:rs6951159	
+Q8NEZ4	UniProtKB	Natural variant	2412	2412	.	.	.	ID=VAR_057363;Dbxref=dbSNP:rs13231116	
+Q8NEZ4	UniProtKB	Natural variant	2600	2600	.	.	.	ID=VAR_057364;Dbxref=dbSNP:rs2270234	
+Q8NEZ4	UniProtKB	Natural variant	3698	3698	.	.	.	ID=VAR_036314;Note=In a colorectal cancer sample%3B somatic mutation.	
+Q8NEZ4	UniProtKB	Sequence conflict	579	579	.	.	.	.	
+Q8NEZ4	UniProtKB	Sequence conflict	1286	1286	.	.	.	.	
+Q8NEZ4	UniProtKB	Sequence conflict	2360	2360	.	.	.	.	
+Q8NEZ4	UniProtKB	Sequence conflict	2797	2797	.	.	.	.	
+Q8NEZ4	UniProtKB	Sequence conflict	2882	2882	.	.	.	.	
+Q8NEZ4	UniProtKB	Sequence conflict	3289	3289	.	.	.	.	
+Q8NEZ4	UniProtKB	Sequence conflict	3428	3428	.	.	.	.	
+Q8NEZ4	UniProtKB	Sequence conflict	4613	4613	.	.	.	.	
+Q8NEZ4	UniProtKB	Sequence conflict	4866	4866	.	.	.	.	
+Q8NEZ4	UniProtKB	Turn	345	347	.	.	.	.	
+Q8NEZ4	UniProtKB	Turn	353	355	.	.	.	.	
+Q8NEZ4	UniProtKB	Beta strand	356	358	.	.	.	.	
+Q8NEZ4	UniProtKB	Beta strand	360	362	.	.	.	.	
+Q8NEZ4	UniProtKB	Turn	368	372	.	.	.	.	
+Q8NEZ4	UniProtKB	Turn	377	379	.	.	.	.	
+Q8NEZ4	UniProtKB	Turn	386	388	.	.	.	.	
+Q8NEZ4	UniProtKB	Turn	392	394	.	.	.	.	
+Q8NEZ4	UniProtKB	Beta strand	403	405	.	.	.	.	
+Q8NEZ4	UniProtKB	Beta strand	407	409	.	.	.	.	
+Q8NEZ4	UniProtKB	Beta strand	412	414	.	.	.	.	
+Q8NEZ4	UniProtKB	Helix	415	417	.	.	.	.	
+Q8NEZ4	UniProtKB	Beta strand	418	420	.	.	.	.	
+Q8NEZ4	UniProtKB	Helix	433	436	.	.	.	.	
+Q8NEZ4	UniProtKB	Helix	1636	1645	.	.	.	.	
+Q8NEZ4	UniProtKB	Helix	1646	1648	.	.	.	.	
+Q8NEZ4	UniProtKB	Beta strand	1650	1652	.	.	.	.	
+Q8NEZ4	UniProtKB	Helix	1653	1660	.	.	.	.	
+Q8NEZ4	UniProtKB	Helix	1664	1667	.	.	.	.	
+Q8NEZ4	UniProtKB	Helix	1671	1684	.	.	.	.	
+Q8NEZ4	UniProtKB	Helix	1687	1706	.	.	.	.	
+Q8NEZ4	UniProtKB	Beta strand	4707	4709	.	.	.	.	

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+<svg height="780" width="1030" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<rect fill="white" height="780" width="1030" x="0" y="0" />
+	<radialGradient id="myRadialGradient1" r="65%">
+		<stop offset="5%" stop-color="red" />
+		<stop offset="95%" stop-color="darkred" />
+	</radialGradient>
+	<linearGradient gradientTransform="rotate(90)" id="myLinearGradient2" x1="0" x2="1" y1="0" y2="0">
+		<stop offset="5%" stop-color="dodgerblue" />
+		<stop offset="30%" stop-color="lightskyblue" />
+		<stop offset="50%" stop-color="lightskyblue" />
+		<stop offset="95%" stop-color="dodgerblue" />
+	</linearGradient>
+	<linearGradient gradientTransform="rotate(90)" id="myLinearGradient3" x1="0" x2="1" y1="0" y2="0">
+		<stop offset="5%" stop-color="mediumseagreen" />
+		<stop offset="30%" stop-color="palegreen" />
+		<stop offset="50%" stop-color="palegreen" />
+		<stop offset="95%" stop-color="mediumseagreen" />
+	</linearGradient>
+	<linearGradient gradientTransform="rotate(90)" id="myLinearGradient4" x1="0" x2="1" y1="0" y2="0">
+		<stop offset="5%" stop-color="hotpink" />
+		<stop offset="35%" stop-color="lightpink" />
+		<stop offset="50%" stop-color="lightpink" />
+		<stop offset="95%" stop-color="hotpink" />
+	</linearGradient>
+	<linearGradient gradientTransform="rotate(90)" id="myLinearGradientBlack2Grey" x1="0" x2="1" y1="0" y2="0">
+		<stop offset="5%" stop-color="grey" />
+		<stop offset="35%" stop-color="lightgrey" />
+		<stop offset="50%" stop-color="lightgrey" />
+		<stop offset="95%" stop-color="grey" />
+	</linearGradient>
+	<text fill="black" font-family="TimesNewRoman" font-size="22" x="100" y="70">SERPINB2(P05120), 415 aa</text>
+	<rect height="30" rx="5" ry="5" style="fill: url(#myLinearGradientBlack2Grey); stroke: black" width="830" x="100" y="350" />
+	<text fill="black" font-family="TimesNewRoman" font-size="12" transform="translate(85,369) rotate(0)" x="0" y="0">N</text>
+	<text fill="black" font-family="TimesNewRoman" font-size="12" transform="translate(934,369) rotate(0)" x="0" y="0">C</text>
+	<rect height="30" rx="3" ry="3" style="opacity: 0.8; fill: url(#myLinearGradient2)" width="38" x="106" y="350" />
+	<rect height="30" rx="3" ry="3" style="opacity: 0.8; fill: url(#myLinearGradient3)" width="8" x="144" y="350" />
+	<rect height="30" rx="3" ry="3" style="opacity: 0.8; fill: url(#myLinearGradient3)" width="6" x="154" y="350" />
+	<rect height="30" rx="3" ry="3" style="opacity: 0.8; fill: url(#myLinearGradient2)" width="26" x="162" y="350" />
+	<rect height="30" rx="3" ry="3" style="opacity: 0.8; fill: url(#myLinearGradient2)" width="20" x="194" y="350" />
+	<rect height="30" rx="3" ry="3" style="opacity: 0.8; fill: url(#myLinearGradient4)" width="12" x="214" y="350" />
+	<rect height="30" rx="3" ry="3" style="opacity: 0.8; fill: url(#myLinearGradient2)" width="6" x="298" y="350" />
+	<rect height="30" rx="3" ry="3" style="opacity: 0.8; fill: url(#myLinearGradient2)" width="24" x="304" y="350" />
+	<rect height="30" rx="3" ry="3" style="opacity: 0.8; fill: url(#myLinearGradient3)" width="20" x="344" y="350" />
+	<rect height="30" rx="3" ry="3" style="opacity: 0.8; fill: url(#myLinearGradient2)" width="22" x="376" y="350" />
+	<rect height="30" rx="3" ry="3" style="opacity: 0.8; fill: url(#myLinearGradient3)" width="6" x="406" y="350" />
+	<rect height="30" rx="3" ry="3" style="opacity: 0.8; fill: url(#myLinearGradient2)" width="38" x="414" y="350" />
+	<rect height="30" rx="3" ry="3" style="opacity: 0.8; fill: url(#myLinearGradient4)" width="6" x="452" y="350" />
+	<rect height="30" rx="3" ry="3" style="opacity: 0.8; fill: url(#myLinearGradient3)" width="18" x="490" y="350" />
+	<rect height="30" rx="3" ry="3" style="opacity: 0.8; fill: url(#myLinearGradient3)" width="6" x="514" y="350" />
+	<rect height="30" rx="3" ry="3" style="opacity: 0.8; fill: url(#myLinearGradient3)" width="12" x="538" y="350" />
+	<rect height="30" rx="3" ry="3" style="opacity: 0.8; fill: url(#myLinearGradient3)" width="10" x="554" y="350" />
+	<rect height="30" rx="3" ry="3" style="opacity: 0.8; fill: url(#myLinearGradient3)" width="26" x="566" y="350" />
+	<rect height="30" rx="3" ry="3" style="opacity: 0.8; fill: url(#myLinearGradient4)" width="8" x="592" y="350" />
+	<rect height="30" rx="3" ry="3" style="opacity: 0.8; fill: url(#myLinearGradient3)" width="16" x="600" y="350" />
+	<rect height="30" rx="3" ry="3" style="opacity: 0.8; fill: url(#myLinearGradient4)" width="6" x="616" y="350" />
+	<rect height="30" rx="3" ry="3" style="opacity: 0.8; fill: url(#myLinearGradient3)" width="20" x="622" y="350" />
+	<rect height="30" rx="3" ry="3" style="opacity: 0.8; fill: url(#myLinearGradient3)" width="10" x="646" y="350" />
+	<rect height="30" rx="3" ry="3" style="opacity: 0.8; fill: url(#myLinearGradient2)" width="12" x="658" y="350" />
+	<rect height="30" rx="3" ry="3" style="opacity: 0.8; fill: url(#myLinearGradient2)" width="14" x="674" y="350" />
+	<rect height="30" rx="3" ry="3" style="opacity: 0.8; fill: url(#myLinearGradient4)" width="6" x="692" y="350" />
+	<rect height="30" rx="3" ry="3" style="opacity: 0.8; fill: url(#myLinearGradient3)" width="22" x="698" y="350" />
+	<rect height="30" rx="3" ry="3" style="opacity: 0.8; fill: url(#myLinearGradient3)" width="16" x="722" y="350" />
+	<rect height="30" rx="3" ry="3" style="opacity: 0.8; fill: url(#myLinearGradient2)" width="12" x="740" y="350" />
+	<rect height="30" rx="3" ry="3" style="opacity: 0.8; fill: url(#myLinearGradient2)" width="6" x="760" y="350" />
+	<rect height="30" rx="3" ry="3" style="opacity: 0.8; fill: url(#myLinearGradient4)" width="6" x="768" y="350" />
+	<rect height="30" rx="3" ry="3" style="opacity: 0.8; fill: url(#myLinearGradient4)" width="6" x="780" y="350" />
+	<rect height="30" rx="3" ry="3" style="opacity: 0.8; fill: url(#myLinearGradient3)" width="20" x="804" y="350" />
+	<rect height="30" rx="3" ry="3" style="opacity: 0.8; fill: url(#myLinearGradient3)" width="6" x="872" y="350" />
+	<rect height="30" rx="3" ry="3" style="opacity: 0.8; fill: url(#myLinearGradient3)" width="14" x="886" y="350" />
+	<rect height="30" rx="3" ry="3" style="opacity: 0.8; fill: url(#myLinearGradient4)" width="8" x="900" y="350" />
+	<rect height="30" rx="3" ry="3" style="opacity: 0.8; fill: url(#myLinearGradient3)" width="16" x="908" y="350" />
+	<rect height="10" style="opacity: 0.8; fill: darkcyan; stroke: none" width="2" x="108" y="425" />
+	<rect height="10" style="opacity: 0.8; fill: darkcyan; stroke: none" width="2" x="910" y="425" />
+	<rect height="10" style="opacity: 0.8; fill: darkcyan; stroke: none" width="2" x="248" y="425" />
+	<rect height="10" style="opacity: 0.8; fill: darkcyan; stroke: none" width="2" x="328" y="425" />
+	<rect height="10" style="opacity: 0.8; fill: darkcyan; stroke: none" width="2" x="776" y="425" />
+	<rect height="10" style="opacity: 0.8; fill: darkorange; stroke: none" width="4" x="858" y="405" />
+	<path d="M 0,0 L -5,-15 5,-15 Z" style="fill: darkred" transform="translate(385,350) scale(1,1)" />
+	<text fill="black" font-family="TimesNewRoman" font-size="12" transform="translate(391,335) rotate(0)" x="0" y="0">R143P</text>
+	<path d="M 0,0 L -5,-15 5,-15 Z" style="fill: darkred" transform="translate(435,350) scale(1,1)" />
+	<text fill="black" font-family="TimesNewRoman" font-size="12" transform="translate(441,335) rotate(0)" x="0" y="0">K168N</text>
+	<rect fill="none" height="100" stroke="black" stroke-width="1.5" width="225" x="705" y="50" />
+	<rect fill="url(#myLinearGradient2)" height="30" rx="5" ry="5" width="30" x="710" y="55" />
+	<text fill="black" font-family="TimesNewRoman" font-size="12" x="742" y="75">Helix</text>
+	<rect fill="url(#myLinearGradient3)" height="30" rx="5" ry="5" width="30" x="772" y="55" />
+	<text fill="black" font-family="TimesNewRoman" font-size="12" x="804" y="75">Beta strand</text>
+	<rect fill="url(#myLinearGradient4)" height="30" rx="5" ry="5" width="30" x="871" y="55" />
+	<text fill="black" font-family="TimesNewRoman" font-size="12" x="903" y="75">Turn</text>
+	<rect fill="darkorange" height="30" stroke="none" width="10" x="710" y="90" />
+	<text fill="black" font-family="TimesNewRoman" font-size="12" x="722" y="110">sites</text>
+	<rect fill="darkcyan" height="30" stroke="none" width="10" x="754" y="90" />
+	<text fill="black" font-family="TimesNewRoman" font-size="12" x="766" y="110">aa_mod</text>
+	<rect fill="darkseagreen" height="30" stroke="none" width="10" x="807" y="90" />
+	<text fill="black" font-family="TimesNewRoman" font-size="12" x="820" y="110">region</text>
+	<path d="M 0,0 L -5,-15 5,-15 Z" style="fill: darkred" transform="translate(715,142) scale(1,1)" />
+	<text fill="black" font-family="TimesNewRoman" font-size="12" x="722" y="137">sample(s)</text>
+	<path d="M 0,0 L -5,-15 5,-15 Z" style="fill: lightgrey" transform="translate(782,142) scale(1,1)" />
+	<text fill="black" font-family="TimesNewRoman" font-size="12" x="789" y="137">COSMIC</text>
+	<!-- 
+	Generated using the Perl SVG Module V2.52
+	by Ronan Oger
+	Info: http://www.roitsystems.com/
+ -->
+</svg>

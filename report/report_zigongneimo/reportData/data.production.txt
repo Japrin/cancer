@@ -1,0 +1,3 @@
+Sample	Total	mapped	duplicate	depth	coverage_1X	coverage_10X
+normal	999470880	983615531	24488674	30.17	96.57%	94.35%
+tumor	1044439312	1024303985	97102478	29.37	96.61%	94.87%

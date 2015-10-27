@@ -1,0 +1,68 @@
+[general]
+
+outputDir = /PROJ/GR/HUMAN/intra/jiaxueyuan_sv/analysis20131120/169/169/sv/freec
+BedGraphOutput = TRUE
+
+maxThreads = 4
+samtools = /PROJ/HEALTH/share/health.02pipeline/bin/samtools
+
+### --- sample information
+sex = XY
+# contamination = 0.01
+contaminationAdjustment = FALSE
+
+### --- Useful for exome-seq or targeted sequencing data
+printNA = TRUE
+noisyData = FALSE
+
+### --- used for control sample ; Useful for exome-seq or targeted sequencing data
+readCountThreshold = 10
+
+### --- genome features
+chrFiles = /PROJ/GR/share/medinfo.00database/genome/human/b37_gatk/byChr/
+chrLenFile = /PROJ/GR/share/medinfo.00database/genome/human/b37_gatk/chr.22_X.length
+ploidy = 2
+telocentromeric = 50000
+### --- GC-content profile for a given window-size (higher priority than chrFiles)
+### --- (necessary if a control dataset or chromosome sequences (.fasta for the genome of interest) are not available)
+# GCcontentProfile =
+
+### --- .gem file with information about mappable positions (GEM output)
+gemMappabilityFile = /PROJ/GR/share/medinfo.00database/genome/human/b37_gatk/gem/human_g1k_v37_decoy.mappability.100bp.out.mappability
+### --- Use a mappability profile to correct read counts (in this case a mappability file must be provided with "gemMappabilityFile" )
+uniqueMatch = TRUE
+### --- only windows with fraction of mappable positions higher than or equal to this threshold will be considered 
+### --- (if "gemMappabilityFile" is not provided, one uses the percentage of non-N letters per window)
+minMappabilityPerWindow = 0.85
+
+### --- GC correct
+forceGCcontentNormalization = 0
+minExpectedGC = 0.35
+maxExpectedGC = 0.55
+
+### --- explicit window size (higher priority than coefficientOfVariation )
+### --- coefficient of variation to evaluate necessary window size
+coefficientOfVariation = 0.05
+# window = 50000
+### --- step (used only when "window" is specified)
+# step = 10000
+
+### --- CNV
+minCNAlength = 1
+breakPointThreshold = 0.8
+breakPointType = 2
+
+degree = 3
+intercept = 1
+
+[sample]
+inputFormat = BAM
+
+[control]
+inputFormat = BAM
+
+[BAF]
+SNPfile = /PROJ/GR/share/medinfo.00database/testData/freec/b37_snp137.SingleDiNucl.1based.txt
+minimalCoveragePerPosition = 8
+
+

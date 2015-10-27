@@ -1,0 +1,1 @@
+/Share/BP/zhenglt/02.pipeline/cancer/huyy/table_annovar_hyy.pl

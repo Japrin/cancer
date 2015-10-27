@@ -1,0 +1,156 @@
+##gff-version 3
+##sequence-region P42336 1 1068
+P42336	UniProtKB	Chain	1	1068	.	.	.	ID=PRO_0000088785;Note=Phosphatidylinositol 4%2C5-bisphosphate 3-kinase catalytic subunit alpha isoform	
+P42336	UniProtKB	Domain	16	105	.	.	.	Note=PI3K-ABD	
+P42336	UniProtKB	Domain	187	289	.	.	.	Note=PI3K-RBD	
+P42336	UniProtKB	Domain	330	487	.	.	.	Note=C2 PI3K-type	
+P42336	UniProtKB	Domain	517	694	.	.	.	Note=PIK helical	
+P42336	UniProtKB	Domain	797	1068	.	.	.	Note=PI3K/PI4K	
+P42336	UniProtKB	Natural variant	38	38	.	.	.	ID=VAR_026166;Note=In cancer%3B shows an increase in lipid kinase activity%3B may disrupt the interaction between the PI3K-ABD domain and the N-terminal lobe of PI3K/PI4K kinase domain possibly affecting the conformation of the kinase domain.	
+P42336	UniProtKB	Natural variant	43	43	.	.	.	ID=VAR_042942	
+P42336	UniProtKB	Natural variant	88	88	.	.	.	ID=VAR_026167;Note=In cancer%3B may disrupt the interaction between the PI3K-ABD domain and the N-terminal lobe of PI3K/PI4K kinase domain possibly affecting the conformation of the kinase domain.	
+P42336	UniProtKB	Natural variant	106	106	.	.	.	ID=VAR_026168;Note=In cancer%3B shows an increase in lipid kinase activity.	
+P42336	UniProtKB	Natural variant	332	332	.	.	.	ID=VAR_042943	
+P42336	UniProtKB	Natural variant	343	343	.	.	.	ID=VAR_026169;Note=In cancer.	
+P42336	UniProtKB	Natural variant	391	391	.	.	.	ID=VAR_026170	
+P42336	UniProtKB	Natural variant	420	420	.	.	.	ID=VAR_026171;Note=In CLOVE and cancer%3B shows an increase in lipid kinase activity%3B may increase the affinity for lipid membranes.	
+P42336	UniProtKB	Natural variant	453	453	.	.	.	ID=VAR_026172;Note=In cancer%3B shows an increase in lipid kinase activity%3B may disrupt the interaction of the C2 PI3K-type domain with the iSH2 region of the p85 regulatory subunit.	
+P42336	UniProtKB	Natural variant	542	542	.	.	.	ID=VAR_026173;Note=In CLOVE and KERSEB%3B shows an increase in lipid kinase activity%3B oncogenic in vivo%3B occurs in the interface between the PI3K helical domain and the nSH2 (N-terminal SH2) region of the p85 regulatory subunit and may reduce the inhibitory effect of p85%3B requires interaction with RAS to induce cellular transformation.	
+P42336	UniProtKB	Natural variant	542	542	.	.	.	ID=VAR_026174;Note=In cancer.	
+P42336	UniProtKB	Natural variant	542	542	.	.	.	ID=VAR_026175;Note=In cancer.	
+P42336	UniProtKB	Natural variant	545	545	.	.	.	ID=VAR_026176;Note=In cancer.	
+P42336	UniProtKB	Natural variant	545	545	.	.	.	ID=VAR_026177;Note=In KERSEB.	
+P42336	UniProtKB	Natural variant	545	545	.	.	.	ID=VAR_026178;Note=In KERSEB%3B shows an increase in lipid kinase activity%3B oncogenic in vivo%3B occurs in the interface between the PI3K helical domain and the nSH2 (N-terminal SH2) region of the p85 regulatory subunit and may reduce the inhibitory effect of p85%3B requires interaction with RAS to induce cellular transformation%3B enhances invadopodia-mediated extracellular matrix degradation and invasion in breast cancer cells.	
+P42336	UniProtKB	Natural variant	546	546	.	.	.	ID=VAR_026179;Note=In cancer.	
+P42336	UniProtKB	Natural variant	546	546	.	.	.	ID=VAR_026180;Note=In cancer.	
+P42336	UniProtKB	Natural variant	546	546	.	.	.	ID=VAR_026181;Note=In cancer.	
+P42336	UniProtKB	Natural variant	546	546	.	.	.	ID=VAR_026182;Note=In cancer.	
+P42336	UniProtKB	Natural variant	1007	1007	.	.	.	ID=VAR_026183;Note=In cancer.	
+P42336	UniProtKB	Natural variant	1021	1021	.	.	.	ID=VAR_026184;Note=In cancer.	
+P42336	UniProtKB	Natural variant	1021	1021	.	.	.	ID=VAR_026185;Note=In cancer.	
+P42336	UniProtKB	Natural variant	1021	1021	.	.	.	ID=VAR_026186;Note=In cancer.	
+P42336	UniProtKB	Natural variant	1023	1023	.	.	.	ID=VAR_026187;Note=In cancer.	
+P42336	UniProtKB	Natural variant	1025	1025	.	.	.	ID=VAR_026188;Note=In cancer.	
+P42336	UniProtKB	Natural variant	1035	1035	.	.	.	ID=VAR_026189;Note=In cancer.	
+P42336	UniProtKB	Natural variant	1043	1043	.	.	.	ID=VAR_026190;Note=In cancer%3B shows an increase in lipid kinase activity.	
+P42336	UniProtKB	Natural variant	1047	1047	.	.	.	ID=VAR_026191;Note=In cancer.	
+P42336	UniProtKB	Natural variant	1047	1047	.	.	.	ID=VAR_026192;Note=In CLOVE and KERSEB%3B shows an increase in lipid kinase activity%3B oncogenic in vivo%3B requires binding to p85 regulatory subunit to induce cellular transformation but not interaction with RAS%3B may mimic the conformatitonal change triggered by the interaction with RAS%3B enhances invadopodia-mediated extracellular matrix degradation and invasion in breast cancer cells%3B increases lipid kinase activity%3B may alter the interaction of the PI3K/PI4K kinase domain with the cell membrane.	
+P42336	UniProtKB	Natural variant	1047	1047	.	.	.	ID=VAR_026193;Note=In cancer.	
+P42336	UniProtKB	Natural variant	1050	1050	.	.	.	ID=VAR_026194;Note=In cancer.	
+P42336	UniProtKB	Natural variant	1052	1052	.	.	.	ID=VAR_026195;Note=In cancer.	
+P42336	UniProtKB	Natural variant	1065	1065	.	.	.	ID=VAR_026196;Note=In cancer.	
+P42336	UniProtKB	Natural variant	1065	1065	.	.	.	ID=VAR_026197;Note=In cancer.	
+P42336	UniProtKB	Sequence conflict	170	170	.	.	.	.	
+P42336	UniProtKB	Sequence conflict	187	187	.	.	.	.	
+P42336	UniProtKB	Sequence conflict	286	287	.	.	.	.	
+P42336	UniProtKB	Sequence conflict	346	346	.	.	.	.	
+P42336	UniProtKB	Sequence conflict	723	723	.	.	.	.	
+P42336	UniProtKB	Sequence conflict	751	751	.	.	.	.	
+P42336	UniProtKB	Sequence conflict	767	767	.	.	.	.	
+P42336	UniProtKB	Beta strand	9	12	.	.	.	.	
+P42336	UniProtKB	Beta strand	13	15	.	.	.	.	
+P42336	UniProtKB	Beta strand	18	25	.	.	.	.	
+P42336	UniProtKB	Beta strand	31	37	.	.	.	.	
+P42336	UniProtKB	Helix	42	52	.	.	.	.	
+P42336	UniProtKB	Helix	53	55	.	.	.	.	
+P42336	UniProtKB	Beta strand	56	58	.	.	.	.	
+P42336	UniProtKB	Helix	59	61	.	.	.	.	
+P42336	UniProtKB	Helix	65	67	.	.	.	.	
+P42336	UniProtKB	Beta strand	69	74	.	.	.	.	
+P42336	UniProtKB	Turn	75	77	.	.	.	.	
+P42336	UniProtKB	Beta strand	79	82	.	.	.	.	
+P42336	UniProtKB	Turn	89	91	.	.	.	.	
+P42336	UniProtKB	Beta strand	94	102	.	.	.	.	
+P42336	UniProtKB	Turn	109	115	.	.	.	.	
+P42336	UniProtKB	Helix	116	121	.	.	.	.	
+P42336	UniProtKB	Turn	125	130	.	.	.	.	
+P42336	UniProtKB	Helix	134	142	.	.	.	.	
+P42336	UniProtKB	Helix	144	155	.	.	.	.	
+P42336	UniProtKB	Helix	158	166	.	.	.	.	
+P42336	UniProtKB	Helix	179	182	.	.	.	.	
+P42336	UniProtKB	Turn	183	185	.	.	.	.	
+P42336	UniProtKB	Beta strand	186	198	.	.	.	.	
+P42336	UniProtKB	Turn	199	202	.	.	.	.	
+P42336	UniProtKB	Beta strand	203	212	.	.	.	.	
+P42336	UniProtKB	Helix	217	231	.	.	.	.	
+P42336	UniProtKB	Helix	238	246	.	.	.	.	
+P42336	UniProtKB	Helix	247	249	.	.	.	.	
+P42336	UniProtKB	Beta strand	250	254	.	.	.	.	
+P42336	UniProtKB	Turn	255	258	.	.	.	.	
+P42336	UniProtKB	Helix	267	269	.	.	.	.	
+P42336	UniProtKB	Helix	271	279	.	.	.	.	
+P42336	UniProtKB	Beta strand	284	289	.	.	.	.	
+P42336	UniProtKB	Helix	290	294	.	.	.	.	
+P42336	UniProtKB	Beta strand	324	326	.	.	.	.	
+P42336	UniProtKB	Helix	327	329	.	.	.	.	
+P42336	UniProtKB	Beta strand	332	342	.	.	.	.	
+P42336	UniProtKB	Beta strand	348	350	.	.	.	.	
+P42336	UniProtKB	Beta strand	356	364	.	.	.	.	
+P42336	UniProtKB	Beta strand	377	380	.	.	.	.	
+P42336	UniProtKB	Beta strand	382	392	.	.	.	.	
+P42336	UniProtKB	Helix	393	395	.	.	.	.	
+P42336	UniProtKB	Beta strand	401	406	.	.	.	.	
+P42336	UniProtKB	Beta strand	423	430	.	.	.	.	
+P42336	UniProtKB	Beta strand	434	436	.	.	.	.	
+P42336	UniProtKB	Beta strand	439	444	.	.	.	.	
+P42336	UniProtKB	Beta strand	453	455	.	.	.	.	
+P42336	UniProtKB	Beta strand	458	460	.	.	.	.	
+P42336	UniProtKB	Beta strand	468	470	.	.	.	.	
+P42336	UniProtKB	Beta strand	472	477	.	.	.	.	
+P42336	UniProtKB	Beta strand	481	485	.	.	.	.	
+P42336	UniProtKB	Helix	489	503	.	.	.	.	
+P42336	UniProtKB	Beta strand	511	513	.	.	.	.	
+P42336	UniProtKB	Helix	527	532	.	.	.	.	
+P42336	UniProtKB	Beta strand	535	537	.	.	.	.	
+P42336	UniProtKB	Helix	539	541	.	.	.	.	
+P42336	UniProtKB	Helix	545	553	.	.	.	.	
+P42336	UniProtKB	Helix	555	558	.	.	.	.	
+P42336	UniProtKB	Helix	562	564	.	.	.	.	
+P42336	UniProtKB	Helix	565	569	.	.	.	.	
+P42336	UniProtKB	Helix	577	588	.	.	.	.	
+P42336	UniProtKB	Helix	595	600	.	.	.	.	
+P42336	UniProtKB	Helix	609	622	.	.	.	.	
+P42336	UniProtKB	Helix	625	637	.	.	.	.	
+P42336	UniProtKB	Helix	638	641	.	.	.	.	
+P42336	UniProtKB	Beta strand	643	646	.	.	.	.	
+P42336	UniProtKB	Helix	648	657	.	.	.	.	
+P42336	UniProtKB	Helix	661	672	.	.	.	.	
+P42336	UniProtKB	Turn	673	676	.	.	.	.	
+P42336	UniProtKB	Turn	678	680	.	.	.	.	
+P42336	UniProtKB	Helix	681	694	.	.	.	.	
+P42336	UniProtKB	Helix	698	718	.	.	.	.	
+P42336	UniProtKB	Helix	728	740	.	.	.	.	
+P42336	UniProtKB	Helix	742	747	.	.	.	.	
+P42336	UniProtKB	Beta strand	748	753	.	.	.	.	
+P42336	UniProtKB	Beta strand	756	761	.	.	.	.	
+P42336	UniProtKB	Helix	766	768	.	.	.	.	
+P42336	UniProtKB	Beta strand	774	776	.	.	.	.	
+P42336	UniProtKB	Beta strand	779	783	.	.	.	.	
+P42336	UniProtKB	Turn	791	793	.	.	.	.	
+P42336	UniProtKB	Beta strand	797	805	.	.	.	.	
+P42336	UniProtKB	Helix	808	825	.	.	.	.	
+P42336	UniProtKB	Turn	826	828	.	.	.	.	
+P42336	UniProtKB	Beta strand	838	842	.	.	.	.	
+P42336	UniProtKB	Beta strand	845	849	.	.	.	.	
+P42336	UniProtKB	Beta strand	852	856	.	.	.	.	
+P42336	UniProtKB	Helix	857	862	.	.	.	.	
+P42336	UniProtKB	Turn	865	867	.	.	.	.	
+P42336	UniProtKB	Helix	871	873	.	.	.	.	
+P42336	UniProtKB	Helix	876	882	.	.	.	.	
+P42336	UniProtKB	Turn	886	888	.	.	.	.	
+P42336	UniProtKB	Helix	890	911	.	.	.	.	
+P42336	UniProtKB	Turn	918	920	.	.	.	.	
+P42336	UniProtKB	Beta strand	921	924	.	.	.	.	
+P42336	UniProtKB	Beta strand	929	931	.	.	.	.	
+P42336	UniProtKB	Helix	958	963	.	.	.	.	
+P42336	UniProtKB	Turn	964	966	.	.	.	.	
+P42336	UniProtKB	Beta strand	967	969	.	.	.	.	
+P42336	UniProtKB	Beta strand	972	974	.	.	.	.	
+P42336	UniProtKB	Helix	975	993	.	.	.	.	
+P42336	UniProtKB	Turn	994	996	.	.	.	.	
+P42336	UniProtKB	Helix	997	1004	.	.	.	.	
+P42336	UniProtKB	Helix	1005	1007	.	.	.	.	
+P42336	UniProtKB	Helix	1016	1025	.	.	.	.	
+P42336	UniProtKB	Helix	1032	1045	.	.	.	.	
+P42336	UniProtKB	Beta strand	1053	1055	.	.	.	.	
+P42336	UniProtKB	Beta strand	1057	1059	.	.	.	.	
