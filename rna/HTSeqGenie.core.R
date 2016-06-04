@@ -7,7 +7,7 @@ parser$add_argument("-m", "--mode", type="integer", default=1, help="run mode: 1
 parser$add_argument("-t", "--thread", type="integer", default=8, help="number of threads [default %(default)s]")
 parser$add_argument("-B", "--BatchMode", type="integer", default=4, help="gsnap's \"-B\" [default %(default)s]")
 parser$add_argument("-n", "--nCore", type="integer", default=8, help="number of cores the machine have [default %(default)s]")
-parser$add_argument("-a", "--trim", action="store_true", default=FALSE, help="if specified do reads trimming to 75 bp")
+parser$add_argument("-a", "--trim", type="integer", default=0, help="if specified do reads trimming to INT bp")
 parser$add_argument("-p", "--prefq", action="store_true", default=FALSE, help="if specified preserve processed fq")
 parser$add_argument("-d", "--DB", default="/DBS/DB_temp/zhangLab/broad/bundle/2.8/hg19/gmap-gsnap", help="database directory [default %(default)s]")
 parser$add_argument("-s", "--splicesites", default="hg19_knownGene.splicesites", help="splicesite index [default %(default)s]")
@@ -35,8 +35,8 @@ rp <- list(
   num_cores=args$nCore,
   alignReads.splice_index=args$splicesites,
   ## trim
-  trimReads.do = args$trim,
-  trimReads.length = 75,
+  trimReads.do = as.logical(args$trim),
+  trimReads.length = args$trim,
   ## rRNA contamination
   detectRRNA.do = T,
   detectRRNA.rrna_genome = args$rRNA,
@@ -65,20 +65,7 @@ print(rp)
 
 if(args$mode==1)
 {
-    resdir <- do.call(runPipeline,
-      c(
-        rp
-        ## general parameters
-        #rp,
-        ## input
-        #input_file=fq1,
-        #input_file2=fq2,
-        #paired_ends=TRUE,
-        ## output
-        #save_dir=outDir,
-        #prepend_str=sampleID,
-        #overwrite_save_dir="erase"
-      ))
+    resdir <- do.call(runPipeline, c(rp))
 }else if(args$mode==2)
 {
     initPipelineFromConfig(config_update=c(rp,remove_processedfastq=FALSE))

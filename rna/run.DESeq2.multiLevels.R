@@ -93,26 +93,57 @@ plotCluster<-function(resSigStrict,vsd,designM,outDir)
 	    patientcolors <- as.numeric(designM$sampleType)
     }
     
-    pdf(paste(outDir,"/DESeq2.plot.DECluster.pdf",sep=""))
+    designM$color <- patientcolors
+    legendDat <- unique(designM[,c("sampleType","color")])
     
-    select <- rownames(resSigStrict)[1:30]
+    pdf(paste(outDir,"/DESeq2.plot.DECluster.pdf",sep=""),width=12,height=12)
+    
+    select <- rownames(resSigStrict)[1:50]
     select.f <- !is.na(select)
     select <- select[select.f]
     dat.plot <-assay(vsd)[select,]
+    mm <- ncol(dat.plot)
+    nn <- nrow(dat.plot)
     rownames(dat.plot) <- entrezToXXX(rownames(dat.plot))
     if(length(select)>0)
     {
-    	heatmap.2(dat.plot, ColSideColors=patientcolors, Rowv = T, Colv = T, scale="row", density.info="none", dendrogram="both", trace="none", margin=c(10, 6), main="Most Differentially Expressed genes")
+    	###heatmap.2(dat.plot,col=bluered(100), ColSideColors=patientcolors, Rowv = T, Colv = T, scale="row", density.info="none", dendrogram="both", keysize=1.2, trace="none", margin=c(15, 20), main="Most Differentially Expressed genes",cexRow=min(1.8,55/nn),cexCol=min(1.8,55/mm))
+        tryCatch({ heatmap.2(dat.plot,col=bluered(100), ColSideColors=patientcolors, 
+                           Rowv = T, Colv = T, scale="row", 
+                           density.info="none", dendrogram="both", keysize=1.2, 
+                           trace="none", margin=c(15, 20), 
+                           main="Most Differentially Expressed genes",
+                           cexRow=min(1.8,55/nn),cexCol=min(1.8,55/mm),
+                           distfun=function(x){ as.dist(1-cor(t(x),method = "spearman")) })
+                   legend("topright",legend=legendDat$sampleType,fill=legendDat$color,border=legendDat$color,cex=1.5)
+                 }, 
+                 error = function(e) e, 
+                 finally = loginfo(sprintf("heatmap.2 run finished")) )
+    	
     }
     
     select <- rownames(resSigStrict)
     select.f <- !is.na(select)
     select <- select[select.f]
     dat.plot <-assay(vsd)[select,]
+    mm <- ncol(dat.plot)
+    nn <- nrow(dat.plot)
     rownames(dat.plot) <- entrezToXXX(rownames(dat.plot))
     if(length(select)>0)
     {
-    	heatmap.2(dat.plot, ColSideColors=patientcolors, Rowv = T, Colv = T, scale="row", density.info="none", dendrogram="both", trace="none", margin=c(10, 6), main="All Differentially Expressed genes",labRow=F)
+    	###heatmap.2(dat.plot,col=bluered(100), ColSideColors=patientcolors, Rowv = T, Colv = T, scale="row", density.info="none", dendrogram="both", keysize=1.2, trace="none", margin=c(15, 20), main="All Differentially Expressed genes",cexRow=min(1.8,55/nn),cexCol=min(1.8,55/mm))
+        tryCatch({ heatmap.2(dat.plot,col=bluered(100), ColSideColors=patientcolors, 
+                           Rowv = T, Colv = T, scale="row", 
+                           density.info="none", dendrogram="both", keysize=1.2, 
+                           trace="none", margin=c(15, 20), 
+                           main="All Differentially Expressed genes",
+                           cexRow=min(1.8,55/nn),cexCol=min(1.8,55/mm),
+                           distfun=function(x){ as.dist(1-cor(t(x),method = "spearman")) })
+                   legend("topright",legend=legendDat$sampleType,fill=legendDat$color,border=legendDat$color,cex=1.5)
+                 },
+                 error = function(e) e, 
+                 finally = loginfo(sprintf("heatmap.2 run finished")) )
+        
     } 
     dev.off()
 }
@@ -206,8 +237,8 @@ runOneContrast <- function(l.ref,l.alt)
 	## output; for downstream analysis, blind=F
 	#cat(sprintf("%s\tDE genes visualization\n", Sys.time()))
 	## cluster
-	#plotCluster(resSigStrict,vsd,myDesign,outDir)
 	save.image(file=paste(outDir,"/DESeq2.RData",sep=""))
+	plotCluster(resSigStrict,vsd,myDesign,outDir)
 	## per-sample fc
 	fc.df<-data.frame()
 	if(args$pair)

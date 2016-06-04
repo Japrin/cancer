@@ -59,6 +59,7 @@ then
 	samtools index $f
 fi
 
+	###M=${o/.bam/.metrics} \
 echo ">>> Marking duplicates"
 optM=`echo "scale=0;$optM/1.5" | bc`
 max_reads=`echo 250000*$optM | bc`
@@ -67,13 +68,13 @@ java -Xmx${optM}g -jar $PICARD/picard.jar MarkDuplicates \
 	TMP_DIR=$o_dir \
 	I=${f} \
 	O=${o} \
-	M=${o/.bam/.metrics} \
+	M=${o%.bam}.metrics \
 	VALIDATION_STRINGENCY=SILENT \
 	ASSUME_SORTED=true \
 	REMOVE_DUPLICATES=$rmdup \
 	MAX_RECORDS_IN_RAM=$max_reads
 
-rm -f ${o/.bam/.bai}
+rm -f ${o%.bam}.bai
 samtools index $o
 
 rm $f

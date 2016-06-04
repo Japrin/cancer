@@ -289,7 +289,7 @@ sub readConfig
 		chomp;
 		if(/^\s*$/ || /^#/) { next; }
 		my @F=split /\t/;
-		if(@F<9) { usage(); }
+		if(@F<9) { print STDERR "config file format error!\n"; usage(); }
 		#if(!exists($pList->{$F[0]})) { $pList->{$F[0]}={"N"=>{'sampleID'=>'','data'=>{}},"T"=>{'sampleID'=>'','data'=>{}}}; }
 
 		#$pList->{$F[0]}->{$F[1]}->{'sampleID'}=$F[2];

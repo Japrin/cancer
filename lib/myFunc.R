@@ -4,6 +4,13 @@ loginfo <- function(msg) {
   cat(msg)
 }
 
+print.head <- function(dat) {
+    m=nrow(dat)
+    n=ncol(dat)
+    print(dat[1:min(4,m),1:min(5,n)])
+}
+
+
 entrezToXXX<-function(x,type="SYMBOL",species="human")
 {
   ret=c()
@@ -589,7 +596,7 @@ qcAndViz<-function(vsd,vstMat,designM,outDir,extra="",sfilter=NULL, gfilter=NULL
 
 }
 
-qcAndVizMat<-function(vstMat,designM,outDir,colSet=NULL,intgroup=c("sampleType"),ntop=500,extra="",sfilter=NULL, gfilter=NULL,complexHeatmap.use=NULL,...)
+qcAndVizMat<-function(vstMat,designM,outDir,colSet=NULL,intgroup=c("sampleType"),ntop=500,extra="",sfilter=NULL, gfilter=NULL,complexHeatmap.use=NULL,clonotype.col=NULL,...)
 {
     if(!is.null(sfilter))
     {
@@ -635,8 +642,13 @@ qcAndVizMat<-function(vstMat,designM,outDir,colSet=NULL,intgroup=c("sampleType")
     }
     if(ntop<3)
     {
-        loginfo(paste0("Too few samples: n=",ntop))
-        return
+        loginfo(paste0("Too few genes: n=",ntop))
+        return(NULL)
+    }
+    if(ncol(vstMat)<3)
+    {
+        loginfo(paste0("Too few samples: n=",ncol(vstMat)))
+        return(NULL)
     }
     cat(sprintf("%s\t---- PCA plot\n", Sys.time()))
     select <- order(rowVar, decreasing = TRUE)[seq_len(min(ntop, length(rowVar)))]
@@ -669,7 +681,7 @@ qcAndVizMat<-function(vstMat,designM,outDir,colSet=NULL,intgroup=c("sampleType")
     d <- data.frame(PC1 = pca$x[, 1], PC2 = pca$x[, 2], PC3 = pca$x[, 3], group = group, intgroup.df, names = colnames(vstMat))
 	write.table(d, paste(outDir,"/PCA",extra,".txt",sep=""),sep = "\t",col.names = T,row.names = F,quote = F)
     
-    print(head(percentVar)) 
+    #print(head(percentVar)) 
 	
     pdf(file=paste(outDir,"/PCA",extra,".pdf",sep=""),width=10,height=8)
     par(mar=c(5,5,4,8),cex.lab=1.5)
@@ -703,7 +715,8 @@ qcAndVizMat<-function(vstMat,designM,outDir,colSet=NULL,intgroup=c("sampleType")
     print(fviz_contrib(pca, choice = "ind", axes = 2, top = nDim.plot))
     print(fviz_contrib(pca, choice = "ind", axes = 1:2, top = nDim.plot))
     print(fviz_pca_var(pca, col.var="contrib") + scale_color_gradient2(low="white", mid="blue", high="red", midpoint=50) + theme_minimal())
-    print(fviz_pca_ind(pca, label = "none", col.ind = patientcolors ,habillage = group, addEllipses = T) + theme_minimal())
+    #print(fviz_pca_ind(pca, label = "none", col.ind = patientcolors ,habillage = group, addEllipses = T) + theme_minimal())
+    tryCatch(print(fviz_pca_ind(pca, label = "none", col.ind = patientcolors ,habillage = group, addEllipses = T) + theme_minimal()), error = function(e) e, finally = loginfo(sprintf("")) )
 
     dev.off()
 
@@ -735,7 +748,7 @@ qcAndVizMat<-function(vstMat,designM,outDir,colSet=NULL,intgroup=c("sampleType")
         dev.off()
         save(nmf.res,file = paste(outDir,"/NMF",extra,".RData",sep=""))
     }
-    tryCatch(doNMF(dat.plot), error = function(e) e, finally = loginfo(sprintf("NMF run finished")) )
+    #tryCatch(doNMF(dat.plot), error = function(e) e, finally = loginfo(sprintf("NMF run finished")) )
     ## t-SNE
     library(Rtsne)
     dat.plot <- t(vstMat[select, ])
@@ -750,15 +763,15 @@ qcAndVizMat<-function(vstMat,designM,outDir,colSet=NULL,intgroup=c("sampleType")
         legend("right",legend=names(colSet),fill = NULL,inset = -0.19,xpd = NA,cex=1.5,pch=16,border =NA,col = colSet)
         dev.off()
     }
-    sapply(seq(5,50,5), function(i) { tryCatch(doit(i), error = function(e) e, finally = loginfo(sprintf("Rtsne run finished with perplexity %d \n",i)) ) } )
+    #sapply(seq(5,50,5), function(i) { tryCatch(doit(i), error = function(e) e, finally = loginfo(sprintf("Rtsne run finished with perplexity %d \n",i)) ) } )
 
 
     #print(patientcolors)
     designM$color <- patientcolors
     legendDat <- unique(designM[,c("sampleType","color")])
     
-    #for(n in c(50,100,150,200,250,300,350,400,450,500,1000,2000,3000,4000,5000))
-    for(n in c(50,100,150,200,250,300,350,400,450,500,1000,2000))
+    #for(n in c(50,100,150,200,250,300,350,400,450,500))
+    for(n in c(50,100))
     {
         ###hmcol <- colorRampPalette(brewer.pal(9, "GnBu"))(100)
         select <- order(rowVar,decreasing = TRUE)[seq_len(min(n, length(rowVar)))]
@@ -782,23 +795,52 @@ qcAndVizMat<-function(vstMat,designM,outDir,colSet=NULL,intgroup=c("sampleType")
         {
             require("ComplexHeatmap")
             require("circlize")
-            pdf(paste(outDir,"/QC.Cluster.Var.n",n,extra,".pdf",sep=""),width=15,height=12)
-
+            require("gridBase")
+            pdf(paste(outDir,"/QC.Cluster.Var.n",n,extra,".pdf",sep=""),width=15,height=15)
+            plot.new()
+            legend("topright",legend=legendDat$sampleType,fill=legendDat$color,border=legendDat$color,cex=1.5)
+            ### Integrating Grid Graphics Output with Base Graphics Output
+            vps <- baseViewports()
+            pushViewport(vps$inner, vps$figure, vps$plot)
+            
             annDF <- data.frame(sampleType=designM$sampleType)
             annColList <- list(sampleType=colSet)
-            ha.col <- HeatmapAnnotation(df = annDF, col = annColList, show_legend = TRUE )
-            top_annotation_height <- unit(1.5, "cm")
-            ht <- Heatmap(dat.plot, name="NormalizedRC",
-                      col = colorRamp2(c(0, 0.609, 1, 10), c("darkblue", "darkblue", "yellow", "red")),
+            if(!is.null(clonotype.col))
+            {
+                annDF$clonotype=clonotype.col$ctype[colnames(dat.plot)]
+                annColList$clonotype=clonotype.col$col
+            }
+            print(annColList$clonotype)
+            ha.col <- HeatmapAnnotation(df = annDF, col = annColList, show_legend = FALSE)
+            top_annotation_height <- unit(1.5*ncol(annDF), "cm")
+            ###col = colorRamp2(c(0, 0.609, 1, 10), c("darkblue", "darkblue", "yellow", "red")),
+            # cor(vstMat.blind,method="spearman")
+            # aa.dist<-as.dist(1-aa)
+            # aa.hclust<-hclust(aa.dist)
+            # aa.dend<-as.dendrogram(aa.hclust)
+            dat.plot.unscale <- dat.plot
+            #### scale by row
+            rowM <- rowMeans(dat.plot, na.rm = T)
+            rowSD <- apply(dat.plot, 1, sd, na.rm = T)
+            dat.plot <- sweep(dat.plot, 1, rowM)
+            dat.plot <- sweep(dat.plot, 1, rowSD, "/")
+            ####
+            bk.range <- quantile(abs(dat.plot),probs=c(0.01,1))
+            ht <- Heatmap(dat.plot, name="ZScore",
+                      col = colorRamp2(seq(-bk.range[2],bk.range[2],length=5), bluered(5),space="LAB"),
                       column_hclust_height = unit(6, "cm"), row_hclust_width = unit(6, "cm"),
-                      column_names_gp = gpar(fontsize = 12*55/m),row_names_gp = gpar(fontsize = 12*55/max(n,25)),
+                      column_names_gp = gpar(fontsize = 12*55/m),row_names_gp = gpar(fontsize = 10*55/max(n,25)),
                       show_heatmap_legend = T, row_names_max_width = unit(10,"cm"),
                       top_annotation_height = top_annotation_height,
-                      clustering_distance_rows = "spearman", clustering_distance_columns = "spearman",  ### euclidean
+                      cluster_columns = as.dendrogram(hclust(as.dist(1-cor(dat.plot.unscale,method="spearman")))),
+                      cluster_rows = as.dendrogram(hclust(as.dist(1-cor(t(dat.plot.unscale),method="spearman")))),
                       top_annotation = ha.col,...)
+                      ####clustering_distance_rows = "spearman", clustering_distance_columns = "spearman",  ### euclidean
             draw(ht, legend_grid_width = unit(0.8, "cm"), legend_grid_height = unit(0.8, "cm"),
                 legend_title_gp = gpar(fontsize = 14, fontface = "bold"),
-                legend_label_gp = gpar(fontsize = 12))
+                legend_label_gp = gpar(fontsize = 12),newpage= FALSE)
+            #plot.new()
+            heatmap.2(dat.plot.unscale,col=bluered(100), ColSideColors=patientcolors, Rowv = T, Colv = T, scale="row", density.info="none", dendrogram="both", keysize=1.2, trace="none", margin=c(15, 20), main="Most variable genes",cexRow=min(1.8,55/nn),cexCol=min(1.8,55/m),distfun=function(x){ as.dist(1-cor(t(x),method = "spearman")) } )
             dev.off()
         }
         ## sample distance
@@ -844,6 +886,25 @@ read.SampleTypeColor <- function(in.file) {
     ret <- in.table$color
     names(ret) <- in.table$sampleType
     return(ret)
+}
+
+read.clonotype <- function(in.file,ctype.col) {
+    if(is.null(in.file) || !file.exists(in.file)) { return(NULL) }
+    in.table <- read.table(in.file,row.names = "Cell_Name",header = T,check.names = F,stringsAsFactors = F,sep="\t",comment.char="!",quote = "")
+    ctype <- in.table[,ctype.col]
+    ctype <- strsplit(x = ctype,split = ":",perl = T)
+    ctype <- sapply(ctype,function(x){ if(as.integer(x[2])>1) { x[1] } else { "NoClonal" }  })
+    names(ctype) <- rownames(in.table)
+    ctype <- as.factor(ctype)
+    c.type.level <- levels(ctype)
+    c.palette <- rainbow(length(c.type.level))
+    names(c.palette) <- c.type.level
+    c.palette[names(c.palette)=="NoClonal"]="gray"
+    c.palette <- c(c.palette, structure("gray", names = NA))
+    c.color <- c.palette[ctype]
+    names(c.color) <- rownames(in.table)
+    ####list(ctype=ctype,col=c.color)
+    list(ctype=ctype,col=c.palette)
 }
 
 

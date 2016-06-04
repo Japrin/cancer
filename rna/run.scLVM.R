@@ -17,10 +17,12 @@ sample.id <- args$sample
 cyclebase.rdata <- args$cyclebase
 do.scLVM <- args$process
 
-#designFile <- "/WPS1/zhenglt/work/TCR_chunhong/integrated.20150707/clustering/sample.design.Tang.P1202.S126"
-#countDir <- "/WPS1/zhenglt/work/TCR_chunhong/integrated.20150707/gsnap_out/OUT/Tang.P1202"
-#out.dir <- "/WPS1/zhenglt/work/TCR_chunhong/integrated.20150707/scLVM"
-#sample.id <- "Tang"
+#designFile <- "/WPS1/zhenglt/work/TCR_chunhong/integrated.20150707/clustering/marker/P1118.filter.by.marker.design.txt"
+#countDir <- "/WPS1/zhenglt/work/TCR_chunhong/integrated.20150707/gsnap_out/OUT/P1118"
+#out.dir <- "/WPS1/zhenglt/work/TCR_chunhong/integrated.20150707/P1118.P2/OUT.scLVM/P1118.test"
+#sample.id <- "P1118"
+#do.scLVM <- FALSE
+#cyclebase.rdata <- "/Share/BP/zhenglt/02.pipeline/cancer/rna/data/cycleBase.human.RData"
 
 dir.create(out.dir,recursive = T,showWarnings = F)
 
@@ -34,7 +36,7 @@ suppressPackageStartupMessages(library(scLVM))
 suppressPackageStartupMessages(library(rhdf5))
 
 ## function definition
-source("/Share/BP/zhenglt/02.pipeline/cancer/lib/myFunc.R")
+source("/Share/BP/zhenglt/02.pipeline/cancer/lib/scRNAToolKit.R")
 readCountTable<-function(design,saveDir)
 {
     ids<-row.names(design)

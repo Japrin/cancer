@@ -79,7 +79,8 @@ use Pod::Usage;
 use POSIX qw(strftime);
 
 
-my $DAVID="/WPS1/zhenglt/00.database/DAVIDKnowledgeBase";
+###my $DAVID="/WPS1/zhenglt/00.database/DAVIDKnowledgeBase";
+my $DAVID="/DBS/DB_temp/zhangLab/DAVIDKnowledgeBase";
 
 
 	my ($in,$out);

@@ -86,8 +86,10 @@ then
 	exit 0
 fi
 
-ifq1=$outDir/$sampleID.input.R1.fq.gz
-ifq2=$outDir/$sampleID.input.R2.fq.gz
+#ifq1=$outDir/$sampleID.input.R1.fq.gz
+#ifq2=$outDir/$sampleID.input.R2.fq.gz
+ifq1=$outDir/$sampleID.$lib.$lane$optI.R1.fq.gz
+ifq2=$outDir/$sampleID.$lib.$lane$optI.R2.fq.gz
 
 if [ ! -f "$outDir/$sampleID.$lib.$lane$optI.bam" ];then
 	BQE=`$BinDir/check.BQ.64.33.pl $fq1`

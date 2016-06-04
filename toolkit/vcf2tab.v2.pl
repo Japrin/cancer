@@ -58,7 +58,7 @@ while(<>)
 	my @field=split /\t/;
 	my @out_a=();
 	@out_a=@field[0..6];
-	my %_t= $field[7]=~/(.+?)=(.+?)[;\t]/g;
+	my %_t= "$field[7];"=~/(.+?)=(.+?);/g;
 	foreach (@header) 
 	{ 
 		if(!exists($_t{$_})) 

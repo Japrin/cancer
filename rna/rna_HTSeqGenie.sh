@@ -63,8 +63,8 @@ binDir=`dirname $0`
 
 #
 
-echo $binDir/HTSeqGenie.core.R $outDir $sampleID $fq1 $fq2 -m $opt_m -t $opt_t -B $opt_B -n $opt_n -a
-$binDir/HTSeqGenie.core.R $outDir $sampleID $fq1 $fq2 -m $opt_m -t $opt_t -B $opt_B -n $opt_n -a
+echo $binDir/HTSeqGenie.core.R $outDir $sampleID $fq1 $fq2 -m $opt_m -t $opt_t -B $opt_B -n $opt_n -a 100
+$binDir/HTSeqGenie.core.R $outDir $sampleID $fq1 $fq2 -m $opt_m -t $opt_t -B $opt_B -n $opt_n -a 100
 
 
 echo end at: `date`

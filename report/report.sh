@@ -62,7 +62,7 @@ collectMappingCov.sh ${stat_list} $oDir/mapping_coverage.txt
 #### depth distribution
 collectDepthPlot.pl -i=0 -j=2 $depth_list   > $oDir/depth.all.for.plot
 collectDepthPlot.pl -i=0 -j=1 -t $cumu_list > $oDir/cumu.all.for.plot
-Rscript $PIPELINE/all/depth.plot.R $oDir/depth.all.for.plot $oDir/cumu.all.for.plot $oDir/depth.png
+Rscript $PIPELINE/cancer/all/depth.plot.R $oDir/depth.all.for.plot $oDir/cumu.all.for.plot $oDir/depth.png
 #toRM="$toRM $oDir/depth.all.for.plot $oDir/cumu.all.for.plot"
 
 #### coverage by chromosome

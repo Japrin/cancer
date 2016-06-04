@@ -4,6 +4,7 @@
 export MODULEPATH="/Share/BP/zhenglt/05.setting/modulefiles":$MODULEPATH
 module load novomedSeq/1.0
 
+echo "pipeline init file was included at host:" `hostname`
 #export PIPELINE=/Share/BP/zhenglt/02.pipeline
 #export ROOTSYS=/Share/BP/zhenglt/01.bin/root/root_v5.34.19/mybuild
 #

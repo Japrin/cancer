@@ -73,6 +73,10 @@ mkdir -p $outDir
 
 ADTExDir=/Share/BP/zhenglt/01.bin/ADTEx/ADTEx.v.1.0.4
 module load samtools/0.1.19
+## bedtools v2.24 and above are not compatible with ADTEx now
+module unload bedtools/v2.25.0
+module load bedtools/v2.23.0
+export TMPDIR="$outDir"
 
 ## get the BAF file
 if [ ! -f $outDir/$sampleID.hetSNV.baf ];then
@@ -86,10 +90,10 @@ if [ ! -f $outDir/$sampleID.hetSNV.baf ];then
 	fi
 fi
 
-if [ ! -f $outDir/$sampleID.tumor.coverage ];then
+if [ ! -f $outDir/$sampleID.tumor.coverage.gz ];then
 	## get the DOC file
-	samtools view -uF 0x400 $normalBam | coverageBed -abam - -b $TR -d > $outDir/$sampleID.normal.coverage
-	samtools view -uF 0x400 $tumorBam  | coverageBed -abam - -b $TR -d > $outDir/$sampleID.tumor.coverage
+	samtools view -uF 0x400 $normalBam | coverageBed -abam - -b $TR -d | gzip -c > $outDir/$sampleID.normal.coverage.gz
+	samtools view -uF 0x400 $tumorBam  | coverageBed -abam - -b $TR -d | gzip -c > $outDir/$sampleID.tumor.coverage.gz
 fi
 
 ## run ADTEx
@@ -97,8 +101,8 @@ if [ ! -f $outDir/out/cnv.result ];then
 	####rm -r $outDir/out
 	if [ -f $outDir/$sampleID.hetSNV.baf ];then
 		python $ADTExDir/ADTEx.py \
-			-n $outDir/$sampleID.normal.coverage \
-			-t $outDir/$sampleID.tumor.coverage \
+			-n $outDir/$sampleID.normal.coverage.gz \
+			-t $outDir/$sampleID.tumor.coverage.gz \
 			-b $TR \
 			-o $outDir/out \
 			--baf $outDir/$sampleID.hetSNV.baf \
@@ -107,8 +111,8 @@ if [ ! -f $outDir/out/cnv.result ];then
 	else
 	
 		python $ADTExDir/ADTEx.py \
-			-n $outDir/$sampleID.normal.coverage \
-			-t $outDir/$sampleID.tumor.coverage \
+			-n $outDir/$sampleID.normal.coverage.gz \
+			-t $outDir/$sampleID.tumor.coverage.gz \
 			-b $TR \
 			-o $outDir/out \
 			$opt_e --DOC

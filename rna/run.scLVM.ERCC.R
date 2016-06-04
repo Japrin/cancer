@@ -7,23 +7,59 @@ parser$add_argument("-d", "--designFile", type="character", required=TRUE, help=
 parser$add_argument("-c", "--countDir", type="character", required=TRUE, help="HTSeqGenie output directory")
 parser$add_argument("-o", "--outDir", type="character", required=TRUE, help="output directory")
 parser$add_argument("-s", "--sample", type="character", default="SAMPLE", help="sample id  [default %(default)s]")
+parser$add_argument("-f", "--fdr", type="double", default="0.001", help="FDR threshold  [default %(default)s]")
 parser$add_argument("-l", "--cyclebase", type="character", default="/Share/BP/zhenglt/02.pipeline/cancer/rna/data/cycleBase.human.RData", help="sample id [default %(default)s]")
+parser$add_argument("-e", "--ercc", action="store_true", default=FALSE, help="if specified normalize endo-gene using ERCCs' size factor; otherwise normalize endo-gene using endo-genes' size factor  [default %(default)s]")
+parser$add_argument("-n", "--ignoreERCC", action="store_true", default=FALSE, help="whether ignore ERCC data even it's available [default %(default)s]")
+parser$add_argument("-x", "--excludeSamples", type="character", help="file contain sample list or comma sperated string, specify the samples to be excluded")
+parser$add_argument("-v", "--verbose", action="store_true", default=FALSE, help="whether verbose mode [default %(default)s]")
 parser$add_argument("-p", "--process", action="store_true", default=FALSE, help="if specified run scLVM analysis; otherwise  preprocess data only, the scLVM run shoud be done using python script [default %(default)s]")
+parser$add_argument("-t", "--tSNE", action="store_true", default=FALSE, help="if specified run tSNE analysis; otherwise  preprocess data only [default %(default)s]")
+parser$add_argument("-y", "--cellTypeColorFile", default="/WPS1/zhenglt/work/TCR_chunhong/data/CellType.color", type="character", help="cellTypeColorFile")
 args <- parser$parse_args()
 designFile <- args$designFile
 countDir <- args$countDir
 out.dir <- args$outDir
 sample.id <- args$sample
+fit.fdr <- args$fdr
 cyclebase.rdata <- args$cyclebase
+use.ERCC.sf <- args$ercc
 do.scLVM <- args$process
+mode.verbose <- args$verbose
+ignore.ERCC <- args$ignoreERCC
+exclude.samples <- args$excludeSamples
+run.tSNE <- args$tSNE
+cellTypeColorFile <- args$cellTypeColorFile
 
-designFile <- "/WPS1/zhenglt/work/TCR_chunhong/phase17/sp.design"
-countDir <- "/WPS1/zhenglt/work/TCR_chunhong/phase17/OUT"
-out.dir <- "/WPS1/zhenglt/work/TCR_chunhong/integrated.20150707/scLVM/sp/OUT"
-sample.id <- "sp"
-cyclebase.rdata <- "/Share/BP/zhenglt/02.pipeline/cancer/rna/data/cycleBase.human.RData"
+print(args)
 
-dir.create(out.dir,recursive = T,showWarnings = F)
+#### TEST DATA
+#designFile <- "/WPS1/zhenglt/work/TCR_chunhong/integrated.20150707/hetero/iterative/OUT/P0205/level2/TTC_grp.designFile"
+#countDir <- "/WPS1/zhenglt/work/TCR_chunhong/integrated.20150707/gsnap_out/OUT/P0205"
+#out.dir <- "/WPS1/zhenglt/work/TCR_chunhong/integrated.20150707/outlier/test"
+#sample.id <- "P0205"
+#do.scLVM <- FALSE
+#fit.fdr <- 0.001
+#mode.verbose <- TRUE
+#cyclebase.rdata <- "/Share/BP/zhenglt/02.pipeline/cancer/rna/data/cycleBase.human.RData"
+#use.ERCC.sf <- FALSE
+#ignore.ERCC <- FALSE
+#exclude.samples <- ""
+#run.tSNE <- TRUE
+#cellTypeColorFile <- "/WPS1/zhenglt/work/TCR_chunhong/data/CellType.color"
+
+### TEST for curious samples ###
+#exclude.samples <- "NTC146-1116,TTC23-1116,TTC115-1116"
+#exclude.samples <- "NTC146-1116,TTC23-1116"
+#exclude.samples <- "NTC146-1116"
+#exclude.samples <- NULL
+#exclude.samples <- "TTC114-1022,TTC187-1022,TTC164-1022"
+#myDesign <- read.table(designFile,header=T,row.names="sample",check.names=F,colClasses=c("factor","character","factor","factor"))
+#######exclude.samples <- "TTC109-0205,PTC138-0205,TTC23-0205,TTS16-0205,TTH106-0205"
+### END TEST for curious samples ###
+
+
+dir.create(out.dir,recursive=T,showWarnings=F)
 
 suppressPackageStartupMessages(library(genefilter))
 suppressPackageStartupMessages(library(statmod))
@@ -35,7 +71,7 @@ suppressPackageStartupMessages(library(scLVM))
 suppressPackageStartupMessages(library(rhdf5))
 
 ## function definition
-source("/Share/BP/zhenglt/02.pipeline/cancer/lib/myFunc.R")
+source("/Share/BP/zhenglt/02.pipeline/cancer/lib/scRNAToolKit.R")
 readCountTable<-function(design,saveDir)
 {
     ids<-row.names(design)
@@ -73,76 +109,188 @@ getEntrezFromGO <- function(term)
    	cell.cycleEG <- unlist(xxGO[term])
 	cell.cycleEG
 }
+# plot size factor distribution
+plotSizeFactorDist <- function(sf,out.prefix,sample.id.toHighlight=NULL)
+{
+    pdf(sprintf("%s.%s",out.prefix,"sizeFactor.pdf"),width = 10,height = 6)
+    par(cex.lab=1.5,mar=c(5,5,4,2)+0.1)
+    cdata <- sort(sf)
+    ccol <- rep("darkblue",length(sf))
+    names(ccol) <- names(cdata)
+    if(!is.null(sample.id.toHighlight)) {
+        ccol[sample.id.toHighlight] <- "red"
+    }
+    barplot(cdata,col=ccol,border=NA,xlab="cell index",ylab="size factor",xaxt="n")
+    box(which = "inner",lwd=4)
+    par(new=TRUE, oma=c(1,7,1,1),mar=c(5,5,1,2)+0.1)
+    layout(matrix(4:1,2))
+    b.midpoint <- barplot(cdata[1:10],col=ccol[1:10],border=NA,xlab="",ylab="",xaxt="n")
+    text(b.midpoint,y=-0.01, srt = 45, adj = 1, labels = names(cdata)[1:10], xpd = TRUE,cex=1.0)
+    box(which = "figure")
+    dev.off()
+}
 
 myDesign <- read.table(designFile,header=T,row.names="sample",check.names=F,colClasses=c("factor","character","factor","factor"))
-myCountTable <- readCountTable(myDesign,countDir)
-#myContrast<-read.table(contrastFile,header=T) 
 
-countData  <-  myCountTable[,c(-1,-2)]
-countERCCData <- countData[grepl(pattern = "^ERCC-",x = rownames(countData),perl = T),]
-countGeneData <- countData[!grepl(pattern = "^ERCC-",x = rownames(countData),perl = T),]
+if(!is.null(exclude.samples) && exclude.samples != ""){
+    if(file.exists(exclude.samples)){
+        sample.id.toExclude <- c()
+        tryCatch({ 
+            sample.id.toExclude <- read.table(exclude.samples,sep = "\t",header = F,check.names = F,stringsAsFactors = F)$V1 
+        },error=function(e){e})
+    }else{
+        sample.id.toExclude <- unlist(strsplit(exclude.samples,split=",",perl=T))
+    }
+    myDesign <- myDesign[!rownames(myDesign) %in% sample.id.toExclude,]
+}
+###if(mode.verbose)
+###{
+out.design.df <- data.frame(patient=myDesign$patient,sample=rownames(myDesign))
+out.design.df <- cbind(out.design.df,myDesign[,c(2,3)])
+write.table(out.design.df,sprintf("%s/%s.designUsed.txt",out.dir,sample.id),sep = "\t",row.names = F,quote = F)
+###}
+if(dir.exists(countDir)) {
+    myCountTable <- readCountTable(myDesign,countDir)
+    countData  <-  myCountTable[,c(-1,-2)]
+}else {
+    myCountTable <- read.table(countDir,header = T,check.names = F,stringsAsFactors = F,sep = "\t")
+    rownames(myCountTable) <- myCountTable[,1]
+    countData  <-  myCountTable[,c(-1,-2)]
+    countData <- countData[,rownames(myDesign)]
+}
+obj.scdn <- SCDenoise(as.matrix(countData),ignore.ERCC=ignore.ERCC)
+obj.scdn <- SCDenoise.normalize(obj.scdn,useERCCSizeFactor = use.ERCC.sf)
 
-countERCCData.sf <- estimateSizeFactorsForMatrix(countERCCData)
-countGeneData.sf <- countERCCData.sf
-#normalise read counts
-countERCCData.sfNormalized <- t( t(countERCCData) / countERCCData.sf )
-countGeneData.sfNormalized <- t( t(countGeneData) / countERCCData.sf )
-
+plotSizeFactorDist(obj.scdn@size.factor.endo,sprintf("%s/%s.endo",out.dir,sample.id))
+if(obj.scdn@withERCC) {
+    plotSizeFactorDist(obj.scdn@size.factor.ERCC,sprintf("%s/%s.ERCC",out.dir,sample.id))
+}
 #get technical noise
-pdf(paste0(out.dir,"/",sample.id,".fitTechNoise.ERCC.pdf"),width = 16,height = 8)
-techNoise = fitTechnicalNoise(countGeneData.sfNormalized,nCountsERCC=countERCCData.sfNormalized, fit_type = 'counts',plot=TRUE)
+pdf(paste0(out.dir,"/",sample.id,".fitTechNoise.ERCC.counts.pdf"),width = 8,height = 8)
+techNoiseERCCCounts = SCDenoise.fitTechnicalNoise(obj.scdn, fit_type = 'counts',plot=TRUE)
 dev.off()
 
-pdf(paste0(out.dir,"/",sample.id,".fitTechNoise.noSpikein.log.pdf"),width = 16,height = 8)
-techNoiseLogFit = fitTechnicalNoise(countGeneData.sfNormalized, fit_type = 'log', use_ERCC = FALSE, plot=TRUE) 
-dev.off()
+if(mode.verbose)
+{
+    pdf(paste0(out.dir,"/",sample.id,".fitTechNoise.noERCC.counts.pdf"),width = 8,height = 8)
+    techNoiseEndoCounts = SCDenoise.fitTechnicalNoise(obj.scdn, fit_type = 'counts',use_ERCC=FALSE,plot=TRUE)
+    dev.off()
 
-pdf(paste0(out.dir,"/",sample.id,".fitTechNoise.noSpikein.logvar.pdf"),width = 16,height = 8)
-techNoiseLogVarFit = fitTechnicalNoise(countGeneData.sfNormalized, fit_type = 'logvar', use_ERCC = FALSE, plot=TRUE) 
-dev.off()
+    pdf(paste0(out.dir,"/",sample.id,".fitTechNoise.noERCC.log.pdf"),width = 8,height = 8)
+    techNoiseLogFit = SCDenoise.fitTechnicalNoise(obj.scdn, fit_type = 'log', use_ERCC = FALSE, plot=TRUE) 
+    dev.off()
 
-#call variable genes
-pdf(paste0(out.dir,"/",sample.id,".fitTechNoise.ERCC.variableGenes.pdf"),width = 16,height = 8)
-is_het = getVariableGenes(countGeneData.sfNormalized, techNoise$fit, method = "fdr", threshold = 0.1, fit_type="counts",sfEndo=countGeneData.sf, sfERCC=countERCCData.sf)
+    pdf(paste0(out.dir,"/",sample.id,".fitTechNoise.noERCC.logvar.pdf"),width = 8,height = 8)
+    techNoiseLogVarFit = SCDenoise.fitTechnicalNoise(obj.scdn, fit_type = 'logvar', use_ERCC = FALSE, plot=TRUE) 
+    dev.off()
+
+    #call variable genes
+    pdf(paste0(out.dir,"/",sample.id,".fitTechNoise.noERCC.counts.variableGenes.pdf"),width = 8,height = 8)
+    vg.EndoCounts = SCDenoise.getVariableGenes(obj.scdn, techNoiseEndoCounts$fit, method = "fit", plot=TRUE)
+    is_het_EndoCounts <- vg.EndoCounts[["is_het"]]
+    dev.off()
+    table(is_het_EndoCounts)
+    vg.EndoCounts.df <- cbind(geneID=names(vg.EndoCounts[["is_het"]]),as.data.frame(vg.EndoCounts))
+    vg.EndoCounts.df$geneSymbol <- entrezToXXX(vg.EndoCounts.df$geneID)
+    vg.EndoCounts.df <- vg.EndoCounts.df[order(-vg.EndoCounts.df$residual),]
+    write.table(vg.EndoCounts.df,sprintf("%s/%s.fitTechNoise.noERCC.counts.variableGenes.txt",out.dir,sample.id),row.names = F,sep = "\t",quote = F)
+
+    pdf(paste0(out.dir,"/",sample.id,".fitTechNoise.noERCC.log.variableGenes.pdf"),width = 8,height = 8)
+    vg.Log = SCDenoise.getVariableGenes(obj.scdn, techNoiseLogFit$fit, method = "fit", plot=TRUE)
+    is_hetLog <- vg.Log[["is_het"]]
+    dev.off()
+    table(is_hetLog)
+
+    pdf(paste0(out.dir,"/",sample.id,".fitTechNoise.noERCC.logvar.variableGenes.pdf"),width = 8,height = 8)
+    vg.LogVar = SCDenoise.getVariableGenes(obj.scdn, techNoiseLogVarFit$fit, method = "fit", plot=TRUE)
+    is_hetLogVar <- vg.LogVar[["is_het"]]
+    dev.off()
+    table(is_hetLogVar)
+   
+    if(obj.scdn@withERCC)
+    { 
+        for(ff in unique(c(0.1,0.05,0.01,0.005,0.001,fit.fdr)))
+        {
+            pdf(sprintf("%s/%s.fitTechNoise.ERCC.counts.fdr%s.variableGenes.pdf",out.dir,sample.id,ff),width = 8,height = 8)
+            vg.ERCCCounts = SCDenoise.getVariableGenes(obj.scdn, techNoiseERCCCounts$fit, method = "fdr", threshold = ff, fit_type="counts", plot=TRUE,fitB = techNoiseEndoCounts$fit)
+            is_het <- vg.ERCCCounts[["is_het"]]
+            dev.off()
+            table(is_het)
+
+            pdf(sprintf("%s/%s.fitTechNoise.venn.fdr%s.pdf",out.dir,sample.id,ff),width = 8,height = 8)
+            venn.res <- venn(list(ERCC=names(is_het)[is_het],Endo=names(is_het_EndoCounts)[is_het_EndoCounts],log=names(is_hetLog)[is_hetLog],logVar=names(is_hetLogVar)[is_hetLogVar]))
+            dev.off()
+            cat(sprintf("%s ERCC .vs. Endo (fitting by counts), fdr: %s\n",sample.id,ff))
+            table.ERCC.Endo <- table(ERCC=is_het,Endo=is_het_EndoCounts)
+            print(addmargins(table.ERCC.Endo))
+            print(round(sweep(addmargins(table.ERCC.Endo, 1, list(All = sum)), 2, apply(table.ERCC.Endo, 2, sum)/100, "/"), 2))
+        }
+    }else
+    {
+        pdf(sprintf("%s/%s.fitTechNoise.venn.noERCC.pdf",out.dir,sample.id),width = 8,height = 8)
+        venn.res <- venn(list(Endo=names(is_het_EndoCounts)[is_het_EndoCounts],log=names(is_hetLog)[is_hetLog],logVar=names(is_hetLogVar)[is_hetLogVar]))
+        dev.off()
+    }
+}
+
+pdf(sprintf("%s/%s.fitTechNoise.ERCC.counts.variableGenes.pdf",out.dir,sample.id),width = 8,height = 8)
+vg.ERCCCounts = SCDenoise.getVariableGenes(obj.scdn, techNoiseERCCCounts$fit, method = "fdr", threshold = fit.fdr, fit_type="counts", plot=TRUE)
+is_het <- vg.ERCCCounts[["is_het"]]
 dev.off()
 table(is_het)
+vg.ERCCCounts.df <- cbind(geneID=names(vg.ERCCCounts[["is_het"]]),as.data.frame(vg.ERCCCounts))
+vg.ERCCCounts.df$geneSymbol <- entrezToXXX(vg.ERCCCounts.df$geneID)
+if("padjA" %in% names(vg.ERCCCounts.df)) { 
+    vg.ERCCCounts.df <- vg.ERCCCounts.df[order(vg.ERCCCounts.df$padjA,-vg.ERCCCounts.df$residual),]
+}else
+{
+    vg.ERCCCounts.df <- vg.ERCCCounts.df[order(-vg.ERCCCounts.df$residual),]
+}
+write.table(vg.ERCCCounts.df,sprintf("%s/%s.fitTechNoise.ERCC.counts.variableGenes.txt",out.dir,sample.id),row.names = F,sep = "\t",quote = F)
 
-pdf(paste0(out.dir,"/",sample.id,".fitTechNoise.noSpikein.log.variableGenes.pdf"),width = 16,height = 8)
-is_hetLog = getVariableGenes(countGeneData.sfNormalized, techNoiseLogFit$fit, method = "fit", plot=TRUE)
-dev.off()
-table(is_hetLog)
 
-pdf(paste0(out.dir,"/",sample.id,".fitTechNoise.noSpikein.logvar.variableGenes.pdf"),width = 16,height = 8)
-is_hetLogVar = getVariableGenes(countGeneData.sfNormalized, techNoiseLogVarFit$fit, method = "fit", plot=TRUE)
-dev.off()
-table(is_hetLogVar)
+#rename a few variables
+Y = log10(obj.scdn@normalized.endo+1) #normalised trandformed read counts
+geneID = rownames(obj.scdn@normalized.endo) #gene IDs
+cell_names <- colnames(obj.scdn@normalized.endo)
+genes_het_bool = as.vector(is_het) #variable genes
+tech_noise = as.vector(techNoiseERCCCounts$techNoiseLog) #technical noise
+
+goResults <- runTopGOAnalysis(geneID[genes_het_bool], geneID)
+print(goResults[["MF"]])
+print(goResults[["CC"]])
+print(goResults[["BP"]])
 
 #get cell cycle genes from GO 
 ## scLVM's bug: the name of the vecotr holding genes should be "ens_ids_cc"
 #gid.cellCycle <- getEntrezFromGO("GO:0007049")
 ens_ids_cc <- getEntrezFromGO("GO:0007049")
 lname <- load(cyclebase.rdata)
-cellcyclegenes_filter <- na.omit(match(ens_ids_cc,rownames(countGeneData.sfNormalized)))
-cellcyclegenes_filterCB <- na.omit(match(dataCB[1:600,"Entrez"],rownames(countGeneData.sfNormalized)))
-
-#rename a few variables
-Y = log10(countGeneData.sfNormalized+1) #normalised trandformed read counts
-geneID = rownames(countGeneData.sfNormalized) #gene IDs
-cell_names <- colnames(countGeneData.sfNormalized)
-genes_het_bool = as.vector(is_hetLog) #variable genes
-tech_noise = as.vector(techNoiseLogFit$techNoiseLog) #technical noise
+cellcyclegenes_filter <- na.omit(match(ens_ids_cc,geneID))
+cellcyclegenes_filterCB <- na.omit(match(dataCB[1:600,"Entrez"],geneID))
 
 write.table(geneID[genes_het_bool],file=paste0(out.dir,"/",sample.id,".var.geneID.txt"),quote = F,row.names = F)
 write.table(cell_names,file=paste0(out.dir,"/",sample.id,".var.cellNames.txt"),quote = F,row.names = F)
-write.table(rownames(countGeneData.sfNormalized)[cellcyclegenes_filter],file=paste0(out.dir,"/",sample.id,".var.cellcyclegenesGO.txt"),quote = F,row.names = F)
-write.table(rownames(countGeneData.sfNormalized)[cellcyclegenes_filterCB],file=paste0(out.dir,"/",sample.id,".var.cellcyclegenesCB.txt"),quote = F,row.names = F)
+write.table(geneID[cellcyclegenes_filter],file=paste0(out.dir,"/",sample.id,".var.cellcyclegenesGO.txt"),quote = F,row.names = F)
+write.table(geneID[cellcyclegenes_filterCB],file=paste0(out.dir,"/",sample.id,".var.cellcyclegenesCB.txt"),quote = F,row.names = F)
 h5save(cellcyclegenes_filter,cellcyclegenes_filterCB,geneID,cell_names,genes_het_bool,tech_noise,Y,file=paste0(out.dir,"/",sample.id,".LogCounts.h5f"))
-###rm(list())
-## hdf5 and R's data.frame have opposite dimenshion direction
-Y = t(Y) 
 
+out.df <- data.frame(geneID=geneID[genes_het_bool])
+out.df$geneName <- entrezToXXX(out.df$geneID)
+out.df <- cbind(out.df, obj.scdn@normalized.endo[genes_het_bool,])
+write.table(out.df,file=sprintf("%s/%s.het.countGeneData.sfNormalized",out.dir,sample.id),sep="\t",quote = F,row.names = F)
+
+save.image(file = sprintf("%s/%s.RData",out.dir,sample.id))
+
+if(run.tSNE){
+    sampleTypeColor <- read.SampleTypeColor(cellTypeColorFile)
+    qcAndVizMat(Y[is_het,],myDesign,out.dir,colSet=sampleTypeColor,intgroup=c("sampleType"),ntop=100000,extra=paste0(".",sample.id),sfilter=NULL, gfilter=NULL)
+}
+###rm(list())
 if(do.scLVM)
 {
+    ## hdf5 and R's data.frame have opposite dimenshion direction
+    Y = t(Y) 
     #construct and initialize new scLVM object
     sclvm = new("scLVM")
     sclvm = init(sclvm,Y=Y,tech_noise = tech_noise)

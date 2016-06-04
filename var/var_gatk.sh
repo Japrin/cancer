@@ -71,30 +71,32 @@ fi
 
 echo ">>> Running the unified genotyper for SNP/INDEL calling"
 echo ">>> INDEL"
-java -Xms5g -Xmx5g -Djava.io.tmpdir=$outDir -jar $GATK/GenomeAnalysisTK.jar \
-	-T UnifiedGenotyper \
-	-I $in_bam \
-	-R $REF \
-	-o $indel_vcf $optTR \
-	-dcov 1000 \
-	-A QualByDepth \
-	-A FisherStrand \
-	-A AlleleBalance \
-	-A Coverage \
-	-A MappingQualityZero \
-	-A TandemRepeatAnnotator \
-	-A VariantType \
-	-A DepthPerAlleleBySample \
-	-baq CALCULATE_AS_NECESSARY \
- 	-stand_call_conf 30.0 \
-	-stand_emit_conf 10.0 \
-	-glm INDEL \
-	-et NO_ET \
-	-rf BadCigar \
-	-K $GATKKey $opt_P
+if [ ! -f $indel_vcf ]
+then
+    java -Xms5g -Xmx5g -Djava.io.tmpdir=$outDir -jar $GATK/GenomeAnalysisTK.jar \
+    	-T UnifiedGenotyper \
+    	-I $in_bam \
+    	-R $REF \
+    	-o $indel_vcf $optTR \
+    	-dcov 1000 \
+    	-A QualByDepth \
+    	-A FisherStrand \
+    	-A AlleleBalance \
+    	-A Coverage \
+    	-A MappingQualityZero \
+    	-A TandemRepeatAnnotator \
+    	-A VariantType \
+    	-A DepthPerAlleleBySample \
+    	-baq CALCULATE_AS_NECESSARY \
+     	-stand_call_conf 30.0 \
+    	-stand_emit_conf 10.0 \
+    	-glm INDEL \
+    	-et NO_ET \
+    	-rf BadCigar \
+    	-K $GATKKey $opt_P
+fi
 
-filter="QD < 2.0 || ReadPosRankSum < -20.0 || FS > 200.0"
-
+filter="QD < 2.0 || (vc.hasAttribute('ReadPosRankSum') && ReadPosRankSum < -20.0) || FS > 200.0"
 java -Xms5g -Xmx5g -Djava.io.tmpdir=$outDir -jar $GATK/GenomeAnalysisTK.jar \
 	-T VariantFiltration \
 	-R $REF \
@@ -106,34 +108,36 @@ java -Xms5g -Xmx5g -Djava.io.tmpdir=$outDir -jar $GATK/GenomeAnalysisTK.jar \
 	-rf BadCigar \
 	-K $GATKKey
 #perl -i -F"\t" -ane 'if(/^#/||$F[6] eq "."||$F[6] eq "PASS"){print}' $indel_flt_vcf
-rm $indel_flt_vcf.idx
+rm -f $indel_flt_vcf.idx
 
 echo ">>> SNP"
-java -Xms5g -Xmx5g -Djava.io.tmpdir=$outDir -jar $GATK/GenomeAnalysisTK.jar \
-	-T UnifiedGenotyper \
-	-I $in_bam \
-	-R $REF \
-	-o $snp_vcf $optTR \
-	-dcov 1000 \
-	-A QualByDepth \
-	-A FisherStrand \
-	-A AlleleBalance \
-	-A Coverage \
-	-A MappingQualityZero \
-	-A TandemRepeatAnnotator \
-	-A VariantType \
-	-A DepthPerAlleleBySample \
-	-baq CALCULATE_AS_NECESSARY \
- 	-stand_call_conf 30.0 \
-	-stand_emit_conf 10.0 \
-	-glm SNP \
-	-et NO_ET \
-	-rf BadCigar \
-	-K $GATKKey $opt_P
+if [ ! -f $snp_vcf ]
+then
+    java -Xms5g -Xmx5g -Djava.io.tmpdir=$outDir -jar $GATK/GenomeAnalysisTK.jar \
+    	-T UnifiedGenotyper \
+    	-I $in_bam \
+    	-R $REF \
+    	-o $snp_vcf $optTR \
+    	-dcov 1000 \
+    	-A QualByDepth \
+    	-A FisherStrand \
+    	-A AlleleBalance \
+    	-A Coverage \
+    	-A MappingQualityZero \
+    	-A TandemRepeatAnnotator \
+    	-A VariantType \
+    	-A DepthPerAlleleBySample \
+    	-baq CALCULATE_AS_NECESSARY \
+     	-stand_call_conf 30.0 \
+    	-stand_emit_conf 10.0 \
+    	-glm SNP \
+    	-et NO_ET \
+    	-rf BadCigar \
+    	-K $GATKKey $opt_P
+fi
 
-filter="QD < 2.0 || MQ < 40.0 || FS > 60.0 || HaplotypeScore > 13.0 || MQRankSum < -12.5 || ReadPosRankSum < -8.0"
-###filter="QD < 2.0 || MQ < 40.0 || FS > 60.0 || MQRankSum < -12.5 || ReadPosRankSum < -8.0"
-
+###filter="QD < 2.0 || MQ < 40.0 || FS > 60.0 || HaplotypeScore > 13.0 || MQRankSum < -12.5 || ReadPosRankSum < -8.0"
+filter="QD < 2.0 || MQ < 40.0 || FS > 60.0 || (vc.hasAttribute('MQRankSum') && MQRankSum < -12.5) || (vc.hasAttribute('ReadPosRankSum') && ReadPosRankSum < -8.0)"
 java -Xms5g -Xmx5g -Djava.io.tmpdir=$outDir -jar $GATK/GenomeAnalysisTK.jar \
 	-T VariantFiltration \
 	-R $REF \
@@ -145,7 +149,7 @@ java -Xms5g -Xmx5g -Djava.io.tmpdir=$outDir -jar $GATK/GenomeAnalysisTK.jar \
 	-rf BadCigar \
 	-K $GATKKey
 #perl -i -F"\t" -ane 'if(/^#/||$F[6] eq "."||$F[6] eq "PASS"){print}' $snp_flt_vcf
-rm $snp_flt_vcf.idx
+rm -f $snp_flt_vcf.idx
 
 echo ""
 

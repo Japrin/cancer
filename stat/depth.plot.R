@@ -48,7 +48,7 @@ par(mfrow=c(1,2),mar=c(5,5,4,2))
 yy1<-a[,2]*100/sum(a[,2])
 yy1_max<-max(yy1)*1.25
 legend.txt<-names(a)[2:length(names(a))]
-plot(x=a$depth,y=yy1,lwd=3,col=my.col[1],type="p",pch=20,cex.axis=2,cex.lab=2,xlab="sequence depth",ylab="Fraction of bases(%)",xlim=c(0,quantile(a$depth,probs=0.95)),ylim=c(0,yy1_max))
+plot(x=a$depth,y=yy1,lwd=3,col=my.col[1],type="p",pch=20,cex.axis=2,cex.lab=2,xlab="sequence depth",ylab="Fraction of bases(%)",xlim=c(0,min(quantile(a$depth,probs=0.95),500)),ylim=c(0,yy1_max))
 if(J>1)
 {
 	for(j in 1+(2:J))
@@ -62,7 +62,7 @@ legend("topright",legend.txt,bty="n",cex=2,fill=my.col)
 J<-length(names(b))-1
 legend.txt<-names(a)[2:length(names(a))]
 #plot(b$depth,b[,2]*100,type="l",col=my.col[1],lwd=3,cex.axis=2,cex.lab=2,xlab="cumulative sequence depth",ylab="Fraction of bases(%)",xlim=c(0,xx))
-plot(b$depth,b[,2]*100,type="l",col=my.col[1],lwd=3,cex.axis=2,cex.lab=2,xlab="cumulative sequence depth",ylab="Fraction of bases(%)",xlim=c(0,quantile(a$depth,probs=0.95)))
+plot(b$depth,b[,2]*100,type="l",col=my.col[1],lwd=3,cex.axis=2,cex.lab=2,xlab="cumulative sequence depth",ylab="Fraction of bases(%)",xlim=c(0,min(quantile(a$depth,probs=0.95),500)))
 if(J>1)
 {
 	for(j in 1+(2:J))

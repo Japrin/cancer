@@ -37,6 +37,7 @@ sampleID=$3
 REF_GENE_MODEL_BED="/DBS/DB_temp/zhangLab/ucsc/annotation/hg19/mybuild/hg19_knownGene.bed"
 REF_FA="/DBS/DB_temp/zhangLab/broad/bundle/2.8/hg19/hg19.fa"
 CHROM_SIZE_TXT="/DBS/DB_temp/zhangLab/broad/bundle/2.8/hg19/hg19.chr.length"
+gfRData="/DBS/DB_temp/zhangLab/broad/bundle/2.8/hg19/gmap-gsnap/withERCC.v1/hg19.knownGene.RData"
 
 mkdir -p $outDir
 echo begin at: `date`
@@ -58,7 +59,7 @@ tin.py                 -r $REF_GENE_MODEL_BED -i $inbam > $outDir/$sampleID.tin.
 RNA_fragment_size.py   -r $REF_GENE_MODEL_BED -i $inbam > $outDir/$sampleID.fragSize
 
 $CDIR/geneNumber_saturation.R -i $inbam -o $outDir/$sampleID.geneNumber.saturation -v -s $sampleID \
-                --gfeature /DBS/DB_temp/zhangLab/broad/bundle/2.8/hg19/gmap-gsnap/withERCC/hg19.knownGene.RData \
+                --gfeature $gfRData \
                 -a 0.02 -b 0.02
 
 gzip -vf $outDir/$sampleID.*.txt

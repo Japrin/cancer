@@ -70,7 +70,8 @@ my $novelExonFuncTv=0;
 
 
 my @funcCata=("exonic","exonic,splicing","splicing","ncRNA_exonic","ncRNA_splicing","ncRNA_UTR3","ncRNA_UTR5","ncRNA_intronic","UTR5","UTR3","UTR5,UTR3","intronic","upstream","downstream","upstream,downstream","intergenic");
-my @exonFuncCata=("frameshift_insertion","frameshift_deletion","frameshift_substitution","stopgain_SNV","stoploss_SNV","nonframeshift_insertion","nonframeshift_deletion","nonframeshift_substitution","missense_SNV","synonymous_SNV","unknown");
+#my @exonFuncCata=("frameshift_insertion","frameshift_deletion","frameshift_substitution","stopgain_SNV","stoploss_SNV","nonframeshift_insertion","nonframeshift_deletion","nonframeshift_substitution","missense_SNV","synonymous_SNV","unknown");
+my @exonFuncCata=("frameshift_insertion","frameshift_deletion","frameshift_substitution","stopgain","stoploss","nonframeshift_insertion","nonframeshift_deletion","nonframeshift_substitution","missense_SNV","synonymous_SNV","unknown");
 
 my $sampleID="";
 if($vcfFile=~/\.gz$/) { open $in,"bgzip -cd $vcfFile | " or die "$!"; }

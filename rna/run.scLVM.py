@@ -14,6 +14,7 @@ import scipy as SP
 import limix
 import limix.modules.varianceDecomposition as VAR
 import pdb
+import traceback
 import pylab as PL
 import argparse
 import os
@@ -61,11 +62,12 @@ if __name__ == '__main__':
     Ymean2 = Y.mean(0)**2 > 0
     idx_cell_cycle_noise_filtered = SP.intersect1d(idx_cell_cycle,SP.array(SP.where(Ymean2.ravel() > 0)))
     Ycc = Y[:, idx_cell_cycle_noise_filtered]
-
+    ###pdb.set_trace()
     sclvm = scLVM(Y)
     if args.step == "fit":
         # Fit GPLVM to data
-        k = 80
+        #k = 80
+        k = min(Ycc.shape[0],80)
         X_ARD,Kcc_ARD,varGPLVM_ARD = sclvm.fitGPLVM(idx=idx_cell_cycle_noise_filtered,k=k,
                                                     out_dir=os.path.join(args.outDir, 'cache'),
                                                     file_name=args.panama, recalc=True, use_ard=True)
@@ -93,7 +95,9 @@ if __name__ == '__main__':
         PL.ylabel('cells')
         PL.savefig(os.path.join(args.outDir, "cell-cell.similarity.png"))
     elif args.step == "decomp":
-        # just load covariance matrix caculated in "fit" step
+        ##if NJobs == jJob + 1:
+        ##    exit("The last slice is discarded")
+        ## just load covariance matrix caculated in "fit" step
         k = 1
         X, Kcc, varGPLVM = sclvm.fitGPLVM(idx=idx_cell_cycle_noise_filtered, k=k,
                                       out_dir=os.path.join(args.outDir, 'cache'),
@@ -106,13 +110,25 @@ if __name__ == '__main__':
         tech_noise = tech_noise[Ihet]
         geneID = geneID[Ihet]
         # split across genes
+        #pdb.set_trace()
+        ####Iy = SP.array(SP.linspace(0, Y.shape[1], NJobs), dtype='int')
+        #### the last one will be discarded
         Iy = SP.array(SP.linspace(0, Y.shape[1], NJobs+1), dtype='int')
         i0 = Iy[jJob]
         i1 = Iy[jJob+1]
+        ###i1 = Iy[min(jJob+1,NJobs-1)]
+        ###i1 = max(i0, i1+1)
         #
         sclvm = scLVM(Y, geneID=geneID, tech_noise=tech_noise)
         # fit the model from i0 to i1
+        #pdb.set_trace()
+        #try:
         sclvm.varianceDecomposition(K=Kcc, i0=i0, i1=i1)
+        #except:
+        #    type, value, tb = sys.exc_info()
+        #    traceback.print_exc()
+        #    pdb.post_mortem(tb)
+        #pdb.set_trace()
         # get variance components
         var, var_info = sclvm.getVarianceComponents(normalize=True)
         print(var_info['col_header'])
@@ -203,7 +219,7 @@ if __name__ == '__main__':
                         pass
                     ff.close()
                 except Exception:
-                    pdb.set_trace()
+                    #pdb.set_trace()
                     print "bad file: %s" % (fn)
                     continue
             #store
@@ -261,12 +277,14 @@ if __name__ == '__main__':
             # Model optimization
             Ystd = Ycorr - Ycorr.mean(0)
             Ystd/=Ystd.std(0)
-            vv = Ycorr.var(1)/(Ycorr.mean(1) ** 2)
-            vv_idx = np.argsort(vv)[::-1]
+            ###vv = Ycorr.var(1)/(Ycorr.mean(1) ** 2)
+            ###vv_idx = np.argsort(vv)[::-1]
 
             input_dim = 2                   # How many latent dimensions to use
             kern = GPy.kern.RBF(input_dim,ARD=True) # ARD kernel
-            m = GPy.models.BayesianGPLVM(Ystd[vv_idx[0:500],],
+            ###m = GPy.models.BayesianGPLVM(Ystd[vv_idx[0:500],],
+            ###                             input_dim=input_dim, kernel=kern, num_inducing=40)
+            m = GPy.models.BayesianGPLVM(Ystd,
                                          input_dim=input_dim, kernel=kern, num_inducing=40)
             m.optimize('scg', messages=0, max_iters=2000)
             DD = {}
