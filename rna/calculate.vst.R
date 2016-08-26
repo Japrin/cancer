@@ -82,21 +82,30 @@ readCountTable<-function(design,saveDir)
 myDesign<-read.table(designFile,header=T,row.names="sample",check.names=F,colClasses=c("factor","character","factor","character"))
 myDesign$sampleType <- factor(myDesign$sampleType,levels=unique(myDesign$sampleType))
 
-myCountTable<-readCountTable(myDesign,countDir)
+###myCountTable<-readCountTable(myDesign,countDir)
+if(dir.exists(countDir)) {
+    myCountTable <- readCountTable(myDesign,countDir)
+    countData  <-  myCountTable[,c(-1,-2)]
+}else {
+    myCountTable <- read.table(countDir,header = T,check.names = F,stringsAsFactors = F,sep = "\t")
+    rownames(myCountTable) <- myCountTable[,1]
+    countData  <-  myCountTable[,c(-1,-2)]
+    countData <- countData[,rownames(myDesign)]
+}
 
 #save.image(file=paste(outDir,"/DESeq2.RData",sep=""))
 ## DESeq2 processing
 if(args$pair)
 {
-    dds <- DESeqDataSetFromMatrix(countData = myCountTable[,c(-1,-2)], colData = myDesign, design = ~ patient + sampleType)
+    dds <- DESeqDataSetFromMatrix(countData = countData, colData = myDesign, design = ~ patient + sampleType)
 }else
 {
     if(args$library)
     {
-        dds <- DESeqDataSetFromMatrix(countData = myCountTable[,c(-1,-2)], colData = myDesign, design = ~ libType + sampleType)
+        dds <- DESeqDataSetFromMatrix(countData = countData, colData = myDesign, design = ~ libType + sampleType)
     }else
     {
-        dds <- DESeqDataSetFromMatrix(countData = myCountTable[,c(-1,-2)], colData = myDesign, design = ~ sampleType)
+        dds <- DESeqDataSetFromMatrix(countData = countData, colData = myDesign, design = ~ sampleType)
     }
 }
 

@@ -33,32 +33,6 @@ cellTypeColorFile <- args$cellTypeColorFile
 
 print(args)
 
-#### TEST DATA
-#designFile <- "/WPS1/zhenglt/work/TCR_chunhong/integrated.20150707/hetero/iterative/OUT/P0205/level2/TTC_grp.designFile"
-#countDir <- "/WPS1/zhenglt/work/TCR_chunhong/integrated.20150707/gsnap_out/OUT/P0205"
-#out.dir <- "/WPS1/zhenglt/work/TCR_chunhong/integrated.20150707/outlier/test"
-#sample.id <- "P0205"
-#do.scLVM <- FALSE
-#fit.fdr <- 0.001
-#mode.verbose <- TRUE
-#cyclebase.rdata <- "/Share/BP/zhenglt/02.pipeline/cancer/rna/data/cycleBase.human.RData"
-#use.ERCC.sf <- FALSE
-#ignore.ERCC <- FALSE
-#exclude.samples <- ""
-#run.tSNE <- TRUE
-#cellTypeColorFile <- "/WPS1/zhenglt/work/TCR_chunhong/data/CellType.color"
-
-### TEST for curious samples ###
-#exclude.samples <- "NTC146-1116,TTC23-1116,TTC115-1116"
-#exclude.samples <- "NTC146-1116,TTC23-1116"
-#exclude.samples <- "NTC146-1116"
-#exclude.samples <- NULL
-#exclude.samples <- "TTC114-1022,TTC187-1022,TTC164-1022"
-#myDesign <- read.table(designFile,header=T,row.names="sample",check.names=F,colClasses=c("factor","character","factor","factor"))
-#######exclude.samples <- "TTC109-0205,PTC138-0205,TTC23-0205,TTS16-0205,TTH106-0205"
-### END TEST for curious samples ###
-
-
 dir.create(out.dir,recursive=T,showWarnings=F)
 
 suppressPackageStartupMessages(library(genefilter))
@@ -128,6 +102,10 @@ plotSizeFactorDist <- function(sf,out.prefix,sample.id.toHighlight=NULL)
     text(b.midpoint,y=-0.01, srt = 45, adj = 1, labels = names(cdata)[1:10], xpd = TRUE,cex=1.0)
     box(which = "figure")
     dev.off()
+    pdf(sprintf("%s.%s",out.prefix,"sizeFactor.dist.pdf"),width = 8,height = 8)
+    hist(sf,breaks = 30,freq = F,col = "gray",xlab="Size Factor",main=sprintf("%s",sample.id))
+    lines(density(sf),col="orange",lwd=2)
+    dev.off()
 }
 
 myDesign <- read.table(designFile,header=T,row.names="sample",check.names=F,colClasses=c("factor","character","factor","factor"))
@@ -162,9 +140,16 @@ obj.scdn <- SCDenoise(as.matrix(countData),ignore.ERCC=ignore.ERCC)
 obj.scdn <- SCDenoise.normalize(obj.scdn,useERCCSizeFactor = use.ERCC.sf)
 
 plotSizeFactorDist(obj.scdn@size.factor.endo,sprintf("%s/%s.endo",out.dir,sample.id))
+out.size.factor.df <- data.frame(cellName=names(obj.scdn@size.factor.endo),szieFactor=obj.scdn@size.factor.endo)
+write.table(out.size.factor.df,sprintf("%s/%s.endo.sizeFactor.txt",out.dir,sample.id),sep = "\t",row.names = F,col.names = T,quote = F)
+print(quantile(obj.scdn@size.factor.endo,probs=c(0.001,0.002,0.005,0.01,0.05,0.1,0.5,0.9,0.95,0.99,0.995,0.998,0.999)))
 if(obj.scdn@withERCC) {
     plotSizeFactorDist(obj.scdn@size.factor.ERCC,sprintf("%s/%s.ERCC",out.dir,sample.id))
+    out.size.factor.df <- data.frame(cellName=names(obj.scdn@size.factor.ERCC),szieFactor=obj.scdn@size.factor.ERCC)
+    write.table(out.size.factor.df,sprintf("%s/%s.ERCC.sizeFactor.txt",out.dir,sample.id),sep = "\t",row.names = F,col.names = T,quote = F)
+    print(quantile(obj.scdn@size.factor.ERCC,probs=c(0.001,0.002,0.005,0.01,0.05,0.1,0.5,0.9,0.95,0.99,0.995,0.998,0.999)))
 }
+
 #get technical noise
 pdf(paste0(out.dir,"/",sample.id,".fitTechNoise.ERCC.counts.pdf"),width = 8,height = 8)
 techNoiseERCCCounts = SCDenoise.fitTechnicalNoise(obj.scdn, fit_type = 'counts',plot=TRUE)

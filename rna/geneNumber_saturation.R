@@ -68,13 +68,15 @@ countGenomicFeaturesSimple <- function(features,reads,nbanalyzedreads)
 
 #### process input data
 
-reads <- readRNASeqEnds(in.bam.file)
+reads <- readRNASeqEnds(in.bam.file,paired_ends=paired_ends)
 #head(reads)
 genomic_features <- get(load(gfeature.file))
-## consolidate (i.e. pair) read ends
-if (paired_ends) reads <- consolidateByRead(reads)
-## remove read names to save ~50% of memory space
-reads <- unname(reads)
+
+### not neccessary for newer version (4.2.0)
+##### consolidate (i.e. pair) read ends
+###if (paired_ends) reads <- consolidateByRead(reads)
+##### remove read names to save ~50% of memory space
+###reads <- unname(reads)
 gc()
 
 nbanalyzedreads <- length(reads)

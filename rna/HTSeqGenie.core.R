@@ -54,6 +54,7 @@ rp <- list(
   input_file2=args$fq2,
   paired_ends=TRUE,
   #quality_encoding="illumina1.8",
+  analyzeVariants.do=FALSE,
   ## output
   save_dir=args$outDir,
   prepend_str=args$sampleID,

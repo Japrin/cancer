@@ -79,6 +79,54 @@ XXXToEntrez<-function(x,type="SYMBOL",species="human")
   return(as.character(ret))
 }
 
+run.SIMLR <- function(inputData,n.clusters=4,myseed=NULL,my.title="",out.prefix,legend.txt,col.points,col.legend,
+                      pch=16,width.pdf=10,height.pdf=8,margin.r=10,legend.inset=-0.25,legend.txt2=NULL,...){
+    require(Matrix)
+    require(parallel)
+    require(igraph)
+    # load the palettes for the plots
+    require(grDevices)
+    # load the SIMLR R package
+    SIMLR.DIR <- "/Share/BP/zhenglt/01.bin/scRNASeq/SIMLR"
+    source(sprintf("%s/R/SIMLR.R",SIMLR.DIR))
+    source(sprintf("%s/R/compute.multiple.kernel.R",SIMLR.DIR))
+    source(sprintf("%s/R/network.diffusion.R",SIMLR.DIR))
+    source(sprintf("%s/R/utils.simlr.R",SIMLR.DIR))
+    source(sprintf("%s/R/tsne.R",SIMLR.DIR))
+    # load the C file
+    dyn.load(sprintf("%s/src/projsplx_R.so",SIMLR.DIR))
+    if(is.null(myseed)){ myseed <- as.integer(Sys.time()) }
+    set.seed(myseed)
+    loginfo(sprintf("set.seed(%d) for SIMLR\n",myseed))
+
+    res.SIMLR <- SIMLR(X=inputData,c=n.clusters)
+
+    pdf(file=sprintf("%s.SIMLR.default.pdf",out.prefix),width=width.pdf,height=height.pdf)
+    par(mar=c(5,5,4,margin.r),cex.lab=1.5,cex.main=1.5)
+    ### color by predefined sample type
+    plot(res.SIMLR$ydata, t='n', main=my.title,xlab="SIMLR component 1",ylab="SIMLR component 2")
+    points(res.SIMLR$ydata,col=col.points,pch=pch,...)
+    legend("right",legend=legend.txt,fill = NULL,inset = legend.inset,xpd = NA,cex=1.5,pch=16,border =NA,col = col.legend)
+    if(!is.null(legend.txt2)) { 
+           legend("topright",legend=legend.txt2,fill = NULL,inset = c(legend.inset,0),xpd = NA,cex=1.5,pch=unique(pch),border =NA,col = col.legend[1]) 
+    }
+
+    ## color by clustering result
+    clusterColor <- structure(colorRampPalette(brewer.pal(12,"Paired"))(length(unique(res.SIMLR$y$cluster))),
+                              names=as.character(unique(sort(res.SIMLR$y$cluster))))
+    ##clusterColor["0"] <- "gray"
+    print(clusterColor)
+    plot(res.SIMLR$ydata, col=clusterColor[as.character(res.SIMLR$y$cluster)], 
+         pch=16,main=my.title,xlab="SIMLR component 1",ylab="SIMLR component 2")
+    legend("right",legend=sprintf("cluster%s",names(clusterColor)),
+           fill = NULL,inset = legend.inset,xpd = NA,cex=1.5,pch=16,border =NA, 
+           col = clusterColor)
+    dev.off()
+
+
+    return(res.SIMLR)
+}
+
 
 run.limma.from.matrixFile <- function(infile,designFile,fdr=0.1)
 {
@@ -558,7 +606,7 @@ runMultiGroupSpecificGeneTest <- function(dat.g,grps,out.prefix,mod=NULL,FDR.THR
                                     paste0("cluster.specific.",g),"is.clusterSpecific","cluster.lable","cluster.direction"))
                   
             },.progress = "none",.parallel=T)
-    print(str(ret))
+    #print(str(ret))
     ret.df <- data.frame(geneID=rownames(dat.g),geneSymbol=entrezToXXX(rownames(dat.g)),stringsAsFactors=F)
     ret.df <- cbind(ret.df,ret)
     rownames(ret.df) <- rownames(dat.g)
@@ -581,7 +629,7 @@ runMultiGroupSpecificGeneTest <- function(dat.g,grps,out.prefix,mod=NULL,FDR.THR
     if(verbose){
         write.table(ret.df,file = sprintf("%s.aov.txt",out.prefix),quote = F,row.names = F,col.names = T,sep = "\t")
     }
-    print(str(ret.df))
+    #print(str(ret.df))
     return(list(aov.out=ret.df,aov.out.sig=ret.df.sig))
 }
 
@@ -640,7 +688,7 @@ runTTest <- function(dat.g1,dat.g2,out.prefix,FDR.THRESHOLD=0.05,FC.THRESHOLD=1,
 #' @param legend
 #' @param col.points 
 #' @param col.legend
-runTSNEAnalysis <- function(dat.plot,out.prefix,legend,col.points,col.legend,pch=16,pch.legend=16,inPDF=TRUE,eps=2.0,dims=2,k=NULL,do.dbscan=F,myseed=NULL,width.pdf=10,height.pdf=8,margin.r=8,legend.inset=-0.21,...)
+runTSNEAnalysis <- function(dat.plot,out.prefix,legend,col.points,col.legend,pch=16,pch.legend=16,inPDF=TRUE,eps=2.0,dims=2,k=NULL,do.dbscan=F,myseed=NULL,width.pdf=10,height.pdf=8,margin.r=8,legend.inset=-0.21,preSNE=NULL,...)
 {
     suppressPackageStartupMessages(require("Rtsne"))
     suppressPackageStartupMessages(require("dbscan"))
@@ -663,7 +711,11 @@ runTSNEAnalysis <- function(dat.plot,out.prefix,legend,col.points,col.legend,pch
             par(mar=c(5,5,4,margin.r),cex.lab=1.5,cex.main=1.5)
         }
         loginfo(sprintf("... begin Rtsne\n"))
-        Rtsne.res <- Rtsne(dat.plot,perplexity=par.perplexity,dims=dims)
+        if(is.null(preSNE)) { 
+            Rtsne.res <- Rtsne(dat.plot,perplexity=par.perplexity,dims=dims) 
+        }else{
+            Rtsne.res <- preSNE
+        }
         loginfo(sprintf("... end Rtsne\n"))
         if(do.dbscan){
             loginfo(sprintf("... begin dbscan\n"))
@@ -884,10 +936,138 @@ runSC3Analysis <- function(in.data,out.prefix,sampleType,colSet,do.log.scale=FAL
         ###ggsave(filename=sprintf("%s.outlier.pdf",out.prefix),width=8,height=6)
         return(values)
     }
+    plot.DE.genes <- function(out.prefix,values,input.param,kk,sampleType,col.args.clusterAndCellType,FDR.THRESHOLD=0.05,FC.THRESHOLD=1,n.cores=n.cores)
+    {
+        dat.g <- values$dataset
+        d.original.labels <- values$original.labels
+        d.new.labels <- values$new.labels
+        colnames(dat.g) <- d.original.labels
+        sampleType <- sampleType[values$hc$order]
+        names(sampleType) <- d.original.labels
+        grps.list <- c()
+        cmp.grp <- sprintf("Grp%02d",d.new.labels)
+        for(j in unique(d.new.labels)){ 
+            grps.list[[sprintf("Grp%02d",j)]] <- d.original.labels[d.new.labels==j]
+        }
+        annDF <- data.frame(cluster=structure(cmp.grp,names=colnames(dat.g)),stringsAsFactors = F)
+        annDF[is.na(annDF)] <- "NA"
+        annCol <- list(cluster=structure(auto.colSet(length(grps.list),name = "Dark2"),names=unique(cmp.grp)))
+        if(length(unique(d.new.labels))>2){
+            mgeneTest.out <- runMultiGroupSpecificGeneTest(dat.g,cmp.grp,
+                                                           sprintf("%s.FDR%g",out.prefix,100*FDR.THRESHOLD),
+                                                           FDR.THRESHOLD=FDR.THRESHOLD,
+                                                           FC.THRESHOLD=FC.THRESHOLD, verbose=T,n.cores = n.cores)
+            
+            do.heatmap.plot <- function(g.list,extra="",kkk=1)
+            {
+                dat.g.sig <- dat.g[g.list,,drop=F]
+                dat.tmp <- c()
+                for(i in seq_along(grps.list))
+                {
+                    dat.tmp.1 <- dat.g.sig[,grps.list[[i]],drop=F]
+                    if(ncol(dat.tmp.1)>=2){
+                        dat.tmp <- cbind(dat.tmp,dat.tmp.1[,hclust(dist(t(dat.tmp.1)))$order,drop=F])
+                    }else{
+                        dat.tmp <- cbind(dat.tmp,dat.tmp.1)
+                    }
+                }
+                dat.g.sig <- dat.tmp
+                #annDF <- data.frame(cluster=structure(cmp.grp,names=colnames(dat.g.sig)),stringsAsFactors = F)
+                #annDF[is.na(annDF)] <- "NA"
+                #annCol <- list(cluster=structure(auto.colSet(length(grps.list),name = "Dark2"),names=unique(cmp.grp)))
+                runHierarchicalClusteringAnalysis(dat.g.sig,mytitle = sprintf("K=%d",kk),
+                                              pdf.width=18,pdf.height=15,do.clustering.col=F,
+                                              sprintf("%s.aov.sig.noClusteringCol.FDR%g%s",
+                                                      out.prefix,100*FDR.THRESHOLD,extra), 
+                                              sampleType=sampleType[colnames(dat.g.sig)], 
+                                              colSet=colSet,
+                                              ann.extra.df = annDF,
+                                              ann.extra.df.col = annCol,
+                                              ann.bar.height = 0.8,
+                                              k.row=kkk,clonotype.col=NULL,ntop=NULL, 
+                                              row.names.original=TRUE,
+                                              complexHeatmap.use=TRUE,verbose=FALSE)
+            }
+            ## aov genes
+            g.list <- as.character(rownames(mgeneTest.out$aov.out.sig))
+            if(length(g.list)>=3){ 
+                do.heatmap.plot(g.list,extra="") 
+                if(length(g.list)>30){ do.heatmap.plot(head(g.list,n=30),extra=".top30") }
+            }
+            ## cluster specific genes
+            g.list <- as.character(rownames(subset(mgeneTest.out$aov.out.sig,is.clusterSpecific==TRUE & cluster.direction!="INCONSISTANT" )))
+            if(length(g.list)>=3){ do.heatmap.plot(g.list,extra=".cluster.specific", kk=1) }
+            g.list <- c()
+            for(t.grp in unique(cmp.grp)){
+                g.list <- append(g.list, head(as.character(rownames(subset(mgeneTest.out$aov.out.sig,is.clusterSpecific==TRUE & cluster.direction!="INCONSISTANT" & cluster.lable==t.grp ))),n=10))
+            }
+            ###cat(sprintf("#### TEST kk=%d ####",kk))
+            ###print(g.list)
+            ###print(str(subset(mgeneTest.out$aov.out.sig,is.clusterSpecific==TRUE & cluster.direction!="INCONSISTANT" & cluster.lable==cmp.grp[1])))
+            if(length(g.list)>=3){ do.heatmap.plot(g.list,extra=".cluster.specific.top10", kk=1) }
+            ## cluster specific genes & up-regulated
+            g.list <- as.character(rownames(subset(mgeneTest.out$aov.out.sig,is.clusterSpecific==TRUE & cluster.direction=="UP")))
+            if(length(g.list)>=3){ do.heatmap.plot(g.list,extra=".cluster.specific.UP", kk=length(unique(subset(mgeneTest.out$aov.out.sig[g.list,],cluster.lable!="NA")$cluster.lable))) }
+            g.list <- c()
+            for(t.grp in unique(cmp.grp)){
+                g.list <- append(g.list, head(as.character(rownames(subset(mgeneTest.out$aov.out.sig,is.clusterSpecific==TRUE & cluster.direction=="UP" & cluster.lable==t.grp))),n=10))
+            }
+            if(length(g.list)>=3){ do.heatmap.plot(g.list,extra=".cluster.specific.UP.top10", kk=length(unique(subset(mgeneTest.out$aov.out.sig[g.list,],cluster.lable!="NA")$cluster.lable))) }
 
-    sc3(in.data, ks = 2:16, cell.filter = FALSE,gene.filter = FALSE,log.scale = do.log.scale,interactivity=FALSE,svm.num.cells=1500,use.max.cores=FALSE,n.cores=n.cores)
+        }else if(length(unique(d.new.labels))==2){
+            if(length(grps.list[[1]])<3 || length(grps.list[[2]])<3)
+            {
+                loginfo(sprintf("Two few samples: ncol(dat.g1)=%d, ncol(dat.g2)=%d",length(grps.list[[1]]),length(grps.list[[1]])))
+            }else{
+                ttest.out <<- runTTest(dat.g[,grps.list[[1]]],dat.g[,grps.list[[2]]],
+                                       sprintf("%s.%s.FDR%g",out.prefix,"ttest",100*FDR.THRESHOLD),
+                                       FDR.THRESHOLD,FC.THRESHOLD,verbose=T,n.cores = n.cores)
+                do.heatmap.plot <- function(g.list,extra="",kkk=1){
+                    if(length(g.list)>=3){
+                            dat.g.1 <- dat.g[g.list,grps.list[[1]],drop=F]
+                            dat.g.2 <- dat.g[g.list,grps.list[[2]],drop=F]
+                            dat.g.sig <- cbind(dat.g.1[,hclust(dist(t(dat.g.1)))$order,drop=F], 
+                                           dat.g.2[,hclust(dist(t(dat.g.2)))$order,drop=F])
+                            runHierarchicalClusteringAnalysis(dat.g.sig,mytitle = sprintf("K=%d",kk),
+                                                              pdf.width=18,pdf.height=15,
+                                                              sprintf("%s.%s.sig.FDR%g.noClusteringCol%s",
+                                                                      out.prefix,"ttest",100*FDR.THRESHOLD,extra), 
+                                                              do.clustering.col=F,
+                                                              sampleType=sampleType[colnames(dat.g.sig)], 
+                                                              colSet=colSet,
+                                                              ann.extra.df = annDF,
+                                                              ann.extra.df.col = annCol,
+                                                              ann.bar.height = 0.8,
+                                                              k.row=length(unique(ttest.out$ttest.out.sig$fc>0)),
+                                                              clonotype.col=NULL,ntop=NULL,
+                                                              row.names.original=FALSE,
+                                                              complexHeatmap.use=TRUE,verbose=FALSE)
+                            dat.g.sig.df <- data.frame(geneSymbol=rownames(dat.g.sig))
+                            dat.g.sig.df <- cbind(dat.g.sig.df,dat.g.sig)
+                            write.table(dat.g.sig.df, 
+                                        file = sprintf("%s.%s.sig.FDR%g.noClusteringCol%s.txt",
+                                                       out.prefix,"ttest",100*FDR.THRESHOLD,extra), 
+                                        quote = F,sep = "\t",row.names = F,col.names = T)
+                    }
+                } 
+                ## for genes diff significantly
+                g.list.1 <- as.character(rownames(ttest.out$ttest.out.sig))
+                do.heatmap.plot(g.list.1,extra="")
+                if(length(g.list.1)>30){ do.heatmap.plot(head(g.list.1,n=30),extra=".top30") }
+                ## 
+                g.list.1 <- c()
+                g.list.1 <- append(g.list.1,head(as.character(rownames(subset(ttest.out$ttest.out.sig,x.mean > y.mean))),n=10))
+                g.list.1 <- append(g.list.1,head(as.character(rownames(subset(ttest.out$ttest.out.sig,y.mean > x.mean))),n=10))
+                if(length(g.list.1)>3){ do.heatmap.plot(g.list.1,extra=".ClusterTop10") }
+            }
+        }
+    }
+    ### old version(SC3_0.99.25)
+    sc3(in.data, ks = 2:9, cell.filter = FALSE,gene.filter = FALSE,log.scale = do.log.scale,interactivity=FALSE,svm.num.cells=25000,use.max.cores=FALSE,n.cores=n.cores)
+    ### latest version
+    ###sc3(in.data, ks = 2:10, cell.filter = FALSE,gene.filter = FALSE,log.scale = do.log.scale,interactivity=FALSE,svm.num.cells=2500,n.cores=n.cores)
     input.threhold=list(auroc.threshold=0.85,p.val.mark=0.05)
-
+    ###save.image(file = sprintf("%s.tmp.RData",out.prefix))
     ret.list=list()
 
     #for(kk in 2:16)
@@ -927,7 +1107,13 @@ runSC3Analysis <- function(in.data,out.prefix,sampleType,colSet,do.log.scale=FAL
         sc3.res<-output.outlier(sprintf("%s.k%s",out.prefix,kk),sc3.res,sc3.interactive.arg,kk,sampleType)
         
         dev.off()
-
+        
+        tryCatch(
+            plot.DE.genes(sprintf("%s.k%s",out.prefix,kk),sc3.res,sc3.interactive.arg,kk,sampleType,
+                      list(col.ann.df=col.ann.df,ann.colors=ann.colors),
+                      FDR.THRESHOLD=0.05,FC.THRESHOLD=1,n.cores=8),  
+            error = function(e) e, 
+            finally = loginfo(sprintf("plot.DE() finally")) )
         ret.list[[kk]] <- sc3.res
     }
     return(ret.list)
@@ -1199,8 +1385,9 @@ runHierarchicalClusteringAnalysis <- function(dat.plot,out.prefix,sampleType=NUL
                                               complexHeatmap.use=FALSE,verbose=FALSE,
                                               row.names.original=FALSE,
                                               pdf.width=16,pdf.height=15,ann.extra.df=NULL,ann.extra.df.col=NULL,ann.bar.height=1.5,
-                                              do.scale=TRUE,z.lo=-3,z.hi=3,z.step=1,z.title="Z Score",
-                                              do.clustering.row=T,do.clustering.col=T,clustering.distance="spearman",clustering.method="complete",mytitle="",...)
+                                              do.scale=TRUE,z.lo=-3,z.hi=3,z.step=1,z.title="Exp", annotation_legend_param=list(),
+                                              do.cuttree=F,
+                                              do.clustering.row=T,do.clustering.col=T,clustering.distance="spearman",clustering.method="complete",mytitle="",save.obj=F,...)
 {
     suppressPackageStartupMessages(require("gplots"))
     suppressPackageStartupMessages(require("ComplexHeatmap"))
@@ -1248,10 +1435,83 @@ runHierarchicalClusteringAnalysis <- function(dat.plot,out.prefix,sampleType=NUL
         require("circlize")
         require("gridBase")
         require("dendextend")
+        require("moduleColor")
+        require("dynamicTreeCut")
+        
+        dat.plot.unscale <- dat.plot
+        ###print(dat.plot[1:4,1:8])
+        #### scale by row
+        if(do.scale)
+        {
+            rowM <- rowMeans(dat.plot, na.rm = T)
+            rowSD <- apply(dat.plot, 1, sd, na.rm = T)
+            dat.plot <- sweep(dat.plot, 1, rowM)
+            dat.plot <- sweep(dat.plot, 1, rowSD, "/")
+            dat.plot[dat.plot < -3] <- -3
+            dat.plot[dat.plot > 3] <- 3
+            ###print(dat.plot[1:4,1:8])
+        }else{
+            tmp.var <- pretty(abs(dat.plot),n=5)
+            z.lo <- tmp.var[1]
+            z.hi <- tmp.var[length(tmp.var)]
+            z.step <- tmp.var[2]-tmp.var[1]
+        }
+        branch.row <- FALSE
+        branch.col <- FALSE
+        obj.hclust.col <- NULL
+        obj.hclust.row <- NULL
+        if(do.clustering.col){
+            if(clustering.distance=="spearman" || clustering.distance=="pearson"){
+                tryCatch({
+                        obj.hclust.col <- hclust(as.dist(1-cor(dat.plot.unscale,method=clustering.distance)),method=clustering.method)
+                        branch.col <- color_branches(as.dendrogram(obj.hclust.col),k=k.col)
+                    },
+                    error = function(e) { cat("using spearman or pearson as distance failed; will try to fall back to use euler distance ... \n"); e }
+                    ###error = function(e) { tmp.dat <<- dat.plot.unscale; print(clustering.method); print(k.col); e }
+                    )
+            }
+            if(is.logical(branch.col) && !branch.col){
+                obj.hclust.col <- hclust(dist(t(dat.plot.unscale)),method=clustering.method)
+                branch.col <- color_branches(as.dendrogram(obj.hclust.col),k=k.col)
+            }
+        }
+        if(do.clustering.row){
+            if(clustering.distance=="spearman" || clustering.distance=="pearson"){
+                tryCatch({
+                        obj.hclust.row <- hclust(as.dist(1-cor(t(dat.plot.unscale),method=clustering.distance)),method=clustering.method)
+                        branch.row <- color_branches(as.dendrogram(obj.hclust.row),k=k.row)
+                    },
+                    error = function(e) { cat("using spearman or pearson as distance failed; will try to fall back to use euler distance ... \n"); e }
+                    )
+            }
+            if(is.logical(branch.row) && !branch.row){
+                obj.hclust.row <- hclust(dist(dat.plot.unscale),method=clustering.method)
+                branch.row <- color_branches(as.dendrogram(obj.hclust.row),k=k.row)
+            }
+        }
+        if(do.cuttree && !is.null(obj.hclust.col)){
+            ### cut tree
+            dend.cutree <- cutree(obj.hclust.col, k=2:10, order_clusters_as_data = T)
+            colnames(dend.cutree) <- sprintf("K=%s",colnames(dend.cutree))
+            ### output clusters
+            dend.cutree.df <- data.frame(sampleID=rownames(dend.cutree))
+            dend.cutree.df <- cbind(dend.cutree.df,dend.cutree)
+            write.table(dend.cutree.df,sprintf("%s.cutree.txt",out.prefix),sep = "\t",row.names = F,quote = F)
+            ### make plot
+            pdf(sprintf("%s.cutree.pdf",out.prefix),width=10,height=12)
+            par(mar=c(5,4,4,2))
+            layout(matrix(c(1,2),nrow = 2),heights = c(0.6,0.4))
+            plot(obj.hclust.col,sub="",xlab="",hang=-1,cex=1.0*50/max(m,32))
+            par(mar=c(2,4,0,2))
+            colSet.cls <- auto.colSet(10)
+            col.cls <- t(apply(dend.cutree,1,function(x){ colSet.cls[x] }))
+            plotHclustColors(obj.hclust.col, colors=col.cls, cex.rowLabels = 1.1)
+            dev.off()
+        }
         pdf(sprintf("%s.pdf",out.prefix),width=pdf.width,height=pdf.height)
-        par(mar=c(5,4,4,4))
+        par(mar=c(5,14,4,4))
         plot.new()
-        title(main = mytitle,cex.main=2)
+        title(main = mytitle,cex.main=4)
         #legend("topright",legend=names(colSet),fill=colSet,border=colSet,cex=1.5,inset=c(-0.03,0),xpd=T)
         ### Integrating Grid Graphics Output with Base Graphics Output
         vps <- baseViewports()
@@ -1269,52 +1529,43 @@ runHierarchicalClusteringAnalysis <- function(dat.plot,out.prefix,sampleType=NUL
             annDF$clonotype=clonotype.col$ctypeII[colnames(dat.plot)]
             annColList$clonotype=clonotype.col$colII
         }
-        #if(!is.null(patient.col.list))
-        #{
-        #    annDF$patientType=patient.col.list$ctype[colnames(dat.plot)]
-        #    annColList$patientType=patient.col.list$col
-        #}
+        g.show.legend <- T
+        if(do.cuttree){
+            annDF <- cbind(annDF,dend.cutree)
+            for(i in seq_len(ncol(dend.cutree))){
+                tmp.list <- list(structure(colSet.cls,names=seq_along(colSet.cls)))
+                names(tmp.list) <- colnames(dend.cutree)[i]
+                annColList <- c(annColList,tmp.list)
+                ### list(TReg=list(color <- bar="continuous",legend <- width=unit(2, "cm"),legend <- height=unit(4, "cm"))
+                annotation_legend_param <- c(annotation_legend_param,list())
+            }
+            ann.bar.height <- max(0.5,ann.bar.height/ncol(annDF))
+            g.show.legend <- F
+            legend("topright",legend=names(colSet),fill=colSet,border=colSet,cex=1.5,inset=c(-0.03,0),xpd=T)
+        }
         #print(str(annDF))
         #print(str(annColList))
-        ###print(annColList$clonotype)
+
+        if(save.obj){
+            save(dat.plot,z.title,z.lo,z.hi,z.step,do.scale,branch.col,branch.row,
+                 pdf.width,pdf.height,mytitle,annDF,annColList,annotation_legend_param,ann.bar.height,
+                 file=sprintf("%s.RData",out.prefix))
+        }
         if(!is.null(sampleType) || !is.null(ann.extra.df)){
-            ha.col <- HeatmapAnnotation(df = annDF, col = annColList, show_legend = T)
+            ha.col <- HeatmapAnnotation(df = annDF, col = annColList, show_legend = g.show.legend, annotation_legend_param = annotation_legend_param)
         }else{
             ha.col <- NULL
         }
         top_annotation_height <- unit(ann.bar.height * ncol(annDF), "cm")
         ###col = colorRamp2(c(0, 0.609, 1, 10), c("darkblue", "darkblue", "yellow", "red")),
-        dat.plot.unscale <- dat.plot
-        ###print(dat.plot[1:4,1:8])
-        #### scale by row
-        if(do.scale)
-        {
-            rowM <- rowMeans(dat.plot, na.rm = T)
-            rowSD <- apply(dat.plot, 1, sd, na.rm = T)
-            dat.plot <- sweep(dat.plot, 1, rowM)
-            dat.plot <- sweep(dat.plot, 1, rowSD, "/")
-            dat.plot[dat.plot < -3] <- -3
-            dat.plot[dat.plot > 3] <- 3
-            ###print(dat.plot[1:4,1:8])
-        }
         ####
                     ###col = colorRamp2(seq(-bk.range[2],bk.range[2],length=5), bluered(5),space="LAB"),
         bk.range <- quantile(abs(dat.plot),probs=c(0.01,1),na.rm=T)
-        if(do.clustering.col){
-            if(clustering.distance=="spearman" || clustering.distance=="pearson"){
-                branch.col <- color_branches(as.dendrogram(hclust(as.dist(1-cor(dat.plot.unscale,method=clustering.distance)),method=clustering.method)),k=k.col)
-                branch.row <- color_branches(as.dendrogram(hclust(as.dist(1-cor(t(dat.plot.unscale),method=clustering.distance)),method=clustering.method)),k=k.row)
-            }else{
-                branch.col <- color_branches(as.dendrogram(hclust(dist(t(dat.plot.unscale)),method=clustering.method)),k=k.col)
-                branch.row <- color_branches(as.dendrogram(hclust(dist(dat.plot.unscale),method=clustering.method)),k=k.row)
-            }
-        }else{
-            branch.row <- FALSE
-            branch.col <- FALSE
-        }
         ht <- Heatmap(dat.plot, name=z.title,
-                    col = colorRamp2(seq(-bk.range[2],bk.range[2],length=100), 
-                                     colorRampPalette(rev(brewer.pal(n = 7, name =  "RdBu")))(100), space="LAB"),
+                    ##col = colorRamp2(seq(-bk.range[2],bk.range[2],length=100), 
+                    col = colorRamp2(seq(z.lo,z.hi,length=100), 
+                                     colorRampPalette(rev(brewer.pal(n = 7, name = ifelse(do.scale,"RdBu","RdYlBu"))))(100), space="LAB"),
+                                     ####colorRampPalette(rev(brewer.pal(n = 7, name =  "RdBu")))(100), space="LAB"),
                     column_dend_height = unit(6, "cm"), row_dend_width = unit(6, "cm"),
                     column_names_gp = gpar(fontsize = 12*55/max(m,32)),row_names_gp = gpar(fontsize = 10*55/max(n,32)),
                     show_heatmap_legend = T, row_names_max_width = unit(10,"cm"),
@@ -1327,7 +1578,14 @@ runHierarchicalClusteringAnalysis <- function(dat.plot,out.prefix,sampleType=NUL
                                                 title_gp = gpar(fontsize = 14, fontface = "bold"),
                                                 label_gp = gpar(fontsize = 12), color_bar = "continuous"),
                     top_annotation = ha.col)
-        draw(ht, newpage= FALSE)
+        ##print(str(draw))
+        ##print((draw))
+        ##print(class(ht))
+        ComplexHeatmap::draw(ht, newpage= FALSE)
+        for(i in seq_along(names(annColList))){
+            decorate_annotation(names(annColList)[i], 
+                                {grid.text(names(annColList)[i], unit(-4, "mm"),gp=gpar(fontsize=24),just = "right")})
+        }
         dev.off()
     }
 }
@@ -1419,6 +1677,7 @@ qcAndViz<-function(vsd,vstMat,designM,outDir,extra="",sfilter=NULL, gfilter=NULL
 
 qcAndVizMat<-function(vstMat,designM,outDir,colSet=NULL,intgroup=c("sampleType"),ntop=500,extra="",sfilter=NULL, gfilter=NULL,complexHeatmap.use=NULL,clonotype.col=NULL,runNMF=FALSE,...)
 {
+    dir.create(outDir,showWarnings = F,recursive = T)
     if(!is.null(sfilter))
     {
 	    vstMat <- vstMat[, colnames(vstMat) %in% sfilter, drop = FALSE]
@@ -1444,7 +1703,7 @@ qcAndVizMat<-function(vstMat,designM,outDir,colSet=NULL,intgroup=c("sampleType")
             names(colSet) <- levels(designM$sampleType)
         }else
         {
-            colSet <- rainbow(nLevel)
+            colSet <- auto.colSet(n=nLevel)
             names(colSet) <- levels(designM$sampleType)
         }
     }else

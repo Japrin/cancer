@@ -61,15 +61,18 @@ readCountTable<-function(design,saveDir)
     {
         #tCount <- getTabDataFromFile(paste(countDir,"/",ids[i],sep=""),"counts_gene")
         tCount <- getTabDataFromFile(paste(countDir,"/",ids[i],sep=""),"counts_gene_exonic")
+        #print(head(tCount))
+        tCount <- tCount[!grepl("^ERCC",tCount$name,perl = T),]
         if(flag==0)
         {
             tEntrez <- as.character(tCount$name)
-	    tSymbol <- entrezToXXX(tEntrez)
+	        tSymbol <- entrezToXXX(tEntrez)
             out<-data.frame(entrez=tEntrez,symbol=tSymbol)
             #out<-data.frame(entrez=tEntrez)
             flag<-1
         }
         out<-cbind(out,tCount$count)
+        cat(sprintf("sample %s done.\n",ids[i]))
         
     }
     names(out)<-c("entrez","symbol",ids)

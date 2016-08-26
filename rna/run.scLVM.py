@@ -123,7 +123,7 @@ if __name__ == '__main__':
         # fit the model from i0 to i1
         #pdb.set_trace()
         #try:
-        sclvm.varianceDecomposition(K=Kcc, i0=i0, i1=i1)
+        sclvm.varianceDecomposition(K=Kcc, i0=i0, i1=i1,verbose=False)
         #except:
         #    type, value, tb = sys.exc_info()
         #    traceback.print_exc()
@@ -231,6 +231,7 @@ if __name__ == '__main__':
 
             Ycorr = RV['Ycorr'][:]
             SP.savetxt(out_file_base + '.Ycorr.txt', Ycorr)
+            SP.savetxt(out_file_base + '.isConverged.txt', RV['is_converged'])
             #plot variance decomposition
             from scLVM_cfg import *
             indsconv = RV['is_converged'].ravel() == 1

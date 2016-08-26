@@ -24,21 +24,13 @@ args.log <- args$log
 clonotype.file <- args$clonotypeFile
 
 #### TEST DATA P0205
-#out.dir <- "/WPS1/zhenglt/work/TCR_chunhong/integrated.20150707/hetero/test"
-#sample.id <- "P0729"
-#designFile <- "/WPS1/zhenglt/work/TCR_chunhong/integrated.20150707/hetero/OUT.scLVM/P0729/sfEndo/P0729.designUsed.txt"
+#out.dir <- "/WPS1/zhenglt/work/TCR_chunhong/integrated.20150707/hetero/byTCellType/test"
+#sample.id <- "P1116"
+#designFile <- "/WPS1/zhenglt/work/TCR_chunhong/integrated.20150707/hetero/byTCellType/OUT.scLVM.byTCellType/P1116/sfIgnoreERCC/TC/P1116.designUsed.txt"
 #cellTypeColorFile <- "/WPS1/zhenglt/work/TCR_chunhong/data/CellType.color"
-#inputFile <- "/WPS1/zhenglt/work/TCR_chunhong/integrated.20150707/hetero/OUT.scLVM/P0729/sfEndo/P0729.het.countGeneData.sfNormalized"
+#inputFile <- "/WPS1/zhenglt/work/TCR_chunhong/integrated.20150707/hetero/byTCellType/OUT.scLVM.byTCellType/P1116/sfIgnoreERCC/TC/P1116.het.countGeneData.sfNormalized"
 #args.log <- TRUE
 #clonotype.file <- "/WPS1/zhenglt/work/TCR_chunhong/integrated.20150707/tracer/OUT/P0729/filtered_TCR_summary/P0729.summary.cell.reassigneClonotype.txt"
-
-#out.dir <- "/WPS1/zhenglt/work/TCR_chunhong/integrated.20150707/hetero/cross.patient/OUT.ignoreERCC.noTY/liver/preScLVM"
-#sample.id <- "liver"
-#designFile <- "/WPS1/zhenglt/work/TCR_chunhong/integrated.20150707/hetero/cross.patient/sample.design/sample.design.liver.txt"
-#cellTypeColorFile <- "/WPS1/zhenglt/work/TCR_chunhong/data/CellType.color"
-#inputFile <- "/WPS1/zhenglt/work/TCR_chunhong/integrated.20150707/hetero/cross.patient/OUT.ignoreERCC.noTY/liver/liver.het.countGeneData.sfNormalized"
-#args.log <- TRUE
-#clonotype.file <- "/WPS1/zhenglt/work/TCR_chunhong/integrated.20150707/tracer/OUT/P0508/filtered_TCR_summary/P0508.summary.cell.reassigneClonotype.txt"
 
 dir.create(out.dir,recursive = T,showWarnings = F)
 source("/Share/BP/zhenglt/02.pipeline/cancer/lib/scRNAToolKit.R")
@@ -48,6 +40,12 @@ sampleTypeColor <- read.SampleTypeColor(cellTypeColorFile)
 in.table <- read.table(inputFile,header = T,sep = "\t",stringsAsFactors = F,check.names = F)
 rownames(in.table) <- in.table[,1]
 Y <- in.table[,c(-1,-2)]
+loginfo(sprintf("before simple filter: %d genes",nrow(Y)))
+## filter
+f <- apply(Y,1,function(x){ nE <- sum(x>0); return( nE > 5 & nE/length(x) > 0.01 )  })
+Y <- Y[f,]
+loginfo(sprintf("after simple filter: %d genes",nrow(Y)))
+## log transform
 if(args.log) { Y <- log2(Y+1) }
 clonotype.strict.data <- read.clonotype(in.file = clonotype.file,ctype.col = "C_strict")
 patient.col.list <- patientColorListFromMyDesign(myDesign)
@@ -55,39 +53,37 @@ patient.col.list <- patientColorListFromMyDesign(myDesign)
 loginfo("... all samples.")
 
 sname <- intersect(rownames(myDesign),colnames(Y))
-#q()
-#runSC3Analysis <- function(in.data,out.prefix,sampleType,colSet,do.log.scale=FALSE)
 myDesign <- myDesign[sname,,drop=F]
 pca.res <- runPCAAnalysis(Y[,sname],sprintf("%s/%s.het.PCA",out.dir,sample.id),
                myDesign[sname,"sampleType"],sampleTypeColor[names(sampleTypeColor) %in% unique(as.character(myDesign$sampleType))],
                ntop=NULL,main=sample.id)
-runTSNEAnalysis(Y[,sname],sprintf("%s/%s.het.tSNE",out.dir,sample.id),
+tsne.res <- runTSNEAnalysis(Y[,sname],sprintf("%s/%s.het.tSNE",out.dir,sample.id),
                 col.points = sampleTypeColor[as.character(myDesign$sampleType)],
                 legend=c(names(sampleTypeColor)[names(sampleTypeColor) %in% unique(as.character(myDesign$sampleType))],levels(myDesign$libType)),
                 col.legend=c(sampleTypeColor[names(sampleTypeColor) %in% unique(as.character(myDesign$sampleType))],rep("black",length(levels(myDesign$libType)))),
                 pch=(as.numeric(myDesign$libType)-1) %% 26,cex=0.7,
                 pch.legend=c(rep(16,sum(names(sampleTypeColor) %in% unique(as.character(myDesign$sampleType)))),(seq_along(levels(myDesign$libType))-1) %% 26)
                 )
-#runNMFAnalysis(Y,sprintf("%s/%s.het.NMF",out.dir,sample.id),
-#               myDesign[,"sampleType",drop=F],
-#               list(sampleType=sampleTypeColor))
-####q()
+###runNMFAnalysis(Y,sprintf("%s/%s.het.NMF",out.dir,sample.id),
+###               myDesign[,"sampleType",drop=F],
+###               list(sampleType=sampleTypeColor))
+###q()
 
-for(nn in c(50,100,150,200,250,300,350,400,450,500,1000,2000,3000))
+for(nn in c(50,100,150,200,250,300,350,400,450,500,1000,2000,3000,100000))
 {
 runHierarchicalClusteringAnalysis(Y[,sname],
-                sprintf("%s/%s.het.hclustering.n%s",out.dir,sample.id,nn),
+                sprintf("%s/%s.het.hclustering.n%s",out.dir,sample.id,ifelse(nn>99999,"All",nn)),
                 myDesign[sname,"sampleType"],sampleTypeColor[names(sampleTypeColor) %in% unique(as.character(myDesign$sampleType))],
                 clonotype.col=clonotype.strict.data,
                 patient.col.list = patient.col.list,
                 ntop=nn,
-                complexHeatmap.use=TRUE,
-                verbose=FALSE,main="Variable Genes")
+                complexHeatmap.use=TRUE,do.cuttree=T,
+                verbose=TRUE,main="Variable Genes")
 }
 
 sc3.res <- runSC3Analysis(Y[,sname],sprintf("%s/%s.SC3",out.dir,sample.id),
                myDesign[sname,"sampleType"],sampleTypeColor[names(sampleTypeColor) %in% unique(as.character(myDesign[sname,"sampleType"]))],
-               do.log.scale=FALSE,n.cores=4)
+               do.log.scale=FALSE,n.cores=40)
 save(sc3.res,file=sprintf("%s/%s.SC3.RData",out.dir,sample.id))
 #####qcAndVizMat(Y,myDesign,out.dir,colSet=sampleTypeColor,intgroup=c("sampleType"),ntop=100000,extra=paste0(".",sample.id),sfilter=NULL, gfilter=NULL)
 
