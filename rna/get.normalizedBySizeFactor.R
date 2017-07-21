@@ -100,7 +100,8 @@ plotSizeFactorDist <- function(sf,out.prefix,sample.id.toHighlight=NULL)
     box(which = "figure")
     dev.off()
 }
-myDesign <- read.table(designFile,header=T,row.names="sample",check.names=F,colClasses=c("factor","character","factor","factor"))
+###myDesign <- read.table(designFile,header=T,row.names="sample",check.names=F,colClasses=c("factor","character","factor","factor"))
+myDesign <- read.table(designFile,sep="\t",header=T,row.names="sample",check.names=F)
 
 if(!is.null(exclude.samples) && exclude.samples != ""){
     if(file.exists(exclude.samples)){
@@ -117,7 +118,7 @@ if(!is.null(exclude.samples) && exclude.samples != ""){
 ###if(mode.verbose)
 ###{
 out.design.df <- data.frame(patient=myDesign$patient,sample=rownames(myDesign))
-out.design.df <- cbind(out.design.df,myDesign[,c(2,3)])
+out.design.df <- cbind(out.design.df,myDesign[,-1])
 write.table(out.design.df,sprintf("%s/%s.designUsed.txt",out.dir,sample.id),sep = "\t",row.names = F,quote = F)
 ###}
 if(dir.exists(countDir)) {
@@ -137,6 +138,13 @@ obj.scdn <- SCDenoise.normalize(obj.scdn,useERCCSizeFactor = use.ERCC.sf)
 out.df <- data.frame(geneID=rownames(obj.scdn@normalized.endo))
 out.df$geneName <- entrezToXXX(out.df$geneID)
 out.df <- cbind(out.df, obj.scdn@normalized.endo)
-write.table(out.df,file=sprintf("%s/%s.all.countData.sfNormalized.txt",out.dir,sample.id),sep="\t",quote = F,row.names = F)
+conn <- gzfile(sprintf("%s/%s.countData.sfNormalized.txt.gz",out.dir,sample.id),"w")
+write.table(out.df,file=conn,sep="\t",quote = F,row.names = F)
+close(conn)
 
-
+out.df <- data.frame(geneID=rownames(countData))
+out.df$geneName <- entrezToXXX(out.df$geneID)
+out.df <- cbind(out.df, countData)
+conn <- gzfile(sprintf("%s/%s.countData.txt.gz",out.dir,sample.id),"w")
+write.table(out.df,file=conn,sep="\t",quote = F,row.names = F)
+close(conn)

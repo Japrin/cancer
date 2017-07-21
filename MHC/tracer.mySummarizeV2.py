@@ -24,6 +24,18 @@ from prettytable import PrettyTable
 import networkx as nx
 from operator import attrgetter
 
+def filter_by_TPM(cell, Ta, Tb):
+    eT = Ta
+    for locus in ['A','B']:
+        if locus == 'B':
+            eT = Tb
+        if cell.all_recombinants[locus] is not None:
+            for i in range(len(cell.all_recombinants[locus])):
+                if cell.all_recombinants[locus][i].TPM < eT:
+                    cell.all_recombinants[locus][i] = None
+            cell.all_recombinants[locus] = [rec for rec in cell.all_recombinants[locus] if rec is not None ]
+    return(cell)
+
 def get_cells_component(cells, sample_id):
     cells = cells.values()
     G = nx.MultiGraph()
@@ -40,12 +52,14 @@ def get_cells_component(cells, sample_id):
                 shared_identifiers = 0
                 if current_cell.all_recombinants[locus] is not None:
                     for current_recombinant in current_cell.all_recombinants[locus]:
-                        current_id_set = current_recombinant.all_poss_identifiers
-                        if comparison_cell.all_recombinants[locus] is not None:
-                            for comparison_recombinant in comparison_cell.all_recombinants[locus]:
-                                comparison_id_set = comparison_recombinant.all_poss_identifiers
-                                if len(current_id_set.intersection(comparison_id_set)) > 0:
-                                    shared_identifiers += 1
+                        if current_recombinant is not None:
+                            current_id_set = current_recombinant.all_poss_identifiers
+                            if comparison_cell.all_recombinants[locus] is not None:
+                                for comparison_recombinant in comparison_cell.all_recombinants[locus]:
+                                    if comparison_recombinant is not None:
+                                        comparison_id_set = comparison_recombinant.all_poss_identifiers
+                                        if len(current_id_set.intersection(comparison_id_set)) > 0:
+                                            shared_identifiers += 1
 
                 #comparison_identifiers = comparison_cell.getAllRecombinantIdentifiersForLocus(locus)
                 #common_identifiers = current_identifiers.intersection(comparison_identifiers)
@@ -68,7 +82,7 @@ def get_cells_component(cells, sample_id):
 
     for component in components:
         clonotype_id = "%s_C%04d" % (sample_id, i)
-        i= i + 1
+        i = i + 1
         component_size = len(component)
         for cell in component:
             output_line = "%s\t%s\t%d" % (cell.name, clonotype_id, component_size)
@@ -84,10 +98,7 @@ def get_cells_component(cells, sample_id):
                                     vdj_string = "{V_segment}|.|{J_segment}".format(V_segment=rec.summary[0], J_segment=rec.summary[1])
                                 elif locus == "B":
                                     vdj_string = "{V_segment}|{D_segment}|{J_segment}".format(V_segment=rec.summary[0], D_segment=rec.summary[1], J_segment=rec.summary[2])
-                                try:
-                                    output_line = output_line + "\t" + "\t".join([rec.identifier, str(rec.cdr3),str(rec.cdr3_nt),vdj_string, str(rec.TPM), str(rec.productive), str(rec.in_frame), str(rec.stop_codon)])
-                                except:
-                                    print("ERROR:" + output_line + "\t" + rec.identifier)
+                                output_line = output_line + "\t" +  "\t".join([rec.identifier, str(rec.cdr3),str(rec.cdr3_nt),vdj_string, str(rec.TPM), str(rec.productive), str(rec.in_frame), str(rec.stop_codon)])
                             else:
                                 output_line = output_line + "\t" +  "\t".join(["NA","NA","NA","NA","NA","NA","NA","NA"])
                         else:
@@ -123,6 +134,8 @@ def main():
                 empty_cells.append(d)
             if cl.is_inkt:
                 NKT_cells[d] = (cl.is_inkt, cl.getMainRecombinantIdentifiersForLocus('B'))
+            ## filter by TPM
+            cells[d] = filter_by_TPM(cells[d], Ta=10, Tb=15)
 
     for cell_name in empty_cells:
         del cells[cell_name]
@@ -138,7 +151,7 @@ def main():
     x_range = range(1, len(clonotype_sizes) + 1)
     plt.bar(x_range, height=clonotype_sizes, width=w, color='black', align='center')
     plt.gca().set_xticks(x_range)
-    plt.savefig("{}/clonotype_sizes_test.pdf".format(outdir))
+    plt.savefig("{}/clonotype_sizes_testV2.pdf".format(outdir))
 
 if __name__ == '__main__':
     main()

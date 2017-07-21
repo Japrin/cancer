@@ -46,7 +46,7 @@ export IGDATA="/DBS/DB_temp/zhangLab/IMGT/igblast"
 echo begin at: `date`
 
 mkdir -p $outDir
-tracer assemble -c $TRACER_CONFIG -p $optT -s $optS $fq1 $fq2 $sampleID $outDir
+tracer assemble -c $TRACER_CONFIG -p $optT -s $optS $fq1 $fq2 $sampleID $outDir --resume_with_existing_files
 #tracer assemble --resume_with_existing_files -c $TRACER_CONFIG -p $optT -s Hsap $fq1 $fq2 $sampleID $outDir
 
 echo end at: `date`

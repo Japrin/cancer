@@ -1,0 +1,1 @@
+aln.hisat2.sh

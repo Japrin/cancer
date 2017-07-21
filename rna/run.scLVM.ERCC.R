@@ -86,20 +86,22 @@ getEntrezFromGO <- function(term)
 # plot size factor distribution
 plotSizeFactorDist <- function(sf,out.prefix,sample.id.toHighlight=NULL)
 {
-    pdf(sprintf("%s.%s",out.prefix,"sizeFactor.pdf"),width = 10,height = 6)
-    par(cex.lab=1.5,mar=c(5,5,4,2)+0.1)
+    pdf(sprintf("%s.%s",out.prefix,"sizeFactor.pdf"),width = 8,height = 6)
+    par(cex.lab=1.8,cex.axis=1.5,mar=c(5,6,4,2)+0.1)
     cdata <- sort(sf)
     ccol <- rep("darkblue",length(sf))
     names(ccol) <- names(cdata)
     if(!is.null(sample.id.toHighlight)) {
         ccol[sample.id.toHighlight] <- "red"
+    }else{
+        ccol[cdata < 0.4] <- "red"
     }
     barplot(cdata,col=ccol,border=NA,xlab="cell index",ylab="size factor",xaxt="n")
     box(which = "inner",lwd=4)
-    par(new=TRUE, oma=c(1,7,1,1),mar=c(5,5,1,2)+0.1)
+    par(new=TRUE, oma=c(1,8,1,1),mar=c(5,4,1,2)+0.1)
     layout(matrix(4:1,2))
     b.midpoint <- barplot(cdata[1:10],col=ccol[1:10],border=NA,xlab="",ylab="",xaxt="n")
-    text(b.midpoint,y=-0.01, srt = 45, adj = 1, labels = names(cdata)[1:10], xpd = TRUE,cex=1.0)
+    text(b.midpoint,y=-0.04, srt = 45, adj = 1, labels = names(cdata)[1:10], xpd = TRUE,cex=1.0)
     box(which = "figure")
     dev.off()
     pdf(sprintf("%s.%s",out.prefix,"sizeFactor.dist.pdf"),width = 8,height = 8)
@@ -139,7 +141,7 @@ if(dir.exists(countDir)) {
 obj.scdn <- SCDenoise(as.matrix(countData),ignore.ERCC=ignore.ERCC)
 obj.scdn <- SCDenoise.normalize(obj.scdn,useERCCSizeFactor = use.ERCC.sf)
 
-plotSizeFactorDist(obj.scdn@size.factor.endo,sprintf("%s/%s.endo",out.dir,sample.id))
+plotSizeFactorDist(obj.scdn@size.factor.endo,sprintf("%s/%s.endo",out.dir,sample.id),sample.id.toHighlight=NULL)
 out.size.factor.df <- data.frame(cellName=names(obj.scdn@size.factor.endo),szieFactor=obj.scdn@size.factor.endo)
 write.table(out.size.factor.df,sprintf("%s/%s.endo.sizeFactor.txt",out.dir,sample.id),sep = "\t",row.names = F,col.names = T,quote = F)
 print(quantile(obj.scdn@size.factor.endo,probs=c(0.001,0.002,0.005,0.01,0.05,0.1,0.5,0.9,0.95,0.99,0.995,0.998,0.999)))
@@ -154,7 +156,7 @@ if(obj.scdn@withERCC) {
 pdf(paste0(out.dir,"/",sample.id,".fitTechNoise.ERCC.counts.pdf"),width = 8,height = 8)
 techNoiseERCCCounts = SCDenoise.fitTechnicalNoise(obj.scdn, fit_type = 'counts',plot=TRUE)
 dev.off()
-
+###q()
 if(mode.verbose)
 {
     pdf(paste0(out.dir,"/",sample.id,".fitTechNoise.noERCC.counts.pdf"),width = 8,height = 8)
@@ -241,10 +243,10 @@ cell_names <- colnames(obj.scdn@normalized.endo)
 genes_het_bool = as.vector(is_het) #variable genes
 tech_noise = as.vector(techNoiseERCCCounts$techNoiseLog) #technical noise
 
-goResults <- runTopGOAnalysis(geneID[genes_het_bool], geneID)
-print(goResults[["MF"]])
-print(goResults[["CC"]])
-print(goResults[["BP"]])
+#goResults <- runTopGOAnalysis(geneID[genes_het_bool], geneID)
+#print(goResults[["MF"]])
+#print(goResults[["CC"]])
+#print(goResults[["BP"]])
 
 #get cell cycle genes from GO 
 ## scLVM's bug: the name of the vecotr holding genes should be "ens_ids_cc"

@@ -11,8 +11,8 @@ function runDecipherNMF(workDir,totalSig)
   save(matInFile)
   
    
-  addpath('/WPS/BP/zhenglt/01.bin/mutationSignatureFrameWork/source/');
-  addpath('/WPS/BP/zhenglt/01.bin/mutationSignatureFrameWork/plotting/');
+  addpath('/Share/BP/zhenglt/01.bin/mutation/WTSI_Mutational_Signature_Framework/source/');
+  addpath('/Share/BP/zhenglt/01.bin/mutation/WTSI_Mutational_Signature_Framework/plotting/');
   
   %% Open matlabpool
   if ( matlabpool('size') == 0 )

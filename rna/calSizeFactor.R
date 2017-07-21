@@ -22,12 +22,13 @@ print(args)
 
 dir.create(out.dir,recursive=T,showWarnings=F)
 
-#suppressPackageStartupMessages(library(genefilter))
-#suppressPackageStartupMessages(library(statmod))
-#suppressPackageStartupMessages(library(ggplot2))
-#suppressPackageStartupMessages(library(gplots))
-#suppressPackageStartupMessages(library(DESeq2))
-#suppressPackageStartupMessages(library(HTSeqGenie))
+#designFile <- "/WPS1/zhenglt/work/proj_xy/integrated/sample.design/P0616A.above150K.sample.desc.txt"
+#countDir <- "/WPS1/zhenglt/work/proj_xy/integrated/quantification/P0616A.count.tab.gz"
+#out.dir <- "/WPS1/zhenglt/work/proj_xy/integrated/outlier/test"
+#sample.id <- "P0616A"
+#mode.verbose <- T
+#SF.THRESHOLD <- 0.25
+#cal.ercc <- F
 
 ## function definition
 source("/Share/BP/zhenglt/02.pipeline/cancer/lib/scRNAToolKit.R")
@@ -55,6 +56,42 @@ readCountTable<-function(design,saveDir)
     return(out)
 }
 
+fitMixModel <- function(x,ofile,G=NULL,...)
+{
+  require(mclust)
+  x_mix<-densityMclust(x,G=G)
+  x_mix_summary<-summary(x_mix)
+  #print(x_mix)
+  print(x_mix_summary)
+  
+  pdf(ofile,width=8,height=6)
+  #old_par<-par(no.readonly=T)
+  #pdf(ofile,width=8,height=6)
+  layout(matrix(c(1,1,1,1,1,1,2,3,4), 3, 3, byrow = TRUE))
+  a_par<-par(cex.axis=2,cex.lab=2,cex.main=1.8,mar=c(5,6,4,2)+0.1)
+  plot(x_mix,what="density",data=x,breaks=50,col="darkgreen",lwd=2,main="",...)
+  abline(v=x_mix_summary$mean,lty=2)
+  
+  for(i in 1:x_mix_summary$G)
+  {
+    i_mean<-x_mix_summary$mean[i]
+    i_sd<-sqrt(x_mix_summary$variance[i])
+    i_pro<-x_mix_summary$pro[i]
+    #i_sd<-RC_mix_summary$variance[i]
+    d<-qnorm(c(0.0013,0.9987),i_mean,i_sd)
+    e<-i_pro*dnorm(i_mean,i_mean,i_sd)
+    lines(seq(d[1],d[2],by=0.01),i_pro*dnorm(seq(d[1],d[2],by=0.01),i_mean,i_sd),col="orange",lwd=2)
+    #rect(d[1],0,d[2],e+0.02,col=rgb(1,0,0,0.2),border=NA)
+  }
+  plot(x_mix,data=x,breaks=20,col="darkgreen",lwd=2,what="BIC")
+  densityMclust.diagnostic(x_mix,type = "cdf",cex.lab=1.5)
+  densityMclust.diagnostic(x_mix,type = "qq")
+  dev.off()
+  
+  #par(old_par)
+    
+  x_mix
+}
 # plot size factor distribution
 plotSizeFactorDist <- function(sf,out.prefix,sample.id.toHighlight=NULL)
 {
@@ -78,9 +115,13 @@ plotSizeFactorDist <- function(sf,out.prefix,sample.id.toHighlight=NULL)
     hist(sf,breaks = 30,freq = F,col = "gray",xlab="Size Factor",main=sprintf("%s",sample.id))
     lines(density(sf),col="orange",lwd=2)
     dev.off()
+    fitMixModel(sf,ofile = sprintf("%s.%s",out.prefix,"sizeFactorMixOptimal.pdf"))
+    fitMixModel(sf,ofile = sprintf("%s.%s",out.prefix,"sizeFactorMixG2.pdf"),G = 2)
+    fitMixModel(sf,ofile = sprintf("%s.%s",out.prefix,"sizeFactorMixG3.pdf"),G = 3)
 }
 
-myDesign <- read.table(designFile,header=T,row.names="sample",check.names=F,colClasses=c("factor","character","factor","factor"))
+##myDesign <- read.table(designFile,header=T,row.names="sample",check.names=F,colClasses=c("factor","character","factor","factor"))
+myDesign <- read.table(designFile,header=T,row.names="sample",check.names=F)
 
 if(dir.exists(countDir)) {
     myCountTable <- readCountTable(myDesign,countDir)
@@ -108,10 +149,11 @@ doit <- function(cal.ercc=FALSE)
     out.size.factor.df <- data.frame(cellName=names(sf),szieFactor=sf)
     write.table(out.size.factor.df,sprintf("%s.sizeFactor.txt",o.prefix),sep = "\t",row.names = F,col.names = T,quote = F)
     print(quantile(sf,probs=c(0.001,0.002,0.005,0.01,0.05,0.1,0.5,0.9,0.95,0.99,0.995,0.998,0.999)))
+    print(ecdf(sf)(SF.THRESHOLD))
 
     f <- names(sf)[sf > SF.THRESHOLD]
     out.design.df <- data.frame(patient=myDesign$patient,sample=rownames(myDesign))
-    out.design.df <- cbind(out.design.df,myDesign[,c(2,3)])
+    out.design.df <- cbind(out.design.df,myDesign[,-1])
     out.design.df <- out.design.df[f,]
     write.table(out.design.df,sprintf("%s.designSFFiltered.txt",o.prefix),sep = "\t",row.names = F,quote = F)
     return(out.design.df)

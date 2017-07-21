@@ -133,7 +133,7 @@ if [ ! -f "$outDir/$sampleID.hisat.hit.sort.bam" ] && [ ! -f "$outDir/$sampleID.
 		--rg "PU:$lane" \
 		--threads $optT $optA \
 		| samtools view -bS - > $outDir/$sampleID.hisat.hit.bam
-	rm $outDir/$sampleID.noRRNA.R1.fq.gz $outDir/$sampleID.noRRNA.R2.fq.gz
+	#rm $outDir/$sampleID.noRRNA.R1.fq.gz $outDir/$sampleID.noRRNA.R2.fq.gz
 	echo "hisat mapping done. (" `date` ")"
 	#wait
 fi

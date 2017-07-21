@@ -256,7 +256,10 @@ class Recombinant:
         self.productive = productive
         self.TPM = TPM
         self.dna_seq = dna_seq
-        self.cdr3 = self._get_cdr3(dna_seq)
+        t_cdr3 = self._get_cdr3(dna_seq)
+        self.cdr3 = t_cdr3[0]
+        self.cdr3_nt = t_cdr3[1]
+        #self.cdr3 = self._get_cdr3(dna_seq)
         self.hit_table = hit_table
         self.summary = summary
         self.junction_details = junction_details
@@ -271,6 +274,9 @@ class Recombinant:
 
     def _get_cdr3(self, dna_seq):
         aaseq = Seq(str(dna_seq), generic_dna).translate()
+        nt_lower = -1
+        nt_upper = -1
+        ntseq = ""
         if re.findall('FG.G',str(aaseq)) and re.findall('C',str(aaseq)):
                         indices = [i for i, x in enumerate(aaseq) if x == 'C']
                         upper = str(aaseq).find(re.findall('FG.G',str(aaseq))[0])
@@ -282,13 +288,33 @@ class Recombinant:
                             cdr3 = "Couldn't find validate conserved cysteine"
                         else:
                             cdr3 = aaseq[lower:upper+4]
+                            nt_lower = lower*3
+                            nt_upper = (upper+4)*3
+        ## for MAIT, TRAV1-2 and  TRAJ33: CAXXDSNYQLIWGAG
+        elif "TRAV1-2" in self.identifier and "TRAJ33" in self.identifier and re.findall('LIWG.G',str(aaseq)) and re.findall('C',str(aaseq)):
+            indices = [i for i, x in enumerate(aaseq) if x == 'C']
+            upper = str(aaseq).find(re.findall('LIWG.G',str(aaseq))[0])
+            lower = -1
+            for i in indices:
+                if i < upper:
+                    lower = i
+            if lower == -1:
+                cdr3 = "Couldn't find validate conserved cysteine (TRAV1-2, TRAJ33)"
+            else:
+                cdr3 = aaseq[lower:upper+6]
+                nt_lower = lower*3
+                nt_upper = (upper+6)*3
+            ##
         elif re.findall('FG.G',str(aaseq)):
             cdr3 = "Couldn't find conserved cysteine"
         elif re.findall('C',str(aaseq)):
             cdr3 = "Couldn't find FGXG"
         else:
             cdr3 = "Couldn't find either conserved boundary"
-        return(cdr3)
+        if nt_lower != -1 and nt_upper != -1:
+            ntseq = dna_seq[nt_lower:nt_upper]
+        return([cdr3, Seq(ntseq)])
+        #return(cdr3)
 
     def get_summary(self):
         summary_string = "##{contig_name}##\n".format(contig_name=self.contig_name)
@@ -928,13 +954,13 @@ def draw_network_from_cells(cells, output_dir, output_format, dot, neato):
     colours = {'A' : '1', 'B' : '2', 'G' : '3', 'D' : '5', 'mean_both' : '#a8a8a8bf'}
     network, draw_tool = make_cell_network_from_dna(cells, colorscheme, colours, False, "box", dot, neato)
     network_file = "{}/clonotype_network_with_identifiers.dot".format(output_dir)
-    nx.write_dot(network, network_file)
+    nx.nx_pydot.write_dot(network, network_file)
     command = draw_tool + ['-o', "{output_dir}/clonotype_network_with_identifiers.{output_format}".format(output_dir=output_dir, output_format=output_format), "-T", output_format, network_file]
     subprocess.check_call(command)
 
     network, draw_tool = make_cell_network_from_dna(cells, colorscheme, colours,  False, "circle", dot, neato)
     network_file = "{}/clonotype_network_without_identifiers.dot".format(output_dir)
-    nx.write_dot(network, network_file)
+    nx.nx_pydot.write_dot(network, network_file)
     command = draw_tool + ['-o', "{output_dir}/clonotype_network_without_identifiers.{output_format}".format(output_dir=output_dir, output_format=output_format), "-T", output_format, network_file]
     subprocess.check_call(command)
 

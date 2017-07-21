@@ -30,36 +30,33 @@ do
 		;;
 	'?')
 		echo "Usage: $0 invalid option -$OPTARG" 
-		echo "Usage: $0 [-t threads, default 8] [-s species, default human] [-a quality mode, \"--phred33\" or \"--phred64\" (default \"--phred33\")] [-b upto] [-m memrory(GB), default 16] <outDir> <fq1> <fq2, '-' if none> <sampleID> <lib> <lane> "
+	    echo "Usage: $0 [-t threads, default 8] [-s species, default human] [-a quality mode, \"--phred33\" or \"--phred64\" (default \"--phred33\")] [-b upto] [-m memrory(GB), default 16] <outDir> <fq1>  <sampleID> <lib> <lane> "
 		exit 1
 		;;
 	esac
 done
 shift $((OPTIND-1))
 
-if [ $# -lt 6 ]
+if [ $# -lt 5 ]
 then 
-	echo "Usage: $0 [-t threads, default 8] [-s species, default human] [-a quality mode, \"--phred33\" or \"--phred64\" (default \"--phred33\")] [-b upto] [-m memrory(GB), default 16] <outDir> <fq1> <fq2, '-' if none> <sampleID> <lib> <lane> "
+	echo "Usage: $0 [-t threads, default 8] [-s species, default human] [-a quality mode, \"--phred33\" or \"--phred64\" (default \"--phred33\")] [-b upto] [-m memrory(GB), default 16] <outDir> <fq1>  <sampleID> <lib> <lane> "
 	exit 1
 fi
 
 source $iniFile
-##module load hisat/2.0.0-beta
 module load hisat/2.0.5
 module load bamUtil/1.0.12
 module load trimmomatic/0.33
 module load RNA-SeQC/1.1.8
 module load bwa/0.7.12
 module load picard/1.130
-### pipeline need samtools 1.2; samtools 1.3.1 has some problem
 module load samtools/1.2
 
 outDir=$1
 fq1=$2
-fq2=$3
-sampleID=$4
-lib=$5
-lane=$6
+sampleID=$3
+lib=$4
+lane=$5
 TMPDIR="/Share/BP/zhenglt/tmp"
 
 echo begin at: `date`
@@ -99,16 +96,11 @@ rm -f $outDir/$sampleID.clean.P.R1.fq.gz $outDir/$sampleID.clean.P.R2.fq.gz
 
 if [ ! -f "$outDir/$sampleID.hisat.hit.sort.bam" ] && [ ! -f "$outDir/$sampleID.hisat.hit.bam" ];then
 	### filter low quality reads
-		##ILLUMINACLIP:$TRIMMOMATIC_DIR/adapters/TruSeq3-PE-2.fa:2:30:10 \
-	java -Xmx${optM}g -jar $TRIMMOMATIC_DIR/trimmomatic-0.33.jar PE \
+	java -Xmx${optM}g -jar $TRIMMOMATIC_DIR/trimmomatic-0.33.jar SE \
 		-threads 8 \
 		$fq1 \
-		$fq2 \
-		$outDir/$sampleID.clean.P.R1.fq.gz \
-		$outDir/$sampleID.clean.UP.R1.fq.gz \
-		$outDir/$sampleID.clean.P.R2.fq.gz \
-		$outDir/$sampleID.clean.UP.R2.fq.gz \
-		ILLUMINACLIP:$TRIMMOMATIC_DIR/adapters/NexteraPE-PE.fa:2:30:10 \
+		$outDir/$sampleID.clean.fq.gz \
+		ILLUMINACLIP:$TRIMMOMATIC_DIR/adapters/TruSeq3-SE.fa:2:30:10 \
 		CROP:75 \
 		TRAILING:3 \
 		MAXINFO:50:0.25 \
@@ -117,7 +109,8 @@ if [ ! -f "$outDir/$sampleID.hisat.hit.sort.bam" ] && [ ! -f "$outDir/$sampleID.
 	echo "trimmomatic done. (" `date` ")"
 	
 	### filter contaminated rRNA
-	hisat2  -x $RRNA_INDEX -1 $outDir/$sampleID.clean.P.R1.fq.gz -2 $outDir/$sampleID.clean.P.R2.fq.gz \
+    ### u=0x4 (unmapped)
+	hisat2  -x $RRNA_INDEX -U $outDir/$sampleID.clean.fq.gz \
 		--minins 0 \
 		--maxins 1000 \
 		--fr \
@@ -129,13 +122,13 @@ if [ ! -f "$outDir/$sampleID.hisat.hit.sort.bam" ] && [ ! -f "$outDir/$sampleID.
 		--rg "LB:$lib" \
 		--rg "PU:$lane" \
 		--threads $optT $optA $optB \
-		| samtools view -f 0xc - \
-		| bam bam2FastQ --readName --in - --firstOut $outDir/$sampleID.noRRNA.R1.fq.gz --secondOut $outDir/$sampleID.noRRNA.R2.fq.gz
+		| samtools view -f 0x4 - \
+		| bam bam2FastQ --readName --in - --unpairedOut $outDir/$sampleID.noRRNA.fq.gz
 	
-	rm $outDir/$sampleID.clean.P.R1.fq.gz $outDir/$sampleID.clean.P.R2.fq.gz
+	rm $outDir/$sampleID.clean.fq.gz
 	echo "filtering rRNA done. (" `date` ")"
 	### hisat alignment
-	hisat2  -x $INDEX -1 $outDir/$sampleID.noRRNA.R1.fq.gz -2 $outDir/$sampleID.noRRNA.R2.fq.gz \
+	hisat2  -x $INDEX -U $outDir/$sampleID.noRRNA.fq.gz \
 		--known-splicesite-infile $KNOWN_SPLICE \
 		--novel-splicesite-outfile "$outDir/$sampleID.hisat.novel-splicesite.txt" \
 		--minins 0 \
@@ -150,7 +143,7 @@ if [ ! -f "$outDir/$sampleID.hisat.hit.sort.bam" ] && [ ! -f "$outDir/$sampleID.
 		--rg "PU:$lane" \
 		--threads $optT $optA \
 		| samtools view -bS - > $outDir/$sampleID.hisat.hit.bam
-	#rm $outDir/$sampleID.noRRNA.R1.fq.gz $outDir/$sampleID.noRRNA.R2.fq.gz
+	#rm $outDir/$sampleID.noRRNA.fq.gz
 	echo "hisat mapping done. (" `date` ")"
 	#wait
 fi
@@ -167,7 +160,7 @@ if [ ! -f "$outDir/$sampleID.hisat.hit.sort.bam" ];then
 			SO=coordinate \
 			VALIDATION_STRINGENCY=SILENT
 	if [ -f "$outDir/$sampleID.hisat.hit.sort.bam" ];then
-		#echo rm $outDir/$sampleID.hisat.hit.bam 
+		echo rm $outDir/$sampleID.hisat.hit.bam 
 		rm $outDir/$sampleID.hisat.hit.bam 
 	fi
 	samtools index $outDir/$sampleID.hisat.hit.sort.bam

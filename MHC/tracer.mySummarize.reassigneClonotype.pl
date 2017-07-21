@@ -62,7 +62,7 @@ sub run
         if(/^\s*$/ || /^#/) { next; }
         my @F=split /\t/;
         my $cellID=$F[0];
-        my @idAlphaBeta4=@F[3,9,15,21];
+        my @idAlphaBeta4=@F[3,11,19,27];
         if($clonotype{"$idAlphaBeta4[0]:$idAlphaBeta4[1]:$idAlphaBeta4[2]:$idAlphaBeta4[3]"}
             || $clonotype{"$idAlphaBeta4[1]:$idAlphaBeta4[0]:$idAlphaBeta4[2]:$idAlphaBeta4[3]"}
             || $clonotype{"$idAlphaBeta4[0]:$idAlphaBeta4[1]:$idAlphaBeta4[3]:$idAlphaBeta4[2]"}

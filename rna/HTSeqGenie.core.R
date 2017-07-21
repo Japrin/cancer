@@ -36,7 +36,6 @@ rp <- list(
   alignReads.splice_index=args$splicesites,
   ## trim
   trimReads.do = as.logical(args$trim),
-  trimReads.length = args$trim,
   ## rRNA contamination
   detectRRNA.do = T,
   detectRRNA.rrna_genome = args$rRNA,
@@ -61,7 +60,7 @@ rp <- list(
   overwrite_save_dir="erase",
   remove_processedfastq=(!args$prefq)
 )
-
+if(rp$trimReads.do) { rp$trimReads.length = args$trim }
 print(rp)
 
 if(args$mode==1)

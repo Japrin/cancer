@@ -78,7 +78,7 @@ module unload bedtools/v2.25.0
 module load bedtools/v2.23.0
 export TMPDIR="$outDir"
 
-## get the BAF file
+### get the BAF file
 if [ ! -f $outDir/$sampleID.hetSNV.baf ];then
 	if [ -f $normalSNPFile ];then
 		bgzip -cd $normalSNPFile \
@@ -144,6 +144,7 @@ if [ -f $outDir/$sampleID.hetSNV.baf ];then
 	## plot
 	printf "execute: \n$PIPELINE/cancer/somatic_cna/plot_ADTEx.R $sampleID $outDir/out/cnv.result $outDir/out/cnv.result.segment $outDir/out $outDir/out/zygosity/zygosity.res $outDir/out/zygosity/zygosity.res.segment\n"
 	$PIPELINE/cancer/somatic_cna/plot_ADTEx.R $sampleID $outDir/out/cnv.result $outDir/out/cnv.result.segment $outDir/out $outDir/out/zygosity/zygosity.res $outDir/out/zygosity/zygosity.res.segment
+    $PIPELINE/cancer/somatic_cna/plot_ADTEx.tmpPDF.R $sampleID $outDir/out/cnv.result $outDir/out/cnv.result.segment $outDir/out $outDir/out/zygosity/zygosity.res $outDir/out/zygosity/zygosity.res.segment
 	
 	awk -F"\t" -v OFS="\t" 'NR>1{print $1,"ADTEx","LOH",$2,$3,".\t.\t.","mirror_baf="$5";CN="$6";Z="$7";target_number="$8";SVID='$sampleID'.LOH"NR";SVType=LOH;ploidy='$pl'"; }' \
 		$outDir/out/zygosity/zygosity.res.segment.LOH.txt \
