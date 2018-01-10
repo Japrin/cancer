@@ -1,6 +1,7 @@
 #!/usr/bin/env Rscript
 
 suppressPackageStartupMessages(library("argparse"))
+suppressPackageStartupMessages(library("R.utils"))
 
 parser <- ArgumentParser()
 parser$add_argument("-i", "--infile",required=T,help="input file")
@@ -31,11 +32,17 @@ sample.id <- args[["sampleID"]]
 
 #options(stringsAsFactors = F)
 ### exp file
-in.table <- read.table(in.file,header = T,check.names = F,stringsAsFactors = F)
-rownames(in.table) <- in.table[,1]
-g.GNAME <- in.table[,2]
-names(g.GNAME) <- rownames(in.table)
-in.table <- in.table[,c(-1,-2)]
+if(grepl(".txt.gz",in.file,perl = T)){
+    in.table <- read.table(in.file,header = T,check.names = F,stringsAsFactors = F)
+    rownames(in.table) <- in.table[,1]
+    g.GNAME <- in.table[,2]
+    names(g.GNAME) <- rownames(in.table)
+    in.table <- in.table[,c(-1,-2)]
+}else{
+    lenv <- loadToEnv(in.file)
+    in.table <- lenv$Y
+    g.GNAME <- lenv$g.GNAME
+}
 ### sample file
 myDesign <- read.table(d.file,header = T,check.names = F,stringsAsFactors = F)
 rownames(myDesign) <- myDesign$sample

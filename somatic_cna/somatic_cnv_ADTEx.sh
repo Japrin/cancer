@@ -1,7 +1,7 @@
 #!/bin/bash
 
 iniFile="/Share/BP/zhenglt/02.pipeline/cancer/parameter/init_human.sh"
-_refData="/DBS/DB_temp/zhangLab/broad/bundle/2.8/b37/human_g1k_v37_decoy.fasta"
+#_refData="/DBS/DB_temp/zhangLab/broad/bundle/2.8/b37/human_g1k_v37_decoy.fasta"
 TR=""
 normalSNPFile=""
 gender="M"
@@ -60,8 +60,8 @@ fi
 echo begin at: `date`
 
 source $iniFile
-refData=$_refData
-REF=$_refData
+#refData=$_refData
+#REF=$_refData
 
 sampleID=$1
 normalBam=$2

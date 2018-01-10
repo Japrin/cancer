@@ -80,7 +80,8 @@ XXXToEntrez<-function(x,type="SYMBOL",species="human")
 }
 
 run.SIMLR <- function(inputData,n.clusters=4,myseed=NULL,my.title="",out.prefix,legend.txt,col.points,col.legend,
-                      pch=16,width.pdf=10,height.pdf=8,margin.r=10,legend.inset=-0.25,legend.txt2=NULL,...){
+                      pch=16,width.pdf=10,height.pdf=8,margin.r=10,legend.inset=-0.25,legend.txt2=NULL,...)
+{
     require(Matrix)
     require(parallel)
     require(igraph)
@@ -123,42 +124,104 @@ run.SIMLR <- function(inputData,n.clusters=4,myseed=NULL,my.title="",out.prefix,
            col = clusterColor)
     dev.off()
 
-
     return(res.SIMLR)
 }
 
 
-run.limma.from.matrixFile <- function(infile,designFile,fdr=0.1)
+run.limma.from.matrixFile <- function(in.dat,myDesign,infile=NULL,designFile=NULL,T.fdr=0.1,T.logFC=1,withPatient=T,verbose=F,gid.mapping=NULL,
+                                      do.voom=F)
 {
-	inTable <- read.table(infile,row.names=1,check.names = F,header = T,stringsAsFactors = F)
-	inMatrix <- as.matrix(inTable[,-1])
-
-	suppressPackageStartupMessages(require(limma))
+	suppressPackageStartupMessages(require("limma"))
+	suppressPackageStartupMessages(require("dplyr"))
 	suppressPackageStartupMessages(require("BiocParallel"))
-
-	myDesign<-read.table(designFile,header=T,row.names="sample",check.names=F,colClasses=c("factor","character","factor","factor"))
-	design <- model.matrix(~patient+sampleType,data=myDesign)
+    if(is.null(in.dat) && !is.null(infile) && file.exists(infile)){
+	    inTable <- read.table(infile,row.names=1,check.names = F,header = T,stringsAsFactors = F)
+        gid.mapping <- inTable[,1]
+        names(gid.mapping) <- rownames(inTable)
+        f.na <- which(is.na(gid.mapping))
+        gid.mapping[f.na] <- names(gid.mapping)[f.na]
+	    inMatrix <- as.matrix(inTable[,-1])
+    }else{
+        inMatrix <- in.dat
+    }
+	###myDesign<-read.table(designFile,header=T,row.names="sample",check.names=F,colClasses=c("factor","character","factor","factor"))
+    if(is.null(myDesign) && !is.null(designFile) && file.exists(designFile)){
+        myDesign<-read.table(designFile,header=T,check.names=F,stringsAsFactors = F)
+        rownames(myDesign) <- myDesign$sample
+    }
+    f.sample <- intersect(colnames(inMatrix),rownames(myDesign))
+    #print(str(inMatrix))
+    #print(str(myDesign))
+    #print(str(f.sample))
+    inMatrix <- inMatrix[,f.sample]
+    myDesign <- myDesign[f.sample,]
+    myDesign$sampleType <- factor(myDesign$sampleType)
+    if(verbose){
+        #print(str(myDesign))
+        #print(head(inMatrix))
+    }
+    print("XXXX")
+    if(withPatient){
+	    design <- model.matrix(~patient+sampleType,data=myDesign)
+    }else{
+	    design <- model.matrix(~sampleType,data=myDesign)
+    }
 	colnames(design)[length(colnames(design))]<-"II"
+    print("XXXX")
 
 	register(MulticoreParam(4))
-	fit <- lmFit(inMatrix, design)
+    if(do.voom){
+        pdf(sprintf("./voom.pdf"),width = 7,height = 7)
+        v <- voom(inMatrix, design, plot=TRUE)
+        dev.off()
+	    fit <- lmFit(v, design)
+    }else{
+	    fit <- lmFit(inMatrix, design)
+    }
 	fit <- eBayes(fit)
 	all.table  <- topTable(fit, coef = "II", n = Inf, sort = "p", p = 1)
-	out.resSig <- topTable(fit, coef = "II", n = Inf, sort = "p", p = fdr)
+	#out.resSig <- topTable(fit, coef = "II", n = Inf, sort = "p", p = fdr)
 	
-	all.table <- cbind(data.frame(Gene=rownames(all.table)),
-	      data.frame(Entrez=XXXToEntrez(rownames(all.table))),
-	      all.table)
-	
-	out.resSig <- cbind(data.frame(Gene=rownames(out.resSig),stringsAsFactors=F),
-	      data.frame(Entrez=XXXToEntrez(rownames(out.resSig)),stringsAsFactors=F),
-	      out.resSig)
+	all.table <- cbind(data.frame(geneID=rownames(all.table),
+                                  geneSymbol=if(is.null(gid.mapping)) rownames(all.table) else gid.mapping[rownames(all.table)],
+                                  stringsAsFactors = F),
+                       all.table)
+
+    .getMean <- function(inDat,str.note=NULL){
+        .Grp.mean <- t(apply(inDat,1,function(x){
+                                 .mexp <- aggregate(x ~ myDesign$sampleType, FUN = mean)
+                                 structure(.mexp[,2],names=sprintf("mean.Grp%s",.mexp[,1])) }))
+        if(!is.null(str.note)){
+            colnames(.Grp.mean) <- sprintf("%s.%s",colnames(.Grp.mean),str.note)
+        }
+        #print(head(.Grp.mean))
+        .Grp.mean.df <- data.frame(geneID=rownames(.Grp.mean),stringsAsFactors = F)
+        .Grp.mean.df <- cbind(.Grp.mean.df,.Grp.mean)
+    }
+    .Grp.mean.df <- .getMean(inMatrix)
+    all.table <- left_join(all.table,.Grp.mean.df)
+
+    if(withPatient){
+        inMatrix.rmBatchEff <- removeBatchEffect(inMatrix, myDesign$patient)
+        .Grp.mean.df <- .getMean(inMatrix.rmBatchEff,str.note="rmBatchEff")
+        all.table <- left_join(all.table,.Grp.mean.df)
+    }
+
+
+    print(head(all.table))
+    out.resSig <- subset(all.table,adj.P.Val<T.fdr & abs(logFC)>T.logFC)
+	#out.resSig <- cbind(data.frame(Gene=rownames(out.resSig),stringsAsFactors=F),
+	#      data.frame(Entrez=XXXToEntrez(rownames(out.resSig)),stringsAsFactors=F),
+	#      out.resSig)
 
 	#write.table(all.table,paste0(output.prefix,".all"),row.names = F,quote = F,sep = "\t")
 	#write.table(out.resSig,paste0(output.prefix,".sig"),row.names = F,quote = F,sep = "\t")
-	list(all=all.table,sig=out.resSig)
-	#head(all.table)
-	#head(out.resSig)
+	ret.dat <- list(all=all.table,sig=out.resSig)
+    if(verbose){
+        ret.dat[["in.dat"]] <- inMatrix
+        ret.dat[["myDesign"]] <- myDesign
+    }
+    return(ret.dat)
 }
 
 readGMT<-function(file) 
@@ -167,6 +230,7 @@ readGMT<-function(file)
     lst = sapply(f, function(x) unlist(strsplit(x, "\t", fixed = TRUE)))
     names(lst) = sapply(lst, function(x) x[1])
     gSet = lapply(lst, function(x) x[-(1:2)])
+    ###gSet = toupper(gSet)
     gLink = unlist(lapply(lst, function(x) x[2]))
     list(gSet=gSet,gLink=gLink)
 }
@@ -561,7 +625,7 @@ panel.cor <- function (x, y, digits = 2, meth = "pearson", cex.cor = 1,...)
 #' @param out.prefix (string) output prefix
 #' @param FDR.THRESHOLD
 #' @param FC.THRESHOLD
-runMultiGroupSpecificGeneTest <- function(dat.g,grps,out.prefix,mod=NULL,FDR.THRESHOLD=0.05,FC.THRESHOLD=1,verbose=F,n.cores=NULL,gid.mapping=NULL)
+runMultiGroupSpecificGeneTest <- function(dat.g,grps,out.prefix,mod=NULL,FDR.THRESHOLD=0.05,F.FDR.THRESHOLD=0.05,FC.THRESHOLD=1,verbose=F,n.cores=NULL,gid.mapping=NULL)
 {
     suppressPackageStartupMessages(require("plyr"))
     suppressPackageStartupMessages(require("doParallel"))
@@ -631,7 +695,7 @@ runMultiGroupSpecificGeneTest <- function(dat.g,grps,out.prefix,mod=NULL,FDR.THR
     ret.df <- rbind(ret.df.1,ret.df.2)
     ret.df <- ret.df[order(ret.df$F.adjp,-ret.df$F,ret.df$HSD.padj.min),]
     ### select
-    ret.df.sig <- subset(ret.df,F.adjp<FDR.THRESHOLD & HSD.padj.min<FDR.THRESHOLD & abs(HSD.padj.min.diff)>=FC.THRESHOLD)
+    ret.df.sig <- subset(ret.df,F.adjp<F.FDR.THRESHOLD & HSD.padj.min<FDR.THRESHOLD & abs(HSD.padj.min.diff)>=FC.THRESHOLD)
     ### output
     write.table(ret.df.sig,file = sprintf("%s.aov.sig.txt",out.prefix),quote = F,row.names = F,col.names = T,sep = "\t")
     if(verbose){
@@ -763,7 +827,7 @@ runTTest <- function(dat.g1,dat.g2,out.prefix,FDR.THRESHOLD=0.05,FC.THRESHOLD=1,
 #' @param legend
 #' @param col.points 
 #' @param col.legend
-runTSNEAnalysis <- function(in.data,out.prefix,legend,col.points,col.legend,pch=20,pch.legend=20,inPDF=TRUE,eps.clus=NULL,dims=2,k=NULL,do.dbscan=F,myseed=NULL,width.pdf=10,height.pdf=6,margin.r=1,legend.inset=-0.21,preSNE=NULL,n.cores=NULL,original.space=F,do.clustering=F,data.forDE=NULL,do.scale=T,distance.metric=NULL,...)
+runTSNEAnalysis <- function(in.data,out.prefix,legend,col.points,col.legend,pch=20,pch.legend=20,inPDF=TRUE,eps.clus=NULL,dims=2,k=NULL,do.dbscan=F,myseed=NULL,width.pdf=10,height.pdf=6,margin.r=1,legend.inset=-0.21,preSNE=NULL,n.cores=NULL,original.space=F,do.clustering=F,data.forDE=NULL,do.scale=T,do.pca=T,distance.metric=NULL,do.determ=F,...)
 {
     suppressPackageStartupMessages(require("Rtsne"))
     suppressPackageStartupMessages(require("dbscan"))
@@ -776,6 +840,8 @@ runTSNEAnalysis <- function(in.data,out.prefix,legend,col.points,col.legend,pch=
     suppressPackageStartupMessages(require("clValid"))
     suppressPackageStartupMessages(require("fields"))
     if(is.null(k)) { k=5; }
+    rowVar <- apply(in.data,1,var)
+    in.data <- as.matrix(in.data[rowVar>0,,drop=F])
     if(do.scale) {
         dat.plot <- t(scale(t(in.data)))
     }else{
@@ -801,6 +867,7 @@ runTSNEAnalysis <- function(in.data,out.prefix,legend,col.points,col.legend,pch=
     set.seed(myseed)
     loginfo(sprintf("set.seed(%s) for tsne\n",myseed))
     ret.list <- list()
+    loginfo(sprintf("dim of dat.plot, row: %d, column: %d",n,m))
     doit <- function(par.perplexity)
     {
         ###### tSNE embeding ######
@@ -808,7 +875,8 @@ runTSNEAnalysis <- function(in.data,out.prefix,legend,col.points,col.legend,pch=
         if(is.null(preSNE)) { 
             .tsne.input <- dat.plot
             .tsne.isDistance <- F
-            .tsne.pca <- T
+            ###.tsne.pca <- T
+            .tsne.pca <- do.pca
             if(!is.null(distance.metric)){
                 if(distance.metric=="spearman"){
                     .tsne.input <- as.dist(1-cor(t(dat.plot),method = "spearman"))
@@ -816,17 +884,44 @@ runTSNEAnalysis <- function(in.data,out.prefix,legend,col.points,col.legend,pch=
                     .tsne.pca <- F
                 }
             }
-            tryCatch({ Rtsne.res <- Rtsne(.tsne.input,perplexity=par.perplexity,dims=dims,
-                                            is_distance=.tsne.isDistance,pca=.tsne.pca) },
-                error=function(e){
+            is.TEST <- T
+            if(is.TEST){
+                save(.tsne.input,par.perplexity,dims,.tsne.isDistance,.tsne.pca,file=sprintf("%s.tSNE.TEST.RData",out.prefix))
+            }
+            if(do.determ){
+                #### .tsne.input must be cell-cell similarity matrix
+                diag(.tsne.input) <- 0
+                .D = diag(apply(.tsne.input,MARGIN=2,FUN=sum))
+                .L = .D - .tsne.input
+                .eigen_L = eigen(.L)
+                .U = .eigen_L$vectors
+                .D = .eigen_L$values
+                .U_index = seq(ncol(.U),(ncol(.U)-dims+1))
+                tryCatch({
+                Rtsne.res  <-  Rtsne(.tsne.input,perplexity=par.perplexity,dims=dims,
+                                  Y_init=.U[,.U_index],pca=F)
+                },error=function(e){
                     if(grepl("Perplexity is too large",e,perl=T)){
                         cat("Perplexity is too large; try to use perplexity=5 now\n")
                         Rtsne.res <<- Rtsne(.tsne.input,perplexity=5,dims=dims,
-                                            is_distance=.tsne.isDistance, pca=.tsne.pca)
-                    }else{
-                        print(e)
-                    }
+                                  Y_init=.U[,.U_index],pca=F)
+                    }else{ print(e) }
                 })
+            }else{
+                tryCatch({ 
+                
+                    Rtsne.res <- Rtsne(.tsne.input,perplexity=par.perplexity,dims=dims,
+                                                is_distance=.tsne.isDistance,pca=.tsne.pca) },
+                    error=function(e){
+                        if(grepl("Perplexity is too large",e,perl=T)){
+                            cat("Perplexity is too large; try to use perplexity=5 now\n")
+                            Rtsne.res <<- Rtsne(.tsne.input,perplexity=5,dims=dims,
+                                                is_distance=.tsne.isDistance, pca=.tsne.pca)
+                        }else{
+                            print(e)
+                        }
+                    })
+            }
         }else{
             Rtsne.res <- preSNE[[as.character(par.perplexity)]]$Rtsne.res
         }
@@ -1021,7 +1116,7 @@ runTSNEAnalysis <- function(in.data,out.prefix,legend,col.points,col.legend,pch=
             par(mar=c(5,5,4,2))
             plot(Rtsne.res$Y[,1],Rtsne.res$Y[,2], t='n', main="BarnesHutSNE",xlab="Dim1",ylab="Dim2")
             points(Rtsne.res$Y,col=col.points,pch=pch,
-                   cex=min(1.0,0.6*7000/nrow(Rtsne.res$Y)),...)
+                   cex=min(0.8,0.6*5000/nrow(Rtsne.res$Y)),...)
             par(mar=c(5,0,4,2))
             plot.new()
             legend("left",legend=legend,fill = NULL,xpd = NA,cex=1.2,pch=pch.legend,border =NA,col = col.legend)
@@ -1031,11 +1126,12 @@ runTSNEAnalysis <- function(in.data,out.prefix,legend,col.points,col.legend,pch=
         par(mar=c(5,5,4,2))
         plot(Rtsne.res$Y[,1],Rtsne.res$Y[,2], t='n', main="BarnesHutSNE",xlab="Dim1",ylab="Dim2")
         points(Rtsne.res$Y,col=col.points,pch=16,
-               cex=min(1.0,0.6*5000/nrow(Rtsne.res$Y)),...)
+               cex=min(0.8,0.6*5000/nrow(Rtsne.res$Y)),...)
                ##cex=min(1.0,0.6*7000/nrow(Rtsne.res$Y)),...)
         par(mar=c(5,0,4,2))
         plot.new()
         legend("left",legend=legend,fill = NULL,xpd = NA,cex=1.2,pch=16,border =NA,col = col.legend)
+
         ### density map
         layout(mat = matrix(c(1,2),ncol=2),widths = c(0.6,0.4))
         par(mar=c(6,6,6,6))
@@ -1064,7 +1160,6 @@ runTSNEAnalysis <- function(in.data,out.prefix,legend,col.points,col.legend,pch=
         #          legend.text=element_text(size=14)))
         #dev.off()
     }
-    #sapply(seq(10,50,10), function(i) { 
     sapply(seq(30,30,10), function(i) { 
                tryCatch(doit(i),
                         error = function(e){ print(e); e }, 
@@ -1121,14 +1216,23 @@ runNMFAnalysis <- function(dat.plot,out.prefix,ann.col,ann.colors)
 #' simple clustering
 #' @importFrom cluster
 #' @param in.data row genes, column samples
-runSimpleClusteringAnalysis <- function(in.data,out.prefix,sampleType,colSet,do.scale=T,do.pca=F,k.batch=2:10,B=100,
+runSimpleClusteringAnalysis <- function(in.data,out.prefix,sampleType,colSet,do.scale=T,k.batch=2:10,B=100,
                                         col.points=NULL,legend,col.legend,myseed=NULL,data.forDE=NULL,method="kmeans",
-                                        val.space="tSNE")
+                                        val.space="tSNE",gid.mapping=NULL,select.ncp=FALSE,transform="none",
+                                        opt.rho=NULL,opt.delta=NULL)
 {
     suppressPackageStartupMessages(require("cluster"))
     suppressPackageStartupMessages(require("RColorBrewer"))
     suppressPackageStartupMessages(require("factoextra"))
     suppressPackageStartupMessages(require("FactoMineR"))
+    suppressPackageStartupMessages(require("densityClust"))
+    suppressPackageStartupMessages(require("Rtsne"))
+    file.obj <- sprintf("%s.simple.obj.RData",out.prefix)
+    if(file.exists(file.obj)){
+        lenv <- loadToEnv(file.obj)
+        return(lenv[["ret.obj"]])
+    }
+
     if(do.scale) {
         dat.plot <- t(scale(t(in.data)))
     }else{
@@ -1143,7 +1247,7 @@ runSimpleClusteringAnalysis <- function(in.data,out.prefix,sampleType,colSet,do.
     sampleType <- sampleType[f.noDup]
     if(!is.null(data.forDE)) { data.forDE <- data.forDE[,sample.used,drop=F] }
 
-    tsne.res.old <<- runTSNEAnalysis(in.data,sprintf("%s.ori",out.prefix),
+    tsne.res.old <- runTSNEAnalysis(in.data,sprintf("%s.ori",out.prefix),
                                      col.points = col.points,
                                      legend=legend,
                                      col.legend=col.legend,
@@ -1152,23 +1256,101 @@ runSimpleClusteringAnalysis <- function(in.data,out.prefix,sampleType,colSet,do.
     res.list <- list()
     clustering.validation.df <- c()
     diffGene.list <- list()
-    for(k in k.batch){
-        if(do.pca){
-            pca.res <<- PCA(dat.plot,ncp=min(50,nrow(dat.plot),ncol(dat.plot)),graph=F,scale.unit=T)
-            if(method=="kmeans"){
-                clust.res <- kmeans(pca.res$ind$coord,k,iter.max=1000,nstart=50)
-            }else if(method=="hclust"){
-                clust.res <- eclust(pca.res$ind$coord, "hclust", k = k, method = "complete", graph = FALSE)
-            }
+    tsne.res.de.list <- list()
+
+    ### columns for genes(variables) and rows for samples
+    dat.transformed <- dat.plot
+    if(transform=="pca"){
+        ##pca.res <- PCA(dat.plot,ncp=min(50,nrow(dat.plot),ncol(dat.plot)),graph=F,scale.unit=T)
+        pca.res <- runPCAAnalysis(t(dat.plot),sprintf("%s.PCA",out.prefix),sampleType,colSet,ntop=NULL,verbose=FALSE,do.clust=FALSE,do.scale=TRUE,myseed=myseed,gid.mapping=gid.mapping)
+        test.pca.res <<- pca.res
+        eigengap <- sapply(seq_len(length(pca.res$eig$eigenvalue)-1),function(i){ pca.res$eig$eigenvalue[i]-pca.res$eig$eigenvalue[i+1] })
+        eigengap.max <- which.max(eigengap)
+        loginfo(sprintf("max eigengap: %d ( %4.4f)\n",eigengap.max,eigengap[eigengap.max]))
+        if(select.ncp){ 
+            pca.ncp <- max(eigengap.max)
         }else{
-            if(method=="kmeans"){
-                clust.res <- kmeans(dat.plot,k,iter.max=1000,nstart=50)
-            }else if(method=="hclust"){
-                clust.res <- eclust(dat.plot, "hclust", k = k, method = "complete", graph = FALSE)
+            pca.ncp <- ncol(pca.res$ind$coord)
+        }
+        loginfo(sprintf("number of components to use: %d",pca.ncp))
+        dat.transformed <- pca.res$ind$coord[,1:pca.ncp,drop=F]
+    }else if(transform=="pca_tsne"){
+        dat.transformed <- tsne.res.old$`30`$Rtsne.res$Y
+    }else if(transform=="iCor_tsne"){
+        library("lsa")
+        #.iCor.dat <- cosine(t(dat.plot))
+        #.iCor.dat <- stats::dist(dat.plot,upper = T,diag = T)
+        #.iCor.dat.mtx <- as.matrix(.iCor.dat)
+        #.iCor.iCor.dat <- cor(.iCor.dat.mtx,method="spearman")
+        #save(col.points,legend,col.legend,myseed,dat.plot,.iCor.dat,.iCor.dat.mtx,.iCor.iCor.dat,file = sprintf("%s.forTEST.00.RData",out.prefix))
+        #.iCor.dat <- .iCor.iCor.dat
+
+        .iCor.dat <- cor(t(dat.plot),method="pearson")
+        #.iCor.dat <- cor(t(dat.plot),method="spearman")
+        #.iCor.dat <- cor(in.data,method="spearman")
+        #.iCor.dat <- 1-cor(t(dat.plot),method="spearman")
+
+        .iCor.dat.tsne <- runTSNEAnalysis(.iCor.dat,sprintf("%s.iCor",out.prefix),
+                                     col.points = col.points,
+                                     legend=legend,
+                                     col.legend=col.legend,
+                                     myseed=myseed,do.dbscan = F,do.scale = F,do.pca=F,do.determ=T)
+
+        dat.transformed <- .iCor.dat.tsne$`30`$Rtsne$Y
+        rownames(dat.transformed) <- rownames(.iCor.dat)
+        save(dat.transformed,col.points,legend,col.legend,myseed,dat.plot,.iCor.dat,file = sprintf("%s.forTEST.RData",out.prefix))
+###        tryCatch({ .iCor.dat.tsne <- Rtsne(.iCor.dat,perplexity=30,dims=2) },
+###            error=function(e){ if(grepl("Perplexity is too large",e,perl=T)){
+###                        cat("Perplexity is too large; try to use perplexity=5 now\n")
+###                        .iCor.dat.tsne <- Rtsne(.iCor.dat,perplexity=5,dims=2)
+###                    }else{
+###                        print(e)
+###                    }
+###                })
+###        dat.transformed <- .iCor.dat.tsne$Y
+###        rownames(dat.transformed) <- rownames(.iCor.dat)
+    }
+    if(is.null(dat.transformed)){ return(NULL) }
+    test.dat.transformed <<- dat.transformed
+    clust.res <- NULL
+    for(k in k.batch){
+        if(method=="kmeans"){
+            clust.res <- kmeans(dat.transformed,k,iter.max=1000,nstart=50)
+        }else if(method=="hclust"){
+            clust.res <- eclust(dat.transformed, "hclust", k = k, method = "complete", graph = FALSE)
+        }else if(method=="density"){
+            if(is.null(clust.res)){
+                dist.obj <- dist(dat.transformed)
+                density.clust.res <- densityClust::densityClust(dist.obj, gaussian = T)
+                if(is.null(opt.rho)){ opt.rho <- quantile(density.clust.res$rho, probs = 0.90) }
+                if(is.null(opt.delta)){ opt.delta <- quantile(density.clust.res$delta, probs = 0.95) }
+                set.seed(myseed)
+                pdf(sprintf("%s.decision.pdf",out.prefix),width = 5,height = 5)
+                density.clust.res <- densityClust::findClusters(density.clust.res, rho = opt.rho, delta = opt.delta,plot=T)
+                abline(v=opt.rho,lty=2)
+                abline(h=opt.delta,lty=2)
+                plot(sort(density.clust.res$rho * density.clust.res$delta,decreasing = T),ylab="rho * delta")
+                ###
+                .density <- kde(dat.transformed)
+                par(mar=c(5,4,5,6))
+                .zz <- c(10,20,30,40,50,60,70,80,90)
+                plot(.density,display="filled.contour2", cont=.zz,xlab="Dim1", ylab="Dim2")
+                image.plot(zlim=c(0,.zz[length(.zz)]),legend.only=TRUE, col = c("transparent", rev(heat.colors(length(.zz)))),
+                           axis.args=list( at=.zz, labels=sprintf("%s%%",100-.zz)), legend.width=2.0,legend.mar=4.5)
+                plot(.density,display="filled.contour2", cont=.zz,xlab="Dim1", ylab="Dim2")
+                points(dat.transformed[names(density.clust.res$peaks),,drop=F],pch=3,cex=2,col="black")
+                image.plot(zlim=c(0,.zz[length(.zz)]),legend.only=TRUE, col = c("transparent", rev(heat.colors(length(.zz)))),
+                           axis.args=list( at=.zz, labels=sprintf("%s%%",100-.zz)), legend.width=2.0,legend.mar=4.5)
+                dev.off()
+                clust.res <- list("cluster"=density.clust.res$clusters)
+                names(clust.res$cluster) <- names(density.clust.res$rho)
+                print(str(clust.res$cluster))
             }
         }
+        if(method=="density" && length(res.list)>0 ){ break  }
+        loginfo(sprintf("... k=%d ",k))
         ### save
-        out.df <- data.frame(sample=colnames(in.data),cluster=clust.res$cluster)
+        out.df <- data.frame(sample=colnames(in.data),cluster=clust.res$cluster,stringsAsFactors = F)
         write.table(out.df,file=sprintf("%s.k%d.clust.txt",out.prefix,k),
                     row.names = F,sep = "\t",quote = F)
 
@@ -1180,13 +1362,20 @@ runSimpleClusteringAnalysis <- function(in.data,out.prefix,sampleType,colSet,do.
             .dat.to.test <- data.forDE
         }
         .clust <- clust.res$cluster
-        .gene.table <<- my.clusterMarkerGene(.dat.to.test,
+        print("TEST: XXXXX")
+        save(.dat.to.test,.clust,col.points,clusterColor,sampleType,colSet,data.forDE,file="XXX.test.RData")
+
+        .gene.table <- my.clusterMarkerGene(.dat.to.test,
                                             clust=.clust,
                                             ann.col=col.points,
                                             clust.col=clusterColor,
                                             out.prefix=sprintf("%s.k%d.clust", out.prefix,k),
                                             n.cores=NULL,
-                                            if(is.null(data.forDE)) F else T,sampleType = sampleType,sampleTypeColSet = colSet)
+                                            original.labels=F,
+                                            sampleType = sampleType,sampleTypeColSet = colSet,gid.mapping = gid.mapping)
+
+                                            ####original.labels=if(is.null(data.forDE)) F else T,
+        print("TEST: YYYYYY")
         ##### visualization by tSNE
         ## a reference tSNE
         tsne.res.cls <- runTSNEAnalysis(in.data,sprintf("%s.k%d.viz",out.prefix,k),
@@ -1195,18 +1384,20 @@ runSimpleClusteringAnalysis <- function(in.data,out.prefix,sampleType,colSet,do.
                                         col.legend=clusterColor,preSNE = tsne.res.old,
                                         myseed=tsne.res.old$`30`$myseed,do.dbscan = F,do.scale = do.scale)
         ## tSNE using DE genes
-        if(nrow(.gene.table$aov.res$aov.out.sig)>30){
-            tsne.res.cls.de <- runTSNEAnalysis(.dat.to.test[rownames(.gene.table$aov.res$aov.out.sig),],sprintf("%s.k%d.de.viz",out.prefix,k),
+        if(!is.null(.gene.table) && nrow(.gene.table$aov.res$aov.out.sig)>30){
+            tsne.res.cls.de <- runTSNEAnalysis(.dat.to.test[rownames(.gene.table$aov.res$aov.out.sig),],
+                                               sprintf("%s.k%d.de.viz",out.prefix,k),
                             col.points = clusterColor[as.character(.clust)],
                             legend=sprintf("C%s",names(clusterColor)),
                             col.legend=clusterColor,preSNE = NULL,
                             myseed=tsne.res.old$`30`$myseed,do.dbscan = F,do.scale = do.scale)
+            tsne.res.de.list[[as.character(k)]] <- tsne.res.cls.de
         }
         ### evaluation
         .dat.to.val <- in.data
         if(val.space=="tSNE"){
             .dat.to.val <- t(tsne.res.old$`30`$Rtsne.res$Y)
-        }else if(val.space=="pca" && do.pca){
+        }else if(val.space=="pca" && transform=="pca"){
             .dat.to.val <- t(pca.res$ind$coord)
         }
         val.res <- my.clusteringValidation(.dat.to.val,clust=clust.res$cluster,
@@ -1235,7 +1426,8 @@ runSimpleClusteringAnalysis <- function(in.data,out.prefix,sampleType,colSet,do.
     clustering.validation.df$avg.silwidth.rank <- rank(clustering.validation.df[,"avg.silwidth"],na.last = F)
     clustering.validation.df$dunn.rank <- rank(clustering.validation.df[,"dunn"],na.last = F)
     clustering.validation.df$score <- apply(clustering.validation.df[,c("avg.silwidth.rank","dunn.rank")],1,mean)
-    clustering.validation.df.best <- subset(clustering.validation.df[ order(clustering.validation.df$score,decreasing = T),], clustered.sample/total.sample>0.85)
+    clustering.validation.df.best <- subset(clustering.validation.df[ order(clustering.validation.df$avg.silwidth,decreasing = T),], clustered.sample/total.sample>0.85)
+    ###clustering.validation.df.best <- subset(clustering.validation.df[ order(clustering.validation.df$score,decreasing = T),], clustered.sample/total.sample>0.85)
     write.table(clustering.validation.df, file=sprintf("%s.val.txt",out.prefix), row.names = F,sep = "\t",quote = F)
     write.table(clustering.validation.df.best, file=sprintf("%s.val.best.txt",out.prefix), row.names = F,sep = "\t",quote = F)
 
@@ -1247,11 +1439,15 @@ runSimpleClusteringAnalysis <- function(in.data,out.prefix,sampleType,colSet,do.
         dev.off()
     }
     ####
-    return(list(res.list=res.list,
+    ret.obj <- list(res.list=res.list,
                 clustering.validation.df=clustering.validation.df,
                 clustering.validation.df.best=clustering.validation.df.best,
                 diffGene.list=diffGene.list,
-                sample.used=sample.used))
+                tsne.res.de.list=tsne.res.de.list,
+                tsne.res.old=tsne.res.old,
+                sample.used=sample.used)
+    save(ret.obj,file=file.obj)
+    return(ret.obj)
 
     ### gap ??
 
@@ -1265,7 +1461,8 @@ runSimpleClusteringAnalysis <- function(in.data,out.prefix,sampleType,colSet,do.
 
 }
 
-plot.tsne.points <- function(x,out.file,tsne.col.points,col.tsne.legend,tsne.legend,pch,nclusters,peak=NULL)
+plot.tsne.points <- function(x,out.file,tsne.col.points,col.tsne.legend,tsne.legend,pch,nclusters=NULL,
+                             peak=NULL,main="BarnesHutSNE",x.dim=c(1,2))
 {
     pdf(out.file,width=10,height=6)
     tryCatch({
@@ -1273,8 +1470,9 @@ plot.tsne.points <- function(x,out.file,tsne.col.points,col.tsne.legend,tsne.leg
     par(mar=c(5,5,4,1),cex.lab=1.5,cex.main=1.5)
     layout(mat = matrix(c(1,2),ncol=2),widths = c(0.6,0.4))
     par(mar=c(5,5,4,2))
-    plot(x[,1],x[,2], col=tsne.col.points, cex=min(1.0,0.6*7000/nrow(x)),
-         pch=pch,main=sprintf("BarnesHutSNE"),xlab="Dim1",ylab="Dim2")
+    #print(head(x))
+    plot(x[,x.dim[1]],x[,x.dim[2]], col=tsne.col.points, cex=auto.point.size(nrow(x)),
+         pch=pch,main=main,xlab=sprintf("Dim%d",x.dim[1]),ylab=sprintf("Dim%d",x.dim[2]))
     if(!is.null(peak)){
         points(x[peak,,drop=F],pch=3,cex=2,col="black")
     }
@@ -1282,8 +1480,9 @@ plot.tsne.points <- function(x,out.file,tsne.col.points,col.tsne.legend,tsne.leg
     plot.new()
     legend("left",tsne.legend,
            fill = NULL,xpd = NA,cex=1.5,pch=pch,border =NA,
-           ncol=as.integer(ceiling(nclusters/20)),
+           ncol=as.integer(ceiling(length(tsne.legend)/20)),
            col = col.tsne.legend)
+           ##ncol=as.integer(ceiling(nclusters/20)),
     par(opar)
     },error=function(e){print(e);e})
     dev.off()
@@ -1820,7 +2019,7 @@ runSC3Analysis <- function(in.data,out.prefix,sampleType,colSet,do.log.scale=FAL
 #' @param colSet  named vector of colors, names is the sample type, values is the mapped colors
 #' @param ntop  select the ntop genes with the largest variance
 #' @param verbose
-runPCAAnalysis <- function(dat.plot,out.prefix,sampleType,colSet,ntop=NULL,verbose=FALSE,do.clust=FALSE,do.scale=TRUE,myseed=NULL,gid.mapping=NULL,...)
+runPCAAnalysis <- function(dat.plot,out.prefix,sampleType,colSet,ntop=NULL,verbose=FALSE,do.clust=FALSE,do.scale=TRUE,myseed=NULL,gid.mapping=NULL,do.dimdesc=F,...)
 {
     #require("DESeq2")
     suppressPackageStartupMessages(require("ggplot2"))
@@ -1828,8 +2027,6 @@ runPCAAnalysis <- function(dat.plot,out.prefix,sampleType,colSet,ntop=NULL,verbo
     suppressPackageStartupMessages(require("factoextra"))
     suppressPackageStartupMessages(require("FactoMineR"))
     rowVar <- apply(dat.plot,1,var)
-    #rowVar <- apply(vstMat,1,function(x){ var(x)/(mean(x)^2) } )
-    
     dat.plot <- as.matrix(dat.plot[rowVar>0,,drop=F])
     print(dim(dat.plot))
     print(length(sampleType))
@@ -1857,7 +2054,7 @@ runPCAAnalysis <- function(dat.plot,out.prefix,sampleType,colSet,ntop=NULL,verbo
     #### PCA
     if(is.null(myseed)){ myseed <- as.integer(Sys.time()) }
     set.seed(myseed)
-    loginfo(sprintf("set.seed(%d) for PCA\n",myseed))
+    loginfo(sprintf("set.seed(%s) for PCA\n",as.character(myseed)))
 
     #### prcomp
     ####pca <- prcomp(dat.plot.t,scale=do.scale)
@@ -1868,46 +2065,51 @@ runPCAAnalysis <- function(dat.plot,out.prefix,sampleType,colSet,ntop=NULL,verbo
     ####pca.eig.df <- data.frame(eig = pca.eig, variance = variance.in.percent, cumvariance = cumvar.in.percent)
 
     ### FactoMinR
-    pca <- PCA(dat.plot.t,ncp=min(30,n,m),graph=F,scale.unit=T)
+    pca <- PCA(dat.plot.t,ncp=min(50,n,m),graph=F,scale.unit=T)
     loginfo(sprintf("PCA() done.\n"))
-    #res.desc <- dimdesc(pca, axes = c(1:10))
-    #loginfo(sprintf("dimdesc() done.\n"))
-    #invisible(sapply(names(res.desc),function(x){
-    #                 oo <- data.frame(gene=rownames(res.desc[[x]][["quanti"]]))
-    #                 oo <- cbind(oo,res.desc[[x]][["quanti"]])
-    #                 write.table(oo,sprintf("%s.variable.association.%s",out.prefix,x),
-    #                                row.names = F,col.names = T,sep="\t",quote = F)
-    #         }))
+    res.desc <- NULL
+    if(do.dimdesc){
+        res.desc <- dimdesc(pca, axes = c(1:10))
+        loginfo(sprintf("dimdesc() done.\n"))
+        invisible(sapply(names(res.desc),function(x){
+                         oo <- data.frame(gene=rownames(res.desc[[x]][["quanti"]]))
+                         oo <- cbind(oo,res.desc[[x]][["quanti"]])
+                         write.table(oo,sprintf("%s.variable.association.%s",out.prefix,x),
+                                        row.names = F,col.names = T,sep="\t",quote = F)
+                 }))
+    }
 
     pca.eig.df <- pca$eig
 
     pca.var <- get_pca_var(pca)
     pca.ind <- get_pca_ind(pca)
 
-    d <- data.frame(geneSymbol=rownames(pca.var$contrib))
-    d <- cbind(d,pca.var$contrib)
-    ozfile <- gzfile(sprintf("%s.contribution.txt.gz",out.prefix),open = "w")
-	write.table(d,file = ozfile,sep = "\t",col.names = T,row.names = F,quote = F)
-    close(ozfile)
-    
-    d <- data.frame(sampleType=sampleType, sampleName = colnames(dat.plot))
-    d <- cbind(d,pca$ind$coord)
-    ozfile <- gzfile(sprintf("%s.txt.gz",out.prefix),open = "w")
-	write.table(d,file = ozfile,sep = "\t",col.names = T,row.names = F,quote = F)
-    close(ozfile)
+    d.contri <- data.frame(geneSymbol=rownames(pca.var$contrib))
+    d.contri <- cbind(d.contri,pca.var$contrib)
+    d.ind.coord <- data.frame(sampleType=sampleType, sampleName = colnames(dat.plot))
+    d.ind.coord <- cbind(d.ind.coord,pca$ind$coord)
+    if(verbose){
+        ozfile <- gzfile(sprintf("%s.contribution.txt.gz",out.prefix),open = "w")
+        write.table(d.contri,file = ozfile,sep = "\t",col.names = T,row.names = F,quote = F)
+        close(ozfile)
+        
+        ozfile <- gzfile(sprintf("%s.txt.gz",out.prefix),open = "w")
+        write.table(d,file = ozfile,sep = "\t",col.names = T,row.names = F,quote = F)
+        close(ozfile)
+    }
    
     my.plot.score <- function(pc.x,pc.y,pc.x.lab,pc.y.lab,pc.x.pve,pc.y.pve,e.x.lab=NULL,e.y.lab=NULL){
         layout(mat = matrix(c(1,2),ncol=2),widths = c(0.6,0.4))
         opar <- par(mar=c(5,5,4,2),cex.lab=1.5)
-        plot(x=NULL,y=NULL, xlim = range(pc.x), ylim = range(pc.y), type = "n", cex.main=1.5,
+        plot(x=NULL,y=NULL, xlim = range(pc.x), ylim = range(pc.y), type = "n", cex.main=1.5,cex=0.8,
              xlab=sprintf("%s: %s%% variance ",ifelse(is.null(e.x.lab),pc.x.lab,e.x.lab), pc.x.pve), 
              ylab=sprintf("%s: %s%% variance ",ifelse(is.null(e.y.lab),pc.y.lab,e.y.lab), pc.y.pve)) 
-        invisible(lapply(levels(d$sampleType),function(x){ points(subset(d,sampleType==x,select=pc.x.lab)[,1],
-                                                                  subset(d,sampleType==x,select=pc.y.lab)[,1],
-                                                                  col=colSet[x],pch=16,cex=1.2)  }))
+        invisible(lapply(levels(d.ind.coord$sampleType),function(x){ points(subset(d.ind.coord,sampleType==x,select=pc.x.lab)[,1],
+                                                                  subset(d.ind.coord,sampleType==x,select=pc.y.lab)[,1],
+                                                                  col=colSet[x],pch=20,cex=auto.point.size(length(pc.x))) }))
         par(mar=c(5,0,4,2))
         plot.new()
-        legend("left",legend=names(colSet),fill = NULL,xpd = NA,cex=1.5*7/length(names(colSet)),pch=16,border =NA,col = colSet)
+        legend("left",legend=names(colSet),fill = NULL,xpd = NA,cex=min(1.2,1.5*7/length(names(colSet))),pch=20,border =NA,col = colSet)
         par(opar)
     }
     ### loading plot
@@ -1922,19 +2124,18 @@ runPCAAnalysis <- function(dat.plot,out.prefix,sampleType,colSet,ntop=NULL,verbo
     }
 
     nDim.plot <- min(30,nrow(pca.eig.df))
-    #print(head(percentVar)) 
-    save(pca,pca.eig.df,d,out.prefix,file=sprintf("%s.tmp.RData",out.prefix))
-    source("/Share/BP/zhenglt/02.pipeline/cancer/lib/my.getContrib.R")
-    pdf(file=sprintf("%s.contribInd.pdf",out.prefix),width=8,height=8)
+    save(pca,pca.eig.df,colSet,sampleType,d.ind.coord,out.prefix,file=sprintf("%s.tmp.RData",out.prefix))
+    ##source("/Share/BP/zhenglt/02.pipeline/cancer/lib/my.getContrib.R")
+    pdf(file=sprintf("%s.contribInd.pdf",out.prefix),width=8,height=5)
     print(fviz_contrib(pca, choice = "ind", axes = 1, top = nDim.plot)+labs(title = "Contribution of cells to PC1")+theme(plot.margin = margin(20,40,20,20), plot.title = element_text(size = rel(2)), axis.title.y = element_text(size = rel(2)), axis.text.y=element_text(size = rel(1.8)), axis.text.x=element_text(size = rel(1.1),vjust=0.85)))
     print(fviz_contrib(pca, choice = "ind", axes = 2, top = nDim.plot)+labs(title = "Contribution of cells to PC2")+theme(plot.margin = margin(20,40,20,20), plot.title = element_text(size = rel(2)), axis.title.y = element_text(size = rel(2)), axis.text.y=element_text(size = rel(1.8)), axis.text.x=element_text(size = rel(1.1),vjust=0.85)) )
-    print(my.fviz_contrib(pca, choice = "ind", axes=1:2, top = nDim.plot)+labs(title = "Contribution of cells to PC1 and PC2")+theme(plot.margin = margin(20,40,20,20), plot.title = element_text(size = rel(2)), axis.title.y = element_text(size = rel(2)), axis.text.y=element_text(size = rel(1.8)), axis.text.x=element_text(size = rel(1.1),vjust=0.85)))
+    print(fviz_contrib(pca, choice = "ind", axes=1:2, top = nDim.plot)+labs(title = "Contribution of cells to PC1 and PC2")+theme(plot.margin = margin(20,40,20,20), plot.title = element_text(size = rel(2)), axis.title.y = element_text(size = rel(2)), axis.text.y=element_text(size = rel(1.8))))
     dev.off()
 
-    pdf(file=sprintf("%s.contribVar.pdf",out.prefix),width=8,height=8)
+    pdf(file=sprintf("%s.contribVar.pdf",out.prefix),width=8,height=5)
     print(fviz_contrib(pca, choice = "var", axes = 1, top = nDim.plot)+labs(title = "Contribution of genes to PC1")+theme(plot.margin = margin(20,40,20,20), plot.title = element_text(size = rel(2)), axis.title.y = element_text(size = rel(2)), axis.text.y=element_text(size = rel(1.8)), axis.text.x=element_text(size = rel(1.1),vjust=0.85)))
     print(fviz_contrib(pca, choice = "var", axes = 2, top = nDim.plot)+labs(title = "Contribution of genes to PC2")+theme(plot.margin = margin(20,40,20,20), plot.title = element_text(size = rel(2)), axis.title.y = element_text(size = rel(2)), axis.text.y=element_text(size = rel(1.8)), axis.text.x=element_text(size = rel(1.1),vjust=0.85)) )
-    print(my.fviz_contrib(pca, choice = "var", axes=1:2, top = nDim.plot)+labs(title = "Contribution of genes to PC1 and PC2")+theme(plot.margin = margin(20,40,20,20), plot.title = element_text(size = rel(2)), axis.title.y = element_text(size = rel(2)), axis.text.y=element_text(size = rel(1.8)), axis.text.x=element_text(size = rel(1.1),vjust=0.85)))
+    print(fviz_contrib(pca, choice = "var", axes=1:2, top = nDim.plot)+ labs(title = "Contribution of genes to PC1 and PC2")+ theme(plot.margin = margin(20,40,20,20), plot.title = element_text(size = rel(2)), axis.title.y = element_text(size = rel(2)), axis.text.y=element_text(size = rel(1.8))))
     dev.off()
     
     #my.plot.loading(pca$rotation[,1],pca$rotation[,2],"PC1","PC2")
@@ -1943,162 +2144,62 @@ runPCAAnalysis <- function(dat.plot,out.prefix,sampleType,colSet,ntop=NULL,verbo
 
     ### score plot
     pdf(file=sprintf("%s.score.PC1-PC2.pdf",out.prefix),width=10,height=6)
-    my.plot.score(d$Dim.1,d$Dim.2,"Dim.1","Dim.2",round(pca.eig.df[1,2],2),round(pca.eig.df[2,2],2),e.x.lab="PC1",e.y.lab="PC2")
+    my.plot.score(d.ind.coord$Dim.1,d.ind.coord$Dim.2,"Dim.1","Dim.2",round(pca.eig.df[1,2],2),round(pca.eig.df[2,2],2),e.x.lab="PC1",e.y.lab="PC2")
     dev.off()
     pdf(file=sprintf("%s.score.PC1-PC3.pdf",out.prefix),width=10,height=6)
-    my.plot.score(d$Dim.1,d$Dim.3,"Dim.1","Dim.3",round(pca.eig.df[1,2],2),round(pca.eig.df[3,2],2),e.x.lab="PC1",e.y.lab="PC3")
+    my.plot.score(d.ind.coord$Dim.1,d.ind.coord$Dim.3,"Dim.1","Dim.3",round(pca.eig.df[1,2],2),round(pca.eig.df[3,2],2),e.x.lab="PC1",e.y.lab="PC3")
     dev.off()
     pdf(file=sprintf("%s.score.PC2-PC3.pdf",out.prefix),width=10,height=6)
-    my.plot.score(d$Dim.2,d$Dim.3,"Dim.2","Dim.3",round(pca.eig.df[2,2],2),round(pca.eig.df[3,2],2),e.x.lab="PC2",e.y.lab="PC3")
+    my.plot.score(d.ind.coord$Dim.2,d.ind.coord$Dim.3,"Dim.2","Dim.3",round(pca.eig.df[2,2],2),round(pca.eig.df[3,2],2),e.x.lab="PC2",e.y.lab="PC3")
+    dev.off()
+    pdf(file=sprintf("%s.score.PC1-PC5.pdf",out.prefix),width=10,height=6)
+    my.plot.score(d.ind.coord$Dim.1,d.ind.coord$Dim.5,"Dim.1","Dim.5",round(pca.eig.df[1,2],2),round(pca.eig.df[5,2],2),e.x.lab="PC1",e.y.lab="PC5")
     dev.off()
 
-    pdf(file=sprintf("%s.pdf",out.prefix),width=10,height=8)
-    par(mar=c(5,5,4,8),cex.lab=1.5)
+    pdf(file=sprintf("%s.pdf",out.prefix),width=6,height=5)
+    par(mar=c(5,5,4,4),cex.lab=1.2)
     ### scree plot
     xat <- barplot(pca.eig.df[1:nDim.plot, 2], names.arg=1:nDim.plot, main = "Variances", xlab = "Principal Components", ylab = "Percentage of variances", col ="steelblue")
     abline(h = 1*100/sum(pca.eig.df[,2]), lty = 2, col = "red", lwd=2)
     barplot(pca.eig.df[1:nDim.plot, 3], names.arg=1:nDim.plot, main = "Variances", xlab = "Principal Components", ylab = "Cumulative Variances", col ="steelblue")
     barplot(pca.eig.df[1:nDim.plot, 1], names.arg=1:nDim.plot, main = "Eigenvalue", xlab = "Principal Components", ylab = "Eigenvalues", col ="steelblue")
 
-    print(fviz_screeplot(pca, ncp=nDim.plot))
-    print(fviz_pca_var(pca, axes=c(1,2), col.var="contrib",geom=c("point","text")) + scale_color_gradient2(low="white", mid="blue", high="red", midpoint=50) + theme_minimal())
-    print(fviz_contrib(pca, choice = "var", axes = 1, top = nDim.plot))
-    print(fviz_contrib(pca, choice = "var", axes = 2, top = nDim.plot))
-    print(my.fviz_contrib(pca, choice = "var", axes = 1:2, top = nDim.plot))
-    print(fviz_contrib(pca, choice = "ind", axes = 1, top = nDim.plot))
-    print(fviz_contrib(pca, choice = "ind", axes = 2, top = nDim.plot))
-    print(my.fviz_contrib(pca, choice = "ind", axes = 1:2, top = nDim.plot))
-    #print(fviz_pca_var(pca, col.var="contrib") + scale_color_gradient2(low="white", mid="blue", high="red", midpoint=50) + theme_minimal())
-    ### low sample size lead to low dimensions (<6)
-    tryCatch({
-        #### extra components
-        print(fviz_pca_var(pca, axes=c(3,4), col.var="contrib",geom=c("point","text")) + scale_color_gradient2(low="white", mid="blue", high="red", midpoint=50) + theme_minimal())
-        print(fviz_pca_var(pca, axes=c(5,6), col.var="contrib",geom=c("point","text")) + scale_color_gradient2(low="white", mid="blue", high="red", midpoint=50) + theme_minimal())
-        print(fviz_pca_var(pca, axes=c(3,6), col.var="contrib",geom=c("point","text")) + scale_color_gradient2(low="white", mid="blue", high="red", midpoint=50) + theme_minimal())
-        print(fviz_pca_var(pca, axes=c(4,5), col.var="contrib",geom=c("point","text")) + scale_color_gradient2(low="white", mid="blue", high="red", midpoint=50) + theme_minimal())
-        print(fviz_pca_var(pca, axes=c(1,5), col.var="contrib",geom=c("point","text")) + scale_color_gradient2(low="white", mid="blue", high="red", midpoint=50) + theme_minimal())
-        ###print(fviz_pca_ind(pca, axes=c(3,6),col.ind=colSet[sampleType],label="none"))
-        print(fviz_contrib(pca, choice = "var", axes = 3, top = nDim.plot))
-        print(fviz_contrib(pca, choice = "var", axes = 4, top = nDim.plot))
-        print(fviz_contrib(pca, choice = "var", axes = 5, top = nDim.plot))
-        print(fviz_contrib(pca, choice = "var", axes = 6, top = nDim.plot))
-        print(my.fviz_contrib(pca, choice = "var", axes = c(3,4), top = nDim.plot))
-        print(my.fviz_contrib(pca, choice = "var", axes = c(5,6), top = nDim.plot))
-        print(my.fviz_contrib(pca, choice = "var", axes = c(3,6), top = nDim.plot))
-        print(my.fviz_contrib(pca, choice = "var", axes = c(4,5), top = nDim.plot))
-        print(my.fviz_contrib(pca, choice = "var", axes = c(1,5), top = nDim.plot))
-    },error = function(e) e)
-    #print(fviz_pca_ind(pca, label = "none", col.ind = patientcolors ,habillage = group, addEllipses = T) + theme_minimal())
-    tryCatch(print(fviz_pca_ind(pca, label = "none", col.ind = colSet[sampleType],addEllipses = T) + theme_minimal()), error = function(e) e, finally = loginfo(sprintf("runPCAAnalysis() finally")) )
-    dev.off()
-    return(pca)
-}
-
-runPCAAnalysis.bak <- function(dat.plot,out.prefix,sampleType,colSet,ntop=NULL,verbose=FALSE,do.clust=FALSE,do.scale=TRUE,myseed=NULL,...)
-{
-    #require("DESeq2")
-    suppressPackageStartupMessages(require("ggplot2"))
-    suppressPackageStartupMessages(require("gplots"))
-    suppressPackageStartupMessages(require("factoextra"))
-    rowVar <- apply(dat.plot,1,var)
-    #rowVar <- apply(vstMat,1,function(x){ var(x)/(mean(x)^2) } )
-    
-    dat.plot <- as.matrix(dat.plot)
-    n <- nrow(dat.plot)
-    m <- ncol(dat.plot)
-    if(n<3) { loginfo(sprintf("Too few genes: n=%s",n)); return(NULL) }
-    if(m<3) { loginfo(sprintf("Too few samples: m=%s",m)); return(NULL) }
-    if(!is.null(ntop)) { 
-        select <- order(rowVar,decreasing = TRUE)[seq_len(min(ntop, length(rowVar)))]
-        dat.plot <- dat.plot[select,]
-        n <- nrow(dat.plot)
-    }
-    dat.plot.t <- t(dat.plot)
-    cnames <- entrezToXXX(colnames(dat.plot.t))
-    cnames.na <- which(is.na(cnames))
-    cnames[cnames.na] <- colnames(dat.plot.t)[cnames.na]
-    colnames(dat.plot.t) <- cnames
-    if(n<3) { loginfo(paste0("Too few genes: n=",n)); return(NULL) }
-    if(m<3) { loginfo(paste0("Too few samples: n=",m)); return(NULL)
-    }
-    #### PCA
-    if(is.null(myseed)){ myseed <- as.integer(Sys.time()) }
-    set.seed(myseed)
-    loginfo(sprintf("set.seed(%d) for PCA\n",myseed))
-    pca <- prcomp(dat.plot.t,scale=do.scale)
-    percentVar <- pca$sdev^2/sum(pca$sdev^2)
-
-    pca.eig <- (pca$sdev)^2
-    variance.in.percent <- pca.eig*100/sum(pca.eig)
-    cumvar.in.percent <- cumsum(variance.in.percent)
-    pca.eig.df <- data.frame(eig = pca.eig, variance = variance.in.percent, cumvariance = cumvar.in.percent)
-    #eig.val <- get_eigenvalue(pca)
-    pca.var <- get_pca_var(pca)
-    pca.ind <- get_pca_ind(pca)
-
-    d <- data.frame(geneSymbol=rownames(pca.var$contrib))
-    d <- cbind(d,pca.var$contrib)
-    ozfile <- gzfile(sprintf("%s.contribution.txt.gz",out.prefix),open = "w")
-	write.table(d,file = ozfile,sep = "\t",col.names = T,row.names = F,quote = F)
-    close(ozfile)
-    
-    d <- data.frame(PC1 = pca$x[, 1], PC2 = pca$x[, 2], PC3 = pca$x[, 3], sampleType=sampleType, sampleName = colnames(dat.plot))
-    ozfile <- gzfile(sprintf("%s.txt.gz",out.prefix),open = "w")
-	write.table(d,file = ozfile,sep = "\t",col.names = T,row.names = F,quote = F)
-    close(ozfile)
-    
-    #print(head(percentVar)) 
-    nDim.plot <- min(30,nrow(pca.eig.df))
-    pdf(file=sprintf("%s.pdf",out.prefix),width=10,height=8)
-    par(mar=c(5,5,4,8),cex.lab=1.5)
-    ### scree plot
-    xat <- barplot(pca.eig.df[1:nDim.plot, "variance"], names.arg=1:nDim.plot, main = "Variances", xlab = "Principal Components", ylab = "Percentage of variances", col ="steelblue")
-    #lines(x = xat, pca.eig.df[1:nDim.plot, "variance"], type="b", pch=19, col = "red")
-    abline(h = 1*100/sum(pca.eig), lty = 2, col = "red", lwd=2)
-    xat <- barplot(pca.eig.df[1:nDim.plot, "cumvariance"], names.arg=1:nDim.plot, main = "Variances", xlab = "Principal Components", ylab = "Cumulative Variances", col ="steelblue")
-
-    ### loading plot
-    my.plot.loading <- function(ld.x,ld.y,ld.x.lab,ld.y.lab){
-        a <- seq(0, 2*pi, length = 100)
-        plot( cos(a), sin(a), type = 'l', col="gray", xlab = ld.x.lab,  ylab = ld.y.lab)
-        abline(h = 0, v = 0, lty = 2)
-        arrows(0, 0, ld.x, ld.y, length = 0.1, angle = 15, code = 2)
-        text(ld.x,ld.y, labels=names(ld.x), col="#0000FF99", cex = 1, adj=1)
-        ####arrows(0, 0, pca.var$coord[, 1], pca.var$coord[, 2], length = 0.1, angle = 15, code = 2)
-        ####text(pca.var$coord[, 1], pca.var$coord[, 2], labels=rownames(pca.var$coord), cex = 1, adj=1)
-    }
-    #my.plot.loading(pca$rotation[,1],pca$rotation[,2],"PC1","PC2")
-    #my.plot.loading(pca$rotation[,1],pca$rotation[,3],"PC1","PC3")
-    #my.plot.loading(pca$rotation[,2],pca$rotation[,3],"PC2","PC3")
-    ### score plot
-    my.plot.score <- function(pc.x,pc.y,pc.x.lab,pc.y.lab,pc.x.pve,pc.y.pve){
-        plot(x=NULL,y=NULL, xlim = range(pc.x), ylim = range(pc.y), type = "n", cex.main=1.5,
-             xlab=sprintf("%s: %s%% variance ",pc.x.lab, pc.x.pve), 
-             ylab=sprintf("%s: %s%% variance ",pc.y.lab, pc.y.pve)) 
-        invisible(lapply(levels(d$sampleType),function(x){ points(subset(d,sampleType==x,select="PC1")[,1],subset(d,sampleType==x,select="PC2")[,1],col=colSet[x],pch=16,cex=1.2)  }))
-        legend("right",legend=names(colSet),fill = NULL,inset = -0.19,xpd = NA,cex=1.5,pch=16,border =NA,col = colSet)
-    }
-    my.plot.score(d$PC1,d$PC2,"PC1","PC2",round(percentVar[1] * 100,2),round(percentVar[2] * 100,2))
-    my.plot.score(d$PC1,d$PC3,"PC1","PC3",round(percentVar[1] * 100,2),round(percentVar[3] * 100,2))
-    my.plot.score(d$PC2,d$PC3,"PC2","PC3",round(percentVar[2] * 100,2),round(percentVar[3] * 100,2))
-
-    #library("FactoMineR")
-    #pca <- PCA(dat.plot, graph = FALSE)
-    print(fviz_screeplot(pca, ncp=nDim.plot))
+    #print(fviz_screeplot(pca, ncp=nDim.plot))
+    print(fviz_pca_var(pca, axes=c(1,2), col.var="contrib",geom=c("point","text"),gradient.cols=c("white","blue","red"),ggtheme = theme_minimal()))
     print(fviz_contrib(pca, choice = "var", axes = 1, top = nDim.plot))
     print(fviz_contrib(pca, choice = "var", axes = 2, top = nDim.plot))
     print(fviz_contrib(pca, choice = "var", axes = 1:2, top = nDim.plot))
     print(fviz_contrib(pca, choice = "ind", axes = 1, top = nDim.plot))
     print(fviz_contrib(pca, choice = "ind", axes = 2, top = nDim.plot))
     print(fviz_contrib(pca, choice = "ind", axes = 1:2, top = nDim.plot))
-    print(fviz_pca_var(pca, col.var="contrib") + scale_color_gradient2(low="white", mid="blue", high="red", midpoint=50) + theme_minimal())
+    #print(fviz_pca_var(pca, col.var="contrib") + scale_color_gradient2(low="white", mid="blue", high="red", midpoint=50) + theme_minimal())
+    ### low sample size lead to low dimensions (<6)
+    tryCatch({
+        #### extra components
+        print(fviz_pca_var(pca, axes=c(3,4), col.var="contrib",geom=c("point","text"),gradient.cols=c("white","blue","red"),ggtheme = theme_minimal()))
+        print(fviz_pca_var(pca, axes=c(5,6), col.var="contrib",geom=c("point","text"),gradient.cols=c("white","blue","red"),ggtheme = theme_minimal()))
+        print(fviz_pca_var(pca, axes=c(3,6), col.var="contrib",geom=c("point","text"),gradient.cols=c("white","blue","red"),ggtheme = theme_minimal()))
+        print(fviz_pca_var(pca, axes=c(4,5), col.var="contrib",geom=c("point","text"),gradient.cols=c("white","blue","red"),ggtheme = theme_minimal()))
+        print(fviz_pca_var(pca, axes=c(1,5), col.var="contrib",geom=c("point","text"),gradient.cols=c("white","blue","red"),ggtheme = theme_minimal()))
+        ###print(fviz_pca_ind(pca, axes=c(3,6),col.ind=colSet[sampleType],label="none"))
+        print(fviz_contrib(pca, choice = "var", axes = 3, top = nDim.plot))
+        print(fviz_contrib(pca, choice = "var", axes = 4, top = nDim.plot))
+        print(fviz_contrib(pca, choice = "var", axes = 5, top = nDim.plot))
+        print(fviz_contrib(pca, choice = "var", axes = 6, top = nDim.plot))
+        print(fviz_contrib(pca, choice = "var", axes = c(3,4), top = nDim.plot))
+        print(fviz_contrib(pca, choice = "var", axes = c(5,6), top = nDim.plot))
+        print(fviz_contrib(pca, choice = "var", axes = c(3,6), top = nDim.plot))
+        print(fviz_contrib(pca, choice = "var", axes = c(4,5), top = nDim.plot))
+        print(fviz_contrib(pca, choice = "var", axes = c(1,5), top = nDim.plot))
+    },error = function(e){ print(e); e })
     #print(fviz_pca_ind(pca, label = "none", col.ind = patientcolors ,habillage = group, addEllipses = T) + theme_minimal())
-    tryCatch(print(fviz_pca_ind(pca, label = "none", col.ind = patientcolors ,habillage = group, addEllipses = T) + theme_minimal()), error = function(e) e, finally = loginfo(sprintf("runPCAAnalysis() finally")) )
+    tryCatch({
+        sampleType.factor <- factor(sampleType)
+        print(fviz_pca_ind(pca, label = "none", habillage=sampleType.factor,addEllipses = F,palette = colSet[levels(sampleType.factor)]) + theme_minimal())
+    }, error = function(e){ print(e); e }, finally = loginfo(sprintf("runPCAAnalysis() finally")) )
     dev.off()
-
     return(pca)
 }
-
 
 #' run hierachical clustering analysis on given data(row for genes and column for samples)
 #' 
@@ -2126,7 +2227,11 @@ runHierarchicalClusteringAnalysis <- function(dat.plot,out.prefix,sampleType=NUL
     suppressPackageStartupMessages(require("gridBase"))
     suppressPackageStartupMessages(require("dendextend"))
 	suppressPackageStartupMessages(require("RColorBrewer"))
-    
+   
+    if(is.null(colSet) && !is.null(sampleType)){
+        sampleType.names <- unique(sampleType)
+        colSet <- structure(auto.colSet(length(sampleType.names),name="Accent"),names=sampleType.names)
+    }
     dat.plot <- as.matrix(dat.plot)
     n <- nrow(dat.plot)
     m <- ncol(dat.plot)
@@ -2211,7 +2316,13 @@ runHierarchicalClusteringAnalysis <- function(dat.plot,out.prefix,sampleType=NUL
             }
             if(is.logical(branch.col) && !branch.col){
                 obj.hclust.col <- hclust(dist(t(dat.plot.unscale)),method=clustering.method)
-                branch.col <- color_branches(as.dendrogram(obj.hclust.col),k=k.col)
+                dat.plot.unscale <- dat.plot.unscale[,obj.hclust.col$order]
+                dat.plot <- dat.plot[,obj.hclust.col$order]
+                sampleType <- sampleType[obj.hclust.col$order]
+                #tryCatch({
+                #    obj.hclust.col.dend <- as.dendrogram(obj.hclust.col)
+                #    branch.col <- color_branches(obj.hclust.col.dend,k=k.col)
+                #},error=function(e){ e })
             }
         }
         if(do.clustering.row){
@@ -2303,6 +2414,7 @@ runHierarchicalClusteringAnalysis <- function(dat.plot,out.prefix,sampleType=NUL
                  pdf.width,pdf.height,mytitle,annDF,annColList,annotation_legend_param,ann.bar.height,
                  file=sprintf("%s.RData",out.prefix))
         }
+        print(annColList)
         if(is.null(ha.col) && ( !is.null(sampleType) || !is.null(ann.extra.df))){
             ha.col <- HeatmapAnnotation(df = annDF, col = annColList, show_legend = g.show.legend, annotation_legend_param = annotation_legend_param)
         }
@@ -2334,9 +2446,11 @@ runHierarchicalClusteringAnalysis <- function(dat.plot,out.prefix,sampleType=NUL
                     top_annotation = ha.col)
         ComplexHeatmap::draw(ht, newpage= FALSE)
         ##for(i in seq_along(names(annColList))){
-        for(i in seq_along(names(ha.col@anno_list))){
-            decorate_annotation(names(ha.col@anno_list)[i], 
-                                {grid.text(names(ha.col@anno_list)[i], unit(-4, "mm"),gp=gpar(fontsize=14),just = "right")})
+        if(!is.null(ha.col)){
+            for(i in seq_along(names(ha.col@anno_list))){
+                decorate_annotation(names(ha.col@anno_list)[i], 
+                                    {grid.text(names(ha.col@anno_list)[i], unit(-4, "mm"),gp=gpar(fontsize=14),just = "right")})
+            }
         }
         dev.off()
     }
@@ -2575,7 +2689,10 @@ patientColorListFromMyDesign <- function(d) {
 read.clonotype <- function(in.file,ctype.col) {
     suppressPackageStartupMessages(require("RColorBrewer"))
     if(is.null(in.file) || !file.exists(in.file)) { return(NULL) }
-    in.table <- read.table(in.file,row.names = "Cell_Name",header = T,check.names = F,stringsAsFactors = F,sep="\t",comment.char="!",quote = "")
+    tryCatch({ in.table <- read.table(in.file,row.names = "Cell_Name",header = T,check.names = F,stringsAsFactors = F,sep="\t",comment.char="!",quote = "") },
+                error=function(e){
+                    in.table <<- read.table(in.file,row.names = "sample",header = T,check.names = F,stringsAsFactors = F,sep="\t",comment.char="!",quote = "")
+                })
     ctype <- in.table[,ctype.col]
     ctype <- strsplit(x = ctype,split = ":",perl = T)
     ###ctype <- sapply(ctype,function(x){ if(as.integer(x[2])>1) { x[1] } else { "NoClonal" }  })
@@ -3342,6 +3459,25 @@ expressedFraction <- function(exp.bin,group,ncores=8){
     return(out.res)
 }
 
+expressedFraction.HiExpressorMean <- function(exp.bin,exp.tpm,group,ncores=8){
+    suppressPackageStartupMessages(library("plyr"))
+    suppressPackageStartupMessages(library("doParallel"))
+    registerDoParallel(cores = ncores)
+    exp.bin[exp.bin<1] <- 0
+    .exp <- exp.bin*exp.tpm
+    ###out.res <- ldply(rownames(.exp)[1000:1010],function(v){
+    out.res <- ldply(rownames(.exp),function(v){
+                .n <- aggregate(exp.bin[v,],by=list(group),FUN=function(x){ sum(x==1) })
+                .res <- aggregate(.exp[v,],by=list(group),FUN=function(x){ sum(x) })
+                structure(.res[,2]/.n[,2],names=.res[,1])
+			},.progress = "none",.parallel=T)
+    rownames(out.res) <- rownames(exp.bin)
+    colnames(out.res) <- sprintf("AvgHiExpr.%s",colnames(out.res))
+    out.res <- as.matrix(out.res)
+    return(out.res)
+}
+
+
 #' get marker genes given data and cluster assignment
 #' @importFrom plyr
 #' @importFrom doParallel
@@ -3349,7 +3485,10 @@ expressedFraction <- function(exp.bin,group,ncores=8){
 #' @param clust
 #' @param out.prefix
 #' @param n.cores
-my.clusterMarkerGene <- function(dat.to.test,clust,out.prefix,n.cores=NULL,ann.col=NULL,clust.col=NULL,original.labels=F,sampleType=NULL,sampleTypeColSet=NULL,exp.bin=NULL)
+my.clusterMarkerGene <- function(dat.to.test,clust,out.prefix,n.cores=NULL,ann.col=NULL,
+                                 clust.col=NULL,original.labels=F,
+                                 sampleType=NULL,sampleTypeColSet=NULL,
+                                 exp.bin=NULL,gid.mapping=NULL,exp.tpm=NULL,F.FDR.THRESHOLD=0.05,verbose=F,minCell=5)
 {
     suppressPackageStartupMessages(require("plyr"))
     suppressPackageStartupMessages(require("dplyr"))
@@ -3361,17 +3500,46 @@ my.clusterMarkerGene <- function(dat.to.test,clust,out.prefix,n.cores=NULL,ann.c
     }
     #### marker genes by AUC
     registerDoParallel(cores = n.cores)
+
+    if(!is.null(exp.bin)){
+        .f.gid <- intersect(rownames(exp.bin),rownames(dat.to.test))
+        exp.frac <- expressedFraction(exp.bin[.f.gid,,drop=F],clust,n.cores)
+        print(str(exp.frac))
+        print(head(exp.frac))
+#        f.bin <- apply(exp.frac,1,function(x){ nE <- sum(x>0.05); nNE <- sum(x<0.95); return(nE > 0 && nNE > 0) })
+#        dat.to.test <- dat.to.test[f.bin,]
+        f.notAllZero <- apply(dat.to.test,1,function(x){ nE <- sum(x>0); return( nE > minCell & nE/length(x) > 0.01 ) })
+        dat.to.test <- dat.to.test[f.notAllZero,]
+    }else{
+        f.notAllZero <- apply(dat.to.test,1,function(x){ nE <- sum(x>0); return( nE > minCell & nE/length(x) > 0.01 ) })
+        dat.to.test <- dat.to.test[f.notAllZero,]
+    }
+
     .gene.table <- ldply(rownames(dat.to.test),function(x){
         my.getAUC(dat.to.test[x,],clust,use.rank = F)
     },.progress = "none",.parallel=T)
     colnames(.gene.table) <- c("AUC","cluster","score.p.value")
+    print("str(.gene.table)")
+    print(str(.gene.table))
     if(is.character(.gene.table$AUC)){ .gene.table$AUC <- as.numeric(.gene.table$AUC) }
     if(is.character(.gene.table$score.p.value)){ .gene.table$score.p.value <- as.numeric(.gene.table$score.p.value) }
     if(is.numeric(.gene.table$cluster)){ .gene.table$cluster <- sprintf("C%s",.gene.table$cluster) }
     ##.gene.table$score.q.value <- p.adjust(.gene.table$score.p.value,method = "BH")
+                                    ####geneSymbol=if(original.labels) rownames(dat.to.test) else entrezToXXX(rownames(dat.to.test)),
+    .geneID2GeneName <- function(x){
+        if(!original.labels){
+            if(!is.null(gid.mapping)){
+                .gene.name <- gid.mapping[x]
+            }else{
+                .gene.name <- entrezToXXX(x)
+            }
+        }else{
+            return(x)
+        }
+    }
     .gene.table$score.q.value <- 1
     .gene.table <- cbind(data.frame(geneID=rownames(dat.to.test),
-                                    geneSymbol=if(original.labels) rownames(dat.to.test) else entrezToXXX(rownames(dat.to.test)),
+                                    geneSymbol=.geneID2GeneName(rownames(dat.to.test)),
                                     stringsAsFactors = F),
                          .gene.table)
     
@@ -3380,46 +3548,68 @@ my.clusterMarkerGene <- function(dat.to.test,clust,out.prefix,n.cores=NULL,ann.c
     #### diff genes
     .aov.res <- runMultiGroupSpecificGeneTest(dat.to.test,
                                               grps = if(is.numeric(clust)) sprintf("C%s",clust) else clust,
-                                              out.prefix,mod=NULL,FDR.THRESHOLD=0.05,FC.THRESHOLD=1,verbose=F,
-                                              n.cores=n.cores,gid.mapping=NULL)
+                                              out.prefix,mod=NULL,
+                                              FDR.THRESHOLD=0.05,F.FDR.THRESHOLD=F.FDR.THRESHOLD,FC.THRESHOLD=1,
+                                              verbose=F, n.cores=n.cores,gid.mapping=gid.mapping)
 
     ####.gene.table <- left_join(x = .gene.table,y = .aov.res$aov.out)
     ##.gene.table <- inner_join(x = .gene.table,y = .aov.res$aov.out.sig,by="geneID")
-    .gene.table <- inner_join(x = .gene.table,y = .aov.res$aov.out.sig)
+    if(verbose){
+        .gene.table <- inner_join(x = .gene.table,y = .aov.res$aov.out)
+    }else{
+        .gene.table <- inner_join(x = .gene.table,y = .aov.res$aov.out.sig)
+    }
     ### average expression of each cluster
     ###avg.exp <- ldply(rownames(dat.to.test[as.character(.gene.table$geneID),,drop=F]),function(v){
     avg.exp <- ldply(as.character(.gene.table$geneID),function(v){
                 .res <- aggregate(dat.to.test[v,],by=list(clust),FUN=mean)
-                structure(.res[,2],names=.res[,1])
+                .res.2 <- aggregate(dat.to.test[v,],by=list(clust),FUN=sd)
+                structure(c(.res[,2],.res.2[,2]),names=c(sprintf("avg.%s",.res[,1]),sprintf("sd.%s",.res[,1])))
 			},.progress = "none",.parallel=T)
     ##rownames(avg.exp) <- rownames(dat.to.test[as.character(.gene.table$geneID),,drop=F])
     rownames(avg.exp) <- as.character(.gene.table$geneID)
-    colnames(avg.exp) <- sprintf("avg.%s",colnames(avg.exp))
+    ####colnames(avg.exp) <- sprintf("avg.%s",colnames(avg.exp))
     avg.exp.df <- data.frame(geneID=rownames(avg.exp),
-                             geneSymbol=if(original.labels) rownames(avg.exp) else entrezToXXX(rownames(avg.exp)),
+                             geneSymbol=.geneID2GeneName(rownames(avg.exp)),
                              stringsAsFactors = F)
     avg.exp.df <- cbind(avg.exp.df,avg.exp)
     .gene.table <- inner_join(x=.gene.table,y=avg.exp.df)
     ### binarized expression fraction
     if(!is.null(exp.bin)){
-        .f.gid <- intersect(rownames(exp.bin),as.character(.gene.table$geneID))
-        exp.frac <- expressedFraction(exp.bin[.f.gid,,drop=F],clust,n.cores)
+        #.f.gid <- intersect(rownames(exp.bin),as.character(.gene.table$geneID))
+        #exp.frac <- expressedFraction(exp.bin[.f.gid,,drop=F],clust,n.cores)
         exp.frac.df <- data.frame(geneID=rownames(exp.frac), 
-                                  geneSymbol=if(original.labels) rownames(exp.frac) else entrezToXXX(rownames(exp.frac)),
+                                  geneSymbol=.geneID2GeneName(rownames(exp.frac)),
                                   stringsAsFactors = F)
         exp.frac.df <- cbind(exp.frac.df,exp.frac)
         .gene.table <- inner_join(x = .gene.table,y = exp.frac.df)
     }
+    if(!is.null(exp.tpm)){
+        avg.exp.hiExpr <- expressedFraction.HiExpressorMean(exp.bin,exp.tpm,clust,ncores=8)
+        avg.exp.hiExpr.df <- data.frame(geneID=rownames(avg.exp.hiExpr),
+                                        geneSymbol=.geneID2GeneName(rownames(avg.exp.hiExpr)),
+                                        stringsAsFactors = F)
+        avg.exp.hiExpr.df <- cbind(avg.exp.hiExpr.df,avg.exp.hiExpr)
+        .gene.table <- inner_join(x = .gene.table,y = avg.exp.hiExpr.df)
+    }
+    rownames(.gene.table) <- .gene.table$geneID
+    if(verbose){
+        .gene.table <- .gene.table[order(.gene.table$F,decreasing = T),]
+        write.table(.gene.table, file = sprintf("%s.geneTable.all.txt",out.prefix),
+                    row.names = F,quote = F,sep = "\t")
+    }
+    f.isSig <- intersect(rownames(.aov.res$aov.out.sig),rownames(.gene.table))
+    .gene.table <- .gene.table[f.isSig,]
     .gene.table$score.q.value <- p.adjust(.gene.table$score.p.value,method = "BH")
     order.gene <- order(.gene.table$cluster,-.gene.table$AUC)
     .gene.table <- .gene.table[order.gene,,drop=F]
 
-    test.gene.table <<- .gene.table
-    test.dat.to.test <<- dat.to.test
-    test.clust <<- clust
-    test.aov.res <<- .aov.res
+    #test.gene.table <<- .gene.table
+    #test.dat.to.test <<- dat.to.test
+    #test.clust <<- clust
+    #test.aov.res <<- .aov.res
 
-    rownames(.gene.table) <- .gene.table$geneID
+    #rownames(.gene.table) <- .gene.table$geneID
     ### save .txt file
     write.table(.gene.table, file = sprintf("%s.markerGene.all.txt",out.prefix),
                 row.names = F,quote = F,sep = "\t")
@@ -3470,6 +3660,7 @@ my.clusterMarkerGene <- function(dat.to.test,clust,out.prefix,n.cores=NULL,ann.c
                                       ann.extra.df.col=list(cluster=.colSet),
                                       row.names.original=original.labels, 
                                       ann.bar.height=0.8,
+                                      gid.mapping=gid.mapping,
                                       complexHeatmap.use=TRUE,verbose=FALSE,do.scale=T)
 
     return(list(gene.table=.gene.table,aov.res=.aov.res))
@@ -3531,7 +3722,8 @@ processInput <- function(designFile,cellTypeColorFile,inputFile,args.notFilter,g
     suppressPackageStartupMessages(library("R.utils"))
     suppressPackageStartupMessages(library("scater"))
     ### designFile
-    myDesign<-read.table(designFile,header=T,check.names=F,stringsAsFactors = F)
+    ##myDesign<-read.table(designFile,header=T,check.names=F,stringsAsFactors = F)
+    myDesign<-read.delim(designFile,header=T,check.names=F,stringsAsFactors = F)
     rownames(myDesign) <- myDesign$sample
     ### cellTypeColorFile
     ####sampleTypeColor <- read.SampleTypeColor(cellTypeColorFile)
@@ -3542,21 +3734,28 @@ processInput <- function(designFile,cellTypeColorFile,inputFile,args.notFilter,g
         sampleTypeColor <- auto.colSet(n=length(unique(myDesign[,"sampleType"])),name="Paired")
         names(sampleTypeColor) <- unique(myDesign[,"sampleType"])
     }
-    patient.col.list <- patientColorListFromMyDesign(myDesign)
+    if("patient" %in% colnames(myDesign)){
+        patient.col.list <- patientColorListFromMyDesign(myDesign)
+    }else{
+        patient.col.list <- NULL
+    }
 
     ### input expression file
     if(grepl("\\.scran\\..+RData$",inputFile,perl=T) || grepl("\\.scran\\.RData$",inputFile,perl=T)){
         lenv <- loadToEnv(inputFile)
         if(!is.null(args.measure) && args.measure=="tpm"){
-                Y <- tpm(lenv[["sce.norm"]])
+            Y <- tpm(lenv[["sce.norm"]])
+        }else if(!is.null(args.measure) && args.measure=="counts"){
+            Y <- counts(lenv[["sce.norm"]])
+        }else if(args.norm.exprs || (!is.null(args.measure) && args.measure=="norm_exprs")){
+            Y <- norm_exprs(lenv[["sce.norm"]])
+            cat("range of norm_exprs Y:\n")
+            print(range(Y))
+            args.notFilter <- T
+            args.log <- F
+            args.center <- F
         }else{
-            if(args.norm.exprs){
-                Y <- norm_exprs(lenv[["sce.norm"]])
-                cat("range of norm_exprs Y:\n")
-                print(range(Y))
-            }else{
-                Y <- exprs(lenv[["sce.norm"]])
-            }
+            Y <- exprs(lenv[["sce.norm"]])
             args.notFilter <- T
             args.log <- F
             args.center <- F
@@ -3565,7 +3764,13 @@ processInput <- function(designFile,cellTypeColorFile,inputFile,args.notFilter,g
         names(g.GNAME) <- rownames(Y)
     }else if(grepl("RData$",inputFile,perl=T)){
         lenv <- loadToEnv(inputFile)
-        Y <- lenv[["Y"]]
+        if("Y" %in% names(lenv)){
+            Y <- lenv[["Y"]]
+        }else if("exp.bin" %in% names(lenv)){
+            Y <- lenv[["exp.bin"]]
+        }else{
+            stop("can not find expression data. processInput()")
+        }
         g.GNAME <- lenv[["g.GNAME"]]
         if(is.null(g.GNAME)){
             g.GNAME <- entrezToXXX(rownames(Y))
@@ -3577,11 +3782,14 @@ processInput <- function(designFile,cellTypeColorFile,inputFile,args.notFilter,g
         in.table <- read.table(inputFile,header = T,sep = "\t",stringsAsFactors = F,check.names = F)
         rownames(in.table) <- in.table[,1]
         Y <- as.matrix(in.table[,c(-1,-2)])
-        g.GNAME <- entrezToXXX(rownames(Y))
+        #g.GNAME <- entrezToXXX(rownames(Y))
+        g.GNAME <- in.table[,2]
         names(g.GNAME) <- rownames(Y)
     }
     f.gname.na <- is.na(g.GNAME)
     g.GNAME[f.gname.na] <- names(g.GNAME)[f.gname.na]
+    f.gname.dup <- duplicated(g.GNAME)
+    g.GNAME[f.gname.dup] <- names(g.GNAME)[f.gname.dup]
 
     sname <- intersect(rownames(myDesign),colnames(Y))
     myDesign <- myDesign[sname,,drop=F]
@@ -3651,7 +3859,7 @@ run.quickClustBydynamicTreeCut <- function(dat.to.sort,k=4,useDyn=T,col.sort=F,c
     list(my.clusters=structure(my.clusters,names=colnames(dat.to.sort)),my.hclust=my.hclust)
 }
 
-binarizedExp <- function(x,ofile=NULL,G=NULL,e.TH=NULL,e.name="Exp",verbose=F,...)
+binarizedExp <- function(x,ofile=NULL,G=NULL,e.TH=NULL,e.name="Exp",verbose=F, draw.CI=T,...)
 {
   require(mclust)
   o.df <- data.frame(sample=names(x),bin.Exp=-1,stringsAsFactors = F)
@@ -3672,10 +3880,14 @@ binarizedExp <- function(x,ofile=NULL,G=NULL,e.TH=NULL,e.name="Exp",verbose=F,..
   
   if(verbose && !is.null(ofile)){
 	  print(x_mix_summary)
-	  png(ofile,width=800,height=600)
-	  old_par<-par(no.readonly=T)
-	  layout(matrix(c(1,1,1,1,1,1,2,3,4), 3, 3, byrow = TRUE))
-	  a_par<-par(cex.axis=2,cex.lab=2,cex.main=1.8,mar=c(5,6,4,2)+0.1)
+      if(grepl(".png$",ofile,perl = T)){
+          png(ofile,width=800,height=600)
+	      old_par<-par(no.readonly=T)
+	      layout(matrix(c(1,1,1,1,1,1,2,3,4), 3, 3, byrow = TRUE))
+	      a_par<-par(cex.axis=2,cex.lab=2,cex.main=1.8,mar=c(5,6,4,2)+0.1)
+      }else{
+          pdf(ofile,width=8,height=6)
+      }
 	  plot(x_mix,what="density",data=x,breaks=50,col="darkgreen",lwd=2,main="",...)
 	  abline(v=x_mix_summary$mean,lty=2)
 	  if(!is.null(e.TH)){
@@ -3691,7 +3903,8 @@ binarizedExp <- function(x,ofile=NULL,G=NULL,e.TH=NULL,e.name="Exp",verbose=F,..
 		d<-qnorm(c(0.0013,0.9987),i_mean,i_sd)
 		e<-i_pro*dnorm(i_mean,i_mean,i_sd)
 		lines(seq(d[1],d[2],by=0.01),i_pro*dnorm(seq(d[1],d[2],by=0.01),i_mean,i_sd),col="orange",lwd=2)
-		rect(d[1],0,d[2],e+0.02,col=rgb(0,0,0.8,0.2),border=NA)
+        if(draw.CI){ rect(d[1],0,d[2],e+0.02,col=NA,border="blue") }
+		#rect(d[1],0,d[2],e+0.02,col=rgb(0,0,0.8,0.2),border=NA)
 	  }
 	  plot(x_mix,data=x,breaks=20,col="darkgreen",lwd=2,what="BIC")
 	  densityMclust.diagnostic(x_mix,type = "cdf",cex.lab=1.5)
@@ -3746,5 +3959,231 @@ binarizedExp <- function(x,ofile=NULL,G=NULL,e.TH=NULL,e.name="Exp",verbose=F,..
   }else{
 	return(structure(o.df[,e.name],names=rownames(o.df)))
   }
+}
+
+auto.point.size <- function(n){
+    if(n<=100){
+        return(1.2)
+    }else if(n>=5000){
+        return(0.6)
+    }else{
+        return(-0.6*n/4900+1.212002)
+    }
+}
+
+
+#' @param d row samples, must have rowname
+plot.mark.onTSNE <- function(x,mark.name,d,out.file,x.dim=c(1,2),colSet=NULL)
+{
+    suppressPackageStartupMessages(require("RColorBrewer"))
+    ss <- intersect(rownames(x),rownames(d))
+    x <- x[ss,,drop=F]
+    d <- d[ss,,drop=F]
+    if(class(d[,mark.name])=="character" || class(d[,mark.name])=="factor" || class(d[,mark.name])=="logical"){
+        nn <- sort(unique(as.character((d[,mark.name]))))
+        if(is.null(colSet)){
+            colSet <- structure(auto.colSet(n = length(nn),name = "Dark2"),
+                                names=nn)
+        }
+        print("XXXX")
+        print(nn)
+        print(colSet)
+        plot.tsne.points(x,out.file,tsne.col.points=colSet[d[rownames(x),mark.name]],
+                         col.tsne.legend=colSet,
+                         tsne.legend=names(colSet),pch=20,nclusters=length(nn),peak=NULL,main=mark.name,x.dim=x.dim)
+    }else if(class(d[,mark.name])=="integer" || class(d[,mark.name])=="numeric"){
+        x <- x[,x.dim,drop=F]
+        s.f <- order(d[,mark.name],decreasing=F)
+        Y.level <- pretty(d[,mark.name],n=10)
+        ppalette <- brewer.pal(9,"YlGnBu")
+        Y.color <- as.character(cut(d[s.f,mark.name],
+                                      breaks=quantile(c(Y.level[1],Y.level[length(Y.level)]), seq(0,1,0.01)),
+                                      labels=addalpha(colorRampPalette(ppalette)(100),alpha = 1)))
+        pdf(out.file,width=9,height=8)
+        par(mar=c(5,5,4,9),cex.lab=1.8,cex.main=2.5,cex.axis=1.5)
+        plot(x[s.f,1],x[s.f,2],
+             t='n',pch=20,col="lightgray", main=sprintf("%s",mark.name),
+             xlab=sprintf("Dim%d",x.dim[1]),
+             ylab=sprintf("Dim%d",x.dim[2]))
+        points(x[s.f,1],x[s.f,2],col=Y.color,pch=20,cex=auto.point.size(nrow(x)))
+        image.plot(zlim=c(Y.level[1],Y.level[length(Y.level)]),
+                   legend.only=TRUE,col=colorRampPalette(ppalette)(100),legend.width=2.5,legend.mar=8.0)
+        dev.off()
+    }
+}
+
+plot.gene.onTSNE <- function(Y,dat.map,gene.to.show,out.prefix,args.scale=F){
+    #gene.to.show <- read.table(args.geneOnPCA,header = T,check.names = F,stringsAsFactors = F,sep = "\t")
+    #gene.to.show <- structure(as.character(gene.to.show[,1]),names=gene.to.show[,2])
+    #dir.create(sprintf("%s.perGene.PCA",out.prefix),showWarnings = F,recursive = T)
+    dir.create(sprintf("%s.perGene.tSNE",out.prefix),showWarnings = F,recursive = T)
+    for(i in seq_along(gene.to.show)){
+        gid <- gene.to.show[i]
+        gname <- names(gene.to.show)[i]
+        if(!(gid %in% rownames(Y))){ 
+            cat(sprintf("Gene not in data: %s (%s)\n",gid, gname))
+            next
+        }
+        i.Y <- Y[gid,]
+        s.f <- order(i.Y,decreasing=F)
+        Y.level <- pretty(Y[gid,],n=10)
+        ppalette <- brewer.pal(9,"YlOrRd")
+#        if(args.scale){
+#            i.Y <- scale(i.Y)
+#            #Y.level <- pretty(i.Y,n=10)
+#            Y.level <- c(-2.5,2.5)
+#            ppalette <- rev(brewer.pal(9,"RdBu"))
+#            print(gname)
+#            print(sprintf("mean: %4.4f, sd: %4.4f", mean(i.Y), sd(i.Y)))
+#            print(summary(i.Y))
+#            i.Y[i.Y>=2.5] <- 2.5
+#            i.Y[i.Y<=-2.5] <- -2.5
+#        }
+#        gid.color <- as.character(cut(i.Y[s.f],
+#                                      breaks=quantile(c(Y.level[1],Y.level[length(Y.level)]), seq(0,1,0.01)),
+#                                      labels=addalpha(colorRampPalette(ppalette)(100),alpha = 1)))
+#        ####### PCA #######
+#        pdf(sprintf("%s.perGene.PCA/PCA.%s.pdf",out.prefix,gname),width = 9,height = 8)
+#        par(mar=c(5,5,4,8),cex.lab=1.5,cex.main=3.0,cex.axis=1.5)
+#        plot(pca.res.sampleType$ind$coord[,"Dim.1"],pca.res.sampleType$ind$coord[,"Dim.2"],
+#             t='n',pch=16,col="lightgray", main=sprintf("%s",gname),xlab="Dim1",ylab="Dim2")
+#        points(pca.res.sampleType$ind$coord[s.f,"Dim.1"],pca.res.sampleType$ind$coord[s.f,"Dim.2"],col=gid.color,pch=16)
+#        image.plot(zlim=c(Y.level[1],Y.level[length(Y.level)]),legend.only=TRUE,
+#                   col=colorRampPalette(ppalette)(100),legend.width=2.5,legend.mar=5.0)
+#        dev.off()
+        ####### tSNE #######
+        slist.tsneUsed <- rownames(dat.map)
+        i.Y <- Y[gid,slist.tsneUsed]
+        s.f <- order(i.Y,decreasing=F)
+        if(args.scale){
+            i.Y <- scale(i.Y)
+            print(gname)
+            print(sprintf("mean: %4.4f, sd: %4.4f", mean(i.Y), sd(i.Y)))
+            print(summary(i.Y))
+            i.Y[i.Y>=2.5] <- 2.5
+            i.Y[i.Y<=-2.5] <- -2.5
+            #Y.level <- pretty(i.Y,n=10)
+            Y.level <- c(-2.5,2.5)
+            ppalette <- rev(brewer.pal(9,"RdBu"))
+        }
+        gid.color <- as.character(cut(i.Y[s.f],
+                                      breaks=quantile(c(Y.level[1],Y.level[length(Y.level)]), seq(0,1,0.01)),
+                                      labels=addalpha(colorRampPalette(ppalette)(100),alpha = 1)))
+        
+        pdf(sprintf("%s.perGene.tSNE/tSNE.%s.pdf",out.prefix,gname),width = 9,height = 8)
+        par(mar=c(5,5,4,8),cex.lab=1.5,cex.main=3.0,cex.axis=1.5)
+        plot(dat.map,
+             t='n',pch=16,col="lightgray", main=sprintf("%s",gname),xlab="Dim1",ylab="Dim2")
+        points(dat.map[s.f,],col=gid.color,pch=16)
+        image.plot(zlim=c(Y.level[1],Y.level[length(Y.level)]),legend.only=TRUE,
+                   col=colorRampPalette(ppalette)(100),legend.width=2.5,legend.mar=5.0)
+        dev.off()
+    }
+}
+
+
+#' @param Y row samples, column genes
+my.rmBatchEffect  <-  function(Y, batch, keep.intercept=T)
+{
+  #X <- model.matrix(~batch)
+  batch <- as.factor(batch)
+  contrasts(batch) <- contr.sum(levels(batch))
+  X <- model.matrix(~batch)[, , drop = FALSE]
+  beta <- solve(t(X) %*% X) %*% t(X) %*% Y
+  if(keep.intercept){
+    Y.corrected <- Y-X[,-1,drop=F] %*% beta[-1,,drop=F]
+  }else{
+    Y.corrected <- Y-X %*% beta
+  }
+  return(Y.corrected)
+}
+
+#' @param Y row genes, column samples
+#' @param d row samples, have column "patient" and "sample"
+my.centerData <- function(Y, d, do.scale=F)
+{
+    Y.new <- c()
+    for(pp in unique(d$patient)){
+        Y.block <- t(scale(t(Y[,subset(d,patient==pp,select="sample",drop=T)]),center = T,scale = do.scale))
+        Y.new <- cbind(Y.new,Y.block)
+        print(apply(Y.block[1:4,],1,mean))
+        print(apply(Y.block[1:4,],1,sd))
+    }
+    return(Y.new)
+}
+
+#' @param dat.to.plot row samples, column variables
+plot.venn.as.heatmap <- function(dat.to.plot,out.prefix,do.sort=T,link.list=NULL,colSet=NULL)
+{
+    require("grid")
+    require("gridBase")
+    require("ComplexHeatmap")
+    require("RColorBrewer")
+    pdf(sprintf("%s.venn.heatmap.pdf",out.prefix),width=5,height=8)
+    par(mar=c(2,4,4,2))
+    vps <- baseViewports()
+    pushViewport(vps$inner, vps$figure, vps$plot)
+    ha.link <- NULL
+    if(!is.null(link.list)){
+        ann.link.at <- match(link.list,rownames(dat.to.plot))
+        ann.link.label <- link.list
+        ha.link <- rowAnnotation(link = row_anno_link(at = ann.link.at, labels = ann.link.label,labels_gp=gpar(fontsize=8)), 
+                                 width = unit(1, "cm") + max_text_width(ann.link.label))
+    }
+    m <- ncol(dat.to.plot)
+    n <- nrow(dat.to.plot)
+    for(i in seq_len(m)){
+        dat.to.plot[,i] <- as.numeric(dat.to.plot[,i])
+    }
+    if(do.sort){
+        hclust.res <- hclust(dist(dat.to.plot))
+        dat.to.plot <- dat.to.plot[hclust.res$order,]
+    }
+    print(str(dat.to.plot))
+    print(head(dat.to.plot))
+    if(is.null(colSet)){
+        colSet <- structure(c("gray","brown1"), names = c("0", "1"))
+    }
+    ht <- Heatmap(dat.to.plot,"Called",
+                col=colSet,  
+                column_dend_height = unit(6, "cm"), row_dend_width = unit(6, "cm"),
+                column_names_gp = gpar(fontsize = 12*28/max(m,32)),row_names_gp = gpar(fontsize = 10*28/max(n,32)),
+                show_row_names=T,
+                show_heatmap_legend = T, row_names_max_width = unit(10,"cm"),
+                cluster_columns = F,
+                cluster_rows = F)
+    if(!is.null(ha.link)){
+        ComplexHeatmap::draw(ht+ha.link, newpage= FALSE)
+    }else{
+        ComplexHeatmap::draw(ht, newpage= FALSE)
+    }
+    dev.off()
+}
+
+plot.matrix.simple <- function(dat,out.prefix,mytitle="",show.number=T,pdf.width=8,pdf.height=8)
+{
+    suppressPackageStartupMessages(require("gplots"))
+    suppressPackageStartupMessages(require("ComplexHeatmap"))
+    suppressPackageStartupMessages(require("circlize"))
+    suppressPackageStartupMessages(require("gridBase"))
+	suppressPackageStartupMessages(require("RColorBrewer"))
+ 
+    pdf(sprintf("%s.pdf",out.prefix),width=pdf.width,height=pdf.height)
+    par(mar=c(4,2,4,4))
+    plot.new()
+    title(main = mytitle,cex.main=2)
+    #legend("topright",legend=names(colSet),fill=colSet,border=colSet,cex=1.5,inset=c(-0.03,0),xpd=T)
+    ### Integrating Grid Graphics Output with Base Graphics Output
+    vps <- baseViewports()
+    pushViewport(vps$inner, vps$figure, vps$plot)
+    tmp.var <- pretty((dat),n=8)
+    z.lo <- tmp.var[1]
+    z.hi <- tmp.var[length(tmp.var)]
+    ht <- Heatmap(dat, name = "Count", col = colorRamp2(seq(z.lo,z.hi,length=100),
+                                                        colorRampPalette(rev(brewer.pal(n = 7, name = "RdYlBu")))(100)),
+                  cluster_columns=F,cluster_rows=F,
+                  cell_fun = function(j, i, x, y, w, h, col) { grid.text(dat[i, j], x, y) })
+    ComplexHeatmap::draw(ht, newpage= FALSE)
+    dev.off()
 }
 

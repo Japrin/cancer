@@ -48,44 +48,47 @@ while(<$in>)
     if(/^#/)
     {
     	if(/^#CHROM\tPOS\tID/)
-	{
-		print "##INFO=<ID=NORMAL_FREQ,Number=1,Type=Float,Description=\"mutation frequency in normal\">\n";
-		print "##INFO=<ID=TUMOR_FREQ,Number=1,Type=Float,Description=\"mutation frequency in tumor\">\n";
-	}
+	    {
+            print "##INFO=<ID=NORMAL_FREQ,Number=1,Type=Float,Description=\"mutation frequency in normal\">\n";
+            print "##INFO=<ID=TUMOR_FREQ,Number=1,Type=Float,Description=\"mutation frequency in tumor\">\n";
+	    }
     	print "$line\n"; 
-	next;
+	    next;
     }
     my @F=split /\t/;
-    my ($chr,$pos,$ref,$alt,$info,$sFormat,$v_normal,$v_tumor)=@F[0,1,3,4,7,8,9,10];
+    my ($chr,$pos,$ref,$alt,$filter,$info,$sFormat,$v_normal,$v_tumor)=@F[0,1,3,4,6,7,8,9,10];
     my $freq_normal="NA";
     my $freq_tumor="NA";
-    if($varType eq "SNV")
+    if($filter eq "PASS" || $filter eq ".")
     {
-	$freq_normal=getSNVFreq($ref,$alt,$v_normal);
-	$freq_tumor =getSNVFreq($ref,$alt,$v_tumor);
-	$info="$info;NORMAL_FREQ=$freq_normal;TUMOR_FREQ=$freq_tumor";
-    }elsif($varType eq "INDEL")
-    {
-	$freq_normal=getINDELFreq($v_normal);
-	$freq_tumor =getINDELFreq($v_tumor);
-	$info="$info;NORMAL_FREQ=$freq_normal;TUMOR_FREQ=$freq_tumor";
+        if($varType eq "SNV")
+        {
+            $freq_normal=getSNVFreq($ref,$alt,$v_normal);
+            $freq_tumor =getSNVFreq($ref,$alt,$v_tumor);
+            $info="$info;NORMAL_FREQ=$freq_normal;TUMOR_FREQ=$freq_tumor";
+        }elsif($varType eq "INDEL")
+        {
+            $freq_normal=getINDELFreq($v_normal);
+            $freq_tumor =getINDELFreq($v_tumor);
+            $info="$info;NORMAL_FREQ=$freq_normal;TUMOR_FREQ=$freq_tumor";
 
-    }else
-    {
-	if($sFormat=~/DP:FDP:SDP:SUBDP:AU:CU:GU:TU/) 
-	{ 
-		$varType="SNV"; 
-		$freq_normal=getSNVFreq($ref,$alt,$v_normal);
-		$freq_tumor =getSNVFreq($ref,$alt,$v_tumor);
-		$info="$info;NORMAL_FREQ=$freq_normal;TUMOR_FREQ=$freq_tumor";
-	}
-	elsif($sFormat=~/DP:DP2:TAR:TIR:TOR:DP50:FDP50:SUBDP50/) 
-	{ 
-		$varType="INDEL"; 
-		$freq_normal=getINDELFreq($v_normal);
-		$freq_tumor =getINDELFreq($v_tumor);
-		$info="$info;NORMAL_FREQ=$freq_normal;TUMOR_FREQ=$freq_tumor";
-	}
+        }else
+        {
+            if($sFormat=~/DP:FDP:SDP:SUBDP:AU:CU:GU:TU/) 
+            { 
+                $varType="SNV"; 
+                $freq_normal=getSNVFreq($ref,$alt,$v_normal);
+                $freq_tumor =getSNVFreq($ref,$alt,$v_tumor);
+                $info="$info;NORMAL_FREQ=$freq_normal;TUMOR_FREQ=$freq_tumor";
+            }
+            elsif($sFormat=~/DP:DP2:TAR:TIR:TOR:DP50:FDP50:SUBDP50/) 
+            { 
+                $varType="INDEL"; 
+                $freq_normal=getINDELFreq($v_normal);
+                $freq_tumor =getINDELFreq($v_tumor);
+                $info="$info;NORMAL_FREQ=$freq_normal;TUMOR_FREQ=$freq_tumor";
+            }
+        }
     }
     $F[7]=$info;
     print join("\t",@F)."\n";
@@ -130,15 +133,15 @@ sub getSNVFreq
 	my @k=split /:/,$str;
 	my $refDepth=0;
 	my $altDepth=0;
-	if(   $ref eq "A") { $refDepth=(split /,/,$k[4])[1]; }
-	elsif($ref eq "C") { $refDepth=(split /,/,$k[5])[1]; }
-	elsif($ref eq "G") { $refDepth=(split /,/,$k[6])[1]; }
-	elsif($ref eq "T") { $refDepth=(split /,/,$k[7])[1]; }
+	if(   $ref eq "A") { $refDepth=(split /,/,$k[4])[0]; }
+	elsif($ref eq "C") { $refDepth=(split /,/,$k[5])[0]; }
+	elsif($ref eq "G") { $refDepth=(split /,/,$k[6])[0]; }
+	elsif($ref eq "T") { $refDepth=(split /,/,$k[7])[0]; }
 
-	if(   $alt eq "A") { $altDepth=(split /,/,$k[4])[1]; }
-	elsif($alt eq "C") { $altDepth=(split /,/,$k[5])[1]; }
-	elsif($alt eq "G") { $altDepth=(split /,/,$k[6])[1]; }
-	elsif($alt eq "T") { $altDepth=(split /,/,$k[7])[1]; }
+	if(   $alt eq "A") { $altDepth=(split /,/,$k[4])[0]; }
+	elsif($alt eq "C") { $altDepth=(split /,/,$k[5])[0]; }
+	elsif($alt eq "G") { $altDepth=(split /,/,$k[6])[0]; }
+	elsif($alt eq "T") { $altDepth=(split /,/,$k[7])[0]; }
 
 	return $altDepth/($refDepth+$altDepth);
 }
@@ -148,8 +151,10 @@ sub getINDELFreq
 	my @k=split /:/,$str;
 	my $refDepth=0;
 	my $altDepth=0;
-	$altDepth=(split /,/,$k[3])[1];
-	$refDepth=$k[1]-$altDepth;
+    ### DP:DP2:TAR:TIR:TOR:DP50:FDP50:SUBDP50
+	$altDepth=(split /,/,$k[3])[0];
+	$refDepth=(split /,/,$k[2])[0];
+    #$refDepth=$k[1]-$altDepth;
         #alt_dp=(l[10].split(':')[3]).split(',')[1]
         #ref_dp=str(int(l[10].split(':')[0])-int(alt_dp))
 

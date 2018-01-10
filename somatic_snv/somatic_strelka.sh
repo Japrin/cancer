@@ -5,7 +5,7 @@ echo "*** somatic mutation by strelka ***"
 TR=""
 optTR=""
 iniFile="/Share/BP/zhenglt/02.pipeline/cancer/parameter/init_human.sh"
-_refData="/DBS/DB_temp/zhangLab/broad/bundle/2.8/b37/human_g1k_v37_decoy.fasta"
+#_refData="/DBS/DB_temp/zhangLab/broad/bundle/2.8/b37/human_g1k_v37_decoy.fasta"
 optZ="N"
 optG=""
 
@@ -48,7 +48,7 @@ do
 		;;
 	'?')
 		echo "Usage: $0 invalid option -$OPTARG" 
-		echo "Usage: $0 [-c iniFile] [-r targetRegion] [-g gender file] [-f reference] <sampleID> <normalBam> <tumorBam> <outDir>"
+		echo "Usage: $0 [-c iniFile] [-r targetRegion] [-g gender file] [-f reference] [-z N|Y] <sampleID> <normalBam> <tumorBam> <outDir>"
 		exit 1
 		;;
 	esac
@@ -57,15 +57,15 @@ shift $((OPTIND-1))
 
 if [ $# -lt 4 ]
 then 
-	echo "Usage: $0 [-c iniFile] [-r targetRegion] [-g gender file] [-f reference] <sampleID> <normalBam> <tumorBam> <outDir>"
+	echo "Usage: $0 [-c iniFile] [-r targetRegion] [-g gender file] [-f reference] [-z N|Y] <sampleID> <normalBam> <tumorBam> <outDir>"
 	exit 1
 fi
 
 echo begin at: `date`
 
 source $iniFile
-refData=$_refData
-REF=$_refData
+#refData=$_refData
+#REF=$_refData
 
 sampleID=$1
 normalBam=$2
@@ -118,12 +118,12 @@ then
 
 	### to maf format
 	bgzip -cd $outDir/results/$sampleID.strelka.somatic.snvs.filter.reformated.vcf.gz \
-		| $PIPELINE/cancer/var/vcf2mafv1.3.strelka.py -t - -s "WES" -a $sampleID \
+		| $PIPELINE/cancer/var/vcf2mafv1.31.strelka.py -t - -s "WES" -a $sampleID \
 			-g $HumanDB/hg19_knownGene.SymbolToLocus.txt \
 			-o $outDir/results/$sampleID.strelka.somatic.snvs.filter.reformated.maf
 
 	bgzip -cd $outDir/results/$sampleID.strelka.somatic.indels.filter.reformated.vcf.gz \
-		| $PIPELINE/cancer/var/vcf2mafv1.3.strelka.py -t - -s "WES" -a $sampleID \
+		| $PIPELINE/cancer/var/vcf2mafv1.31.strelka.py -t - -s "WES" -a $sampleID \
 			-g $HumanDB/hg19_knownGene.SymbolToLocus.txt \
 			-o $outDir/results/$sampleID.strelka.somatic.indels.filter.reformated.maf
 fi

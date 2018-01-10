@@ -1,0 +1,320 @@
+Usage: mixcr [options] [command] [command options]
+  Options:
+    -h, --help
+       Displays this help message.
+    -v, --version
+       Output version information.
+  Commands:
+    align      Builds alignments with V,D,J and C genes for input sequencing reads.
+      Usage: align [options] input_file1 [input_file2] output_file.vdjca
+        Options:
+          -c, --chains
+             Specifies immunological chain gene(s) for alignment. If many,
+             separate by comma ','. Available chains: IGH, IGL, IGK, TRA, TRB, TRG, TRD,
+             etc...
+             Default: ALL
+          -f, --force
+             Force overwrite of output file(s).
+          -h, --help
+             Displays help for this command.
+             Default: false
+          -b, --library
+             Specifies segments library for alignment
+             Default: default
+          -n, --limit
+             Maximal number of reads to process
+             Default: 0
+          -nw, --no-warnings
+             Don't print warnings
+          -d, --noMerge
+             Do not merge paired reads.
+          -wf, --non-functional-warnings
+             Print warnings for non-functional V/D/J/C genes
+          --not-aligned-R1
+             Write not aligned reads (R1).
+          --not-aligned-R2
+             Write not aligned reads (R2).
+          -p, --parameters
+             Parameters
+             Default: default
+          -r, --report
+             Report file.
+          -a, --save-description
+             Copy read(s) description line from .fastq or .fasta to .vdjca file
+             (can then be exported with -descrR1 and -descrR2 options in
+             exportAlignments action).
+          -g, --save-reads
+             Copy original reads (sequences + qualities + descriptions) to
+             .vdjca file.
+          -s, --species
+             Species (organism), as specified in library file or taxon id.
+             Possible values: hs, HomoSapiens, musmusculus, mmu, hsa, 9606, 10090 etc..
+             Default: hs
+          -t, --threads
+             Processing threads
+             Default: 24
+          -v, --write-all
+             Write alignment results for all input reads (even if alignment has
+             failed).
+          -O
+             Overrides default parameter values.
+             Syntax: -Okey=value
+             Default: {}
+
+    exportAlignments      Export alignments/clones to tab-delimited text file
+      Usage: exportAlignments [options] input_file output_file
+        Options:
+          -c, --chains
+             Limit export to specific chain (e.g. TRA or IGH) (fractions will be
+             recalculated)
+             Default: ALL
+          -f, --force
+             Force overwrite of output file(s).
+          -h, --help
+             Displays help for this command.
+             Default: false
+          -n, --limit
+             Output only first N records
+          -lf, --list-fields
+             List available export fields
+             Default: false
+          -s, --no-spaces
+             Output short versions of column headers which facilitates analysis
+             with Pandas, R/DataFrames or other data tables processing library.
+             Default: false
+          -p, --preset
+             Specify preset of export fields (full, min)
+             Default: full
+          -pf, --preset-file
+             Specify preset file of export fields
+
+    assemble      Assemble clones
+      Usage: assemble [options] input_file output_file
+        Options:
+          -f, --force
+             Force overwrite of output file(s).
+          -h, --help
+             Displays help for this command.
+             Default: false
+          -i, --index
+             .
+          -p, --parameters
+             Clone assembling parameters
+             Default: default
+          -r, --report
+             Report file.
+          -t, --threads
+             Processing threads
+             Default: 24
+          -O
+             Overrides default parameter values.
+             Syntax: -Okey=value
+             Default: {}
+
+    exportClones      Export clones to tab-delimited text file
+      Usage: exportClones [options] input_file output_file
+        Options:
+          -c, --chains
+             Limit export to specific chain (e.g. TRA or IGH) (fractions will be
+             recalculated)
+             Default: ALL
+          -o, --filter-out-of-frames
+             Exclude clones with out-of-frame clone sequences (fractions will be
+             recalculated)
+          -t, --filter-stops
+             Exclude sequences containing stop codons (fractions will be
+             recalculated)
+          -f, --force
+             Force overwrite of output file(s).
+          -h, --help
+             Displays help for this command.
+             Default: false
+          -n, --limit
+             Output only first N records
+          -lf, --list-fields
+             List available export fields
+             Default: false
+          -m, --minimal-clone-count
+             Filter clones by minimal clone read count
+             Default: 0
+          -q, --minimal-clone-fraction
+             Filter clones by minimal clone fraction
+             Default: 0.0
+          -s, --no-spaces
+             Output short versions of column headers which facilitates analysis
+             with Pandas, R/DataFrames or other data tables processing library.
+             Default: false
+          -p, --preset
+             Specify preset of export fields (full, min)
+             Default: full
+          -pf, --preset-file
+             Specify preset file of export fields
+
+    exportAlignmentsPretty      Export full alignments.
+      Usage: exportAlignmentsPretty [options] input_file.vdjca [output.txt]
+        Options:
+          -e, --cdr3-equals
+             Only output alignments where CDR3 exactly equals to given sequence
+          -c, --chains
+             Filter export to a specific protein chain gene (e.g. TRA or IGH).
+             Default: ALL
+          -d, --descriptions
+             Print descriptions
+          -g, --feature
+             Only output alignments which contain a corresponding gene feature
+          -f, --filter
+             Custom filter
+          -a, --gene
+             Output full gene sequence
+          -h, --help
+             Displays help for this command.
+             Default: false
+          -n, --limit
+             Limit number of filtered alignments; no more than N alignments will
+             be outputted
+          -b, --limitBefore
+             Limit number of alignments before filtering
+          -r, --read-contains
+             Only output alignments where target read contains a given substring
+          -s, --skip
+             Number of output alignments to skip
+          -t, --top
+             Output only top number of clones
+          -v, --verbose
+             Verbose output (old)
+
+    exportClonesPretty      Export verbose clone information.
+      Usage: exportClonesPretty [options] input_file.clns [output.txt]
+        Options:
+          -e, --cdr3-equals
+             Only output clones where CDR3 (not whole clonal sequence) exactly
+             equals to given sequence
+          -c, --chains
+             Filter export to a specific protein chain gene (e.g. TRA or IGH).
+             Default: ALL
+          -r, --clonal-sequence-contains
+             Only output clones where target clonal sequence contains
+             sub-sequence.
+          -h, --help
+             Displays help for this command.
+             Default: false
+          -n, --limit
+             Limit number of filtered alignments; no more than N alignments will
+             be outputted
+          -b, --limitBefore
+             Limit number of alignments before filtering
+          -s, --skip
+             Number of output alignments to skip
+
+    mergeAlignments      Merge several *.vdjca[.gz] files with alignments into a single alignments file.
+      Usage: mergeAlignments [options] [input_file1.vdjca[.gz] [input_file2.vdjca[.gz] ....]] output_file.vdjca[.gz]
+        Options:
+          -h, --help
+             Displays help for this command.
+             Default: false
+
+    exportReadsForClones      Export reads for particular clones.
+      Usage: exportReadsForClones [options] mappingFile vdjcaFile clone1 [clone2] [clone3] ... output
+        Options:
+          -h, --help
+             Displays help for this command.
+             Default: false
+
+    versionInfo      Outputs information about MiXCR version which generated the file.
+      Usage: versionInfo [options] binary_file{.vdjca|.clns}[.gz]
+        Options:
+          -h, --help
+             Displays help for this command.
+             Default: false
+
+    alignmentsDiff      Calculates the difference between two .vdjca files
+      Usage: alignmentsDiff [options] input_file1 input_file2 [report]
+        Options:
+          -d1, --diff-from-first
+             output for alignments from the first file that are different from
+             those alignments in the second file
+          -d2, --diff-from-second
+             output for alignments from the second file that are different from
+             those alignments in the first file
+          -f, --force
+             Force overwrite of output file(s).
+          -g, --gene-feature
+             Specifies a gene feature to compare
+             Default: CDR3
+          -h, --help
+             Displays help for this command.
+             Default: false
+          -o1, --only-in-first
+             output for alignments contained only in the first .vdjca file
+          -o2, --only-in-second
+             output for alignments contained only in the second .vdjca file
+          -l, --top-hits-level
+             Number of top hits to search for a match
+             Default: 1
+
+    assemblePartial      Assemble clones
+      Usage: assemblePartial [options] input_file output_file
+        Options:
+          -f, --force
+             Force overwrite of output file(s).
+          -h, --help
+             Displays help for this command.
+             Default: false
+          -o, --overlapped-only
+             Write only overlapped sequences (needed for testing).
+          -r, --report
+             Report file.
+          -p, --write-partial
+             Write partial sequences (for recurrent overlapping).
+          -O
+             Overrides default parameter values.
+             Syntax: -Okey=value
+             Default: {}
+
+    exportReads      Export original reads from vdjca file.
+      Usage: exportReads [options] input.vdjca[.gz] [output_R1.fastq[.gz] [output_R2.fastq[.gz]]]
+        Options:
+          -h, --help
+             Displays help for this command.
+             Default: false
+
+    clonesDiff      Calculates the difference between two .clns files
+      Usage: clonesDiff [options] input1.clns input2.clns [report]
+        Options:
+          -f, --force
+             Force overwrite of output file(s).
+          -h, --help
+             Displays help for this command.
+             Default: false
+          -c
+             Use C gene in clone comparison (include it as a clone key along
+             with a clone sequence).
+          -j
+             Use J gene in clone comparison (include it as a clone key along
+             with a clone sequence).
+          -v
+             Use V gene in clone comparison (include it as a clone key along
+             with a clone sequence).
+
+    filterAlignments      Filter alignments.
+      Usage: filterAlignments [options] input_file.vdjca output_file.vdjca
+        Options:
+          -e, --cdr3-equals
+             Include only those alignments which CDR3 equals to a specified
+             sequence.
+          -c, --chains
+             Specifies immunological protein chain gene for an alignment. If
+             many, separated by ','. Available genes: IGH, IGL, IGK, TRA, TRB, TRG,
+             TRD.
+             Default: ALL
+          -g, --contains-feature
+             Include only those alignments that contain specified feature.
+          -f, --force
+             Force overwrite of output file(s).
+          -h, --help
+             Displays help for this command.
+             Default: false
+          -n, --limit
+             Maximal number of reads to process
+             Default: 0
+

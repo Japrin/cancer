@@ -7,8 +7,10 @@ parser$add_argument("-i", "--in",required=T,help="input file list,first line is 
 parser$add_argument("-o", "--out",required=T,help="output prefix")
 parser$add_argument("-t", "--txfile",default="/DBS/DB_temp/zhangLab/ensemble/mybuild/kallisto/b20170519/rel88/ID.mapping.txt",
                     help="tx to gene file, no header with first 3 column txID, geneID and geneSymbol [default %(default)s]")
+parser$add_argument("-a", "--txOut", action="store_true", default=FALSE, help="output transcript level expression [default %(default)s]")
 parser$add_argument("-v", "--verbose", action="store_true", default=FALSE, help="verbose output [default %(default)s]")
 args <- parser$parse_args()
+args.txOut <- args$txOut
 
 print(args)
 
@@ -36,7 +38,12 @@ gene.desc <- unique(tx.desc[,c(2,3)])
 rownames(gene.desc) <- gene.desc[,1]
 
 #### tximport_1.4.0
-txi <- tximport(files, type = "kallisto", tx2gene = tx.desc, importer=read_tsv)
+## some bug (https://support.bioconductor.org/p/87553/)
+#txi <- tximport(files, type = "kallisto", tx2gene = tx.desc, importer=read_tsv)
+#txi <- tximport(files, type = "kallisto", tx2gene = tx.desc, importer=read.delim)
+nn <- nrow(read.delim(files[1]))
+my.read.tsv <- function(x) readr::read_tsv(x, guess_max=nn)
+txi <- tximport(files, type = "kallisto", tx2gene = tx.desc, importer=my.read.tsv,txOut=args.txOut)
 ####
 ##txi <- tximport(files, type = "kallisto", tx2gene = tx.desc, reader = read_tsv)
 names(txi)
@@ -47,7 +54,7 @@ for(cp in c("abundance","counts","length"))
     out.df <- data.frame(geneID=rownames(txi[[cp]]),stringsAsFactors = F)
     out.df$geneSymbol <- gene.desc[ out.df$geneID,"GENESYMBOL"]
     out.df <- cbind(out.df,txi[[cp]])
-    conn <- gzfile(sprintf("%s.kallisto.tximport.%s.txt.gz",out.prefix,cp),open = "w")
+    conn <- gzfile(sprintf("%s.kallisto.tximport.%s.txOut%s.txt.gz",out.prefix,cp,if(args.txOut) "T" else "F"),open = "w")
     write.table(out.df,conn,quote = F,sep = "\t",row.names = F)
     close(conn)
 }

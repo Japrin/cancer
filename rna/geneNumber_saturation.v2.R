@@ -49,6 +49,8 @@ args.ylab <- args$ylab
 ##args.m <- 10
 ##n.cores <- 4
 
+dir.create(dirname(out.prefix),showWarnings = F,recursive = T)
+
 #### functin definition
 suppressPackageStartupMessages(library("HTSeqGenie"))
 suppressPackageStartupMessages(library("RColorBrewer"))
@@ -138,12 +140,15 @@ if(file.exists(sprintf("%s.RData",out.prefix))){
                 
             },ds.n,ds.pct)
             if(!is.null(gene.list)){
-                cat(sprintf("Total %d intersection\n",length(intersect(gene.list$geneID,rownames(ds.res.byRPKM)))))
-                vv.oneRun <- t(apply(ds.res.byRPKM[intersect(gene.list$geneID,rownames(ds.res.byRPKM)),c(-1,-2),drop=F],
+                cat(sprintf("Total %d intersection\n",length(intersect(gene.list$geneID,rownames(ds.res.byTPM)))))
+                vv.oneRun <- t(apply(ds.res.byTPM[intersect(gene.list$geneID,rownames(ds.res.byTPM)),c(-1,-2),drop=F],
                                      2,function(x){ sum(x>tt) } ))
-                ##vv.oneRun <- t(apply(ds.res.byRPKM[gene.list$geneID,c(-1,-2),drop=F],2,function(x){ sum(x>tt) } ))
+                #cat(sprintf("Total %d intersection\n",length(intersect(gene.list$geneID,rownames(ds.res.byRPKM)))))
+                #vv.oneRun <- t(apply(ds.res.byRPKM[intersect(gene.list$geneID,rownames(ds.res.byRPKM)),c(-1,-2),drop=F],
+                #                     2,function(x){ sum(x>tt) } ))
             }else{
-                vv.oneRun <- t(apply(ds.res.byRPKM[,c(-1,-2),drop=F],2,function(x){ sum(x>tt) } ))
+                vv.oneRun <- t(apply(ds.res.byTPM[,c(-1,-2),drop=F],2,function(x){ sum(x>tt) } ))
+                #vv.oneRun <- t(apply(ds.res.byRPKM[,c(-1,-2),drop=F],2,function(x){ sum(x>tt) } ))
             }
             return(vv.oneRun)
         },.progress = "none",.parallel=T)

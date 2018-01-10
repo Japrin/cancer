@@ -143,8 +143,12 @@ my.fviz_contrib <-  function (X, choice = c("row", "col", "var", "ind", "quanti.
         eig <- eig/sum(eig)
         theo_contrib <- sum(theo_contrib * eig)
     }
-    p <- factoextra:::.ggbarplot(contrib, fill = fill, color = color, sort.value = sort.val[1], 
-        top = top, title = title, ylab = "Contributions (%)") + 
-        geom_hline(yintercept = theo_contrib, linetype = 2, color = "red")
-    p
+    #p <- factoextra:::.ggbarplot(contrib, fill = fill, color = color, sort.value = sort.val[1], 
+    p <- ggpubr::ggbarplot(contrib, fill = fill, color = color, sort.value = sort.val[1], 
+                                 top = top, main = title, ylab = "Contributions (%)") + theme_minimal()
+    #p <- factoextra:::.ggbarplot(contrib, fill = fill, color = color, sort.value = sort.val[1],
+    #                             top = top, title = title, ylab = "Contributions (%)") + theme_minimal()
+    p <- p + theme(axis.text.x=element_text(size = rel(1.0),hjust=1,angle = 45)) +
+        geom_hline(yintercept = theo_contrib, linetype = 2, color = "red")  
+    return(p)
 }
