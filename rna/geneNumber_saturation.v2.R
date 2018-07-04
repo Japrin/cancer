@@ -57,6 +57,7 @@ suppressPackageStartupMessages(library("RColorBrewer"))
 suppressPackageStartupMessages(require("plyr"))
 suppressPackageStartupMessages(require("doParallel"))
 suppressPackageStartupMessages(require("plotrix"))
+suppressPackageStartupMessages(library("tictoc"))
 
 computeWidth <- function(gf) {
   if (class(gf)=="GRangesList") sapply(width(reduce(gf)), sum)
@@ -121,8 +122,10 @@ if(file.exists(sprintf("%s.RData",out.prefix))){
             ds.res.byTPM <- data.frame()
             ds.res.byCount <- data.frame() 
             hh <- sapply(seq_along(ds.n),function(i,n,pct){
+                tic(sprintf("countGenomicFeaturesSimple(%d reads)",n[i]))
                 res.ds <- countGenomicFeaturesSimple(features = genomic_features$gene_exonic,
                                                      reads = reads[ds[1:n[i]]],nbanalyzedreads = n[i])
+                toc()
                 if(ncol(ds.res.byRPKM)==0)
                 {
                     ds.res.byRPKM <<- res.ds[,c("name","width")]

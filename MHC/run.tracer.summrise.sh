@@ -38,7 +38,7 @@ export IGDATA="/DBS/DB_temp/zhangLab/IMGT/igblast"
 
 echo begin at: `date`
 
-echo tracer summarise -c $TRACER_CONFIG --graph_format "svg" $inDir
-tracer summarise -c $TRACER_CONFIG --graph_format "svg" $inDir
+echo tracer summarise --keep_inkt -c $TRACER_CONFIG --graph_format "svg" $inDir
+tracer summarise --keep_inkt -c $TRACER_CONFIG --graph_format "svg" $inDir
 
 echo end at: `date`

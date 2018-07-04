@@ -631,6 +631,7 @@ runMultiGroupSpecificGeneTest <- function(dat.g,grps,out.prefix,mod=NULL,FDR.THR
     suppressPackageStartupMessages(require("doParallel"))
     g <- unique(grps)
     dat.g <- as.matrix(dat.g)
+    RhpcBLASctl::omp_set_num_threads(1)
     registerDoParallel(cores = n.cores)
     ret <- ldply(rownames(dat.g),function(v){
                   aov.out <- aov(y ~ g,data=data.frame(y=dat.g[v,],g=grps))
@@ -827,7 +828,7 @@ runTTest <- function(dat.g1,dat.g2,out.prefix,FDR.THRESHOLD=0.05,FC.THRESHOLD=1,
 #' @param legend
 #' @param col.points 
 #' @param col.legend
-runTSNEAnalysis <- function(in.data,out.prefix,legend,col.points,col.legend,pch=20,pch.legend=20,inPDF=TRUE,eps.clus=NULL,dims=2,k=NULL,do.dbscan=F,myseed=NULL,width.pdf=10,height.pdf=6,margin.r=1,legend.inset=-0.21,preSNE=NULL,n.cores=NULL,original.space=F,do.clustering=F,data.forDE=NULL,do.scale=T,do.pca=T,distance.metric=NULL,do.determ=F,...)
+runTSNEAnalysis <- function(in.data,out.prefix,legend,col.points,col.legend,pch=20,pch.legend=20,inPDF=TRUE,eps.clus=NULL,dims=2,k=NULL,do.dbscan=F,myseed=NULL,width.pdf=10,height.pdf=6,margin.r=1,legend.inset=-0.21,preSNE=NULL,n.cores=NULL,original.space=F,do.clustering=F,data.forDE=NULL,do.scale=T,do.pca=T,distance.metric=NULL,do.determ=F,pca.n=50,...)
 {
     suppressPackageStartupMessages(require("Rtsne"))
     suppressPackageStartupMessages(require("dbscan"))
@@ -898,24 +899,24 @@ runTSNEAnalysis <- function(in.data,out.prefix,legend,col.points,col.legend,pch=
                 .D = .eigen_L$values
                 .U_index = seq(ncol(.U),(ncol(.U)-dims+1))
                 tryCatch({
-                Rtsne.res  <-  Rtsne(.tsne.input,perplexity=par.perplexity,dims=dims,
+                Rtsne.res  <-  Rtsne(.tsne.input,perplexity=par.perplexity,initial_dims=pca.n,dims=dims,
                                   Y_init=.U[,.U_index],pca=F)
                 },error=function(e){
                     if(grepl("Perplexity is too large",e,perl=T)){
                         cat("Perplexity is too large; try to use perplexity=5 now\n")
-                        Rtsne.res <<- Rtsne(.tsne.input,perplexity=5,dims=dims,
+                        Rtsne.res <<- Rtsne(.tsne.input,perplexity=5,initial_dims=pca.n,dims=dims,
                                   Y_init=.U[,.U_index],pca=F)
                     }else{ print(e) }
                 })
             }else{
                 tryCatch({ 
                 
-                    Rtsne.res <- Rtsne(.tsne.input,perplexity=par.perplexity,dims=dims,
+                    Rtsne.res <- Rtsne(.tsne.input,perplexity=par.perplexity,initial_dims=pca.n,dims=dims,
                                                 is_distance=.tsne.isDistance,pca=.tsne.pca) },
                     error=function(e){
                         if(grepl("Perplexity is too large",e,perl=T)){
                             cat("Perplexity is too large; try to use perplexity=5 now\n")
-                            Rtsne.res <<- Rtsne(.tsne.input,perplexity=5,dims=dims,
+                            Rtsne.res <<- Rtsne(.tsne.input,perplexity=5,initial_dims=pca.n,dims=dims,
                                                 is_distance=.tsne.isDistance, pca=.tsne.pca)
                         }else{
                             print(e)
@@ -3754,6 +3755,11 @@ processInput <- function(designFile,cellTypeColorFile,inputFile,args.notFilter,g
             args.notFilter <- T
             args.log <- F
             args.center <- F
+        }else if(!args.norm.exprs || (!is.null(args.measure) && args.measure=="centered_norm_exprs")){
+            Y <- assay(lenv[["sce.norm"]],"centered_norm_exprs")
+            args.notFilter <- T
+            args.log <- F
+            args.center <- F
         }else{
             ##Y <- exprs(lenv[["sce.norm"]])
             Y <- assay(lenv[["sce.norm"]],"centered_norm_exprs")
@@ -3761,6 +3767,10 @@ processInput <- function(designFile,cellTypeColorFile,inputFile,args.notFilter,g
             args.log <- F
             args.center <- F
         }
+<<<<<<< HEAD
+=======
+        ##g.GNAME <- fData(lenv[["sce.norm"]])[,"geneSymbol"]
+>>>>>>> 6fbc4b024260c78c8497c9e74520b4d8674500c5
         g.GNAME <- rowData(lenv[["sce.norm"]])[,"geneSymbol"]
         names(g.GNAME) <- rownames(Y)
     }else if(grepl("RData$",inputFile,perl=T)){
@@ -3860,12 +3870,15 @@ run.quickClustBydynamicTreeCut <- function(dat.to.sort,k=4,useDyn=T,col.sort=F,c
     list(my.clusters=structure(my.clusters,names=colnames(dat.to.sort)),my.hclust=my.hclust)
 }
 
-binarizedExp <- function(x,ofile=NULL,G=NULL,e.TH=NULL,e.name="Exp",verbose=F, draw.CI=T,...)
+### zero.as.low: if True, zero counts as low expression (0); else as "-1"
+binarizedExp <- function(x,ofile=NULL,G=NULL,e.TH=NULL,e.name="Exp",verbose=F, draw.CI=T, zero.as.low=T,...)
 {
   require(mclust)
+  ### bin.Exp == -1: drop out
   o.df <- data.frame(sample=names(x),bin.Exp=-1,stringsAsFactors = F)
   rownames(o.df) <- o.df$sample
-  f<-is.finite(x) & x>0
+  #f<-is.finite(x) & x>0
+  f<-is.finite(x)
   if(sum(f)<3){
       colnames(o.df) <- c("sample",e.name)
       if(verbose){
@@ -3940,7 +3953,11 @@ binarizedExp <- function(x,ofile=NULL,G=NULL,e.TH=NULL,e.name="Exp",verbose=F, d
 #	  }else{
 #	  	  C.max <- 3
 #	  }
-	  f.low <- o.df[,e.name] <= C.min
+      if(zero.as.low){
+	    f.low <- o.df[,e.name] <= C.min
+      }else{
+	    f.low <- o.df[,e.name] <= C.min & o.df[,e.name] != -1
+      }
 	  f.hi <-  o.df[,e.name] >= C.max
 	  f.mid <- (o.df[,e.name] > C.min) & (o.df[,e.name] < C.max)
 	  o.df[f.low,e.name] <- 0
@@ -3950,7 +3967,11 @@ binarizedExp <- function(x,ofile=NULL,G=NULL,e.TH=NULL,e.name="Exp",verbose=F, d
 	  #o.df[f.G,e.name] <- 0
 	  #o.df[!f.G,e.name] <- 1
   }else if(x_mix_summary$G==2){
-	  f.low <- o.df[,e.name] <= 1
+      if(zero.as.low){
+	    f.low <- o.df[,e.name] <= 1
+      }else{
+	    f.low <- o.df[,e.name] <= 1 & o.df[,e.name] != -1
+      }
 	  f.hi <-  o.df[,e.name] == 2
 	  o.df[f.low,e.name] <- 0
 	  o.df[f.hi,e.name] <- 1
