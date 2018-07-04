@@ -1,6 +1,8 @@
 #!/bin/bash
 
-iniFile="/Share/BP/zhenglt/02.pipeline/cancer/parameter/init_human.sh"
+sDir=`dirname $0`
+iniFile="$sDir/../parameter/init_human.sh"
+###iniFile="/Share/BP/zhenglt/02.pipeline/cancer/parameter/init_human.sh"
 #_refData="/DBS/DB_temp/zhangLab/broad/bundle/2.8/b37/bwa_0.7.12//human_g1k_v37_decoy.fasta"
 optT=4
 optM=16

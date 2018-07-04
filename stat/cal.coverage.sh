@@ -2,7 +2,10 @@
 
 TR=""
 optTR=""
-iniFile="/Share/BP/zhenglt/02.pipeline/cancer/parameter/init_human.sh"
+sDir=`dirname $0`
+iniFile="$sDir/../parameter/init_human.sh"
+statBinDir="$sDir/../stat"
+####iniFile="/Share/BP/zhenglt/02.pipeline/cancer/parameter/init_human.sh"
 _refData=""
 
 while getopts c:f:r: opt
@@ -81,9 +84,9 @@ java -Djava.io.tmpdir=$outDir -Xmx5g -jar $gatkJAR -T DepthOfCoverage \
 
 perl -i -F"\t" -ane '{ $NR++;if($NR==1){print; next} chomp; chomp @F; @a=split /[:-]/,$F[0];if(@a<3){push @a,$a[1];} $F[0]="$a[0]:$a[1]-$a[2]";$F[0]=~s/^chr//i;printf "%s\n",join("\t",@F); }' $outDir/$sampleID.sample_interval_summary 
 #sed -i 's/^chr//' $outDir/$sampleID.sample_interval_summary
-$PIPELINE/cancer/stat/raw.depth.gatk.wrapper.sh $outDir/$sampleID
+$statBinDir/raw.depth.gatk.wrapper.sh $outDir/$sampleID
 
-CovByChr.sh $outDir/$sampleID.sample_interval_summary $outDir/$sampleID.coverage.bychr.txt
+$statBinDir/CovByChr.sh $outDir/$sampleID.sample_interval_summary $outDir/$sampleID.coverage.bychr.txt
 
 perl -F"\t" -ane 'chomp @F;$F[0]=~s/^chr//;if($F[0] ne "Y"){$sum+=$F[2];$count+=$F[1];}if($F[0] eq "Y"){$YDep=$F[3]} END{ if($YDep<$sum/(3*$count)){printf "gender=F\n"; }else{ printf "gender=M\n";} }' $outDir/$sampleID.coverage.bychr.txt > $outDir/$sampleID.gender
 

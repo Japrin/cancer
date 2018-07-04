@@ -4,7 +4,10 @@ echo "*** bam stat ***"
 
 TR=""
 optTR=""
-iniFile="/Share/BP/zhenglt/02.pipeline/cancer/parameter/init_human.sh"
+sDir=`dirname $0`
+iniFile="$sDir/../parameter/init_human.sh"
+statBinDir="$sDir/../stat"
+#iniFile="/Share/BP/zhenglt/02.pipeline/cancer/parameter/init_human.sh"
 #_refData="/DBS/DB_temp/zhangLab/broad/bundle/2.8/b37/bwa_0.7.12/human_g1k_v37_decoy.fasta"
 
 while getopts c:r:f: opt
@@ -72,12 +75,12 @@ mkdir -p $outDir
 if [ -f "$TR" ]
 then
 	echo ">> Target Region coverage stat"
-	stat_exom.pl -i $bam -r $TR -o $outDir -plot
-	cal.coverage.sh -c $iniFile -r $TR -f $REF $sampleID $bam $outDir
+	$statBinDir/stat_exom.pl -i $bam -r $TR -o $outDir -plot
+	$statBinDir/cal.coverage.sh -c $iniFile -r $TR -f $REF $sampleID $bam $outDir
 else
 	echo ">> Whole genome coverage stat"
-	depth.addn.pl -q 0 -Q 0 -n $PIPELINE/cancer/stat/b37.NBlock.larger20bp.bed $bam $outDir > $outDir/$sampleID.cov.txt
-	cal.coverage.sh -c $iniFile -r $PIPELINE/cancer/stat/b37.chr25Region.bed -f $REF $sampleID $bam $outDir
+	$statBinDir/depth.addn.pl -q 0 -Q 0 -n $statBinDir/b37.NBlock.larger20bp.bed $bam $outDir > $outDir/$sampleID.cov.txt
+	$statBinDir/cal.coverage.sh -c $iniFile -r $statBinDir/b37.chr25Region.bed -f $REF $sampleID $bam $outDir
 fi
 samtools flagstat $bam > $outDir/$sampleID.stat.aln.flagstat.txt
 

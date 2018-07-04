@@ -40,7 +40,8 @@ class Cell:
         self.D_recombinants = D_recombinants
         self.bgcolor = None
         self.all_recombinants = {'A' : A_recombinants, 'B' : B_recombinants, 'G' : G_recombinants, 'D' : D_recombinants}
-        self.cdr3_comparisons = {'A' : None, 'B' : None, 'mean_both' : None}
+        self.cdr3_comparisons = {'A' : None, 'B' : None, 'mean_both' : None, 'G':None, 'G':None}
+        #self.cdr3_comparisons = {'A' : None, 'B' : None, 'mean_both' : None}
         self.is_empty = self._check_is_empty()
         self.is_inkt = self._check_if_inkt(species)
 
@@ -61,7 +62,7 @@ class Cell:
         return(inkt_ident)
 
     def reset_cdr3_comparisons(self):
-            self.cdr3_comparisons = {'A' : None, 'B' : None, 'mean_both' : None}
+            self.cdr3_comparisons = {'A' : None, 'B' : None, 'mean_both' : None, 'G':None, 'G':None}
 
     def getAllRecombinantIdentifiersForLocus(self, locus):
         recombinants = self.all_recombinants[locus]
@@ -327,6 +328,8 @@ class Recombinant:
             D_segment = self.summary[1]
             J_segment = self.summary[2]
             segments_string = "V segment:\t{V_segment}\nD segment:\t{D_segment}\nJ segment:\t{J_segment}\n".format(V_segment=V_segment, D_segment=D_segment, J_segment=J_segment)
+        else:
+            segments_string = "segments_string"
         summary_string = summary_string + segments_string
         summary_string = summary_string + "ID:\t{}\n".format(self.identifier)
         summary_string = summary_string + "TPM:\t{TPM}\nProductive:\t{productive}\nStop codon:\t{stop_codon}\nIn frame:\t{in_frame}\n\n".format(TPM=self.TPM, productive=self.productive, stop_codon=self.stop_codon, in_frame=self.in_frame)

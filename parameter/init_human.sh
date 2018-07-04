@@ -1,8 +1,25 @@
 #!/bin/bash
 
 . /usr/share/Modules/init/bash
-export MODULEPATH="/Share/BP/zhenglt/05.setting/modulefiles":$MODULEPATH
-module load novomedSeq/1.0
+export MODULEPATH="/Share/BP/zhenglt/05.setting/modulefiles":"/WPSnew/zhenglt/05.setting/modulefiles":$MODULEPATH
+#module load novomedSeq/1.0
+module load R/3.5.0
+module load perl/5.24.1
+module load python/2.7.15
+module load tmux/2.7
+module load vim/github
+module load misc/unknown
+module load gnu/unknown
+module load openssl/1.0.2o
+module load gcc/4.9.0
+module load mysql/5.5.60
+module load mytoolkit/unknown
+module load git/2.9.5
+module load java/1.8.0_171
+module load htop/2.2.0
+module load hdf5/1.10.1
+export PKG_CONFIG_PATH=/WPSnew/zhenglt/05.setting/PKGCONFIG
+
 
 echo "pipeline init file was included at host:" `hostname`
 #export PIPELINE=/Share/BP/zhenglt/02.pipeline
@@ -68,12 +85,12 @@ echo "pipeline init file was included at host:" `hostname`
 #export varScanDIR=/Share/BP/zhenglt/01.bin/varscan
 #export BREAKDANCER=$PIPELINE/bin/breakdancer
 #export ANNOVAR=$PIPELINE/bin/annovar
-#
-#bundleDir=/DBS/DB_temp/zhangLab/broad/bundle/2.8/b37
-#refData=$bundleDir/human_g1k_v37_decoy.fasta
-#REF=$refData
-#refDataByChr=$bundleDir/byChr
-#refNFile=$bundleDir/all.NBlock.bed
+
+bundleDir=/WPSnew/zhenglt/00.database/broad/bundle/2.8/b37
+refData=$bundleDir/human_g1k_v37_decoy.fasta
+REF=$refData
+refDataByChr=$bundleDir/byChr
+refNFile=$bundleDir/all.NBlock.bed
 #knownSites=$bundleDir/dbsnp_138.b37.vcf
 #HumanDB=/DBS/DB_temp/zhangLab/annovar/humandb_b37
 #

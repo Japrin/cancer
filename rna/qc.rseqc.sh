@@ -34,18 +34,23 @@ outDir=$1
 inbam=$2
 sampleID=$3
 
-REF_GENE_MODEL_BED="/DBS/DB_temp/zhangLab/ucsc/annotation/hg19/mybuild/hg19_knownGene.bed"
-REF_FA="/DBS/DB_temp/zhangLab/broad/bundle/2.8/hg19/hg19.fa"
-CHROM_SIZE_TXT="/DBS/DB_temp/zhangLab/broad/bundle/2.8/hg19/hg19.chr.length"
-gfRData="/DBS/DB_temp/zhangLab/broad/bundle/2.8/hg19/gmap-gsnap/withERCC.v1/hg19.knownGene.RData"
+#REF_GENE_MODEL_BED="/DBS/DB_temp/zhangLab/ucsc/annotation/hg19/mybuild/hg19_knownGene.bed"
+#REF_FA="/DBS/DB_temp/zhangLab/broad/bundle/2.8/hg19/hg19.fa"
+#CHROM_SIZE_TXT="/DBS/DB_temp/zhangLab/broad/bundle/2.8/hg19/hg19.chr.length"
+#gfRData="/DBS/DB_temp/zhangLab/broad/bundle/2.8/hg19/gmap-gsnap/withERCC.v1/hg19.knownGene.RData"
+REF_GENE_MODEL_BED="/WPSnew/zhenglt/00.database/ucsc/annotation/hg19/mybuild/hg19_knownGene.bed"
+REF_FA="/WPSnew/zhenglt/00.database/broad/bundle/2.8/hg19/hg19.fa"
+CHROM_SIZE_TXT="/WPSnew/zhenglt/00.database/broad/bundle/2.8/hg19/hg19.chr.length"
+gfRData="/WPSnew/zhenglt/00.database/broad/bundle/2.8/hg19/gmap-gsnap/withERCC.v1/hg19.knownGene.RData"
 
 mkdir -p $outDir
 echo begin at: `date`
+cd $outDir
 
 if [ ! -f "$outDir/$sampleID.geneBodyCoverage.curves.pdf" ];then
     geneBody_coverage.py   -r $REF_GENE_MODEL_BED -i $inbam  -o $outDir/$sampleID
 fi
-exit
+#exit
 
 inner_distance.py      -r $REF_GENE_MODEL_BED -i $inbam -o $outDir/$sampleID
 

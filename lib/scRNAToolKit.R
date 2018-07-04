@@ -3755,12 +3755,13 @@ processInput <- function(designFile,cellTypeColorFile,inputFile,args.notFilter,g
             args.log <- F
             args.center <- F
         }else{
-            Y <- exprs(lenv[["sce.norm"]])
+            ##Y <- exprs(lenv[["sce.norm"]])
+            Y <- assay(lenv[["sce.norm"]],"centered_norm_exprs")
             args.notFilter <- T
             args.log <- F
             args.center <- F
         }
-        g.GNAME <- fData(lenv[["sce.norm"]])[,"geneSymbol"]
+        g.GNAME <- rowData(lenv[["sce.norm"]])[,"geneSymbol"]
         names(g.GNAME) <- rownames(Y)
     }else if(grepl("RData$",inputFile,perl=T)){
         lenv <- loadToEnv(inputFile)
