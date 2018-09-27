@@ -1,1 +1,1 @@
-/Share/BP/zhenglt/02.pipeline/cancer/somatic_cna/freec.loh.summary.pl
+../somatic_cna/freec.loh.summary.pl

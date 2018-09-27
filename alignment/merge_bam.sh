@@ -2,7 +2,7 @@
 
 echo "*** Merge BAM ***"
 
-iniFile="/Share/BP/zhenglt/02.pipeline/cancer/parameter/init_human.sh"
+iniFile="`dirname $0`/../parameter/init_human.sh"
 optM=16
 
 while getopts c:m: opt

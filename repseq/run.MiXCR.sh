@@ -36,12 +36,11 @@ optT=4
 mkdir -p $outDir
 
 source $iniFile
-. /usr/share/Modules/init/bash
-export MODULEPATH="/Share/BP/zhenglt/05.setting/modulefiles":/usr/share/Modules/modulefiles:/etc/modulefiles
-module load java/1.8.0_112
-module load bamUtil/1.0.12
+module load java/1.8.0_171
+module load bamUtil/1.0.14
 
-mixcrBin="/Share/BP/zhenglt/01.bin/repSeq/mixcr-2.0.2/mixcr"
+#mixcrBin="/Share/BP/zhenglt/01.bin/repSeq/mixcr-2.0.2/mixcr"
+mixcrBin="/WPSnew/zhenglt/01.bin/repseq/mixcr/mixcr-2.1.11/mixcr"
 optM=6
 echo begin at: `date`
 echo $optBam
@@ -78,9 +77,9 @@ $mixcrBin assemble -f -t $optT -OaddReadsCountOnClustering=true -ObadQualityThre
     -r $outDir/$sampleID.MiXCR.log.assembleClones.txt \
     $outDir/$sampleID.MiXCR.alignmentsRescued_2.vdjca \
     $outDir/$sampleID.MiXCR.clones.clns
-$mixcrBin exportClones -f $outDir/$sampleID.MiXCR.clones.clns $outDir/$sampleID.MiXCR.clones.txt
+$mixcrBin exportClones -f --filter-out-of-frames --filter-stops $outDir/$sampleID.MiXCR.clones.clns $outDir/$sampleID.MiXCR.clones.txt
 $mixcrBin exportClonesPretty $outDir/$sampleID.MiXCR.clones.clns $outDir/$sampleID.MiXCR.clonesPretty.txt
-$mixcrBin exportClones -f --chains TCR $outDir/$sampleID.MiXCR.clones.clns $outDir/$sampleID.MiXCR.TCR.clones.txt
+$mixcrBin exportClones -f --filter-out-of-frames --filter-stops --chains TCR $outDir/$sampleID.MiXCR.clones.clns $outDir/$sampleID.MiXCR.TCR.clones.txt
 $mixcrBin exportClonesPretty --chains TCR $outDir/$sampleID.MiXCR.clones.clns $outDir/$sampleID.MiXCR.TCR.clonesPretty.txt
 
 if $optBam;then
@@ -88,7 +87,7 @@ if $optBam;then
     rm $fq1 $fq2
 fi
 
-/Share/BP/zhenglt/02.pipeline/cancer/repseq/TCRasm.MiXCR.slim.pl \
+$sDir/TCRasm.MiXCR.slim.pl \
     -s $sampleID \
     $outDir/$sampleID.MiXCR.TCR.clones.txt \
     $outDir/$sampleID.MiXCR.TCR.clones.slim.txt

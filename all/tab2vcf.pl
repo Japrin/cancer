@@ -1,1 +1,1 @@
-/Share/BP/zhenglt/02.pipeline/cancer/var/tab2vcf.pl
+../var/tab2vcf.pl

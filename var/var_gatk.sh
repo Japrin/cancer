@@ -3,7 +3,7 @@ echo "*** variant calling by GATK ***"
 
 TR=""
 optTR=""
-iniFile="/WPS/BP/zhenglt/02.pipeline/health.02pipeline/cancer/parameter/init_human.sh"
+iniFile="`dirname $0`/../parameter/init_human.sh"
 
 opt_P=""
 
@@ -88,15 +88,16 @@ then
     	-A VariantType \
     	-A DepthPerAlleleBySample \
     	-baq CALCULATE_AS_NECESSARY \
-     	-stand_call_conf 30.0 \
-    	-stand_emit_conf 10.0 \
     	-glm INDEL \
-    	-et NO_ET \
-    	-rf BadCigar \
-    	-K $GATKKey $opt_P
+    	-rf BadCigar $opt_P
+    	##-et NO_ET \
+    	##-K $GATKKey
+     	##-stand_call_conf 30.0 \
+    	##-stand_emit_conf 10.0 \
 fi
 
-filter="QD < 2.0 || (vc.hasAttribute('ReadPosRankSum') && ReadPosRankSum < -20.0) || FS > 200.0"
+##filter="QD < 2.0 || (vc.hasAttribute('ReadPosRankSum') && ReadPosRankSum < -20.0) || FS > 200.0"
+filter="QUAL < 30.0 || QD < 2.0 || (vc.hasAttribute('ReadPosRankSum') && ReadPosRankSum < -20.0) || FS > 200.0"
 java -Xms5g -Xmx5g -Djava.io.tmpdir=$outDir -jar $GATK/GenomeAnalysisTK.jar \
 	-T VariantFiltration \
 	-R $REF \
@@ -104,9 +105,9 @@ java -Xms5g -Xmx5g -Djava.io.tmpdir=$outDir -jar $GATK/GenomeAnalysisTK.jar \
 	-V $indel_vcf \
 	--filterExpression "$filter" \
 	--filterName "StandardFilter" \
-	-et NO_ET \
-	-rf BadCigar \
-	-K $GATKKey
+	-rf BadCigar
+	##-et NO_ET \
+	##-K $GATKKey
 #perl -i -F"\t" -ane 'if(/^#/||$F[6] eq "."||$F[6] eq "PASS"){print}' $indel_flt_vcf
 rm -f $indel_flt_vcf.idx
 
@@ -128,16 +129,17 @@ then
     	-A VariantType \
     	-A DepthPerAlleleBySample \
     	-baq CALCULATE_AS_NECESSARY \
-     	-stand_call_conf 30.0 \
-    	-stand_emit_conf 10.0 \
     	-glm SNP \
-    	-et NO_ET \
-    	-rf BadCigar \
-    	-K $GATKKey $opt_P
+    	-rf BadCigar $opt_P
+    	##-et NO_ET \
+    	##-K $GATKKey
+     	##-stand_call_conf 30.0 \
+    	##-stand_emit_conf 10.0 \
 fi
 
 ###filter="QD < 2.0 || MQ < 40.0 || FS > 60.0 || HaplotypeScore > 13.0 || MQRankSum < -12.5 || ReadPosRankSum < -8.0"
-filter="QD < 2.0 || MQ < 40.0 || FS > 60.0 || (vc.hasAttribute('MQRankSum') && MQRankSum < -12.5) || (vc.hasAttribute('ReadPosRankSum') && ReadPosRankSum < -8.0)"
+##filter="QD < 2.0 || MQ < 40.0 || FS > 60.0 || (vc.hasAttribute('MQRankSum') && MQRankSum < -12.5) || (vc.hasAttribute('ReadPosRankSum') && ReadPosRankSum < -8.0)"
+filter="QUAL < 30.0 || QD < 2.0 || MQ < 40.0 || FS > 60.0 || (vc.hasAttribute('MQRankSum') && MQRankSum < -12.5) || (vc.hasAttribute('ReadPosRankSum') && ReadPosRankSum < -8.0)"
 java -Xms5g -Xmx5g -Djava.io.tmpdir=$outDir -jar $GATK/GenomeAnalysisTK.jar \
 	-T VariantFiltration \
 	-R $REF \
@@ -145,9 +147,9 @@ java -Xms5g -Xmx5g -Djava.io.tmpdir=$outDir -jar $GATK/GenomeAnalysisTK.jar \
 	-V $snp_vcf \
 	--filterExpression "$filter" \
 	--filterName "StandardFilter" \
-	-et NO_ET \
-	-rf BadCigar \
-	-K $GATKKey
+	-rf BadCigar
+	##-et NO_ET \
+	##-K $GATKKey
 #perl -i -F"\t" -ane 'if(/^#/||$F[6] eq "."||$F[6] eq "PASS"){print}' $snp_flt_vcf
 rm -f $snp_flt_vcf.idx
 

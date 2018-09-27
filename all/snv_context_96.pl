@@ -1,1 +1,1 @@
-/Share/BP/zhenglt/02.pipeline/cancer/mutationSignature/snv_context_96.pl
+../mutationSignature/snv_context_96.pl

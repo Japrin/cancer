@@ -1,1 +1,1 @@
-/Share/BP/zhenglt/02.pipeline/cancer/alignment/downsample.sh
+../alignment/downsample.sh

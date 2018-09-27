@@ -1,1 +1,1 @@
-/Share/BP/zhenglt/02.pipeline/cancer/var/freec.for.plot.pl
+../var/freec.for.plot.pl

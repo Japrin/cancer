@@ -1,1 +1,1 @@
-/Share/BP/zhenglt/02.pipeline/cancer/stat/depth.addn.pl
+../stat/depth.addn.pl

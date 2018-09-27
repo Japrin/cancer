@@ -1,6 +1,6 @@
 #!/bin/bash -eu
 
-iniFile="/PROJ/HEALTH/share/health.02pipeline/cancer/parameter/init_human.sh"
+iniFile="`dirname $0`/../parameter/init_human.sh"
 
 while getopts c: opt
 do

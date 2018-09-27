@@ -1,6 +1,6 @@
 #!/usr/bin/env perl
 #============================================================================
-# Name        		: novo_wes_cancer.pl
+# Name        		: gen_pip_cancer.pl
 # Author      		: zhengliangtao (tao2013@gmail.com)
 # Version     		: v1.00
 # Created On  		: Wed Feb 27 11:58:03 2013
@@ -14,7 +14,7 @@
 
 =head1 Usage
 
-	perl novo_med_seq_cancer.pl [option] <config file> <outfile>
+	perl gen_pip_cancer.pl [option] <config file> <outfile>
 
 	-o		result dir [default: ./analysis]
 	-p		extra 'aln.mem.sh' parameter [quoted by "", default ""]

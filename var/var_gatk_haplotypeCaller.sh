@@ -3,7 +3,7 @@ echo "*** variant calling by GATK ***"
 
 TR=""
 optTR=""
-iniFile="/PROJ/GR/share/medinfo.02pipeline/cancer/parameter/init_human.sh"
+iniFile="`dirname $0`/../parameter/init_human.sh"
 
 optM=6
 opt_P=""
@@ -78,9 +78,9 @@ if [ ! -f "$raw_vcf" ];then
 		-stand_call_conf 30.0 \
 		-stand_emit_conf 10.0 \
 		--genotyping_mode DISCOVERY \
-		-o $raw_vcf $optTR \
-		-et NO_ET \
-		-K $GATKKey $opt_P
+		-o $raw_vcf $optTR $opt_P 
+		##-et NO_ET \
+		##-K $GATKKey
 fi
 
 
@@ -97,9 +97,9 @@ java -Xmx${optM}g -Djava.io.tmpdir=$outDir -jar $GATK/GenomeAnalysisTK.jar \
 	-resource:1000G,known=false,training=true,truth=false,prior=10.0 $bundleDir/1000G_phase1.snps.high_confidence.b37.vcf \
 	-resource:dbsnp,known=true,training=false,truth=false,prior=2.0 $bundleDir/dbsnp_137.b37.vcf \
 	-an QD -an MQRankSum -an ReadPosRankSum -an FS -an DP \
-	-mode SNP \
-	-et NO_ET \
-	-K $GATKKey
+	-mode SNP
+	##-et NO_ET \
+	##-K $GATKKey
 
 java -Xmx${optM}g -Djava.io.tmpdir=$outDir -jar $GATK/GenomeAnalysisTK.jar \
 	-T VariantRecalibrator \
@@ -112,9 +112,9 @@ java -Xmx${optM}g -Djava.io.tmpdir=$outDir -jar $GATK/GenomeAnalysisTK.jar \
 	-resource:mills,known=false,training=true,truth=true,prior=12.0 $bundleDir/Mills_and_1000G_gold_standard.indels.b37.vcf \
 	-resource:dbsnp,known=true,training=false,truth=false,prior=2.0 $bundleDir/dbsnp_137.b37.vcf \
 	-an DP -an FS -an ReadPosRankSum -an MQRankSum \
-	-mode INDEL \
-	-et NO_ET \
-	-K $GATKKey
+	-mode INDEL
+	##-et NO_ET \
+	##-K $GATKKey
 
 java -Xmx${optM}g -Djava.io.tmpdir=$outDir -jar $GATK/GenomeAnalysisTK.jar \
 	-T ApplyRecalibration \
@@ -124,9 +124,9 @@ java -Xmx${optM}g -Djava.io.tmpdir=$outDir -jar $GATK/GenomeAnalysisTK.jar \
 	-tranchesFile $tranches_SNP_File \
 	-o $t_vcf \
 	--ts_filter_level 99.9 \
-	-mode SNP \
-	-et NO_ET \
-	-K $GATKKey
+	-mode SNP
+	##-et NO_ET \
+	##-K $GATKKey
 
 java -Xmx${optM}g -Djava.io.tmpdir=$outDir -jar $GATK/GenomeAnalysisTK.jar \
 	-T ApplyRecalibration \
@@ -136,9 +136,9 @@ java -Xmx${optM}g -Djava.io.tmpdir=$outDir -jar $GATK/GenomeAnalysisTK.jar \
 	-tranchesFile $tranches_INDEL_File \
 	-o $flt_vcf \
 	--ts_filter_level 99.9 \
-	-mode INDEL \
-	-et NO_ET \
-	-K $GATKKey
+	-mode INDEL
+	##-et NO_ET \
+	##-K $GATKKey
 
 echo end at: `date`
 

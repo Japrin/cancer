@@ -1,1 +1,1 @@
-/Share/BP/zhenglt/02.pipeline/cancer/somatic_cna/CNAnorm2Bed.pl
+../somatic_cna/CNAnorm2Bed.pl

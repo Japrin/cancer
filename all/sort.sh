@@ -1,1 +1,1 @@
-/Share/BP/zhenglt/02.pipeline/cancer/alignment/sort.sh
+../alignment/sort.sh

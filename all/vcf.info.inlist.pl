@@ -1,1 +1,1 @@
-/Share/BP/zhenglt/02.pipeline/cancer/toolkit/vcf.info.inlist.pl
+../toolkit/vcf.info.inlist.pl

@@ -1,1 +1,1 @@
-/Share/BP/zhenglt/02.pipeline/cancer/var/freec.generate.config.pl
+../var/freec.generate.config.pl

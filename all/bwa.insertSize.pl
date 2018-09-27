@@ -1,1 +1,1 @@
-/Share/BP/zhenglt/02.pipeline/cancer/stat/bwa.insertSize.pl
+../stat/bwa.insertSize.pl

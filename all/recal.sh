@@ -1,1 +1,1 @@
-/Share/BP/zhenglt/02.pipeline/cancer/alignment/recal.sh
+../alignment/recal.sh

@@ -2,7 +2,7 @@
 
 echo "*** Realigning targeted regions ***"
 
-iniFile="/Share/BP/zhenglt/02.pipeline/cancer/parameter/init_human.sh"
+iniFile="`dirname $0`/../parameter/init_human.sh"
 optM=8
 optNT=1
 optNCT=4
@@ -66,9 +66,9 @@ java -Xms${optM}g -Xmx${optM}g -Djava.io.tmpdir=$o_dir -jar $GATK/GenomeAnalysis
 	-R $REF \
 	-o ${o/.bam/.intervals} $optL \
 	-nt $optNT \
-	-rf BadCigar \
-	-et NO_ET \
-	-K $GATKKey
+	-rf BadCigar
+	#-et NO_ET \
+	#-K $GATKKey
 
 echo ">>> Running the realigner over the targeted intervals"
 java -Xms${optM}g -Xmx${optM}g -Djava.io.tmpdir=$o_dir -jar $GATK/GenomeAnalysisTK.jar \
@@ -79,9 +79,9 @@ java -Xms${optM}g -Xmx${optM}g -Djava.io.tmpdir=$o_dir -jar $GATK/GenomeAnalysis
 	-targetIntervals ${o/.bam/.intervals} \
 	-LOD 5 $optL \
 	-nt $optNT \
-	-rf BadCigar \
-	-et NO_ET \
-	-K $GATKKey
+	-rf BadCigar
+	#-et NO_ET \
+	#-K $GATKKey
 
 rm -f ${o/.bam/.bai}
 samtools index $o

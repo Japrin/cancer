@@ -4,7 +4,8 @@ echo "*** somatic mutation by strelka ***"
 
 TR=""
 optTR=""
-iniFile="/Share/BP/zhenglt/02.pipeline/cancer/parameter/init_human.sh"
+iniFile="`dirname $0`/../parameter/init_human.sh"
+
 #_refData="/DBS/DB_temp/zhangLab/broad/bundle/2.8/b37/human_g1k_v37_decoy.fasta"
 optZ="N"
 optG=""
@@ -72,7 +73,7 @@ normalBam=$2
 tumorBam=$3
 outDir=$4
 
-strelkaDir="/Share/BP/zhenglt/01.bin/strelka/strelka_workflow-1.0.14/mybuild"
+strelkaDir="/WPSnew/zhenglt/01.bin/var/strelka/strelka_workflow-1.0.14/mybuild"
 
 #mkdir -p $outDir
 config_file=""

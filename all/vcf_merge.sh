@@ -1,1 +1,1 @@
-/Share/BP/zhenglt/02.pipeline/cancer/toolkit/vcf_merge.sh
+../toolkit/vcf_merge.sh

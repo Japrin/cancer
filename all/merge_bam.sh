@@ -1,1 +1,1 @@
-/Share/BP/zhenglt/02.pipeline/cancer/alignment/merge_bam.sh
+../alignment/merge_bam.sh

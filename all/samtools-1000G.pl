@@ -1,1 +1,1 @@
-/Share/BP/zhenglt/02.pipeline/cancer/var/samtools-1000G.pl
+../var/samtools-1000G.pl

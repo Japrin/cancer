@@ -1,1 +1,1 @@
-/Share/BP/zhenglt/02.pipeline/cancer/report/report_gen.pl
+../report/report_gen.pl

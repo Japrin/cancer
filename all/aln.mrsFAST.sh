@@ -1,1 +1,1 @@
-/Share/BP/zhenglt/02.pipeline/cancer/alignment/aln.mrsFAST.sh
+../alignment/aln.mrsFAST.sh

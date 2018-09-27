@@ -68,8 +68,6 @@ java -Djava.io.tmpdir=$outDir -Xmx5g -jar $gatkJAR -T DepthOfCoverage \
 	-R $REF \
 	-I $inBam $optTR \
 	-o $outDir/$sampleID \
-	-et NO_ET \
-	-K $gatkKey \
 	-rf BadCigar \
 	--interval_merging OVERLAPPING_ONLY \
 	-ct 1 \
@@ -81,6 +79,8 @@ java -Djava.io.tmpdir=$outDir -Xmx5g -jar $gatkJAR -T DepthOfCoverage \
 	-ct 40 \
 	-ct 50 \
 	-ct 100
+	####-et NO_ET \
+	####-K $gatkKey \
 
 perl -i -F"\t" -ane '{ $NR++;if($NR==1){print; next} chomp; chomp @F; @a=split /[:-]/,$F[0];if(@a<3){push @a,$a[1];} $F[0]="$a[0]:$a[1]-$a[2]";$F[0]=~s/^chr//i;printf "%s\n",join("\t",@F); }' $outDir/$sampleID.sample_interval_summary 
 #sed -i 's/^chr//' $outDir/$sampleID.sample_interval_summary

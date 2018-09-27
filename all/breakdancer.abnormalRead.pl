@@ -1,1 +1,1 @@
-/Share/BP/zhenglt/02.pipeline/cancer/var/breakdancer.abnormalRead.pl
+../var/breakdancer.abnormalRead.pl

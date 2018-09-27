@@ -1,1 +1,1 @@
-/Share/BP/zhenglt/02.pipeline/cancer/somatic_indel/somatic_GATK_Indel.sh
+../somatic_indel/somatic_GATK_Indel.sh

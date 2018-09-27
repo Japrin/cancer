@@ -1,6 +1,6 @@
 #!/bin/bash -eu
 
-iniFile="/Share/BP/zhenglt/02.pipeline/cancer/parameter/init_human.sh"
+iniFile="`dirname $0`/../parameter/init_human.sh"
 method="general"
 optA=""
 optB="INDEL"
@@ -53,6 +53,8 @@ echo begin at: `date`
 
 source $iniFile 
 
+module load samtools/1.8
+
 infile=$1
 sampleID=$2
 outDir=`dirname $infile`
@@ -61,13 +63,13 @@ echo ">>> annotate ..."
 
 mkdir -p $outDir
 
-cancerGeneDir="/Share/BP/zhenglt/00.database/cancer_gene"
+cancerGeneDir="/WPSnew/zhenglt/00.database/cancer_gene"
 
 #### read from stdin, and ouput to stdout
 function addGeneAnn
 {
 	perl $PIPELINE/cancer/huyy/addAnn_hyy.pl -annName OMIM_DAVID \
-	| perl $PIPELINE/cancer/huyy/addAnn_hyy.pl -annName CancerGene \
+	| perl $PIPELINE/cancer/huyy/addAnn_hyy.pl -annName CancerGeneCensus \
 	| perl $PIPELINE/cancer/huyy/addAnn_hyy.pl -annName BertVogelstein125 -annFile $cancerGeneDir/compile/Gene.manual.BertVogelstein125 \
 	| perl $PIPELINE/cancer/huyy/addAnn_hyy.pl -annName Predisposition -annFile $cancerGeneDir/cancer_gene_predisposition.slim.txt \
 	| perl $PIPELINE/cancer/huyy/addAnn_hyy.pl -annName DriverCNA -annFile $cancerGeneDir/cancer_gene_cnv.slim.txt \
@@ -75,9 +77,9 @@ function addGeneAnn
 	| perl $PIPELINE/cancer/huyy/addAnn_hyy.pl -annName GO_BP \
 	| perl $PIPELINE/cancer/huyy/addAnn_hyy.pl -annName GO_CC \
 	| perl $PIPELINE/cancer/huyy/addAnn_hyy.pl -annName GO_MF \
-	| perl $PIPELINE/cancer/huyy/addAnn_hyy.pl -annName KEGG_PATHWAY \
-	| perl $PIPELINE/cancer/huyy/addAnn_hyy.pl -annName PANTHER_PATHWAY \
 	| perl $PIPELINE/cancer/huyy/addAnn_hyy.pl -annName REACTOME_PATHWAY
+	#| perl $PIPELINE/cancer/huyy/addAnn_hyy.pl -annName KEGG_PATHWAY \
+	#| perl $PIPELINE/cancer/huyy/addAnn_hyy.pl -annName PANTHER_PATHWAY \
 }
 
 
@@ -104,8 +106,9 @@ if [[ "$infile" =~ ".vcf" || "$infile" =~ ".vcf.gz" ]]; then
 
 	if [ ! -f "$addAnnFile" ];then
 		table_annovar.pl $annovarFile $HumanDB -buildver hg19 -otherinfo -remove -nastring . \
-			-protocol knownGene,cytoband,genomicSuperDups,phastConsElements46way,wgRna,targetScanS,tfbsConsSites,esp6500siv2_all,1000g2014oct_all,1000g2014oct_afr,1000g2014oct_eas,1000g2014oct_eur,avsnp142,ljb26_all,gerp++elem,gerp++gt2,cosmic70 \
+			-protocol knownGene,cytoband,genomicSuperDups,phastConsElements46way,wgRna,targetScanS,tfbsConsSites,esp6500siv2_all,1000g2015aug_all,1000g2015aug_afr,1000g2015aug_eas,1000g2015aug_eur,avsnp150,ljb26_all,gerp++elem,gerp++gt2,cosmic70 \
 			-operation g,r,r,r,r,r,r,f,f,f,f,f,f,f,f,f,f
+			###-protocol knownGene,cytoband,genomicSuperDups,phastConsElements46way,wgRna,targetScanS,tfbsConsSites,esp6500siv2_all,1000g2014oct_all,1000g2014oct_afr,1000g2014oct_eas,1000g2014oct_eur,avsnp142,ljb26_all,gerp++elem,gerp++gt2,cosmic70 \
 	fi
 
 	## refomrat the ouput table_variants file, mainly for the otherinfo field
@@ -127,7 +130,8 @@ if [[ "$infile" =~ ".vcf" || "$infile" =~ ".vcf.gz" ]]; then
 	## somatic filter
 	if [[ "$optA" =~ "somatic" ]]; then
 		echo "Somatic filter"
-		perl -i -F"\t" -ane 'if(/^#/ || ($F[7]!~/snp142/ && $F[2] eq".") ||  ($F[7]=~/cosmic/ && ($F[7]!~/1000g2014oct_all=(.+?);/ || ($F[7]=~/1000g2014oct_all=(.+?);/ && $1<0.01)) ) ){print}' $vcfFile
+		####perl -i -F"\t" -ane 'if(/^#/ || ($F[7]!~/snp142/ && $F[2] eq".") ||  ($F[7]=~/cosmic/ && ($F[7]!~/1000g2014oct_all=(.+?);/ || ($F[7]=~/1000g2014oct_all=(.+?);/ && $1<0.01)) ) ){print}' $vcfFile
+		perl -i -F"\t" -ane 'if(/^#/ || ($F[7]!~/snp150/ && $F[2] eq".") ||  ($F[7]=~/cosmic/ && ($F[7]!~/1000g2015aug_all=(.+?);/ || ($F[7]=~/1000g2015aug_all=(.+?);/ && $1<0.01)) ) ){print}' $vcfFile
 	else
 		echo "No somatic filter"
 	fi

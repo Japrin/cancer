@@ -1,1 +1,1 @@
-/Share/BP/zhenglt/02.pipeline/cancer/stat/collectCap.sh
+../stat/collectCap.sh

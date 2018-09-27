@@ -1,1 +1,1 @@
-/Share/BP/zhenglt/02.pipeline/cancer/huyy/tab2vcf.v0.pl
+../huyy/tab2vcf.v0.pl

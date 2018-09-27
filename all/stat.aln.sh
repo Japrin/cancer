@@ -1,1 +1,1 @@
-/Share/BP/zhenglt/02.pipeline/cancer/stat/stat.aln.sh
+../stat/stat.aln.sh

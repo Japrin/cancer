@@ -1,1 +1,1 @@
-/Share/BP/zhenglt/02.pipeline/cancer/toolkit/vcf.func.stat.pl
+../toolkit/vcf.func.stat.pl

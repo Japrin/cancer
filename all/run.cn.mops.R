@@ -1,1 +1,1 @@
-/Share/BP/zhenglt/02.pipeline/cancer/var/run.cn.mops.R
+../var/run.cn.mops.R

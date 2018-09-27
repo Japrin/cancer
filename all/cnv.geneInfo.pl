@@ -1,1 +1,1 @@
-/Share/BP/zhenglt/02.pipeline/cancer/var/cnv.geneInfo.pl
+../var/cnv.geneInfo.pl

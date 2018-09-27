@@ -1,1 +1,1 @@
-/Share/BP/zhenglt/02.pipeline/cancer/stat/stat_exom.pl
+../stat/stat_exom.pl

@@ -1,1 +1,1 @@
-/Share/BP/zhenglt/02.pipeline/cancer/mutationGenePlot/prepare.sh
+../mutationGenePlot/prepare.sh

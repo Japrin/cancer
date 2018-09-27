@@ -1,1 +1,1 @@
-/Share/BP/zhenglt/02.pipeline/cancer/somatic_cna/stat.varScan.cnv.pl
+../somatic_cna/stat.varScan.cnv.pl

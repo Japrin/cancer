@@ -1,1 +1,1 @@
-/Share/BP/zhenglt/02.pipeline/cancer/mutationSignature/spectrum.R
+../mutationSignature/spectrum.R

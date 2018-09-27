@@ -44,13 +44,14 @@ then
 fi
 
 source $iniFile
-##module load hisat/2.0.0-beta
-module load hisat/2.0.5
-module load bamUtil/1.0.12
+module load hisat2/2.0.5
+module load bamUtil/1.0.14
 module load trimmomatic/0.33
 module load RNA-SeQC/1.1.8
-module load bwa/0.7.12
-module load picard/1.130
+####module load bwa/0.7.12
+##module load bwa/0.7.17
+#module load picard/1.130
+module load picard/2.18.9
 ### pipeline need samtools 1.2; samtools 1.3.1 has some problem
 module load samtools/1.2
 
@@ -60,7 +61,7 @@ fq2=$3
 sampleID=$4
 lib=$5
 lane=$6
-TMPDIR="/Share/BP/zhenglt/tmp"
+TMPDIR="/WPSnew/zhenglt/tmp"
 
 echo begin at: `date`
 echo "*** Aligning reads ***"
@@ -79,12 +80,12 @@ if [ "$optS" == "human" ];then
     #GCFile="$HISAT_INDEXES/gencode.v19.annotation.GC"
     REF="$INDEX.fa"
 elif [ "$optS" == "mouse" ];then
-    export HISAT_INDEXES="/DBS/DB_temp/zhangLab/ensemble/mybuild/hisat/mouse/rel89"
+    export HISAT_INDEXES="/WPSnew/zhenglt/00.database/ensemble/mybuild/hisat/mouse/rel89/hisat2"
     INDEX="$HISAT_INDEXES/GRCm38.rel89"
     KNOWN_SPLICE="$HISAT_INDEXES/GRCm38.rel89.splicesites.txt"
-    RRNA_INDEX="$HISAT_INDEXES/mouse_all_rRNA"
     GENE_MODEL="$HISAT_INDEXES/GRCm38.rel89.gtf"
-    REF="$HISAT_INDEXES/GRCm38.rel89.fa"
+    REF="$INDEXES.fa"
+    RRNA_INDEX="$HISAT_INDEXES/mouse_all_rRNA"
 fi
 
 rm -f $outDir/$sampleID.noRRNA.R1.fq.gz $outDir/$sampleID.noRRNA.R2.fq.gz 

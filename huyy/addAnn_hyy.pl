@@ -80,7 +80,7 @@ use POSIX qw(strftime);
 
 
 ###my $DAVID="/WPS1/zhenglt/00.database/DAVIDKnowledgeBase";
-my $DAVID="/DBS/DB_temp/zhangLab/DAVIDKnowledgeBase";
+my $DAVID="/WPSnew/zhenglt/00.database/DAVID/DAVIDKnowledgebase";
 
 
 	my ($in,$out);
@@ -92,7 +92,8 @@ my $DAVID="/DBS/DB_temp/zhangLab/DAVIDKnowledgeBase";
 	if (!defined $opt_h and !defined $opt_m and !defined $field and !defined $annFile and !defined $annName ) {pod2usage(-verbose=> 0)};
 	if (!defined($annName)) {$annName = "OMIM";}
 	if(!defined($field)) { $field="Gene"; }
-	if (($annName eq "CancerGene") and (!defined $annFile)) {$annFile = "$DAVID/other/CancerGene.txt";}
+    ###if (($annName eq "CancerGene") and (!defined $annFile)) {$annFile = "$DAVID/other/CancerGene.txt";}
+	if (($annName eq "CancerGeneCensus") and (!defined $annFile)) {$annFile = "$DAVID/";}
 	if (($annName eq "OMIM") and (!defined $annFile)) { $annFile = "$DAVID/other/OMIM.txt";}
 	if (($annName eq "BIND") and (!defined $annFile)) { $annFile = "$DAVID/OFFICIAL_GENE_SYMBOL2BIND.txt";}
 	if (($annName eq "COG_NAME") and (!defined $annFile)) { $annFile = "$DAVID/OFFICIAL_GENE_SYMBOL2COG_NAME.txt";}

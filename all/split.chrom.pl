@@ -1,1 +1,1 @@
-/Share/BP/zhenglt/02.pipeline/cancer/stat/split.chrom.pl
+../stat/split.chrom.pl

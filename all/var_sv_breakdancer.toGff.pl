@@ -1,1 +1,1 @@
-/Share/BP/zhenglt/02.pipeline/cancer/var/var_sv_breakdancer.toGff.pl
+../var/var_sv_breakdancer.toGff.pl

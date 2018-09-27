@@ -1,1 +1,1 @@
-/Share/BP/zhenglt/02.pipeline/cancer/mutationGenePlot/plot.mutation.gene.pl
+../mutationGenePlot/plot.mutation.gene.pl

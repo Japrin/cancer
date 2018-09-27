@@ -4,7 +4,7 @@ echo "*** somatic SNV by varScan ***"
 
 TR=""
 optTR=""
-iniFile="/Share/BP/zhenglt/02.pipeline/cancer/parameter/init_human.sh"
+iniFile="`dirname $0`/../parameter/init_human.sh"
 #_refData="/DBS/DB_temp/zhangLab/broad/bundle/2.8/b37/bwa_0.7.12/human_g1k_v37_decoy.fasta"
 tumorFreq=0.1
 normalFreq=0.05
@@ -99,21 +99,21 @@ fi
 
 ## somatic
 awk '!/^#/ {print $1,$2,$2}' $outDir/$sampleID.varScan.snp.Somatic.hc.vcf > $outDir/$sampleID.varScan.snp.Somatic.hc.list
-bam-readcount $tumorBam -q 1 -b 13 -f $refData -l $outDir/$sampleID.varScan.snp.Somatic.hc.list > $outDir/$sampleID.varScan.snp.Somatic.hc.readcount
+bam-readcount $tumorBam -w 3 -q 1 -b 13 -f $refData -l $outDir/$sampleID.varScan.snp.Somatic.hc.list > $outDir/$sampleID.varScan.snp.Somatic.hc.readcount
 $varScanDIR/fpfilter_vcf.pl $outDir/$sampleID.varScan.snp.Somatic.hc.vcf $outDir/$sampleID.varScan.snp.Somatic.hc.readcount --output-basename $outDir/$sampleID.varScan.snp.Somatic.hc.fpfilter
 awk '/^#/' $outDir/$sampleID.varScan.snp.Somatic.hc.vcf > $outDir/$sampleID.varScan.call.Somatic.vcf
 cat $outDir/$sampleID.varScan.snp.Somatic.hc.fpfilter.pass >> $outDir/$sampleID.varScan.call.Somatic.vcf
 
 ## germline
 awk '!/^#/ {print $1,$2,$2}' $outDir/$sampleID.varScan.snp.Germline.hc.vcf > $outDir/$sampleID.varScan.snp.Germline.hc.list
-bam-readcount $tumorBam -q 1 -b 13 -f $refData -l $outDir/$sampleID.varScan.snp.Germline.hc.list > $outDir/$sampleID.varScan.snp.Germline.hc.readcount
+bam-readcount $tumorBam -w 3 -q 1 -b 13 -f $refData -l $outDir/$sampleID.varScan.snp.Germline.hc.list > $outDir/$sampleID.varScan.snp.Germline.hc.readcount
 $varScanDIR/fpfilter_vcf.pl $outDir/$sampleID.varScan.snp.Germline.hc.vcf $outDir/$sampleID.varScan.snp.Germline.hc.readcount --output-basename $outDir/$sampleID.varScan.snp.Germline.hc.fpfilter
 awk '/^#/' $outDir/$sampleID.varScan.snp.Germline.hc.vcf > $outDir/$sampleID.varScan.call.Germline.vcf
 cat $outDir/$sampleID.varScan.snp.Germline.hc.fpfilter.pass >> $outDir/$sampleID.varScan.call.Germline.vcf
 
 ## LOH
 awk '!/^#/ {print $1,$2,$2}' $outDir/$sampleID.varScan.snp.LOH.hc.vcf > $outDir/$sampleID.varScan.snp.LOH.hc.list
-bam-readcount $tumorBam -q 1 -b 13 -f $refData -l $outDir/$sampleID.varScan.snp.LOH.hc.list > $outDir/$sampleID.varScan.snp.LOH.hc.readcount
+bam-readcount $tumorBam -w 3 -q 1 -b 13 -f $refData -l $outDir/$sampleID.varScan.snp.LOH.hc.list > $outDir/$sampleID.varScan.snp.LOH.hc.readcount
 $varScanDIR/fpfilter_vcf.pl $outDir/$sampleID.varScan.snp.LOH.hc.vcf $outDir/$sampleID.varScan.snp.LOH.hc.readcount --output-basename $outDir/$sampleID.varScan.snp.LOH.hc.fpfilter
 awk '/^#/' $outDir/$sampleID.varScan.snp.LOH.hc.vcf > $outDir/$sampleID.varScan.call.LOH.vcf
 cat $outDir/$sampleID.varScan.snp.LOH.hc.fpfilter.pass >> $outDir/$sampleID.varScan.call.LOH.vcf

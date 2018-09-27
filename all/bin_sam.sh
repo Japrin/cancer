@@ -1,1 +1,1 @@
-/Share/BP/zhenglt/02.pipeline/cancer/alignment/bin_sam.sh
+../alignment/bin_sam.sh

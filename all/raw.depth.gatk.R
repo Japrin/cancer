@@ -1,1 +1,1 @@
-/Share/BP/zhenglt/02.pipeline/cancer/stat/raw.depth.gatk.R
+../stat/raw.depth.gatk.R

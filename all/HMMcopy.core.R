@@ -1,1 +1,1 @@
-/Share/BP/zhenglt/02.pipeline/cancer/somatic_cna/HMMcopy.core.R
+../somatic_cna/HMMcopy.core.R

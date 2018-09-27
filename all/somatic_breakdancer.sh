@@ -1,1 +1,1 @@
-/Share/BP/zhenglt/02.pipeline/cancer/somatic_sv/somatic_breakdancer.sh
+../somatic_sv/somatic_breakdancer.sh

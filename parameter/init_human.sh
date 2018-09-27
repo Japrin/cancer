@@ -2,30 +2,14 @@
 
 . /usr/share/Modules/init/bash
 export MODULEPATH="/Share/BP/zhenglt/05.setting/modulefiles":"/WPSnew/zhenglt/05.setting/modulefiles":$MODULEPATH
-#module load novomedSeq/1.0
-module load R/3.5.0
-module load perl/5.24.1
-module load python/2.7.15
-module load tmux/2.7
-module load vim/github
-module load misc/unknown
-module load gnu/unknown
-module load openssl/1.0.2o
-module load gcc/4.9.0
-module load mysql/5.5.60
-module load mytoolkit/unknown
-module load git/2.9.5
-module load java/1.8.0_171
-module load htop/2.2.0
-module load hdf5/1.10.1
+module load CGpipeline/1.0
 export PKG_CONFIG_PATH=/WPSnew/zhenglt/05.setting/PKGCONFIG
 
+#### don't echo anything
+####echo "pipeline init file was included at host:" `hostname`
+export PIPELINE=/WPSnew/zhenglt/02.pipeline
 
-echo "pipeline init file was included at host:" `hostname`
-#export PIPELINE=/Share/BP/zhenglt/02.pipeline
-#export ROOTSYS=/Share/BP/zhenglt/01.bin/root/root_v5.34.19/mybuild
-#
-#PATH=$PIPELINE/cancer/all/:$PATH
+export PATH=$PIPELINE/cancer/all/:$PATH
 #PATH=$PIPELINE/bin:$PATH
 #PATH=$PIPELINE/bin/sjm:$PATH
 #PATH=$PIPELINE/bin/gmap-gsnap:$PATH
@@ -76,24 +60,24 @@ echo "pipeline init file was included at host:" `hostname`
 #LD_LIBRARY_PATH=/Share/BP/zhenglt/01.bin/hdf5-1.8.14/mybuild/lib:${LD_LIBRARY_PATH:-""}
 #export LD_LIBRARY_PATH=$LD_LIBRARY_PATH
 
-#export picardDIR=/Share/BP/zhenglt/01.bin/picard/current
-#export PICARD=$picardDIR
-#export GATK=/Share/BP/zhenglt/01.bin/gatk/current
-#export gatkJAR=$GATK/GenomeAnalysisTK.jar
-#export gatkKey=$GATK/20952006_zju.edu.cn.key
-#export GATKKey=$gatkKey
-#export varScanDIR=/Share/BP/zhenglt/01.bin/varscan
+export picardDIR=/WPSnew/zhenglt/01.bin/var/picard/current
+export PICARD=$picardDIR
+export GATK=/WPSnew/zhenglt/01.bin/var/gatk/current
+export gatkJAR=$GATK/GenomeAnalysisTK.jar
+export gatkKey=$GATK/20952006_zju.edu.cn.key
+export GATKKey=$gatkKey
+export varScanDIR=/WPSnew/zhenglt/01.bin/var/varScan
 #export BREAKDANCER=$PIPELINE/bin/breakdancer
-#export ANNOVAR=$PIPELINE/bin/annovar
+export ANNOVAR=/WPSnew/zhenglt/01.bin/var/annovar/current
 
 bundleDir=/WPSnew/zhenglt/00.database/broad/bundle/2.8/b37
 refData=$bundleDir/human_g1k_v37_decoy.fasta
 REF=$refData
 refDataByChr=$bundleDir/byChr
 refNFile=$bundleDir/all.NBlock.bed
-#knownSites=$bundleDir/dbsnp_138.b37.vcf
-#HumanDB=/DBS/DB_temp/zhangLab/annovar/humandb_b37
-#
+knownSites=$bundleDir/dbsnp_138.b37.vcf
+HumanDB=/WPSnew/zhenglt/00.database/annovar/humandb_b37
+
 #export BLASTDB="/Share/BP/zhenglt/00.database/blastDatabase"
 #
 #TMPDIR="/Share/BP/zhenglt/tmp"

@@ -1,1 +1,1 @@
-/Share/BP/zhenglt/02.pipeline/cancer/toolkit/perform.sh
+../toolkit/perform.sh

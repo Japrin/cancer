@@ -1,1 +1,1 @@
-/Share/BP/zhenglt/02.pipeline/cancer/huyy/addAnn_hyy.pl
+../huyy/addAnn_hyy.pl

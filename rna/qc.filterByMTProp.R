@@ -43,6 +43,7 @@ if(grepl(".txt.gz",in.file,perl = T)){
     in.table <- lenv$Y
     g.GNAME <- lenv$g.GNAME
 }
+
 ### sample file
 myDesign <- read.table(d.file,header = T,check.names = F,stringsAsFactors = F)
 rownames(myDesign) <- myDesign$sample
@@ -54,7 +55,11 @@ tx.desc <- read.table(tx.file,header = F,check.names = F,stringsAsFactors = F,se
 rownames(tx.desc) <- tx.desc[,1]
 colnames(tx.desc) <- c("TXNAME","GENEID","GENESYMBOL")
 ### calcualte the proportion
-mt.prop <- apply(in.table[tx.desc$GENEID,],2,function(x){ sum(x)/1e6 })
+##mt.prop <- apply(in.table[tx.desc$GENEID,],2,function(x){ sum(x)/1e6 })
+mt.prop <- apply(in.table[tx.desc$GENEID,],2,function(x){ sum(x) })
+e.total <- apply(in.table,2,sum)
+mt.prop <- mt.prop/e.total
+
 myDesign$MT.prop <- mt.prop
 write.table(myDesign,file = sprintf("%s.Extended.txt",out.prefix),row.names = F,quote = F,sep = "\t")
 write.table(subset(myDesign,MT.prop<=propT),file = sprintf("%s.flt.txt",out.prefix),row.names = F,quote = F,sep = "\t")

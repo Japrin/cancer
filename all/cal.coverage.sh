@@ -1,1 +1,1 @@
-/Share/BP/zhenglt/02.pipeline/cancer/stat/cal.coverage.sh
+../stat/cal.coverage.sh

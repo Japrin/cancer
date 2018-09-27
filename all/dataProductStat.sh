@@ -1,1 +1,1 @@
-/Share/BP/zhenglt/02.pipeline/cancer/stat/dataProductStat.sh
+../stat/dataProductStat.sh

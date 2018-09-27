@@ -1,1 +1,1 @@
-/Share/BP/zhenglt/02.pipeline/cancer/mutationSignature/test.context.sh
+../mutationSignature/test.context.sh

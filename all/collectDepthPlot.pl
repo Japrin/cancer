@@ -1,1 +1,1 @@
-/Share/BP/zhenglt/02.pipeline/cancer/stat/collectDepthPlot.pl
+../stat/collectDepthPlot.pl

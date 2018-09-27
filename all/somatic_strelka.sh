@@ -1,1 +1,1 @@
-/Share/BP/zhenglt/02.pipeline/cancer/somatic_snv/somatic_strelka.sh
+../somatic_snv/somatic_strelka.sh

@@ -1,1 +1,1 @@
-/Share/BP/zhenglt/02.pipeline/cancer/stat/plot.coverage.byChr.R
+../stat/plot.coverage.byChr.R

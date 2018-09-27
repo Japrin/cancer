@@ -1,1 +1,1 @@
-/Share/BP/zhenglt/02.pipeline/cancer/somatic_cna/plot_CNA.R
+../somatic_cna/plot_CNA.R

@@ -1,1 +1,1 @@
-/Share/BP/zhenglt/02.pipeline/cancer/somatic_cna/ecnv_analyze_cnv.R
+../somatic_cna/ecnv_analyze_cnv.R

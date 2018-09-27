@@ -1,6 +1,6 @@
 #!/bin/bash
 
-iniFile="/Share/BP/zhenglt/02.pipeline/cancer/parameter/init_human.sh"
+iniFile="`dirname $0`/../parameter/init_human.sh"
 #_refData="/DBS/DB_temp/zhangLab/broad/bundle/2.8/b37/human_g1k_v37_decoy.fasta"
 TR=""
 normalSNPFile=""
@@ -71,11 +71,13 @@ outDir=$4
 shDir=`dirname $0`
 mkdir -p $outDir
 
-ADTExDir=/Share/BP/zhenglt/01.bin/ADTEx/ADTEx.v.1.0.4
+#ADTExDir=/Share/BP/zhenglt/01.bin/ADTEx/ADTEx.v.1.0.4
+ADTExDir=/WPSnew/zhenglt/01.bin/var/adtex/ADTEx.v.1.0.4
 module load samtools/0.1.19
 ## bedtools v2.24 and above are not compatible with ADTEx now
-module unload bedtools/v2.25.0
-module load bedtools/v2.23.0
+#module unload bedtools/v2.25.0
+module unload bedtools/2.27.1
+module load bedtools/2.23.0
 export TMPDIR="$outDir"
 
 ### get the BAF file

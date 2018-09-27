@@ -1,1 +1,1 @@
-/Share/BP/zhenglt/02.pipeline/cancer/stat/CovByChr.sh
+../stat/CovByChr.sh

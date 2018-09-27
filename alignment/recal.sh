@@ -67,9 +67,9 @@ java -Djava.io.tmpdir=$o_dir -Xms${optM}g -Xmx${optM}g -jar $GATK/GenomeAnalysis
 	-cov QualityScoreCovariate \
 	-cov CycleCovariate \
 	-cov ContextCovariate \
-	-rf BadCigar \
-	-et NO_ET \
-	-K $GATKKey
+	-rf BadCigar
+	#-et NO_ET \
+	#-K $GATKKey
 
 echo ">> Table recalibration"
 if [ "`grep -v '#' ${o/.bam/.grp} | grep -v "EOF" | wc -l`" = "1" ]
@@ -84,9 +84,9 @@ else
 	-BQSR ${o/.bam/.grp} \
 	--disable_indel_quals \
 	-EOQ \
-	-rf BadCigar \
-	-et NO_ET \
-	-K $GATKKey
+	-rf BadCigar
+	#-et NO_ET \
+	#-K $GATKKey
 fi
 rm -f ${o/.bam/.bai}
 samtools index $o

@@ -61,7 +61,7 @@ args.noFilter <- args$noFilter
 out.prefix <- sprintf("%s/%s.%s",out.dir,sample.id,"tSNEandPCA")
 
 dir.create(out.dir,recursive = T,showWarnings = F)
-source("/Share/BP/zhenglt/02.pipeline/cancer/lib/scRNAToolKit.R")
+source("/WPSnew/zhenglt/02.pipeline/cancer/lib/scRNAToolKit.R")
 suppressPackageStartupMessages(library("RColorBrewer"))
 suppressPackageStartupMessages(library("ggplot2"))
 suppressPackageStartupMessages(library("gplots"))

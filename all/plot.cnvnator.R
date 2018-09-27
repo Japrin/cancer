@@ -1,1 +1,1 @@
-/Share/BP/zhenglt/02.pipeline/cancer/var/plot.cnvnator.R
+../var/plot.cnvnator.R

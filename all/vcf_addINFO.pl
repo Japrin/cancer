@@ -1,1 +1,1 @@
-/Share/BP/zhenglt/02.pipeline/cancer/toolkit/vcf_addINFO.pl
+../toolkit/vcf_addINFO.pl

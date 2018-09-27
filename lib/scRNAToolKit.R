@@ -2070,7 +2070,7 @@ runPCAAnalysis <- function(dat.plot,out.prefix,sampleType,colSet,ntop=NULL,verbo
     loginfo(sprintf("PCA() done.\n"))
     res.desc <- NULL
     if(do.dimdesc){
-        res.desc <- dimdesc(pca, axes = c(1:10))
+        res.desc <- dimdesc(pca, axes = c(1:min(10,n,m-1)))
         loginfo(sprintf("dimdesc() done.\n"))
         invisible(sapply(names(res.desc),function(x){
                          oo <- data.frame(gene=rownames(res.desc[[x]][["quanti"]]))
@@ -3495,7 +3495,8 @@ my.clusterMarkerGene <- function(dat.to.test,clust,out.prefix,n.cores=NULL,ann.c
     suppressPackageStartupMessages(require("dplyr"))
     suppressPackageStartupMessages(require("doParallel"))
     suppressPackageStartupMessages(require("factoextra"))
-    if(length(unique(clust))<2 || is.null(dat.to.test) || !all(table(clust) > 3)){
+    ##if(length(unique(clust))<2 || is.null(dat.to.test) || !all(table(clust) > 3)){
+    if(length(unique(clust))<2 || is.null(dat.to.test) || !all(table(clust) > 1)){
         cat("WARN: clusters<2 or no data.to.test provided or not all clusters have more than 3 samples\n")
         return(NULL)
     }
@@ -3767,10 +3768,7 @@ processInput <- function(designFile,cellTypeColorFile,inputFile,args.notFilter,g
             args.log <- F
             args.center <- F
         }
-<<<<<<< HEAD
-=======
         ##g.GNAME <- fData(lenv[["sce.norm"]])[,"geneSymbol"]
->>>>>>> 6fbc4b024260c78c8497c9e74520b4d8674500c5
         g.GNAME <- rowData(lenv[["sce.norm"]])[,"geneSymbol"]
         names(g.GNAME) <- rownames(Y)
     }else if(grepl("RData$",inputFile,perl=T)){
@@ -4182,7 +4180,7 @@ plot.venn.as.heatmap <- function(dat.to.plot,out.prefix,do.sort=T,link.list=NULL
     dev.off()
 }
 
-plot.matrix.simple <- function(dat,out.prefix,mytitle="",show.number=T,pdf.width=8,pdf.height=8)
+plot.matrix.simple <- function(dat,out.prefix,mytitle="",show.number=T,pdf.width=8,pdf.height=8,exp.name="Count")
 {
     suppressPackageStartupMessages(require("gplots"))
     suppressPackageStartupMessages(require("ComplexHeatmap"))
@@ -4201,11 +4199,118 @@ plot.matrix.simple <- function(dat,out.prefix,mytitle="",show.number=T,pdf.width
     tmp.var <- pretty((dat),n=8)
     z.lo <- tmp.var[1]
     z.hi <- tmp.var[length(tmp.var)]
-    ht <- Heatmap(dat, name = "Count", col = colorRamp2(seq(z.lo,z.hi,length=100),
+    if(show.number){
+        my.cell_fun <- function(j, i, x, y, w, h, col) { grid.text(dat[i, j], x, y) }
+    }else{
+        my.cell_fun <- NULL
+    }
+    m <- ncol(dat)
+    n <- nrow(dat)
+    ht <- Heatmap(dat, name = exp.name, col = colorRamp2(seq(z.lo,z.hi,length=100),
                                                         colorRampPalette(rev(brewer.pal(n = 7, name = "RdYlBu")))(100)),
                   cluster_columns=F,cluster_rows=F,
-                  cell_fun = function(j, i, x, y, w, h, col) { grid.text(dat[i, j], x, y) })
+                  column_names_gp = gpar(fontsize = 12*28/max(m,32)),row_names_gp = gpar(fontsize = 10*28/max(n,32)),
+                  heatmap_legend_param = list(title = exp.name,
+                                              grid_width = unit(0.8, "cm"), 
+                                              grid_height = unit(0.8, "cm"),
+                                              #legend_width=2,
+                                              legend_height=unit(10,"cm"), 
+                                              title_gp = gpar(fontsize = 16, fontface = "bold"),
+                                              #color_bar = "continuous",
+                                              label_gp = gpar(fontsize = 14)),
+                  cell_fun = my.cell_fun)
     ComplexHeatmap::draw(ht, newpage= FALSE)
     dev.off()
 }
+
+
+inSilico.TCell <- function(sce, out.prefix, assay.name="norm_exprs",vis.v=c(0.25,0.5),
+                           Th.CD3=0.25,Th.CD8=0.5,Th.CD4=0.5,Th.TH=0.25,Th.TR=0.25)
+{
+    #### in silico classification
+    library("data.table")
+    library("ggplot2")
+    gene.to.test <- c("CD4","CD8A","CD8B","CD3D","CD3E","CD3G","CD40LG","FOXP3","IL2RA")
+    f.gene <- which(rowData(sce)$display.name %in% gene.to.test)
+    gene.to.test <- structure(rowData(sce)$display.name[f.gene],names=rownames(sce)[f.gene])
+    gene.to.test <- gene.to.test[order(gene.to.test)]
+
+    dat.plot <- as.data.frame(t(as.matrix(assay(sce,assay.name)[names(gene.to.test),])))
+    colnames(dat.plot) <- gene.to.test
+    dat.plot[,"CD3"] <- apply(dat.plot[,c("CD3D","CD3E","CD3G")],1,mean)
+    dat.plot[,"CD8"] <- apply(dat.plot[,c("CD8A","CD8B")],1,mean)
+    dat.plot[,"TH"] <- apply(dat.plot[,c("CD4","CD40LG")],1,mean)
+    dat.plot[,"TR"] <- apply(dat.plot[,c("CD4","FOXP3")],1,mean)
+    dat.plot.melt <- melt(as.matrix(dat.plot))
+    colnames(dat.plot.melt) <- c("cell","gene","norm_exprs")
+
+    p <- ggplot(dat.plot.melt, aes(norm_exprs, fill = gene, colour = gene)) +
+        geom_density(alpha = 0.1) +
+        geom_vline(xintercept = vis.v,linetype=2) +
+        facet_wrap(~gene,ncol=3,scales="free_y")
+    ggsave(sprintf("%s.inSiliso.marker.density.pdf",out.prefix),width=7,height=8)
+
+    sce$stype <- "unknown"
+    #sce$stype[dat.plot[,"CD3"] < 0.25] <- "noCD3"
+    sce$stype[dat.plot[,"CD3"] > Th.CD3 & dat.plot[,"CD8"] > Th.CD8 & dat.plot[,"CD4"] < Th.CD4] <- "CD8"
+    sce$stype[dat.plot[,"CD3"] > Th.CD3 & dat.plot[,"CD8"] > Th.CD8 & dat.plot[,"CD4"] > Th.CD4] <- "DP"
+    sce$stype[dat.plot[,"CD3"] > Th.CD3 & dat.plot[,"CD8"] < Th.CD8 & dat.plot[,"CD4"] > Th.CD4] <- "CD4"
+    sce$stype[dat.plot[,"CD3"] > Th.CD3 & dat.plot[,"CD8"] < Th.CD8 & dat.plot[,"CD4"] < Th.CD4] <- "DN"
+    sce$stype[sce$stype=="DN" & (dat.plot[,"TH"] > Th.TH | dat.plot[,"TR"] > Th.TR)] <- "CD4"
+    ##sce$stype[dat.plot[,"CD3"] > 0.25 & dat.plot[,"CD8"] < 0.5 & dat.plot[,"CD4"] < 0.5 & dat.plot[,"TH"] > 0.25 ] <- "TH"
+    ##sce$stype[dat.plot[,"CD3"] > 0.25 & dat.plot[,"CD8"] < 0.5 & dat.plot[,"CD4"] < 0.5 & dat.plot[,"TR"] > 0.25 ] <- "TR"
+    table(sce$stype)
+
+    write.table(colData(sce),sprintf("%s.cellInfo.txt",out.prefix),row.names=F,sep="\t",quote=F)
+    return(sce)
+}
+
+my.plot.volcano <- function(dat.plot,out.prefix,g.f=NULL,col.x="logFC",col.y="adj.P.Val",
+							sample.id="",g.GNAME=NULL,my.xlim=c(-7,7))
+{
+	require("ggplot2")
+	require("ggrepel")
+	dat.plot <- dat.plot[order(dat.plot[,col.y],-dat.plot[,col.x]),]
+	rownames(dat.plot) <- dat.plot$geneID
+	print(head(dat.plot[,1:5],n=30))
+	if(is.null(g.f)){
+		g.f <- head(dat.plot$geneID,n=30)
+	}
+	dat.plot$Significant <- abs(dat.plot[,col.x])>1 & dat.plot[,col.y]<0.05
+	dat.plot$logP <- -log10(dat.plot[,col.y])
+	dat.plot$logP[dat.plot$logP>=300] <- 300
+	y.pretty <- pretty(dat.plot$logP)
+	y.range <- y.pretty[c(1,length(y.pretty))]
+	n.up <- sum(dat.plot$Significant & dat.plot[,col.x]>0)
+	n.down <- sum(dat.plot$Significant & dat.plot[,col.x]<0)
+	#annotations <- data.frame(xpos= -Inf,ypos=Inf,hjustvar=-0.2,vjustvar=1.2,
+	#						  annotateText=sprintf("Up: %d\nDown: %d",n.up,n.down))
+	annotations <- data.frame(xpos= c(-Inf,-Inf),ypos=c(Inf,Inf),
+							  hjustvar=c(-0.2,-0.15),vjustvar=c(2.0,3.4),
+							  annotateText=c(sprintf("Up: %d",n.up),sprintf("Down: %d",n.down)))
+	my.plot.volcano <- ggplot(dat.plot, aes_string(x = col.x, y = "logP")) + 
+		geom_point(aes(color = Significant),size=0.5,data = subset(dat.plot,Significant==F)) + 
+		geom_point(aes(color = Significant),size=1.0,data = subset(dat.plot,Significant==T)) + 
+		scale_color_manual(values = c("grey", "red","#1B9E77", "#D95F02", "#7570B3")) +  
+		labs(title = sample.id) + xlab("log2FoldChange") + ylab("-log10(pvalue)") + 
+		#coord_cartesian(ylim = c(0, y.range[2]),xlim=c(-10,10)) +
+		coord_cartesian(ylim = c(0, y.range[2]),xlim=my.xlim) +
+		theme_bw(base_size = 12) + 
+		theme(legend.position = "bottom", 
+			  title=element_text(size=18),
+			  axis.text=element_text(size=14), 
+			  axis.title=element_text(size=16)) + 
+		geom_text_repel(data = dat.plot[g.f,], 
+						#aes(label = g.GNAME[rownames(dat.plot[g.f,])]),
+						aes(label = if(is.null(g.GNAME)) g.f else g.GNAME[g.f] ),
+						size = 4, box.padding = unit(0.35, "lines"),fontface=3, 
+						point.padding = unit(0.3, "lines")) +
+		geom_text(data=annotations,
+				  aes(x=xpos,y=ypos,hjust=hjustvar,vjust=vjustvar,label=annotateText))
+	ggsave(sprintf("%s.volcano.pdf",out.prefix),width=6,height=6)
+}
+
+
+
+
 

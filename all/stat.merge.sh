@@ -1,1 +1,1 @@
-/Share/BP/zhenglt/02.pipeline/cancer/stat/stat.merge.sh
+../stat/stat.merge.sh

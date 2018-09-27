@@ -1,1 +1,1 @@
-/Share/BP/zhenglt/02.pipeline/cancer/stat/raw.depth.gatk.wrapper.sh
+../stat/raw.depth.gatk.wrapper.sh

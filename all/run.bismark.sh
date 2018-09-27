@@ -1,1 +1,1 @@
-/Share/BP/zhenglt/02.pipeline/cancer/alignment/run.bismark.sh
+../alignment/run.bismark.sh
