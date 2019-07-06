@@ -1,0 +1,7 @@
+samples:
+  P001T:  /WPSnew/zhenglt/work/proj_clin/A20190128/OUT/P001/P001T/aln/P001T.nodup.bam
+  P001N:  /WPSnew/zhenglt/work/panC/ana/zhangLab.10X/bulk/D20190109/novogene/OUT/PACA-P20181121/PACA-P20181121-P/aln/PACA-P20181121-P.final.bam
+
+
+pairings:
+  P001T:  P001N

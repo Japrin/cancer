@@ -60,6 +60,8 @@ source $iniFile
 #refData=$_refData
 #REF=$_refData
 
+module load seqtk/1.3
+
 outDir=$1
 fq1=$2
 fq2=$3

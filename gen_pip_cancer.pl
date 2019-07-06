@@ -323,8 +323,10 @@ sub aln
 					my $_n=ceil($nRead/$opt_maxreads);
 					my $_prefix1="$outDir/".basename($fq1);
 					my $_prefix2="$outDir/".basename($fq2);
-					$_prefix1 =~ s/\.fq(\.gz)*$//;
-					$_prefix2 =~ s/\.fq(\.gz)*$//;
+					$_prefix1 =~ s/\.fq\.gz*$//;
+					$_prefix2 =~ s/\.fq\.gz*$//;
+					$_prefix1 =~ s/\.fastq\.gz*$//;
+					$_prefix2 =~ s/\.fastq\.gz*$//;
 
 					### split fq already done
 					my $_fff=1;
@@ -353,7 +355,7 @@ sub aln
 					}
 
 					my $_job0={
-						name=>"split_fq_${lib}_${lane}",
+						name=>"split_fq_${ID}_${lib}_${lane}",
 						memory=>"500m",
 						cmd=>[$_ccc1,$_ccc2],
 						#cmd=>["$opt_bin/alignment/split.fq.pl -n $opt_maxreads $fq1 $_prefix1","$opt_bin/alignment/split.fq.pl -n $opt_maxreads $fq2 $_prefix2"],
@@ -367,7 +369,7 @@ sub aln
 						my $_SFq1=sprintf "$_prefix1.S%06d.fq.gz",$i;
 						my $_SFq2=sprintf "$_prefix2.S%06d.fq.gz",$i;
 						my $_job={
-							name=>"aln_${lib}_${lane}_${i}",
+							name=>"aln_${ID}_${lib}_${lane}_${i}",
 							cpuNum=>$opt_t,
 							memory=>($opt_alnM eq ""?"16G":"$opt_alnM"),
 							cmd=>["$opt_bin/alignment/aln.mem.sh -i $i -t $opt_t $_mmOpt $opt_p $opt_ini $outDir $_SFq1 $_SFq2 $ID $lib $lane"],
@@ -465,7 +467,7 @@ sub aln
 			my $_chrJob={
 				name=>"extract_bam_${_chr}_$ID",
 				memory=>"4500M",
-				cmd=>["$opt_bin/alignment/bin_sam.sh $_chr $_ofile $_ifile"],
+				cmd=>["$opt_bin/alignment/bin_sam.sh $opt_ini $_chr $_ofile $_ifile"],
 				out=>["$_ofile"],
 			};
 			$g->add_edge($mJob,$_chrJob);

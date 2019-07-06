@@ -1,15 +1,15 @@
 #!/bin/bash
 
-iniFile="/PROJ/HEALTH/share/health.02pipeline/cancer/parameter/init_human.sh"
+iniFile="`dirname $0`/../parameter/init_human.sh"
 myhost=`hostname`
-myport=5000
+myport=5001
 optG="M"
 optS=""
 opts=""
 optE=""
 
-_refData=/WPS/BP/zhenglt/00.database/broad/bundle/2.8/b37/human_g1k_v37_decoy.fasta
-_refData2bit=/PUBLIC/database/HEALTH/genome/human/b37_gatk/human_g1k_v37_decoy.2bit
+_refData=/WPSnew/zhenglt/00.database/broad/bundle/2.8/b37/human_g1k_v37_decoy.fasta
+_refData2bit=/WPSnew/zhenglt/00.database/broad/bundle/2.8/b37/human_g1k_v37_decoy.2bit
 
 while getopts c:p:g:r:b:s:e opt
 do
@@ -52,7 +52,7 @@ do
 		fi
 		;;
 	'?')
-		echo "Usage: $0 [-c iniFile] [-g gender default M] [-p port default 5000] [-r ref (fa)] [-b ref (2bit)] [-s range chr1 etc] [-e only \"extractSClip\" step] <sampleID> <outDir> <bam1(tumor)> [bam2(normal)]"
+		echo "Usage: $0 [-c iniFile] [-g gender default M] [-p port default 5001] [-r ref (fa)] [-b ref (2bit)] [-s range chr1 etc] [-e only \"extractSClip\" step] <sampleID> <outDir> <bam1(tumor)> [bam2(normal)]"
 		exit 1
 		;;
 	esac
@@ -61,7 +61,7 @@ shift $((OPTIND-1))
 
 if [ $# -lt 3 ]
 then 
-	echo "Usage: $0 [-c iniFile] [-g gender default M] [-p port default 5000] [-r ref (fa)] [-b ref (2bit)] [-s range chr1 etc] [-e only \"extractSClip\" step] <sampleID> <outDir> <bam1(tumor)> [bam2(normal)]"
+	echo "Usage: $0 [-c iniFile] [-g gender default M] [-p port default 5001] [-r ref (fa)] [-b ref (2bit)] [-s range chr1 etc] [-e only \"extractSClip\" step] <sampleID> <outDir> <bam1(tumor)> [bam2(normal)]"
 	exit 1
 fi
 
@@ -72,10 +72,12 @@ source $iniFile
 refData=$_refData
 refData2bit=$_refData2bit
 ### other path
-export PATH=/PROJ/HEALTH/share/01bin/CAP3/CAP3:$PATH
-export PATH=/PROJ/HEALTH/share/01bin/blat/blatSrc35/mybuild:$PATH
-export PATH=/PUBLIC/software/public/VarCall/crest:$PATH
-CRESTDir=/PUBLIC/software/public/VarCall/crest
+export PATH=/WPSnew/zhenglt/01.bin/cancer/cna/crest/CAP3:$PATH
+##export PATH=/PROJ/HEALTH/share/01bin/blat/blatSrc35/mybuild:$PATH
+export PATH=/WPSnew/zhenglt/01.bin/cancer/blat/blatSrc35/mybuild/x86_64:$PATH
+export PATH=/WPSnew/zhenglt/01.bin/cancer/cna/crest/CREST.1.0:$PATH
+CRESTDir=/WPSnew/zhenglt/01.bin/cancer/cna/crest/CREST.1.0
+export PERL5LIB=$CRESTDir:$PERL5LIB
 
 sampleID=$1
 outDir=$2
@@ -84,6 +86,9 @@ normalBam=$4
 mkdir -p $outDir
 cd $outDir
 echo begin at: `date`
+
+export TMPDIR=$outDir/mytmp
+mkdir -p $TMPDIR
 
 tumorBName=`basename $tumorBam`
 optT="-d $tumorBam"
@@ -95,11 +100,12 @@ fi
 
 if [ ! -f $outDir/$tumorBName$opts.cover ]
 then
-	perl $CRESTDir/extractSClip.pl -o $outDir -i $tumorBam -ref_genome $refData $optS
+	perl $CRESTDir/extractSClip.pl -o $outDir -i $tumorBam -ref_genome $refData $optS &
 	if [ -f "$normalBam" ]
 	then
-		perl $CRESTDir/extractSClip.pl -o $outDir -i $normalBam -ref_genome $refData $optS
+		perl $CRESTDir/extractSClip.pl -o $outDir -i $normalBam -ref_genome $refData $optS &
 	fi
+    wait
 fi
 
 if [ "$optE" == "E" ]
@@ -130,6 +136,7 @@ perl $CRESTDir/CREST.pl \
 	--ref_genome $refData \
 	-t $refData2bit \
 	-blatserver $myhost \
+    --read_len 151 \
 	-blatport $myport 
 
 ### turn down server
@@ -143,7 +150,7 @@ perl $CRESTDir/bam2html.pl \
 	-o $outDir/$tumorBName$opts.predSV.html
 
 ### annotation
-perl $PIPELINE/var/var_sv_CREST.toGff.pl $outDir/$tumorBName$opts.predSV.txt > $outDir/$tumorBName$opts.predSV.gff
+perl $PIPELINE/cancer/var/var_sv_CREST.toGff.pl $outDir/$tumorBName$opts.predSV.txt > $outDir/$tumorBName$opts.predSV.gff
 var_annotation.sh -m CREST $outDir/$tumorBName$opts.predSV.gff $sampleID
 
 echo end at: `date`

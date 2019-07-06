@@ -106,9 +106,9 @@ if [[ "$infile" =~ ".vcf" || "$infile" =~ ".vcf.gz" ]]; then
 
 	if [ ! -f "$addAnnFile" ];then
 		table_annovar.pl $annovarFile $HumanDB -buildver hg19 -otherinfo -remove -nastring . \
-			-protocol knownGene,cytoband,genomicSuperDups,phastConsElements46way,wgRna,targetScanS,tfbsConsSites,esp6500siv2_all,1000g2015aug_all,1000g2015aug_afr,1000g2015aug_eas,1000g2015aug_eur,avsnp150,ljb26_all,gerp++elem,gerp++gt2,cosmic70 \
+			-protocol knownGene,cytoband,genomicSuperDups,phastConsElements46way,wgRna,targetScanS,tfbsConsSites,esp6500siv2_all,1000g2014oct_all,1000g2014oct_afr,1000g2014oct_eas,1000g2014oct_eur,avsnp142,ljb26_all,gerp++elem,gerp++gt2,cosmic70 \
 			-operation g,r,r,r,r,r,r,f,f,f,f,f,f,f,f,f,f
-			###-protocol knownGene,cytoband,genomicSuperDups,phastConsElements46way,wgRna,targetScanS,tfbsConsSites,esp6500siv2_all,1000g2014oct_all,1000g2014oct_afr,1000g2014oct_eas,1000g2014oct_eur,avsnp142,ljb26_all,gerp++elem,gerp++gt2,cosmic70 \
+			###-protocol knownGene,cytoband,genomicSuperDups,phastConsElements46way,wgRna,targetScanS,tfbsConsSites,esp6500siv2_all,1000g2015aug_all,1000g2015aug_afr,1000g2015aug_eas,1000g2015aug_eur,avsnp150,ljb26_all,gerp++elem,gerp++gt2,cosmic70 \
 	fi
 
 	## refomrat the ouput table_variants file, mainly for the otherinfo field
@@ -130,8 +130,8 @@ if [[ "$infile" =~ ".vcf" || "$infile" =~ ".vcf.gz" ]]; then
 	## somatic filter
 	if [[ "$optA" =~ "somatic" ]]; then
 		echo "Somatic filter"
-		####perl -i -F"\t" -ane 'if(/^#/ || ($F[7]!~/snp142/ && $F[2] eq".") ||  ($F[7]=~/cosmic/ && ($F[7]!~/1000g2014oct_all=(.+?);/ || ($F[7]=~/1000g2014oct_all=(.+?);/ && $1<0.01)) ) ){print}' $vcfFile
-		perl -i -F"\t" -ane 'if(/^#/ || ($F[7]!~/snp150/ && $F[2] eq".") ||  ($F[7]=~/cosmic/ && ($F[7]!~/1000g2015aug_all=(.+?);/ || ($F[7]=~/1000g2015aug_all=(.+?);/ && $1<0.01)) ) ){print}' $vcfFile
+		perl -i -F"\t" -ane 'if(/^#/ || ($F[7]!~/snp142/ && $F[2] eq".") ||  ($F[7]=~/cosmic/ && ($F[7]!~/1000g2014oct_all=(.+?);/ || ($F[7]=~/1000g2014oct_all=(.+?);/ && $1<0.01)) ) ){print}' $vcfFile
+		###perl -i -F"\t" -ane 'if(/^#/ || ($F[7]!~/snp150/ && $F[2] eq".") ||  ($F[7]=~/cosmic/ && ($F[7]!~/1000g2015aug_all=(.+?);/ || ($F[7]=~/1000g2015aug_all=(.+?);/ && $1<0.01)) ) ){print}' $vcfFile
 	else
 		echo "No somatic filter"
 	fi

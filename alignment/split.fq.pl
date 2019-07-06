@@ -1,4 +1,4 @@
-#!/usr/bin/perl
+#!/usr/bin/env perl
 #============================================================================
 # Name        		: split.fq.pl
 # Author      		: zhengliangtao
@@ -34,8 +34,8 @@ my $infile=shift @ARGV;
 my $outPrefix=shift @ARGV;
 if(!defined($opt_n)) { $opt_n=40000000; }
 
-if($infile=~/\.fq\.gz$/) { open $in,"gzip -cd $infile | " or die "$!"; }
-elsif($infile=~/\.fq$/) { open $in,$infile or die "Cann't open file $infile ($!) \n"; }
+if($infile=~/\.fq\.gz$/|| $infile=~/\.fastq.gz$/) { open $in,"gzip -cd $infile | " or die "$!"; }
+elsif($infile=~/\.fq$/ || $infile=~/\.fastq$/) { open $in,$infile or die "Cann't open file $infile ($!) \n"; }
 else { usage(); }
 my $c=0;
 my $i=0;

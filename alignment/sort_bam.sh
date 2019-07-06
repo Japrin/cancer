@@ -1,7 +1,7 @@
 #!/bin/bash
 
 
-iniFile="/Share/BP/zhenglt/02.pipeline/cancer/parameter/init_human.sh"
+iniFile="`dirname $0`/../parameter/init_human.sh"
 optT=4
 optM=16
 optA="coordinate"

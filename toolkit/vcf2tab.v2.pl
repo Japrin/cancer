@@ -36,7 +36,7 @@ my $flag_write=1;
 while(<>)
 {
 	chomp;
-	if(/#INFO=<ID=(.+?),.*Type=(.+?),/)
+	if(/#INFO=<ID=(.+?),.*Type=(.+?),/ &&  $1!~/^(ExcessHet)$/)
 	{
 		push @header,$1;
 		if($2 eq "Flag") { $FlagTag{$1}=1; }

@@ -4,10 +4,11 @@ echo "*** variant calling by samtools ***"
 
 TR=""
 optTR=""
-iniFile="/Share/BP/zhenglt/02.pipeline/cancer/parameter/init_human.sh"
+iniFile="`dirname $0`/../parameter/init_human.sh"
 optG="-v"
+optA=""
 
-while getopts c:r:g opt
+while getopts c:r:a:g opt
 do
 	case $opt in 
 	c)	
@@ -27,12 +28,15 @@ do
 			echo "WARNING: invalid target file ($OPTARG), no target will be used"
 		fi
 		;;
+	a)
+		optA="-r $OPTARG"
+		;;
 	g)
 		optG=""
 		;;
 	'?')
 		echo "Usage: $0 invalid option -$OPTARG" 
-		echo "Usage: $0 [-c iniFile] [-r targetRegion] [-g genotyping] <sampleID> <inbam> <outDir>"
+		echo "Usage: $0 [-c iniFile] [-r targetRegion] [-a chr] [-g genotyping] <sampleID> <inbam> <outDir>"
 		exit 1
 		;;
 	esac
@@ -41,7 +45,7 @@ shift $((OPTIND-1))
 
 if [ $# -lt 3 ]
 then 
-	echo "Usage: $0 [-c iniFile] [-r targetRegion] [-g genotyping] <sampleID> <inbam> <outDir>"
+	echo "Usage: $0 [-c iniFile] [-r targetRegion] [-a chr] [-g genotyping] <sampleID> <inbam> <outDir>"
 	exit 1
 fi
 
@@ -64,7 +68,7 @@ mkdir -p $outDir
 if [ ! -f "$flt_vcf.gz" ]
 then
 
-	samtools mpileup $optTR -q 1 -C 50 -m 2 -F 0.002 -t DP -t SP -t DV -t DP4 -go $raw_bcf -f $refData $in_bam && \
+	samtools mpileup $optTR $optA -q 1 -C 50 -m 2 -F 0.002 -t DP -t SP -t DV -t DP4 -go $raw_bcf -f $refData $in_bam && \
 	bcftools call -vmO z -o $raw_vcf.gz $raw_bcf
 	bcftools filter -s LowQual -e '%QUAL<20 || MQ<10 || DP<4 || DP>5000 || DV<2' --SnpGap 3 --IndelGap 2 -O z -o $flt_vcf.gz $raw_vcf.gz
 	tabix -f -p vcf $flt_vcf.gz

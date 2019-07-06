@@ -80,8 +80,8 @@ while (<$in>){
 		
 	}
 	else {
-        #my $dbsnp = $record[$headers{"avsnp142"}];
-		my $dbsnp = $record[$headers{"avsnp150"}];
+        ##my $dbsnp = $record[$headers{"avsnp150"}];
+        my $dbsnp = $record[$headers{"avsnp142"}];
 		foreach (0..6) {
 			if (($_ == 2 ) and ($dbsnp)) {
 				print "$dbsnp\t";
@@ -135,11 +135,11 @@ sub OutputANNOVARHeader
 ##INFO=<ID=targetScanS,Number=.,Type=String,Description="TargetScan generated miRNA target site predictions">
 ##INFO=<ID=tfbsConsSites,Number=.,Type=String,Description="transcription factor binding sites conserved in the human/mouse/rat alignment, based on transfac Matrix Database (v7.0)">
 ##INFO=<ID=esp6500siv2_all,Number=1,Type=Float,Description="variant frequency in the ESP6500 population">
-##INFO=<ID=1000g2015aug_all,Number=1,Type=Float,Description="variant frequency in the 1000G population">
-##INFO=<ID=1000g2015aug_afr,Number=1,Type=Float,Description="variant frequency in the 1000G population">
-##INFO=<ID=1000g2015aug_eas,Number=1,Type=Float,Description="variant frequency in the 1000G population">
-##INFO=<ID=1000g2015aug_eur,Number=1,Type=Float,Description="variant frequency in the 1000G population">
-##INFO=<ID=avsnp150,Number=.,Type=String,Description="dbSNP version 150">
+##INFO=<ID=1000g2014oct_all,Number=1,Type=Float,Description="variant frequency in the 1000G population">
+##INFO=<ID=1000g2014oct_afr,Number=1,Type=Float,Description="variant frequency in the 1000G population">
+##INFO=<ID=1000g2014oct_eas,Number=1,Type=Float,Description="variant frequency in the 1000G population">
+##INFO=<ID=1000g2014oct_eur,Number=1,Type=Float,Description="variant frequency in the 1000G population">
+##INFO=<ID=avsnp142,Number=.,Type=String,Description="dbSNP version 142">
 ##INFO=<ID=SIFT_score,Number=.,Type=String,Description="SIFT score">
 ##INFO=<ID=SIFT_pred,Number=.,Type=String,Description="SIFT score">
 ##INFO=<ID=Polyphen2_HDIV_score,Number=.,Type=String,Description="Polyphen2_HDIV_score, for complex phenotypes">

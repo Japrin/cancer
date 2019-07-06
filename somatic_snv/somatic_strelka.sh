@@ -119,12 +119,12 @@ then
 
 	### to maf format
 	bgzip -cd $outDir/results/$sampleID.strelka.somatic.snvs.filter.reformated.vcf.gz \
-		| $PIPELINE/cancer/var/vcf2mafv1.31.strelka.py -t - -s "WES" -a $sampleID \
+		| python2 $PIPELINE/cancer/var/vcf2mafv1.31.strelka.py -t - -s "WES" -a $sampleID \
 			-g $HumanDB/hg19_knownGene.SymbolToLocus.txt \
 			-o $outDir/results/$sampleID.strelka.somatic.snvs.filter.reformated.maf
 
 	bgzip -cd $outDir/results/$sampleID.strelka.somatic.indels.filter.reformated.vcf.gz \
-		| $PIPELINE/cancer/var/vcf2mafv1.31.strelka.py -t - -s "WES" -a $sampleID \
+		| python2 $PIPELINE/cancer/var/vcf2mafv1.31.strelka.py -t - -s "WES" -a $sampleID \
 			-g $HumanDB/hg19_knownGene.SymbolToLocus.txt \
 			-o $outDir/results/$sampleID.strelka.somatic.indels.filter.reformated.maf
 fi

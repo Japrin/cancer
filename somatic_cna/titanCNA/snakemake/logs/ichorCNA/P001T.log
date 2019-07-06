@@ -1,0 +1,4 @@
+Error in parse_args(parseobj) : 
+  Error in getopt(spec = spec, opt = args) : 
+  long flag "genomeStyle" is invalid
+Execution halted

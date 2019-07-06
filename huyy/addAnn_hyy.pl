@@ -93,8 +93,8 @@ my $DAVID="/WPSnew/zhenglt/00.database/DAVID/DAVIDKnowledgebase";
 	if (!defined($annName)) {$annName = "OMIM";}
 	if(!defined($field)) { $field="Gene"; }
     ###if (($annName eq "CancerGene") and (!defined $annFile)) {$annFile = "$DAVID/other/CancerGene.txt";}
-	if (($annName eq "CancerGeneCensus") and (!defined $annFile)) {$annFile = "$DAVID/";}
-	if (($annName eq "OMIM") and (!defined $annFile)) { $annFile = "$DAVID/other/OMIM.txt";}
+	if (($annName eq "CancerGeneCensus") and (!defined $annFile)) {$annFile = "$DAVID/other/cancer_gene_census.txt";}
+    ###if (($annName eq "OMIM") and (!defined $annFile)) { $annFile = "$DAVID/other/OMIM.txt";}
 	if (($annName eq "BIND") and (!defined $annFile)) { $annFile = "$DAVID/OFFICIAL_GENE_SYMBOL2BIND.txt";}
 	if (($annName eq "COG_NAME") and (!defined $annFile)) { $annFile = "$DAVID/OFFICIAL_GENE_SYMBOL2COG_NAME.txt";}
 	if (($annName eq "GENE_NAME") and (!defined $annFile)) { $annFile = "$DAVID/OFFICIAL_GENE_SYMBOL2DAVID_GENE_NAME.txt";}
@@ -171,8 +171,10 @@ sub readAnnFile
 		if(/^\s*$/ || /^#/) { next; }
 		my @field=split /\t/;
 		$field[0] = lc($field[0]);
-		if(!exists($pList->{$field[0]})) { $pList->{$field[0]}=[]; }
-		push @{$pList->{$field[0]}},$field[1];
+        if(@field>1 && $field[1] ne ""){
+            if(!exists($pList->{$field[0]})) { $pList->{$field[0]}=[]; }
+            push @{$pList->{$field[0]}},$field[1];
+        }
 	}
 
 }

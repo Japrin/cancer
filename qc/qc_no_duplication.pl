@@ -1,4 +1,4 @@
-#!/usr/bin/perl
+#!/usr/bin/env perl
 use strict;
 use warnings;
 use Getopt::Long;
@@ -61,7 +61,7 @@ print STDERR "$insertsize filter begin at: ".`date`;
 
 #-get the adapters list
 
-open Adapter,"/Share/BP/zhenglt/02.pipeline/cancer/qc/adapter.list" or die $!; 
+open Adapter,"/WPSnew/zhenglt/02.pipeline/cancer/qc/adapter.list" or die $!; 
 my @adapter;
 while(<Adapter>){chomp;push(@adapter,$_);}
 

@@ -1,0 +1,5 @@
+Building DAG of jobs...
+ChildIOException:
+File/directory is a child to another output:
+/WPSnew/zhenglt/02.pipeline/cancer/somatic_cna/titanCNA/snakemake/results/ichorCNA/P001T
+/WPSnew/zhenglt/02.pipeline/cancer/somatic_cna/titanCNA/snakemake/results/ichorCNA/P001T/P001T.cna.seg

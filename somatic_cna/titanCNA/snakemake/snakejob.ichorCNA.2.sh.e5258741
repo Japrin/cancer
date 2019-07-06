@@ -1,0 +1,8 @@
+Error in job ichorCNA while creating output files results/ichorCNA/P001T/P001T.correctedDepth.txt, results/ichorCNA/P001T/P001T.cna.seg, results/ichorCNA/P001T/.
+RuleException:
+CalledProcessError in line 74 of /WPSnew/zhenglt/02.pipeline/cancer/somatic_cna/titanCNA/snakemake/ichorCNA.snakefile:
+Command 'Rscript /WPSnew/zhenglt/01.bin/cancer/cna/ichorCNA/ichorCNA-0.1.0/scripts/runIchorCNA.R --libdir /WPSnew/zhenglt/01.bin/cancer/cna/ichorCNA/ichorCNA-0.1.0 --id P001T --WIG results/readDepth/P001T.bin10000.wig --gcWig /WPSnew/zhenglt/01.bin/cancer/cna/ichorCNA/inst/extdata/gc_hg19_10kb.wig --mapWig /WPSnew/zhenglt/01.bin/cancer/cna/ichorCNA/inst/extdata/map_hg19_10kb.wig --NORMWIG results/readDepth/P001N.bin10000.wig --ploidy "c(2,3)" --normal "c(0.5)" --maxCN 8 --includeHOMD False --genomeStyle NCBI --chrs "c(1:22, \"X\")" --estimateNormal True --estimatePloidy True --estimateScPrevalence True --scStates "c(1,3)" --centromere /WPSnew/zhenglt/01.bin/cancer/cna/ichorCNA/inst/extdata/GRCh37.p13_centromere_UCSC-gapTable.txt --exons.bed None --txnE 0.9999 --txnStrength 10000 --fracReadsInChrYForMale 0.001 --plotFileType png --plotYLim "c(-2,4)" --outDir results/ichorCNA/P001T/ > logs/ichorCNA/P001T.log 2> logs/ichorCNA/P001T.log' returned non-zero exit status 1.
+  File "/WPSnew/zhenglt/02.pipeline/cancer/somatic_cna/titanCNA/snakemake/ichorCNA.snakefile", line 74, in __rule_ichorCNA
+  File "/WPSnew/zhenglt/01.bin/python/Python-3.6.6/mybuild/lib/python3.6/concurrent/futures/thread.py", line 56, in run
+Will exit after finishing currently running jobs.
+Exiting because a job execution failed. Look above for error message

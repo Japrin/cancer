@@ -2029,6 +2029,7 @@ runPCAAnalysis <- function(dat.plot,out.prefix,sampleType,colSet,ntop=NULL,verbo
     suppressPackageStartupMessages(require("FactoMineR"))
     rowVar <- apply(dat.plot,1,var)
     dat.plot <- as.matrix(dat.plot[rowVar>0,,drop=F])
+    rowVar <- apply(dat.plot,1,var)
     print(dim(dat.plot))
     print(length(sampleType))
     n <- nrow(dat.plot)
@@ -2037,6 +2038,9 @@ runPCAAnalysis <- function(dat.plot,out.prefix,sampleType,colSet,ntop=NULL,verbo
     if(m<3) { loginfo(sprintf("Too few samples: m=%s",m)); return(NULL) }
     if(!is.null(ntop)) { 
         select <- order(rowVar,decreasing = TRUE)[seq_len(min(ntop, length(rowVar)))]
+        print(str(select))
+        print(summary(select))
+        print(str(dat.plot))
         dat.plot <- dat.plot[select,]
         n <- nrow(dat.plot)
     }
@@ -2065,7 +2069,7 @@ runPCAAnalysis <- function(dat.plot,out.prefix,sampleType,colSet,ntop=NULL,verbo
     ####cumvar.in.percent <- cumsum(variance.in.percent)
     ####pca.eig.df <- data.frame(eig = pca.eig, variance = variance.in.percent, cumvariance = cumvar.in.percent)
 
-    ### FactoMinR
+    ### FactoMineR
     pca <- PCA(dat.plot.t,ncp=min(50,n,m),graph=F,scale.unit=T)
     loginfo(sprintf("PCA() done.\n"))
     res.desc <- NULL
@@ -4230,14 +4234,16 @@ inSilico.TCell <- function(sce, out.prefix, assay.name="norm_exprs",vis.v=c(0.25
     #### in silico classification
     library("data.table")
     library("ggplot2")
-    gene.to.test <- c("CD4","CD8A","CD8B","CD3D","CD3E","CD3G","CD40LG","FOXP3","IL2RA")
+    ##gene.to.test <- c("CD4","CD8A","CD8B","CD3D","CD3E","CD3G","CD40LG","FOXP3","IL2RA")
+    gene.to.test <- c("CD4","CD8A","CD8B","CD3D","CD3G","CD40LG","FOXP3","IL2RA")
     f.gene <- which(rowData(sce)$display.name %in% gene.to.test)
     gene.to.test <- structure(rowData(sce)$display.name[f.gene],names=rownames(sce)[f.gene])
     gene.to.test <- gene.to.test[order(gene.to.test)]
 
     dat.plot <- as.data.frame(t(as.matrix(assay(sce,assay.name)[names(gene.to.test),])))
     colnames(dat.plot) <- gene.to.test
-    dat.plot[,"CD3"] <- apply(dat.plot[,c("CD3D","CD3E","CD3G")],1,mean)
+    ##dat.plot[,"CD3"] <- apply(dat.plot[,c("CD3D","CD3E","CD3G")],1,mean)
+    dat.plot[,"CD3"] <- apply(dat.plot[,c("CD3D","CD3G")],1,mean)
     dat.plot[,"CD8"] <- apply(dat.plot[,c("CD8A","CD8B")],1,mean)
     dat.plot[,"TH"] <- apply(dat.plot[,c("CD4","CD40LG")],1,mean)
     dat.plot[,"TR"] <- apply(dat.plot[,c("CD4","FOXP3")],1,mean)
@@ -4311,6 +4317,161 @@ my.plot.volcano <- function(dat.plot,out.prefix,g.f=NULL,col.x="logFC",col.y="ad
 }
 
 
+findCorrelatedGeneToAnchor.clust <- function(sce,assay.name="norm_exprs",a.gene.vec,out.prefix,
+                                          TH.score=0.17,n.downsample=NULL,gene.ignore=NULL,
+                                          seed=1234,nthreads=8,K=20,dyn.cut=T)
+{
+    require("dynamicTreeCut")
+    require("gplots")
+    dir.create(dirname(out.prefix),F,T)
+    set.seed(seed)
+    if(!is.null(gene.ignore)){
+        sce <- sce[!(rownames(sce) %in% gene.ignore),]
+    }
+    if(!is.null(n.downsample)){
+        f.cells <- sample(ncol(sce),min(n.downsample,ncol(sce)))
+    }else{
+        f.cells <- seq_len(ncol(sce))
+    }
+    f.gene.anchor <- match(a.gene.vec,rowData(sce)$display.name)
+    
+    #anchor.mtx <- assay(sce[f.gene.anchor,f.cells],"counts")
+    #other.mtx <- assay(sce[,f.cells],"counts")
+    anchor.mtx <- assay(sce[f.gene.anchor,f.cells],assay.name)
+    f.zero <- rowSums(assay(sce[,f.cells],"counts"))>0
+    print(summary(f.zero))
+    other.mtx <- assay(sce[f.zero,f.cells],assay.name)
+
+    cor.gene <-  sscClust:::cor.BLAS(anchor.mtx, y = other.mtx, method = "spearman", nthreads = nthreads)
+    print(cor.gene[,1:3])
+    this.score <- apply(cor.gene,2,max)
+    score.table <- data.table(geneID=names(this.score),
+                              geneSymbol=rowData(sce)[names(this.score),"display.name"],
+                              score=this.score)
+    ##this.score <- apply(cor.gene,2,median)
+
+    f.gene.cor <- which(score.table$score>TH.score)
+
+    cor.mtx <- sscClust:::cor.BLAS(other.mtx[f.gene.cor,], method = "spearman", nthreads = 8)
+    cor.mtx[1:5,1:3]
+
+    dist.obj <- as.dist(1-cor.mtx)
+    hclust.obj <- hclust(dist.obj,method="ward.D2")
+    #hclust.obj <- hclust(dist.obj,method="complete")
+    if(dyn.cut){
+        cluster.obj <- dynamicTreeCut::cutreeDynamic(hclust.obj, distM=as.matrix(dist.obj), verbose=0)
+    }else{    
+        cluster.obj <- cutree(hclust.obj,K)
+    }
+    cluster.df <- data.table(geneID=colnames(cor.mtx),
+                             geneSymbol=rowData(sce)[colnames(cor.mtx),"display.name"],
+                             cluster=unname(cluster.obj))
+                             ##cluster=unname(hclust.cutDyn.obj))
+
+    ### average correlation of the modules
+    plot.cor.matix <- function(X,cls){
+        gname <- colnames(X)
+        gname <- rowData(sce)[gname,"display.name"]
+        colnames(X) <- gname
+        rownames(X) <- gname
+          
+        dat.plot <- X
+        hc <- hclust(as.dist((1-dat.plot)/2))
+        dat.plot <-dat.plot[hc$order, hc$order]
+        diag(dat.plot) <- NA
+        v.lim <- c(-0.4,0.4)
+        dat.plot[ dat.plot > v.lim[2] ]  <- v.lim[2]
+        dat.plot[ dat.plot < v.lim[1] ]  <- v.lim[1]
+        dat.plot <- data.table::melt(dat.plot)
+        p <- ggplot(data = dat.plot, aes(Var2, Var1, fill = value))+
+            geom_tile(color = NA,width=1.0,height=1.0)+xlab("")+ylab("")+
+            scale_fill_gradient2(low = "blue", high = "red", mid = "white",
+                                 midpoint = 0, limit = v.lim, space = "Lab",
+                                 name="Correlation") +
+            #theme_bw()+
+            theme_minimal()+
+            theme(axis.text.x = element_text(angle = 45, vjust = 1, size = 12, hjust = 1))+
+            coord_fixed()
+        ggsave(sprintf("%s.cluster.%d.png",out.prefix,cls),width=6,height=6)
+    }
+
+    average.upper.tri <- function(X,cls){
+        f <- upper.tri(X)
+        return(median(X[f]))
+    }
+    cluster.avg.cor <- cluster.df[,.(N=.N,avg.cor=average.upper.tri(cor.mtx[.SD$geneID,.SD$geneID])),
+                                  by="cluster"]
+    for(cls in cluster.avg.cor$cluster){
+        gid <- cluster.df[cluster==cls,][["geneID"]]
+        plot.cor.matix(cor.mtx[gid,gid],cls)
+    }
+    cluster.df <- cluster.df[cluster.avg.cor,,on="cluster"][order(-avg.cor,cluster,geneSymbol),]
+    return(cluster.df)
+    
+    #anchor.cluster <- cluster.df[geneID %in% rownames(anchor.mtx),]
+    #cluster.flt.df <- cluster.df[cluster %in% anchor.cluster[["cluster"]] & avg.cor>TH.score,
+    #                             ][order(-avg.cor,cluster),]
+    #write.table(cluster.flt.df,sprintf("%s.cutree.glist",out.prefix),row.names=F,sep="\t",quote=F)
+    #return(cluster.flt.df)
+}
+
+
+my.FindTransferAnchors <- function (reference, query, reference.assay = NULL, query.assay = NULL,
+    reduction = "pcaproject", project.query = FALSE, features = NULL,
+    npcs = 30, l2.norm = TRUE, dims = 1:30, k.anchor = 5, k.filter = 200,
+    k.score = 30, max.features = 200, eps = 0, approx.pca = TRUE,
+    verbose = TRUE)
+{
+    if (length(x = reference) > 1 | length(x = query) > 1) {
+        stop("We currently only support transfer between a single query and reference")
+    }
+    if (!reduction %in% c("pcaproject", "cca", "pcaqueryproject")) {
+        stop("Please select either pcaproject, cca, or pcaqueryproject for the reduction parameter.")
+    }
+    query <- RenameCells(object = query, new.names = paste0(Cells(object = query),
+        "_", "query"))
+    reference <- RenameCells(object = reference, new.names = paste0(Cells(object = reference),
+        "_", "reference"))
+    features <- if(!is.null(features)) features else  VariableFeatures(object = reference)
+    reference.assay <- if(!is.null(reference.assay)) reference.assay else DefaultAssay(object = reference)
+    query.assay <- if(!is.null(query.assay)) query.assay else  DefaultAssay(object = query)
+    DefaultAssay(object = reference) <- reference.assay
+    DefaultAssay(object = query) <- query.assay
+#    print(str(features))
+
+    if (reduction == "cca") {
+#        reference <- ScaleData(object = reference, features = features,
+#                               do.scale=F,vars.to.regress = c("batchV"),
+#                               verbose = T)
+#        query <- ScaleData(object = query, features = features,
+#                               do.scale=F,vars.to.regress = c("patient"),
+#                               verbose = T)
+
+        exp.r.mat <- sscClust:::simple.removeBatchEffect(GetAssayData(reference,"data")[features,],
+                                    batch = reference$batchV)
+        exp.q.mat <- sscClust:::simple.removeBatchEffect(GetAssayData(query,"data")[features,],
+                                    batch = query$patient)
+        reference <- SetAssayData(reference,"scale.data",exp.r.mat)
+        query <- SetAssayData(query,"scale.data",exp.q.mat)
+
+        combined.ob <- RunCCA(object1 = reference, object2 = query,
+            features = features, num.cc = max(dims), renormalize = FALSE,
+            rescale = FALSE, verbose = verbose)
+    }
+    if (l2.norm) {
+        combined.ob <- L2Dim(object = combined.ob, reduction = reduction)
+        reduction <- paste0(reduction, ".l2")
+    }
+    anchors <- Seurat:::FindAnchors(object.pair = combined.ob, assay = c(reference.assay,
+        query.assay), cells1 = colnames(x = reference), cells2 = colnames(x = query),
+        reduction = reduction, dims = dims, k.anchor = k.anchor,
+        k.filter = k.filter, k.score = k.score, max.features = max.features,
+        eps = eps, verbose = verbose)
+    anchor.set <- new(Class = "AnchorSet", object.list = list(combined.ob),
+        reference.cells = colnames(x = reference), query.cells = colnames(x = query),
+        anchors = anchors, anchor.features = features)
+    return(anchor.set)
+}
 
 
 

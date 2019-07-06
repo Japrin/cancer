@@ -1,4 +1,4 @@
-#!/usr/bin/perl
+#!/usr/bin/env perl
 use warnings;
 use strict;
 use Getopt::Long;
@@ -21,7 +21,7 @@ GetOptions("q:i"=>\$basethres,"Q:i"=>\$mapQthres,"l:i"=>\$total_chr,"n:s"=>\$add
 #$total_chr ||= 2471805657;
 $basethres ||= 0;
 $mapQthres ||= 0;
-if(!defined($addnFile) || $addnFile ne "-") { $addnFile="/PUBLIC/database/HEALTH/genome/human/b37_gatk/b37.84.NBlock"; }
+if(!defined($addnFile) || $addnFile ne "-") { $addnFile="/WPSnew/zhenglt/02.pipeline/cancer/stat/b37.NBlock.larger20bp.bed"; }
 die `pod2text $0` if(@ARGV<2 || $help);
 
 my $bam=shift;

@@ -1,0 +1,14 @@
+__default__:
+  V:  true
+  N:  titanCNA_snakemake
+  cwd:  true
+  o:  logs/cluster/{rule}.{wildcards}.out
+  e:  logs/cluster/{rule}.{wildcards}.err
+  q:  urgent.q
+  P:  urgent
+  sync: y
+  notify: true
+  b:  y
+  j:  y
+  r:  y
+  l:  vf=4G,p=1,io=0

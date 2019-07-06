@@ -1,0 +1,1 @@
+/WPSnew/zhenglt/01.bin/cancer/cna/hmmcopy_utils/mybuild/bin/readCounter /WPSnew/zhenglt/work/panC/ana/zhangLab.10X/bulk/D20190109/novogene/OUT/PACA-P20181121/PACA-P20181121-P/aln/PACA-P20181121-P.final.bam -c 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,X,Y -w 10000 -q 20 > results/readDepth/P001N.bin10000.wig 2> logs/readDepth/P001N.bin10000.log

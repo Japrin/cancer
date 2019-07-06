@@ -36,6 +36,7 @@ fi
 
 source $iniFile
 
+mkdir -p `dirname $1`
 out=`cd \`dirname $1\`; pwd`/`basename $1`
 shift 1
 
