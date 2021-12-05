@@ -41,7 +41,7 @@ source $iniFile
 STAR_GenomeDir=/WPSnew/zhenglt/00.database/broad/bundle/2.8/b37/star
 gene_model_file=/WPSnew/zhenglt/00.database/gencode/v24/gencode.v24lift37.annotation.gtf
 STAR_FUSION_DB_Dir=/WPSnew/zhenglt/00.database/tools/star-fusion/GRCh37_v24_mybuild/ctat_genome_lib_build_dir
-module load STAR/2.6.1d
+module load STAR/2.7.9a
 ###module unload java/1.7.0_79
 module load java/1.8.0_171
 ###module unload gatk/3.3-0
