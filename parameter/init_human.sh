@@ -1,11 +1,12 @@
 #!/bin/bash
 
+export MODULESHOME=/usr/share/Modules
 . /usr/share/Modules/init/bash
-##export MODULEPATH="/Share/BP/zhenglt/05.setting/modulefiles":"/WPSnew/zhenglt/05.setting/modulefiles":$MODULEPATH
-export MODULEPATH="/WPSnew/zhenglt/05.setting/modulefiles":$MODULEPATH
+export MODULEPATH="/lustre1/zeminz_pkuhpc/05.setting/modulefiles":/usr/share/Modules/modulefiles:/etc/modulefiles
+
 module load CGpipeline/1.0
-module load glibc/2.12.2
-export PKG_CONFIG_PATH=/WPSnew/zhenglt/05.setting/PKGCONFIG
+###module load glibc/2.12.2
+export PKG_CONFIG_PATH="/lustre1/zeminz_pkuhpc/05.setting/PKGCONFIG"
 
 #### don't echo anything
 ####echo "pipeline init file was included at host:" `hostname`

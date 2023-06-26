@@ -80,6 +80,9 @@ module unload bedtools/2.27.1
 module load bedtools/2.23.0
 export TMPDIR="$outDir"
 
+which python
+which python2
+
 ### get the BAF file
 if [ ! -f $outDir/$sampleID.hetSNV.baf ];then
 	if [ -f $normalSNPFile ];then
@@ -102,7 +105,7 @@ fi
 if [ ! -f $outDir/out/cnv.result ];then
 	####rm -r $outDir/out
 	if [ -f $outDir/$sampleID.hetSNV.baf ];then
-		python $ADTExDir/ADTEx.py \
+		python2 $ADTExDir/ADTEx.py \
 			-n $outDir/$sampleID.normal.coverage.gz \
 			-t $outDir/$sampleID.tumor.coverage.gz \
 			-b $TR \
@@ -112,7 +115,7 @@ if [ ! -f $outDir/out/cnv.result ];then
 			#$opt_e -p --DOC
 	else
 	
-		python $ADTExDir/ADTEx.py \
+		python2 $ADTExDir/ADTEx.py \
 			-n $outDir/$sampleID.normal.coverage.gz \
 			-t $outDir/$sampleID.tumor.coverage.gz \
 			-b $TR \
