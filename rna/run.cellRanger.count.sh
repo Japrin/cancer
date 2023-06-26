@@ -49,14 +49,15 @@ fi
 
 echo begin at: `date`
 
-source $iniFile
+#source $iniFile
 
 outDir=$1
 inDir=$2
 sampleID=$3
 
 if [ "$optS" == "human" ];then
-    transcriptomeDir="/WPSnew/zhenglt/00.database/ensemble/10X/refdata-cellranger-GRCh38-1.2.0"
+    ##transcriptomeDir="/WPSnew/zhenglt/00.database/ensemble/10X/refdata-cellranger-GRCh38-1.2.0"
+    transcriptomeDir="/workspace/zhengliangtao/00.database/cellranger/refdata-gex-GRCh38-2020-A"
 elif [ "$optS" == "mouse" ];then
     #####transcriptomeDir="/DBS/DB_temp/zhangLab/ensemble/mybuild/cellranger/rel89/Mus_musculus.GRCm38.89.v2"
     ##transcriptomeDir="/WPSnew/zhenglt/work/proj_fh/data/refdata-cellranger-mm10-1.2.0"
@@ -68,7 +69,8 @@ mkdir -p $outDir
 ###. /usr/share/Modules/init/bash
 ###export MODULEPATH="/Share/BP/zhenglt/05.setting/modulefiles":/usr/share/Modules/modulefiles:/etc/modulefiles
 #module load cellranger/2.1.1
-module load cellranger/3.0.0
+###module load cellranger/3.0.0
+module load cellranger/5.0.0
 
 #outDir=`pwd`/OUT.cellranger
 #mkdir -p $outDir

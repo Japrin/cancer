@@ -1,0 +1,8 @@
+[gene-expression]
+reference,/workspace/zhengliangtao/00.database/cellranger/refdata-gex-GRCh38-2020-A
+[vdj]
+reference,/workspace/zhengliangtao/00.database/cellranger/refdata-cellranger-vdj-GRCh38-alts-ensembl-5.0.0
+[libraries]
+fastq_id,fastqs,feature_types,subsample_rate
+SampleID_GEP,FQ_DIR_GEP,gene expression,
+SampleID_TCR,FQ_DIR_TCR,vdj-t,

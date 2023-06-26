@@ -4,8 +4,9 @@ echo "*** somatic SNV by varScan ***"
 
 TR=""
 optTR=""
-iniFile="`dirname $0`/../parameter/init_human.sh"
-#_refData="/DBS/DB_temp/zhangLab/broad/bundle/2.8/b37/bwa_0.7.12/human_g1k_v37_decoy.fasta"
+#iniFile="`dirname $0`/../parameter/init_human.sh"
+###_refData="/DBS/DB_temp/zhangLab/broad/bundle/2.8/b37/bwa_0.7.12/human_g1k_v37_decoy.fasta"
+_refData="/workspace/zhengliangtao/00.database/broad/cellranger/human/genome.fa"
 tumorFreq=0.1
 normalFreq=0.05
 
@@ -59,11 +60,12 @@ fi
 
 echo begin at: `date`
 
-source $iniFile
-#refData=$_refData
-#REF=$_refData
+#source $iniFile
+refData=$_refData
+REF=$_refData
 
-module load samtools/0.1.18
+module load samtools/1.14
+module load varScan/2.4.2
 
 sampleID=$1
 normalBam=$2
@@ -74,8 +76,10 @@ mkdir -p $outDir
 
 ### call ###
 if [ ! -f "$outDir/$sampleID.varScan.snp.Somatic.hc.vcf" ]; then
-	samtools mpileup -q 1 $optTR -f $refData $normalBam $tumorBam \
-		| java -Xmx4G -jar $varScanDIR/VarScan.jar somatic --mpileup 1 \
+    #### DREAM-3 SETTINGS FOR FPFILTER
+    #### mpileup -B (disables BAQ)
+	samtools mpileup -B -q 1 $optTR -f $refData $normalBam $tumorBam \
+		| java -Xmx8G -jar $VarScanJAR somatic --mpileup 1 \
 		--min-coverage-normal 8 \
 		--min-coverage-tumor 8 \
 		--p-value 0.1 \
@@ -84,12 +88,12 @@ if [ ! -f "$outDir/$sampleID.varScan.snp.Somatic.hc.vcf" ]; then
 		--output-indel $outDir/$sampleID.varScan.indel \
 		--output-vcf
 	
-	java -Xmx4G -jar $varScanDIR/VarScan.jar processSomatic \
+	java -Xmx4G -jar $VarScanJAR processSomatic \
 		$outDir/$sampleID.varScan.snp.vcf \
 		--min-tumor-freq $tumorFreq \
 		--max-normal-freq $normalFreq 
 	
-	java -Xmx4G -jar $varScanDIR/VarScan.jar processSomatic \
+	java -Xmx4G -jar $VarScanJAR processSomatic \
 		$outDir/$sampleID.varScan.indel.vcf \
 		--min-tumor-freq $tumorFreq \
 		--max-normal-freq $normalFreq
