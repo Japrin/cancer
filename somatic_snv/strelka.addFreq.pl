@@ -51,6 +51,7 @@ while(<$in>)
 	    {
             print "##INFO=<ID=NORMAL_FREQ,Number=1,Type=Float,Description=\"mutation frequency in normal\">\n";
             print "##INFO=<ID=TUMOR_FREQ,Number=1,Type=Float,Description=\"mutation frequency in tumor\">\n";
+            print "##FORMAT=<ID=GT,Number=1,Type=String,Description=\"Genotype\">\n";
 	    }
     	print "$line\n"; 
 	    next;
@@ -91,6 +92,10 @@ while(<$in>)
         }
     }
     $F[7]=$info;
+    #### add GT to "FORMAT" of samples, annovar require this
+    $F[8]="GT:$sFormat";
+    $F[9]="0/0:$v_normal";
+    $F[10]="0/1:$v_tumor";
     print join("\t",@F)."\n";
     # For SNV:
     ##CHROM  POS     ID      REF     ALT     QUAL    FILTER  INFO    FORMAT  NORMAL  TUMOR

@@ -2,7 +2,7 @@
 
 echo "*** Realigning targeted regions ***"
 
-iniFile="`dirname $0`/../parameter/init_human.sh"
+iniFile="`dirname $0`/../parameter/init_human.hg38.sh"
 optM=8
 optNT=1
 optNCT=4

@@ -2,7 +2,8 @@
 
 echo "*** Removing duplicates ***"
 
-iniFile="/Share/BP/zhenglt/02.pipeline/cancer/parameter/init_human.sh"
+sDir=`dirname $0`
+iniFile="$sDir/../parameter/init_human.hg38.sh"
 optM=16
 
 while getopts c:m: opt
@@ -64,7 +65,7 @@ echo ">>> Marking duplicates"
 optM=`echo "scale=0;$optM/1.5" | bc`
 max_reads=`echo 250000*$optM | bc`
 echo "using $max_reads reads in memory (parameter optM: $optM*1.5)"
-java -Xmx${optM}g -jar $PICARD/picard.jar MarkDuplicates \
+java -Xmx${optM}g -jar $PICARD MarkDuplicates \
 	TMP_DIR=$o_dir \
 	I=${f} \
 	O=${o} \

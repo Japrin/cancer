@@ -2,7 +2,7 @@
 
 echo "*** Merge BAM ***"
 
-iniFile="`dirname $0`/../parameter/init_human.sh"
+iniFile="`dirname $0`/../parameter/init_human.hg38.sh"
 optM=16
 
 while getopts c:m: opt
@@ -67,7 +67,7 @@ then
 	optM=`echo "scale=0;$optM/1.5" | bc`
 	max_reads=`echo 250000*$optM | bc`
 	echo "using $max_reads reads in memory (parameter optM: $optM*1.5)"
-	java -Xmx${optM}g -jar $picardDIR/picard.jar MergeSamFiles \
+	java -Xmx${optM}g -jar $PICARD MergeSamFiles \
 		$bams \
 		O=$out \
 		TMP_DIR=$o_dir \

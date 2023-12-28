@@ -1,7 +1,7 @@
 #!/bin/bash
 
 
-iniFile="`dirname $0`/../parameter/init_human.sh"
+iniFile="`dirname $0`/../parameter/init_human.hg38.sh"
 optT=4
 optM=16
 optA="coordinate"
@@ -60,7 +60,7 @@ echo begin at: `date`
 optM=`echo "scale=0;$optM/1.5" | bc`
 max_reads=`echo 250000*$optM | bc`
 echo "... using $max_reads reads in memory (parameter optM: $optM*1.5)"
-java -Xmx${optM}g -jar $picardDIR/picard.jar SortSam \
+java -Xmx${optM}g -jar $PICARD SortSam \
 		I=$inbam \
 		O=$outbam \
 		MAX_RECORDS_IN_RAM=$max_reads \

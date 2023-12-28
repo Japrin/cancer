@@ -4,13 +4,30 @@
 #. /usr/share/Modules/init/bash
 export MODULEPATH="/tools/modulefiles:/workspace/zhengliangtao/05.setting/modulefiles":$MODULEPATH
 
+module load fastp/0.23.4
+module load seqtk/1.4
+module load bwa/0.7.17-r1198-dirty
+module load samtools/1.17
+module load java/18.0.1.1
+module load picard/3.0.0
+module load gatk/4.2.6.1
+#module load samtools/1.14
+module load htslib/github
+module load varScan/2.4.4
+module load strelka2/2.9.10
+module load strelka/1.0.14
+module load bedtools/2.30.0
+module load annovar/20220607
+
+
+
 #module load CGpipeline/1.0
 ###module load glibc/2.12.2
 #export PKG_CONFIG_PATH="/lustre1/zeminz_pkuhpc/05.setting/PKGCONFIG"
 
 #### don't echo anything
 ####echo "pipeline init file was included at host:" `hostname`
-#export PIPELINE=/WPSnew/zhenglt/02.pipeline
+export PIPELINE="/workspace/zhengliangtao/02.pipeline"
 
 export PATH=$PIPELINE/cancer/all/:$PATH
 #PATH=$PIPELINE/bin:$PATH
@@ -63,23 +80,24 @@ export PATH=$PIPELINE/cancer/all/:$PATH
 #LD_LIBRARY_PATH=/Share/BP/zhenglt/01.bin/hdf5-1.8.14/mybuild/lib:${LD_LIBRARY_PATH:-""}
 #export LD_LIBRARY_PATH=$LD_LIBRARY_PATH
 
-export picardDIR=/WPSnew/zhenglt/01.bin/var/picard/current
-export PICARD=$picardDIR
-export GATK=/WPSnew/zhenglt/01.bin/var/gatk/current
-export gatkJAR=$GATK/GenomeAnalysisTK.jar
-export gatkKey=$GATK/20952006_zju.edu.cn.key
-export GATKKey=$gatkKey
-export varScanDIR=/WPSnew/zhenglt/01.bin/var/varScan
-#export BREAKDANCER=$PIPELINE/bin/breakdancer
-export ANNOVAR=/WPSnew/zhenglt/01.bin/var/annovar/current
+#export picardDIR=/WPSnew/zhenglt/01.bin/var/picard/current
+#export PICARD=$picardDIR
+#export GATK=/WPSnew/zhenglt/01.bin/var/gatk/current
+#export gatkJAR=$GATK/GenomeAnalysisTK.jar
+#export gatkKey=$GATK/20952006_zju.edu.cn.key
+#export GATKKey=$gatkKey
+#export varScanDIR=/WPSnew/zhenglt/01.bin/var/varScan
+##export BREAKDANCER=$PIPELINE/bin/breakdancer
+#export ANNOVAR=/WPSnew/zhenglt/01.bin/var/annovar/current
 
-bundleDir=/WPSnew/zhenglt/00.database/broad/bundle/2.8/b37
-refData=$bundleDir/human_g1k_v37_decoy.fasta
+bundleDir=/workspace/zhengliangtao/00.database/broad/bundle/2.8/hg38
+refData=$bundleDir/Homo_sapiens_assembly38.fasta
+REF_ALT=$bundleDir/Homo_sapiens_assembly38.fasta.64.alt
 REF=$refData
-refDataByChr=$bundleDir/byChr
-refNFile=$bundleDir/all.NBlock.bed
-knownSites=$bundleDir/dbsnp_138.b37.vcf
-HumanDB=/WPSnew/zhenglt/00.database/annovar/humandb_b37
+#refDataByChr=$bundleDir/byChr
+#refNFile=$bundleDir/all.NBlock.bed
+knownSites=$bundleDir/Homo_sapiens_assembly38.dbsnp138.vcf
+HumanDB=/workspace/zhengliangtao/01.bin/ANNOVAR/annovar/humandb
 
 #export BLASTDB="/Share/BP/zhenglt/00.database/blastDatabase"
 #

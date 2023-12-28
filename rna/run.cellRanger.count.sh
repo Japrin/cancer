@@ -2,7 +2,7 @@
 
 sDir=`dirname $0`
 iniFile="$sDir/../parameter/init_human.sh"
-_refData="/WPSnew/zhenglt/00.database/broad/bundle/2.8/b37/human_g1k_v37_decoy.fasta"
+#_refData="/WPSnew/zhenglt/00.database/broad/bundle/2.8/b37/human_g1k_v37_decoy.fasta"
 ###_refData="/DBS/DB_temp/zhangLab/broad/bundle/2.8/b37/human_g1k_v37_decoy.fasta"
 optT="--localcores 4"
 optM="--localmem 16"
